@@ -1,6 +1,8 @@
 /**
 @todo
 - remove the need to check this.subGenerator in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
+
+NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle Windows/different operating systems and can't use 'exec' since that doesn't show (live) output)
 */
 
 'use strict';
@@ -8,7 +10,7 @@ var util = require('util');
 var yeoman = require('yeoman-generator');
 
 // var exec = require('child_process').exec;
-var spawn = require('child_process').spawn;
+// var spawn = require('child_process').spawn;
 
 var MainGenerator = module.exports = function MainGenerator(args, options, config) {
 	// By calling `NamedBase` here, we get the argument to the subgenerator call
