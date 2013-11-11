@@ -1,0 +1,11 @@
+{
+	"name": "<%= appName %>",
+    "description": "<%= appDescription %>",
+    "version": "0.0.0",
+    "url": "https://github.com/<%= githubName%>/<%= appName %>",
+    "options": {
+        "paths": "./app/src/",
+        "outdir": "yuidocs/frontend",
+        "exclude": "bower_components,build,deploys,test"
+    }
+}

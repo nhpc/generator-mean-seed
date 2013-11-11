@@ -1,0 +1,11 @@
+{
+    "name": "<%= appName %>",
+    "description": "<%= appDescription %>",
+    "version": "0.0.0",
+    "url": "https://github.com/<%= githubName%>/<%= appName %>",
+    "options": {
+        "paths": ".",
+        "outdir": "yuidocs/backend",
+        "exclude": "node_modules,public,src"
+    }
+}
