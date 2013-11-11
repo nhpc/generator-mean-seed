@@ -12,6 +12,9 @@
 3. start server and view app
 	1. `node run.js` to start node server (make sure MongoDB is already running first)
 	2. open a browser to `http://localhost:3000/` to view the site/app
+4. run tests
+	1. `node run.js config=test` (in separate terminal/command line window)
+	2. `grunt`
 
 
 
@@ -97,6 +100,14 @@ node run.js
 1. The backend and frontend are separated. Frontend files are located in the `app/src` folder. Everything else is considered the backend, with the exception of:
 	1. `Gruntfile.js`. This builds files for both the backend and frontend, since you only want to have to run it once.
 	2. The `configs` folder. These files contain properties for both the backend and frontend.
+	
+
+### Running Tests
+1. Open a new command prompt/terminal window and type `node run.js config=test` to run the test server (this connects to the test database and wipes it clean on each run)
+2. Run `grunt` from the root app directory - this will run all tests:
+	1. backend node.js Jasmine (API route) tests
+	2. frontend Karma unit tests
+	3. frontend Protractor / Selenium end-to-end (E2E) tests
 
 	
 

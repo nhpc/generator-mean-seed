@@ -199,10 +199,6 @@ if(this.subGenerator =='main') {
 	this.mkdir('app/src/modules/pages');
 	this.mkdir('app/src/modules/services');
 	
-	//@todo - figure out why lesshat bower install is failing and then remove this
-	this.mkdir('app/src/bower_components');
-	this.directory('app/src/bower_components');
-	
 	
 	//B. template files (all templated files TOGETHER here)
 	this.template('app/src/_README.md', 'app/src/README.md');
@@ -360,5 +356,11 @@ if(this.subGenerator =='main') {
 	else {
 		cb();
 	}
+}
+};
+
+MainGenerator.prototype.logNextSteps = function logNextSteps() {
+if(this.subGenerator =='main') {
+	this.log.writeln('Next steps:\n1. IF on Windows, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\nSee the README.md file for more info.');
 }
 };

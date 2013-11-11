@@ -1,5 +1,27 @@
 {
 	"prompts":{
-		"name":"myproject"
+		"appName":"myproject",
+		"appTitle":"My Project",
+		"appDescription":"my really cool app!",
+		"appKeywords":[
+			"mean-seed",
+			"javascript",
+			"angular",
+			"node",
+			"myproject",
+			"app"
+		],
+		"githubName":"jackrabbitsgroup",
+		"authorName":"Luke Madera <luke.madera@gmail.com>",
+		"operatingSystem":"windows",
+		"serverPort":3000,
+		"socketPort":3001,
+		"testServerPort":3005,
+		"testSocketPort":3006,
+		"testDatabase":"test_temp",
+		"skipNpmInstall":1,
+		"skipBowerInstall":1,
+		"skipSeleniumInstall":1,
+		"skipGrunt":1
 	}
 }

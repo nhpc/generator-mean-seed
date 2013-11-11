@@ -54,8 +54,8 @@ So each time package.json or config.json is changed, increment the version both 
 @type Object
 */
 var curVersions ={
-	"cfg": "0.81",
-	"pkg": "0.0.7"
+	"cfg": "0.0.0",
+	"pkg": "0.0.0"
 };
 // var configFile = require('./app/configs/config.json');
 var configFile ='./app/configs/config.json';
