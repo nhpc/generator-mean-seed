@@ -57,13 +57,11 @@ if(!this.configFile) {		//only prompt if don't have config file
 		},
 		{
 			name: 'githubName',
-			message: 'Github User or Organization Name',
-			default: 'jackrabbitsgroup'		//TESTING
+			message: 'Github User or Organization Name'
 		},
 		{
 			name: 'authorName',
-			message: 'Author name and email (i.e. John Smith <johnsmith@email.com>)',
-			default: 'John Smith <johnsmith@email.com>'		//TESTING
+			message: 'Author name and email (i.e. John Smith <johnsmith@email.com>)'
 		},
 		{
 			type: 'list',

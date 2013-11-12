@@ -156,6 +156,10 @@ config(['$routeProvider', '$locationProvider', 'svcConfigProvider', '$compilePro
 	site-specific routes
 	@toc 3.
 	*/
+	
+	//yeoman generated routes here - DO NOT DELETE THIS COMMENT AS IT IS USED BY YEOMAN TO GENERATE A NEW ROUTE!
+	//end: yeoman generated routes here - DO NOT DELETE THIS COMMENT AS IT IS USED BY YEOMAN TO GENERATE A NEW ROUTE!
+	
 
 	/**
 	catch-all 'otherwise' route

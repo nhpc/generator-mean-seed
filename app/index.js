@@ -44,11 +44,6 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 
 	var prompts = [
 		{
-			name: 'configFile',
-			message: 'What config file to use? (type "none" or any bad file path to use prompts here instead)',
-			default: 'yo-configs/default.json'
-		},
-		{
 			type: 'list',
 			name: 'subGenerator',
 			message: 'What subgenerator to use?',
@@ -59,13 +54,32 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 			default: 'main'
 		}
 	];
-	
-	// console.log('dirname: '+__dirname);
 
 	this.prompt(prompts, function (props) {
 		this.options.props ={};
 		this.options.props.subGenerator =this.subGenerator = props.subGenerator;
+		
+		cb();
+	}.bind(this));
+};
 	
+	
+MeanSeedGenerator.prototype.askForConfig = function askForConfig() {
+this.options.props.configFile =this.configFile ='';		//default
+if(this.subGenerator =='main') {		//only use config for certain sub-generators
+	var cb = this.async();
+
+	var prompts = [
+		{
+			name: 'configFile',
+			message: 'What config file to use? (type "none" or any bad file path to use prompts here instead)',
+			default: 'yo-configs/default.json'
+		}
+	];
+	
+	// console.log('dirname: '+__dirname);
+
+	this.prompt(prompts, function (props) {
 		var configFile =this.options.props.configFile =this.configFile =props.configFile;
 		if(configFile) {
 			//parse config file into a json object
@@ -89,4 +103,5 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 			
 		cb();
 	}.bind(this));
+}
 };
