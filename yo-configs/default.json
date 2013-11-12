@@ -11,17 +11,17 @@
 			"myproject",
 			"app"
 		],
-		"githubName":"jackrabbitsgroup",
-		"authorName":"Luke Madera <luke.madera@gmail.com>",
-		"operatingSystem":"windows",
+		"githubName":"mygithubhandlehere",
+		"authorName":"First Last <first.last@email.com>",
+		"operatingSystem":"mac",
 		"serverPort":3000,
 		"socketPort":3001,
 		"testServerPort":3005,
 		"testSocketPort":3006,
 		"testDatabase":"test_temp",
-		"skipNpmInstall":1,
-		"skipBowerInstall":1,
-		"skipSeleniumInstall":1,
-		"skipGrunt":1
+		"skipNpmInstall":0,
+		"skipBowerInstall":0,
+		"skipSeleniumInstall":0,
+		"skipGrunt":0
 	}
 }
