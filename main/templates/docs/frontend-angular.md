@@ -23,6 +23,7 @@
 	
 ## A note on how to structure common/reusable LESS/style components
 There are TWO ways to pre-define styles. There are pros and cons to each and in general the "Classes" approach is better at first and for simpler things but the "Mixins" approach is better where higher customization is needed. But the most important thing is to pick one approach and stick to it so all the HTML files are similarly structured and consistent.
+
 1. Mixins: define styles within a LESS mixin then define a class that uses that mixin.
 	1. Pros:
 		1. All changes are kept within LESS/CSS files (no need to touch HTML files to change styles)
