@@ -28,14 +28,6 @@ NOTE: you can also (first) create a `yo-configs` folder with .json files for the
 
 
 
-## Contributing
-- while you can fork on Github, we're actually trying a new approach of leveraging Yeoman for different 'core' builds to avoid all the forks. The reason for 'forking' a project is to change it and add functionality that conflicts with or would add too much code bloat to the original repository. However, with Yeoman, we can add EVERYTHING into this ONE project and by using generators, the end user/developer can take ONLY what (s)he wants. So there's no code bloat or worry of this becoming a "kitchen sink" seed with too many features. That's the beauty of Yeoman! So, to contribute, build another subgenerator - either a 'core' generator or a 'module' generator. All the 'core' generators essentially become like the typical 'forks' - a user will decide what core (s)he wants to use and THEN what modules to include with that core.
-	- core: see the `main` folder/generator for an example
-	- module: see the `ng-route` folder/generator for an example
-- NOTE: this is still a new idea/approach to contributing and is a work in progress - suggestions welcome!
-
-
-
 ## More Info
 
 ### What is Yeoman?
@@ -46,3 +38,11 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 ### License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+
+
+## Contributing
+- while you can fork on Github, we're actually trying a new approach of leveraging Yeoman for different 'core' builds to avoid all the forks. The reason for 'forking' a project is to change it and add functionality that conflicts with or would add too much code bloat to the original repository. However, with Yeoman, we can add EVERYTHING into this ONE project and by using generators, the end user/developer can take ONLY what (s)he wants. So there's no code bloat or worry of this becoming a "kitchen sink" seed with too many features. That's the beauty of Yeoman! So, to contribute, build another subgenerator - either a 'core' generator or a 'module' generator. All the 'core' generators essentially become like the typical 'forks' - a user will decide what core (s)he wants to use and THEN what modules to include with that core.
+	- core: see the `main` folder/generator for an example
+	- module: see the `ng-route` folder/generator for an example
+- NOTE: this is still a new idea/approach to contributing and is a work in progress - suggestions welcome!
