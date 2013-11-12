@@ -498,6 +498,6 @@ if(this.subGenerator =='main') {
 
 MainGenerator.prototype.logNextSteps = function logNextSteps() {
 if(this.subGenerator =='main') {
-	this.log.writeln('Next steps:\n1. IF on Windows, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\nSee the README.md file for more info.');
+	this.log.writeln('Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\nSee the README.md file for more info.');
 }
 };
