@@ -1,6 +1,14 @@
 Version numbers correspond to `package.json` version
 
-# 1.0.1 (2013-11-12)
+# 1.0.2 (2013-11-12)
+## Features
+- add `docs` directory to `main` subgenerator
+
+## Bug Fixes
+- removed karma.conf.js copy command as this is a grunt generated file and does not exist originally
+
+
+# 1.0.1
 
 ## Features
 - support Angular 1.2.0 - switch all directives from `compile` to `template` function

@@ -180,6 +180,7 @@ MainGenerator.prototype.files = function files() {
 if(this.subGenerator =='main') {
 
 	//A. make all directories (do it at top so they're all created since templated files are collected here at the top)
+	this.mkdir('docs');
 	this.mkdir('app');
 	this.mkdir('app/configs');
 	this.mkdir('app/test');
@@ -221,6 +222,8 @@ if(this.subGenerator =='main') {
 	
 	//C. copy files & directories
 	//NOTE: leading with just a '.' sometimes doesn't copy over properly / gives error so add the '_' even though not templating
+	this.directory('docs');
+	
 	this.copy('_.bowerrc', '.bowerrc');
 	this.copy('_.gitignore', '.gitignore');
 	this.copy('CHANGELOG.md', 'CHANGELOG.md');
