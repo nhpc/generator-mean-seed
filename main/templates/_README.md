@@ -26,7 +26,7 @@
 - see the `docs` folder for more documentation. Key docs (roughly in order of priority) listed below:
 	- setup-running.md (if you want more info/help than from the Quick Start section above)
 	- overview.md
-	- filestructure.md
+	- file-structure.md
 	- common-actions.md
 	- testing.md
 	- continuous-integration.md
