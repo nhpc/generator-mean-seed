@@ -19,7 +19,7 @@ This is project is meant to be a starting point for full stack javascript (Angul
 	- backend: `package.json`
 - NO jQuery depdendency! (AngularJS is meant to be used with its included jqLite)
 	
-Feel free to fork the project to make seeds with other default technologies (Mongoose instead of mongo-db-native, SASS instead of LESS, Mocha instead of Jasmine for backend tests, etc.).
+Feel free to add Yeoman builds and submit pull requests for other 'cores' (i.e. Mongoose instead of mongo-db-native, SASS instead of LESS, Mocha instead of Jasmine for backend tests, etc.).
 
 Any suggestions for improvement are welcome!
 

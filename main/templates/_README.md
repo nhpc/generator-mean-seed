@@ -2,13 +2,13 @@
 
 ## Quick Start
 
-1. machine (global / program) installs
+1. machine (global / program) installs (if you don't have them already)
 	1. install git, nodejs, mongodb
 	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed jasmine-node less karma yuidocjs forever`
 2. `yo mean-seed` (from the NEW directory you want to create the app in)
 	1. `npm install && bower install` (if not already run successfully by Yeoman or any time `package.json` or `bower.json` change)
 	2. `./node_modules/protractor/bin/install_selenium_standalone` (if not already run successfully by Yeoman)
-	3. `grunt q` to build assets (if not already run successfully by Yeoman or any time a `*.less` or `*.html` file changes)
+	3. `grunt q` to build assets (if not already run successfully by Yeoman and any time a `*.less` or `*.html` file changes)
 3. start server and view app
 	1. `node run.js` to start node server (make sure MongoDB is already running first)
 	2. open a browser to `http://localhost:3000/` to view the site/app
