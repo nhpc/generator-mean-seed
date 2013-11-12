@@ -17,6 +17,8 @@
 
 2. Create a new directory where you want your app to be and then navigate to it (with `cd`) and run yeoman generator with `yo mean-seed`
 	1. You can skip the prompts if you want by using a JSON config file. To do so, create a `yo-configs` folder and add a JSON file to it with the answers to the prompts (see or copy a file in the `yo-configs` folder from here for reference: https://github.com/jackrabbitsgroup/generator-mean-seed ).
+		1. To copy from the global generator-mean-seed install (and edit on command line - i.e. with `sudo vi default.json`) use `cp [path to generator-mean-seed]/yo-configs/default.json yo-configs/default.json` and then edit is as needed.
+		2. To edit locally and then copy remotely to your server use `scp default.json [user]@[remote host ip/domain]:/[path to new app]/yo-configs/default.json`
 
 3. Install nodejs and bower dependencies using `npm` and `bower`. This only needs to be done once initially, but must be re-run every time package.json is updated. When in doubt, run `npm install && bower install` from your project root since you can't run it too much (if you run it extra times it won't do anything).
 ```bash

@@ -353,7 +353,6 @@ if(this.subGenerator =='main') {
 	this.copy('app/src/config/buildfilesModuleGroups.json', 'app/src/config/buildfilesModuleGroups.json');
 	this.copy('app/src/config/buildfilesModules.json', 'app/src/config/buildfilesModules.json');
 	this.copy('app/src/config/karma.conf-grunt.js', 'app/src/config/karma.conf-grunt.js');
-	this.copy('app/src/config/karma-e2e.conf.js', 'app/src/config/karma-e2e.conf.js');
 	this.copy('app/src/config/protractor.conf-grunt.js', 'app/src/config/protractor.conf-grunt.js');
 	
 	//common
