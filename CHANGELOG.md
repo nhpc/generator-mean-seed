@@ -1,0 +1,16 @@
+Version numbers correspond to `package.json` version
+
+# 1.0.1 (2013-11-12)
+
+## Features
+- support Angular 1.2.0 - switch all directives from `compile` to `template` function
+- add `docs` folder with documentation / readme's
+
+
+# 1.0.0
+
+## Features
+
+## Bug Fixes
+
+## Breaking Changes
