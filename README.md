@@ -21,6 +21,7 @@ $ yo mean-seed
 ```
 NOTE: you can also (first) create a `yo-configs` folder with .json files for the prompts so you don't have to type them all out. This is useful for storing multiple different configurations for different projects - just tell the generator which config to use and you're all set! See the [yo_configs folder](https://github.com/jackrabbitsgroup/generator-mean-seed/tree/master/yo-configs) for examples.
 
+[See here](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/_README.md) for more/full info and steps.
 
 ### Next Steps
 - See the generated README.md file in your new mean-seed app!

@@ -4,7 +4,7 @@
 
 1. machine (global / program) installs
 	1. install git, nodejs, mongodb
-	2. `sudo npm install -g grunt-cli jasmine-node less karma yuidocjs forever yo generator-generator bower`
+	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed jasmine-node less karma yuidocjs forever`
 2. `yo mean-seed` (from the NEW directory you want to create the app in)
 	1. `npm install && bower install` (if not already run successfully by Yeoman or any time `package.json` or `bower.json` change)
 	2. `./node_modules/protractor/bin/install_selenium_standalone` (if not already run successfully by Yeoman)
