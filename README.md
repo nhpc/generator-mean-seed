@@ -46,3 +46,18 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 	- core: see the `main` folder/generator for an example
 	- module: see the `ng-route` folder/generator for an example
 - NOTE: this is still a new idea/approach to contributing and is a work in progress - suggestions welcome!
+
+
+
+## TODO
+Roughly in order of priority:
+- modularize the non-modularized files so the configurations (all the custom code) can be edited separately from the functions and generic code.
+	- make a 'core' and keep that separate from the 'modules' and custom code so the core can be updated and re-pulled into existing projects with minimal merge conflicts.
+	- Use Yeoman builds (INSTEAD of Github forks) for all the different 'core' builds and then rename this one as just one (of many) core builds.
+		- this leverages the incredible power of Yeoman and removes the need for many Github forks and pull requests - ALL code can be put into the Yeomen generator WITHOUT worrying about code bloat since ONLY the parts the end user wants will be built! That way, we don't have to worry about many different versions / forks and things getting out of date - each 'core' will be similar to a 'fork' but all cores can leverage the SAME modules and common parts - at least in theory!
+		- potential Yeoman builds:
+			- 'node-mongoose' for a Mongoose Yeoman build for people who want to use Mongoose instead of mongo-db-native as the node-mongo interface
+			- 'sass' for a SASS/SCSS Yeoman build for people who prefer SASS/Compass over LESS for CSS pre-processing
+		
+
+- Shift all Facebook calls to backend? Is this possible? So we can then remove the HUGE 170kb minified Facebook Javascript SDK that's just used for login..
