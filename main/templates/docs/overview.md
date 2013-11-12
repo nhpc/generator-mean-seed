@@ -146,27 +146,8 @@ For the backend (node), `express` is used as the (lightweight) framework with Mo
 All of the above is handled in 2 files - both in the `modules/controllers` folder.
 
 
-## Common / Non-modularized / Site-specific files
-You'll likely have to edit these files at some point.
-NOTE: frontend non-modularized files (in `src` folder) are documented in the `src` README
-- `app/modules/services/security/security.js`
-
-### `common` directory files most likely/often to be updated
-- db_schema.json
-- config [all config files if have to make updates]
-- modules
-	- services
-		- security/security.js
-- routes
-	- api
-		- index.js
-		- rpc
-			- api-help.html
-- test
-	- all.spec.js
-
 	
-## High-Level Directory Structure
+## File Structure
 - see `file-structure.md`
 
 
