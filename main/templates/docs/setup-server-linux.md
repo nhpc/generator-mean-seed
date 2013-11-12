@@ -2,6 +2,7 @@
 
 ## Ubuntu setup / installing
 For a remote server, SSH in to login with `ssh [user]@[ip address or domain of server]` - i.e. `ssh root@111.111.111.111` then type the password for that user.
+
 1. add users
 	- `adduser lmadera` (then follow prompts)
 	- give sudo privilges `adduser lmadera sudo`
