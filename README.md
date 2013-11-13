@@ -50,7 +50,7 @@ See the [generated README.md](https://github.com/jackrabbitsgroup/generator-mean
 - [file-structure.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/file-structure.md)
 - [common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/common-actions.md)
 - [cloning.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/cloning.md) (give this to OTHER developers to use to get set up AFTER you've run the main Yeoman generator)
-- [deploy.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/deploy.md)
+- [deploy.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/deploy.md) (for deploying to a live (staging or production) linux server and setting up Continuous Integration)
 - [testing.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/testing.md)
 - [continuous-integration.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/continuous-integration.md)
 - [frontend-angular.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/frontend-angular.md)
