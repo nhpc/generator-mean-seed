@@ -32,8 +32,10 @@ For a remote server, SSH in to login with `ssh [user]@[ip address or domain of s
 	1. `sudo apt-get install phantomjs`
 
 	
-## Note on file sizes / server space (may want to use MongoLab or MongoHQ or another hosted/cloud MongoDB solution since MongoDB can easily take up 6GB - journal of 3ish GB (apparently it doesn't go past this though?) plus the data itself plus log files plus some other stuff).
-- MongoDB and node forever took up space; here's one of my servers that maxed out with 20GB - forever though was mostly log files and while `forever cleanlogs` didn't seem to work, I was able to just delete the file(s) that were large:
+## Note on file sizes / server space
+May want to use MongoLab or MongoHQ or another hosted/cloud MongoDB solution since MongoDB can easily take up 6GB - journal of 3ish GB (apparently it doesn't go past this though?) plus the data itself plus log files plus some other stuff.
+MongoDB and node forever took up space; here's one of my servers that maxed out with 20GB - forever though was mostly log files and while `forever cleanlogs` didn't seem to work, I was able to just delete the file(s) that were large:
+
 - / 18G
 	- /var 11G
 		- /lib 6.4G
@@ -58,6 +60,7 @@ For a remote server, SSH in to login with `ssh [user]@[ip address or domain of s
 
 ## AWS (Amazon Web Services) setup
 Since it can be tricky.. Digital Ocean and Rackspace are much simpler!
+
 1. create new (EC2) instance
 	- Ubuntu (most recent - 12.04, 64bit)
 2. Create or use existing keypair. SSH public key will be generated and private key (as .pem file) will be available for download. We'll use this for SSH access later.
