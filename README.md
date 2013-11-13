@@ -4,7 +4,8 @@
 
 
 ## Demo
-- [Website](http://198.199.118.44:3000/)
+- 
+- [MEAN-seed Website/App after Yeoman build](http://198.199.118.44:3000/)
 - [Continuous Integration](http://198.199.118.44:3010/)
 	- This automatically deploys and tests the yeoman generated mean-seed website on each Github push (from local development)
 	
