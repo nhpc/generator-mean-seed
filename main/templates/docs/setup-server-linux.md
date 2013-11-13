@@ -34,6 +34,7 @@ For a remote server, SSH in to login with `ssh [user]@[ip address or domain of s
 	
 ## Note on file sizes / server space
 May want to use MongoLab or MongoHQ or another hosted/cloud MongoDB solution since MongoDB can easily take up 6GB - journal of 3ish GB (apparently it doesn't go past this though?) plus the data itself plus log files plus some other stuff.
+
 MongoDB and node forever took up space; here's one of my servers that maxed out with 20GB - forever though was mostly log files and while `forever cleanlogs` didn't seem to work, I was able to just delete the file(s) that were large:
 
 - / 18G
