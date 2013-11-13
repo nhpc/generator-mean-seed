@@ -1,6 +1,7 @@
 # Cloning
 
 Follow these steps for duplicating the app/website/code to OTHER servers/machines AFTER Yeoman has been run.
+
 Give these steps to any fellow developers for them to get set up - they do NOT need to run Yeoman since you've already generated the app for them - the main generator for Yeoman only needs to be run ONCE (and potentially can be used for updates). Though other developers WILL use other Yeoman generators (i.e. for creating a new route), just not the main/core generator that builds the app from scratch the first time.
 
 NOTE: all commands should be run in a terminal/command prompt window.
