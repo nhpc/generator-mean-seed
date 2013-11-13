@@ -3,6 +3,13 @@
 [Yeoman](http://yeoman.io) Generator for [MEAN-seed](https://github.com/jackrabbitsgroup/mean-seed) - MongoDB, Express.js, AngularJS, Node.js + Yeoman (Grunt, Bower, Yo) + Jasmine, Karma, Protractor
 
 
+## Demo
+- [Website](http://198.199.118.44:3000/)
+- [Continuous Integration](http://198.199.118.44:3010/)
+	- This automatically deploys and tests the yeoman generated mean-seed website on each Github push (from local development)
+	
+	
+	
 ## Getting Started
 
 NOTE: This assumes you already have Git, Node.js, MongoDB, and PhantomJS installed; if not, see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)
