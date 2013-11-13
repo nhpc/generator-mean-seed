@@ -25,15 +25,16 @@
 
 
 ## Setup + Running (Longer Version)
-- see `setup-running.md` in the `docs` folder
+- see `setup-detailed.md` and `running.md` in the `docs` folder
 	
 	
 ## More Info
 - see the `docs` folder for more documentation. Key docs (roughly in order of priority) listed below:
-	- setup-running.md (if you want more info/help than from the Quick Start section above)
+	- setup-detailed.md and running.md (if you want more info/help than from the Quick Start section above)
 	- overview.md
 	- file-structure.md
 	- common-actions.md
+	- cloning.md
 	- deploy.md
 	- testing.md
 	- continuous-integration.md

@@ -1,6 +1,6 @@
 # generator-mean-seed
 
-[Yeoman](http://yeoman.io) Generator for MEAN-seed - MongoDB, Express.js, AngularJS, Node.js + Yeoman (Grunt, Bower, Yo) + Jasmine, Karma, Protractor
+[Yeoman](http://yeoman.io) Generator for MEAN-seed - MongoDB, Express.js, AngularJS, Node.js + Yeoman (Grunt, Bower, Yo) + Jasmine, Karma, Protractor (for automated testing)
 
 
 ## Demo
@@ -29,8 +29,9 @@ Naviagate to a (new) directory where you want to create your AngularJS and node.
 ```
 $ yo mean-seed
 ```
-NOTE: you can also (first) create a `yo-configs` folder with .json files for the prompts so you don't have to type them all out. This is useful for storing multiple different configurations for different projects - just tell the generator which config to use and you're all set! See the [yo_configs folder](https://github.com/jackrabbitsgroup/generator-mean-seed/tree/master/yo-configs) for examples.
-NOTE: if you get an EACCESS / permission denied error during the npm install, find the folder that had permissions issues (from the log output) and run `sudo chown -R $USER [path to problematic folder]`.
+
+- NOTE: you can also (first) create a `yo-configs` folder with .json files for the prompts so you don't have to type them all out. This is useful for storing multiple different configurations for different projects - just tell the generator which config to use and you're all set! See the [yo_configs folder](https://github.com/jackrabbitsgroup/generator-mean-seed/tree/master/yo-configs) for examples.
+- NOTE: if you get an EACCESS / permission denied error during the npm install, find the folder that had permissions issues (from the log output) and run `sudo chown -R $USER [path to problematic folder]`.
 	- http://foohack.com/2010/08/intro-to-npm/#what_no_sudo
 
 [See here](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/_README.md) for more/full info and steps.
@@ -40,7 +41,24 @@ NOTE: if you get an EACCESS / permission denied error during the npm install, fi
 
 
 
-## More Info
+## Documentation / More Info
+See the [generated README.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/_README.md) file and the `docs` folder for all documentation. Key docs (roughly in order of priority) listed below:
+
+- [setup-detailed.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-detailed.md) (if you want more info/help than from the Quick Start section above)
+- [running.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/running.md) (if you want more info/help than from the Quick Start section above)
+- [overview.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/overview.md)
+- [file-structure.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/file-structure.md)
+- [common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/common-actions.md)
+- [cloning.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/cloning.md) (give this to OTHER developers to use to get set up AFTER you've run the main Yeoman generator)
+- [deploy.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/deploy.md)
+- [testing.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/testing.md)
+- [continuous-integration.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/continuous-integration.md)
+- [frontend-angular.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/frontend-angular.md)
+- [backend-node.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/backend-node.md)
+- [design.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/design.md)
+
+
+## Miscellaneous
 
 ### What is Yeoman?
 

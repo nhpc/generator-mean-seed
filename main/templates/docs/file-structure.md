@@ -1,5 +1,11 @@
 # File Structure, Key Files
 
+### Notes		
+1. The backend and frontend are separated. Frontend files are located in the `app/src` folder. Everything else is considered the backend, with the exception of:
+	1. `Gruntfile.js`. This builds files for both the backend and frontend, since you only want to have to run it once.
+	2. The `configs` folder. These files contain properties for both the backend and frontend.
+	
+	
 ## Backend / Node.js / root
 - app	Holds backend AND frontend code.
 	- src Frontend code. See below.
