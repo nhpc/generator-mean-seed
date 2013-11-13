@@ -1,6 +1,8 @@
 # Deploy
 Steps to deploy your app to a live (linux) staging and/or production server
 
+If you haven't done so already, purchase a (new) Linux server (i.e. from Digital Ocean, Rackspace, Amazon) and follow `setup-server-linux.md` to install/setup your Linux server.
+
 ## Getting (& updating) files to (another) server
 
 1. [locally on your computer / original server] create a new set of configs (regular and test) in `app/configs` for the new server environment by copying the existing `config.json` and renaming it `config-[new-server-environment].json` and updating it accordingly, i.e. for a production or staging linux server change/set at least the following:
