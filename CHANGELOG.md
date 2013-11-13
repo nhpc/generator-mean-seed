@@ -1,10 +1,11 @@
 Version numbers correspond to `package.json` version
 
-# 1.0.3 (2013-11-12)
+# 1.0.3 (2013-11-13)
 ## Features
 - added demo and links to generated code and Continuous Integration server
 - documentation update
 	- deploy.md added
+	- cloning.md added
 
 
 # 1.0.2
