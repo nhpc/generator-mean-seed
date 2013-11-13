@@ -4,6 +4,7 @@
 - [Website](http://198.199.118.44:3000/)
 - [Continuous Integration](http://198.199.118.44:3010/)
 	- This automatically deploys and tests the yeoman generated mean-seed website on each Github push (from local development)
+- [Github Repo with Generated Code](https://github.com/jackrabbitsgroup/mean-seed-gen)
 
 ## Quick Start
 
