@@ -1,6 +1,6 @@
 # generator-mean-seed
 
-[Yeoman](http://yeoman.io) Generator for [MEAN-seed](https://github.com/jackrabbitsgroup/mean-seed) - MongoDB, Express.js, AngularJS, Node.js + Yeoman (Grunt, Bower, Yo) + Jasmine, Karma, Protractor
+[Yeoman](http://yeoman.io) Generator for MEAN-seed - MongoDB, Express.js, AngularJS, Node.js + Yeoman (Grunt, Bower, Yo) + Jasmine, Karma, Protractor
 
 
 ## Demo
