@@ -5,7 +5,7 @@
 
 ## Getting Started
 
-NOTE: This assumes you already have Git, Node.js, and MongoDB installed; if not, see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)
+NOTE: This assumes you already have Git, Node.js, MongoDB, and PhantomJS installed; if not, see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)
 
 Install Yeoman Yo, Bower, Grunt and other global node modules we'll need, if you don't have them already:
 ```

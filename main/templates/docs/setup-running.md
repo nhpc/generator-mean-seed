@@ -2,14 +2,14 @@
 
 ### Setup
 1. [ONCE PER MACHINE/ENVIRONMENT] machine (global / program) installs
-	1. Install git, nodejs, and mongodb.
+	1. Install git, nodejs, mongodb, and phantomjs
 		1. See other README's (i.e. `docs/setup-server-windows-mac.md` or `docs/setup-server-linux.md`) or just google search for steps on how to do this.
 		2. Configure git (required for pushing and pulling)
 			1. `git config --global user.name "<your name>"`
 			2. `git config --global user.email "<your email>"`
 			3. `git config --global --add color.ui true`
 	2. Install global NPM packages.
-		1. `sudo npm install -g grunt-cli jasmine-node less karma yuidocjs forever yo generator-generator bower`
+		1. `sudo npm install -g grunt-cli bower yo jasmine-node less karma yuidocjs forever generator-mean-seed`
 			1. NOTE: karma doesn't seem to always work if install globally?? so it's in package.json now so will be installed locally (as well)
 		2. NOTE: IF new global npm packages are installed, you'll need to run this again.
 	3. Install Selenium server (for local Protractor tests, if using SauceLabs or another remote server, this can be skipped. Also NOTE this must be done AFTER `npm install` below since it requires Protractor first)
@@ -35,11 +35,15 @@ npm install email-templates
 ```
 
 5. [OPTIONAL] Use a different / non-default config.json file
-	1. All the config.json files for ALL environments should be in version control in the `app/configs` folder. To determine which file is used, the `config_environment.json` file is checked and IF it exists AND the `environment` key exists, that environment will be used. The naming conventions are: `config-[your environment].json` for the config (i.e. `config-triggerio.json`) and `config-[your environment].test.json` for the accompanying test config (for running tests, which should run on a DIFFERENT, dummy database as it will be wiped clean each time!). So if you want to use the non-default environment, do the following 3 steps:
+	1. All the config.json files for ALL environments should be in version control in the `app/configs` folder. To determine which file is used, the `config_environment.json` file is checked and IF it exists AND the `environment` key exists, that environment will be used. The naming conventions are: `config-[your environment].json` for the config (i.e. `config-triggerio.json`) and `config-[your environment].test.json` for the accompanying test config (for running tests, which should run on a DIFFERENT, dummy database as it will be wiped clean each time!). So if you want to use the non-default environment, do the steps below:
+	2. FYI, the config.json file is used in the following files:
+		1. Gruntfile.js
+		2. run.js
+		3. app/test/apiTestHelpers.js
 ```bash
 # cd to root project directory
 cd /path/to/project
-# copy the config_environment.json file
+# copy the config_environment.json file and set the `environment` key to your new environment.
 cp app/config_environment.json config_environment.json
 # Copy then EDIT your new config file
 cp app/config.json app/config-[your environment].json
@@ -47,10 +51,6 @@ cp app/config.json app/config-[your environment].json
 cp app/config-[your environment].json app/config-[your environment].test.json
 # Update your new, copied test config for the test environment - specifically, change 'db.database' and 'session.store.db' to a different testing database, such as 'test_temp'. Also, optionally, change the `server.port` so that way both the test server and the non-test server can run at the same time.
 ```
-	2. FYI, the config.json file is used in the following files:
-		1. Gruntfile.js
-		2. run.js
-		3. app/test/apiTestHelpers.js
 
 
 ### Running

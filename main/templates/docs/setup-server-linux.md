@@ -25,10 +25,13 @@ For a remote server, SSH in to login with `ssh [user]@[ip address or domain of s
 		2. create 'node' user for using with things like 'forever' (since it's user specific so whatever user started it is the only one who can stop it..)
 			- use `su node` to switch to node users
 6. Install MongoDB - NOTE: maybe want to use hosted service (i.e. MongoLab or MongoHQ) to save on diskspace - see below
-	- (NOTE: use a 64 bit build since the 32 bit builds of mongo/ubuntu have a 2GB memory limit! http://www.mongodb.org/downloads#32-bit-limit )
 	- http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian-or-ubuntu-linux/ (have to go through some setup steps before can run the standard apt-get install command..)
 		- Use "touch" to create a new file
-		
+		- NOTE: use a 64 bit build since the 32 bit builds of mongo/ubuntu have a 2GB memory limit! http://www.mongodb.org/downloads#32-bit-limit
+7. Install PhantomJS
+	1. `sudo apt-get install phantomjs`
+
+	
 ## Note on file sizes / server space (may want to use MongoLab or MongoHQ or another hosted/cloud MongoDB solution since MongoDB can easily take up 6GB - journal of 3ish GB (apparently it doesn't go past this though?) plus the data itself plus log files plus some other stuff).
 - MongoDB and node forever took up space; here's one of my servers that maxed out with 20GB - forever though was mostly log files and while `forever cleanlogs` didn't seem to work, I was able to just delete the file(s) that were large:
 - / 18G
@@ -48,36 +51,13 @@ For a remote server, SSH in to login with `ssh [user]@[ip address or domain of s
 - after I cleared the forever and mongodb logs though I got it down to 14GB, so that was good.
 
 
-## Getting files on server
-1. setup git config on server for your user
-	- git config --global user.name "<your name>"
-	- git config --global user.email "<your email>"
-	- git config --global --add color.ui true
-2. make `git` directory & initialize bare repo
-	- `sudo mkdir /var/git`
-	- `sudo mkdir -p /var/git/project.git`
-	- `sudo git init --bare /var/git/project.git`
-	- set group permissions
-		- `sudo chgrp -R developers /var/git/project.git`
-		- `sudo chmod -R g+swX /var/git/project.git`
-3. clone the local repo
-	- `git clone /var/git/project.git /var/www`
-4. [from local computer (where existing files are) - open a NEW terminal/command window and `cd` to the local copy of the website on your computer] add a remote (from local machine) to the server repo then push to it
-	- `git remote add prod ssh://lmadera@111.111.111.111/var/git/project.git`
-	- `git push prod master`
-5. [back on server] set permissions for /var/www folder then pull from local repo we just pushed to
-	- `sudo chown -R ubuntu:developers /var/www` - NOTE: this assumes a 'ubuntu' user exists - if it doesn't try 'root' instead OR your username (i.e. `sudo chown -R root:developers /var/www`)
-	- `sudo chmod -R g+w /var/www`
-	- `cd /var/www`
-	- `git pull origin master`
-6. setup site as normal (see main README for steps - set config, npm install -g, grunt, etc.).
-7. start server and keep it running with forever. NOTE: if did NOT create a node user, user your current user. ALSO: if using Continuous Integration (recommended), it should handle starting and stopping forever so you can skip this step.
-	- `su node` (password n0de)
-	- `cd /var/www`
-	- `sudo forever start -w run.js`
+
+## Getting (& updating) files from your local (development) code
+- see `deploy.md` file
 
 
 ## AWS (Amazon Web Services) setup
+Since it can be tricky.. Digital Ocean and Rackspace are much simpler!
 1. create new (EC2) instance
 	- Ubuntu (most recent - 12.04, 64bit)
 2. Create or use existing keypair. SSH public key will be generated and private key (as .pem file) will be available for download. We'll use this for SSH access later.

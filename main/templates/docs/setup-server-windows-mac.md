@@ -18,6 +18,7 @@
 	4. install it as a service so you don't have to run 2 command windows every time (it will start when your computer starts and run in the background).
 		1. MongoDB requires 2 windows to run manually - one to run the service `mongod` and another to run the actual `mongo` command to get into the database. But if you install as a service, `mongod` will always be running so you can skip that first step.
 		2. restart your computer for this to work if you're having issues.. After restart you should just be able to type 'mongo' from a command prompt and it should work.
+5. Install PhantomJS ( http://phantomjs.org/download.html )
 		
 ## Mac setup / installing
 ### General notes
@@ -62,3 +63,4 @@
 						1. `sudo chmod 0755 /data/db`
 						2. `sudo chown mongod:mongod /data/db`
 			8. NOTE: to manually use MongoDB, it requires running two terminal windows - one to run the service (mongod) and another for the actual `mongo` command to get into the database. EACH TIME you startup your computer and/or want to use a site, you'll need to FIRST run `mongod` to get the mongo database running.
+5. Install PhantomJS ( http://phantomjs.org/download.html )

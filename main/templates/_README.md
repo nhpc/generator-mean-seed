@@ -1,9 +1,14 @@
 # <%= appName %>
 
+## Demo
+- [Website](http://198.199.118.44:3000/)
+- [Continuous Integration](http://198.199.118.44:3010/)
+	- This automatically deploys and tests the yeoman generated mean-seed website on each Github push (from local development)
+
 ## Quick Start
 
 1. machine (global / program) installs (if you don't have them already)
-	1. install git, nodejs, mongodb
+	1. install git, nodejs, mongodb, phantomjs
 	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed jasmine-node less karma yuidocjs forever`
 2. `yo mean-seed` (from the NEW directory you want to create the app in)
 	1. `npm install && bower install` (if not already run successfully by Yeoman or any time `package.json` or `bower.json` change)
@@ -28,6 +33,7 @@
 	- overview.md
 	- file-structure.md
 	- common-actions.md
+	- deploy.md
 	- testing.md
 	- continuous-integration.md
 	- frontend-angular.md
