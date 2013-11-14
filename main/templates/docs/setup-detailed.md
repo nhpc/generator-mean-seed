@@ -54,6 +54,13 @@ cp app/config-[your environment].json app/config-[your environment].test.json
 # Update your new, copied test config for the test environment - specifically, change 'db.database' and 'session.store.db' to a different testing database, such as 'test_temp'. Also, optionally, change the `server.port` so that way both the test server and the non-test server can run at the same time.
 ```
 
+6. [OPTIONAL] Git init and commit
+	1. `git init .`
+	2. `git add -A`
+	3. `git commit -m 'init'`
+	4. (optional) add a remote: `git remote add origin [url to repository]`
+
+	
 
 ### Run The App!
 - see `running.md`

@@ -23,6 +23,11 @@
 4. run tests
 	1. `node run.js config=test` (in separate terminal/command line window)
 	2. `grunt`
+5. (optional) Git init and commit
+	1. `git init .`
+	2. `git add -A`
+	3. `git commit -m 'init'`
+	4. (optional) add a remote: `git remote add origin [url to repository]`
 
 
 
