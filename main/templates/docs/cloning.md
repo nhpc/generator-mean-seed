@@ -8,7 +8,7 @@ NOTE: all commands should be run in a terminal/command prompt window.
 In general you'll have 2-3 terminal/command prompt windows open at once - one for running MongoDB (if not running by default / as a service), one for running node.js, and one for commands (mostly grunt)
 
 1. machine (global / program) installs (if you don't have them already)
-	1. install git, nodejs, mongodb, phantomjs - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)
+	1. install git, nodejs, mongodb, phantomjs, java - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)
 	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed jasmine-node less karma yuidocjs forever`
 	3. IF using Github (to clone/push/pull from), set it up:
 		1. `git config --global user.name "<your name>"`
