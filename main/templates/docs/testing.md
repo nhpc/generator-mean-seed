@@ -39,6 +39,11 @@ There's LOTS of different testing definitions but in general we use 5:
 - Protractor
 	- install Selenium server (for standalone / local running)
 		- `./node_modules/protractor/bin/install_selenium_standalone`
+	- install JRE (Java Runtime Environment) and add it to your system PATH if you don't already have it - so you can run `java` commands from the command line.
+		- http://www.oracle.com/technetwork/java/javase/downloads/index.html
+			- click the 'JRE' download button then select the version that matches your environment / operating system
+			- download then install
+			- add to your system PATH
 	- 3 ways to use with Selenium
 		- standalone (local)
 			- `node_modules/protractor/bin/protractor app/src/config/protractor.conf.js`

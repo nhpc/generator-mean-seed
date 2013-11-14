@@ -1,7 +1,8 @@
 # server setup
 
 ## Windows setup / installing
-### NOTE: to add things to environment variables, right click on `My Computer` from Windows Explorer and click `Properties` then `Advanced` then `Environment Variables` then `System Variables` then edit the `Path` variable.
+### NOTE: to add things to environment variables, right click on `My Computer` from Windows Explorer and click `Properties` then `Advanced` then `Environment Variables` then `System Variables` then double click/edit the `Path` variable. Once you've edited/changed your Path, save and close and then RESTART any open command prompts / terminal / Git Bash windows for the change to take effect.
+
 1. install text editor of choice (i.e. Notepad++)
 2. install git ( http://git-scm.com/downloads )
 	1. follow the default options during installation
@@ -19,6 +20,16 @@
 		1. MongoDB requires 2 windows to run manually - one to run the service `mongod` and another to run the actual `mongo` command to get into the database. But if you install as a service, `mongod` will always be running so you can skip that first step.
 		2. restart your computer for this to work if you're having issues.. After restart you should just be able to type 'mongo' from a command prompt and it should work.
 5. Install PhantomJS ( http://phantomjs.org/download.html )
+	1. Once it's downloaded, add it to your system PATH (see above for how to get to your system Path)
+		1. Add in `;[path to phantomjs folder]\`, i.e. `C:\downloads\website\phantomjs\` then save and restart your command prompt window.
+6. Install Java Runtime Environment (JRE) for running the Selenium Standalone Server for Protractor tests
+	1. first check if you already have java installed by typing `java` on the command line - if it says something like 'command not found' that means it's not installed and/or it's not on your system PATH. Check your system PATH and add it if you already have Java installed, otherwise, follow the remaining steps below.
+	2. go here: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	3. click the 'JRE' download button then select the version that matches your environment / operating system
+	4. download then install
+	5. add to your system PATH (so you can run `java` from the command line from any location), i.e. `;C:\Downloads\Website\JavaRE\bin`
+	
+	
 		
 ## Mac setup / installing
 ### General notes
@@ -64,3 +75,10 @@
 						2. `sudo chown mongod:mongod /data/db`
 			8. NOTE: to manually use MongoDB, it requires running two terminal windows - one to run the service (mongod) and another for the actual `mongo` command to get into the database. EACH TIME you startup your computer and/or want to use a site, you'll need to FIRST run `mongod` to get the mongo database running.
 5. Install PhantomJS ( http://phantomjs.org/download.html )
+	1. Once it's downloaded, add it to your system PATH (see above for how to add things to your path)
+6. Install Java Runtime Environment (JRE) for running the Selenium Standalone Server for Protractor tests
+	1. first check if you already have java installed by typing `java` on the command line - if it says something like 'command not found' that means it's not installed and/or it's not on your system PATH. Check your system PATH and add it if you already have Java installed, otherwise, follow the remaining steps below.
+	2. go here: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+	3. click the 'JRE' download button then select the version that matches your environment / operating system
+	4. download then install
+	5. add to your system PATH (so you can run `java` from the command line from any location), i.e. `;C:\Downloads\Website\JavaRE\bin`

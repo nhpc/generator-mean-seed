@@ -19,7 +19,8 @@ In general you'll have 2-3 terminal/command prompt windows open at once - one fo
 2. Clone the Git repository
 	1. In command prompt, navigate to the folder where you want the app to be created in
 		1. `cd /path/to/parent/folder`
-	2. `git clone [repository location]`
+	2. `git clone [repository location] [newFolderNameToCloneInto]`
+	3. Go into your newly cloned directory: `cd /path/to/parent/folder/newFolderNameToCloneInto`
 3. [Maybe] Setup configs (see below)
 4. Do some setup / installs
 	1. `npm install && bower install`
