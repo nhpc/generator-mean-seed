@@ -36,11 +36,13 @@ RECOMMENDED approach!
 		2. `sudo chmod -R g+w /path/to/concrete`
 	3. `cd /path/to/concrete`
 	4. `npm install`
+		1. NOTE: if you get an EACCESS / permission denied error during the npm install, find the folder that had permissions issues (from the log output) and run `sudo chown -R $USER [path to problematic folder]`.
+			1. http://foohack.com/2010/08/intro-to-npm/#what_no_sudo
 4. [on new server] Do some setup
-	1. clone the github repo (we'll just have to do this manually once)
+	1. clone the github repo (we'll just have to do this manually once) - `git clone [repo URL] [/path/to/cloned/repo]` - make sure to use the HTTPS git url - otherwise will get a 'Permission denied (publickey).' error!
 		1. set permissions on this folder (especially if you cloned with `sudo`)
 		2. go into the repo - `cd /path/to/cloned/repo`
-	2. copy and set the `config_environment.json` to use this environment with: `cp app/config_environment.json config_environment.json` and then edit the file to set the `environment` key to your new environment.
+	2. copy and set the `config_environment.json` to use this environment with: `cp app/config_environment.json config_environment.json` and then edit the file to set the `environment` key to your new environment (the SAME name you used when creating the new `config-[new-server-environment].json` file earlier - these MUST match!)
 	3. add the concrete runner to the git config so concrete will run: `git config --add concrete.runner "npm install && bower install && grunt --type=prod"`
 5. [on new server] run concrete server with forever: `forever start /path/to/concrete/bin/concrete -p [concrete port] .`
 	1. Open a browser to `http://[your domain/ip]:[concrete port]` to see your continuous integration server!
