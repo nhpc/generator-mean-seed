@@ -88,7 +88,7 @@ Creates a new record in the collection if _id is absent. If _id field is present
 */
 Crud.prototype.save =function(db, data, params, callback)
 {
-	var ret ={'code':0, 'msg':'Crud.save ', 'result':{}};
+	var ret ={'code':0, 'msg':'Crud.save ', 'result':false};
 	if(data._id !==undefined)		//update
 	{
 		var idSave =data._id;
