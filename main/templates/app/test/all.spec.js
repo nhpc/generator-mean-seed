@@ -35,6 +35,10 @@ var AuthTests = require(pathParts.modules+'/controllers/auth/auth.test.js');
 var UserTests = require(pathParts.modules+'/controllers/user/user.test.js');
 var FollowTests = require(pathParts.modules+'/controllers/follow/follow.test.js');
 
+//run the server in the TEST environment (this also is required for coverage to work / run on all the files)
+process.argv.push('config=test');		//add test command line argument
+var run =require(pathParts.modules+'/../../run.js');
+
 var db =false;
 
 /**
@@ -44,6 +48,11 @@ outer wrapper 'describe' and 'it' blocks to ensure async tests actually run
 describe('all tests', function() {
 	it("should test everything", function(done)
 	{
+	
+		//use timeout to give some time for server to start (otherwise will error if try to connect to db / server before it's ready). NOTE: this must be INSIDE the describe / it block otherwise it won't work!
+		console.log("waiting for server to be running..");
+		setTimeout(function() {
+		
 		//init api and database connection - then call start after
 		var promise =api.init({});
 		promise.then(function(ret1) {
@@ -150,6 +159,8 @@ describe('all tests', function() {
 			});
 			
 		};
+		
+		}, 2500);		//end: timeout. NOTE: this time must be LESS than 5000 since that's the auto timeout for jasmine node test runner where it will quit!
 	
 	});
 });

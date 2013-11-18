@@ -29,6 +29,11 @@ There's LOTS of different testing definitions but in general we use 5:
 		- install: download it from the web or for linux: npm install phantomjs (may need to do it locally - in which case put it in package.json)
 	- ChromeDriver (comes/auto installed with selenium standalone installation)
 
+	
+## Coverage
+See test-coverage.md
+
+
 ## Backend
 ### Jasmine Node
 	- make sure to have the test server running

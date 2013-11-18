@@ -5,7 +5,7 @@ If you haven't done so already, purchase a (new) Linux server (i.e. from Digital
 
 ## Getting (& updating) files to (another) server
 
-1. [on new server] Install global npm packages: `sudo npm install -g grunt-cli yo bower generator-mean-seed jasmine-node less karma yuidocjs forever`
+1. [on new server] Install global npm packages: `sudo npm install -g grunt-cli yo bower generator-mean-seed less karma yuidocjs forever`
 2. [locally on your computer / original server] create a new set of configs (regular and test) in `app/configs` for the new server environment by copying the existing `config.json` and renaming it `config-[new-server-environment].json` and updating it accordingly, i.e. for a production or staging linux server change/set at least the following:
 	1. `operatingSystem` to `linux`
 	2. `forever` to `1` so it will auto restart forever on code changes

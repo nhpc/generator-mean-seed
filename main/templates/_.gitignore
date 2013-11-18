@@ -25,6 +25,11 @@ app/src/bower_components
 ## selenium server
 selenium
 
+# code coverage reports
+coverage
+coverage-node
+coverage-angular
+
 # configuration files
 /config_environment.json
 

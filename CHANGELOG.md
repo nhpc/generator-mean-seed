@@ -1,5 +1,11 @@
 Version numbers correspond to `package.json` version
 
+# 1.0.4
+## Features
+- add test coverage (via Istanbul) for jasmine-node and angular karma unit tests (not yet for Protractor frontend E2E tests) and auto fail Grunt if below coverage thresholds
+- self-run test server (run.js) for tests so no longer need a 2nd window/process with `node run.js config=test` to run tests; just one step now: `grunt`
+
+
 # 1.0.3 (2013-11-13)
 ## Features
 - added demo and links to generated code and Continuous Integration server

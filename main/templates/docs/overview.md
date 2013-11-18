@@ -84,14 +84,7 @@ Run this from the root directory, where the `Gruntfile.js` is located.
 ```bash
 grunt
 ```
-
-This will auto-run tests, which will require 1 additional action on your part. Instructions should be detailed in command line Grunt prompts, but here's a summary of what to do:
-
-1. Backend jasmine-node tests run on a **test** configuration with a **test** database, as determined by the `app/configs/config.test.json` configuration file. The tests make HTTP requests to the the corresponding test node server, so it must be running for these to work. Open a NEW command prompt (i.e. Terminal, Git Bash, Cygwin), then run node as usual with the following command line arugment: `config=test`.
-```bash
-cd /path/to/project
-node run.js config=test
-```
+This will auto-run tests.
 
 
 ### Command-Line Usage, for production.

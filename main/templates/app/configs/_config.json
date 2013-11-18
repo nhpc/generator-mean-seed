@@ -47,6 +47,21 @@
 		"autoDoc": true,
 		"autoDocUrl": "help"
 	},
+	"test_coverage":{
+		"jasmine_node":{
+			"failTask": true,
+			"branches": 40 ,
+			"functions": 60,
+			"statements": 60,
+			"lines": 60
+		},
+		"angular_karma":{
+			"branches": 10 ,
+			"functions": 30,
+			"statements": 30,
+			"lines": 30
+		}
+	},
 	"email":{
 		"from": "Admin <admin@<%= appName %>.com>",
 		"transport":{

@@ -94,7 +94,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
     grunt.loadNpmTasks('grunt-buildfiles');
-	grunt.loadNpmTasks('grunt-jasmine-node');
+	// grunt.loadNpmTasks('grunt-jasmine-node');
+	grunt.loadNpmTasks('grunt-jasmine-node-coverage-validation');
+	grunt.loadNpmTasks('grunt-istanbul-coverage');
 	// grunt.loadNpmTasks('grunt-html2js');
 	grunt.loadNpmTasks('grunt-angular-templates');
 	grunt.loadNpmTasks('grunt-contrib-copy');
@@ -565,11 +567,14 @@ module.exports = function(grunt) {
 					file: 'run.js',
 					options: ["-m '"+cfgJson.app.name+" port "+cfgJson.server.port+"'"]
 				},
+				/*
+				//do no need this anymore since backend tests automatically run the test server!
 				testServer: {
 					// action: 'restart',		//default is restart if none specified
 					file: 'run.js',
 					options: ["config=test", "-m '"+cfgJson.app.name+" port "+cfgTestJson.server.port+"'"]
 				}
+				*/
 			},
 			wait: {
 				afterForever: {
@@ -584,18 +589,51 @@ module.exports = function(grunt) {
 				frontend:   grunt.file.readJSON('yuidoc-frontend.json')
 			},
 			jasmine_node: {
-				// specNameMatcher: "./spec", // load only specs containing specNameMatcher
-				// specNameMatcher: "./test", // load only specs containing specNameMatcher
-				// projectRoot: "./",
 				specNameMatcher: "*", // load only specs containing specNameMatcher
-				projectRoot: "./app/test",
+				// projectRoot: "./app/test",		//doesn't work
+				projectRoot: "./app",
+				specFolders: ['app/modules', 'app/routes', 'app/test'],
+				// specFolders: ['app/modules/controllers', 'app/routes', 'app/test'],
 				requirejs: false,
-				forceExit: true
-				// jUnit: {
-					// report: false,
-					// savePath : "./app/test/reports/jasmine/",
-					// useDotNotation: true,
-					// consolidate: true
+				forceExit: false,		//need this to be false otherwise it just exits after this task
+				
+				coverage: {
+					savePath: 'app/src/coverage-node',		//needs to be a file in app/src otherwise will not be accessible to view from the node server!
+					excludes: [
+						// '**/modules/services/**',		//not sure what the relative path is from but using 'app/modules/services' does NOT work - only '**/modules/services/**' and 'modules/services/**' work..
+						'**.test.js'
+					],
+					// matchall: true,
+					options : {
+						failTask: cfgJson.test_coverage.jasmine_node.failTask,
+						branches : cfgJson.test_coverage.jasmine_node.branches,
+						functions: cfgJson.test_coverage.jasmine_node.functions,
+						statements: cfgJson.test_coverage.jasmine_node.statements,
+						lines: cfgJson.test_coverage.jasmine_node.lines
+					}
+				},
+				options: {
+					forceExit: false,		//need this to be false otherwise it just exits after this task
+					match: '.',
+					matchall: false,
+					// matchall: true,
+					extensions: 'js',
+					specNameMatcher: 'spec',
+				}
+			},
+			coverage: {
+				options: {
+					thresholds: {
+						branches: cfgJson.test_coverage.angular_karma.branches,
+						functions: cfgJson.test_coverage.angular_karma.functions,
+						statements: cfgJson.test_coverage.angular_karma.statements,
+						lines: cfgJson.test_coverage.angular_karma.lines
+					},
+					dir: 'coverage',
+					root: 'app/src'
+				},
+				//not really a multi task?!
+				// karmaFrontend: {
 				// }
 			},
 			ngtemplates: {
@@ -661,7 +699,7 @@ module.exports = function(grunt) {
 		*/
 		grunt.registerTask('test-backend', ['jasmine_node']);
 		
-		grunt.registerTask('test-frontend', ['karma', 'shell:protractor']);
+		grunt.registerTask('test-frontend', ['karma', 'coverage', 'shell:protractor']);
 
 		grunt.registerTask('test', 'run all tests', function() {
 			grunt.task.run(['test-backend', 'test-frontend']);

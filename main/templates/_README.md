@@ -12,7 +12,7 @@
 
 1. machine (global / program) installs (if you don't have them already)
 	1. install git, nodejs, mongodb, phantomjs
-	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed jasmine-node less karma yuidocjs forever`
+	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed less karma yuidocjs forever`
 2. `yo mean-seed` (from the NEW directory you want to create the app in)
 	1. `npm install && bower install` (if not already run successfully by Yeoman or any time `package.json` or `bower.json` change)
 	2. `./node_modules/protractor/bin/install_selenium_standalone` (if not already run successfully by Yeoman)
@@ -21,8 +21,7 @@
 	1. `node run.js` to start node server (make sure MongoDB is already running first)
 	2. open a browser to `http://localhost:3000/` to view the site/app
 4. run tests
-	1. `node run.js config=test` (in separate terminal/command line window)
-	2. `grunt`
+	1. `grunt`
 5. (optional) Git init and commit
 	1. `git init .`
 	2. `git add -A`
@@ -44,6 +43,7 @@
 	- cloning.md
 	- deploy.md
 	- testing.md
+	- test-coverage.md
 	- continuous-integration.md
 	- frontend-angular.md
 	- backend-node.md

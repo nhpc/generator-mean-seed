@@ -9,7 +9,7 @@ In general you'll have 2-3 terminal/command prompt windows open at once - one fo
 
 1. machine (global / program) installs (if you don't have them already)
 	1. install git, nodejs, mongodb, phantomjs, java - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)
-	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed jasmine-node less karma yuidocjs forever`
+	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed less karma yuidocjs forever`
 	3. IF using Github (to clone/push/pull from), set it up:
 		1. `git config --global user.name "<your name>"`
 			1. i.e. git config --global user.name "Joe Bob"
@@ -33,8 +33,7 @@ In general you'll have 2-3 terminal/command prompt windows open at once - one fo
 		1. Type `Ctrl + C` to quit/stop
 	2. open a browser to `http://localhost:3000/` to view the site/app
 6. run tests (and confirm they all pass!)
-	1. `node run.js config=test` (in separate terminal/command line window)
-	2. `grunt`
+	1. `grunt`
 	
 
 ### More Info

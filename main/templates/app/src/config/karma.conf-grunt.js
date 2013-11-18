@@ -37,6 +37,18 @@ module.exports = function (config) {
 		junitReporter: {
 			outputFile: 'test_out/unit.xml',
 			suite: 'unit'
+		},
+		
+		//code coverage (with Instanbul - built into Karma)
+		preprocessors: {
+			'**/*.js':['coverage']
+		},
+		reporters: ['coverage'],
+		coverageReporter: {
+			type: 'html',
+			// type: 'lcov',
+			dir: 'coverage/'
 		}
+		
 	});
 };

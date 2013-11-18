@@ -332,6 +332,7 @@ Updates an item in an array inside of a record, or adds via $push if not present
 	@param {String} collection Name of mongo collection to operate on.
 	@param {String} subKey Name of the array to edit or $push to. If nested in another array, include the positional operator '$'**.
 		@example 'site' OR 'test.question' OR 'training.$.completed'
+	@param {Boolean} [subKeysNoObjectId] True if subObj _id should NOT be an Object Id
 @usage
 	//create/update a user.site object (the 'site' field/key of a 'user' collection)
 	var db =[db object];
@@ -362,7 +363,13 @@ Crud.prototype.saveSubArray =function(db, data, params, callback)
 	}
 	else		//have to see if array item with this id already exists or not
 	{
-		var subObjId =MongoDBMod.makeIds({'id':data.subObj._id});
+		var subObjId;
+		if(params.subKeysNoObjectId ===undefined || !params.subKeysNoObjectId) {
+			subObjId =MongoDBMod.makeIds({'id':data.subObj._id});
+		}
+		else {
+			subObjId =data.subObj._id;
+		}
 		var subKeyId =params.subKey+'._id';
 		
 		subKeyId = subKeyId.replace('.$.', '.');		//Don't need positional operator for the query.
@@ -440,6 +447,7 @@ $Pushes a given item to a given record's given sub-array. Creates an _id for the
 	@param {String} collection Name of mongo collection to operate on.
 	@param {String} subKey Name of the array to edit or $push to. If nested in another array, include the positional operator '$'.
 		@example 'site' OR 'test.question'
+	@param {Boolean} [subKeysNoObjectId] True if subObj _id AND secondary keys should NOT be Object Ids
 @return
 	@param {Object}
 		@param {String} msg A message code.
@@ -460,7 +468,12 @@ Crud.prototype.subArrayCreate =function(db, data, params, callback)
 	}
 	else
 	{
-		subObjId =MongoDBMod.makeIds({'id':data.subObj._id});
+		if(params.subKeysNoObjectId ===undefined || !params.subKeysNoObjectId) {
+			subObjId =MongoDBMod.makeIds({'id':data.subObj._id});
+		}
+		else {
+			subObjId =data.subObj._id;
+		}
 	}
 	
 	var pushItem = data.subObj;
@@ -475,7 +488,12 @@ Crud.prototype.subArrayCreate =function(db, data, params, callback)
 	{
 		for(var xx in data.secondary)
 		{
-			query[xx] =MongoDBMod.makeIds({'id':data.secondary[xx]});
+			if(params.subKeysNoObjectId ===undefined || !params.subKeysNoObjectId) {
+				query[xx] =MongoDBMod.makeIds({'id':data.secondary[xx]});
+			}
+			else {
+				query[xx] =data.secondary[xx];
+			}
 		}
 	}
 	
@@ -523,6 +541,7 @@ Removes (via $pull) an item from an array inside of a collection object
 	@param {String} collection Name of mongo collection to operate on.
 	@param {String} subKey Name of the array to $pull from. If nested in another array, include the positional operator '$'**.
 		@example 'site' OR 'test.question' OR 'training.$.completed
+	@param {Boolean} [subKeysNoObjectId] True if subObj _id AND secondary keys should NOT be Object Ids
 @usage
 	//delete a user.site object (the 'site' field/key of a 'user' collection)
 	var db =[db object];
@@ -545,7 +564,13 @@ Crud.prototype.deleteSubArray =function(db, data, params, callback)
 	var ret ={'code':0, 'msg':'Crud.deleteSubArray '};
 	
 	var mainId =MongoDBMod.makeIds({'id':data.main._id});
-	var subObjId =MongoDBMod.makeIds({'id':data.subObj._id});
+	var subObjId;
+	if(params.subKeysNoObjectId ===undefined || !params.subKeysNoObjectId) {
+		subObjId =MongoDBMod.makeIds({'id':data.subObj._id});
+	}
+	else {
+		subObjId =data.subObj._id;
+	}
 	
 	var pullObj ={};
 	pullObj[params.subKey] ={'_id':subObjId};
@@ -555,7 +580,12 @@ Crud.prototype.deleteSubArray =function(db, data, params, callback)
 	{
 		for(var xx in data.secondary)
 		{
-			query[xx] =MongoDBMod.makeIds({'id':data.secondary[xx]});
+			if(params.subKeysNoObjectId ===undefined || !params.subKeysNoObjectId) {
+				query[xx] =MongoDBMod.makeIds({'id':data.secondary[xx]});
+			}
+			else {
+				query[xx] =data.secondary[xx];
+			}
 		}
 	}
 	ret.msg +='params.collection: '+params.collection+' query: '+JSON.stringify(query)+' pullObj: '+JSON.stringify(pullObj)+' ';
