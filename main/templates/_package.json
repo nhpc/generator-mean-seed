@@ -33,7 +33,7 @@
 		"grunt-jasmine-node-coverage-validation": "~0.0.4",
 		"grunt-istanbul-coverage":"~0.0.2",
 		"grunt-contrib-yuidoc": "~0.4.0",
-		"grunt-buildfiles": "~0.3.2",
+		"grunt-buildfiles": "~0.3.3",
 		"grunt-angular-templates": "~0.3.6",
 		"grunt-contrib-copy": "~0.4.1",
 		"grunt-shell":"~0.4.0",

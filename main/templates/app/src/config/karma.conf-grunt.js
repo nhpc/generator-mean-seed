@@ -23,8 +23,17 @@ module.exports = function (config) {
 			// 'test/unit/**/*.js',
 			
 			// Test-Specs
-			'**/*.spec.js'
+			// '**/*.spec.js'
 			// '**/spec.*.js'
+			<%
+			var filePaths = grunt.config('filePathsJsTestNoPrefix');
+			for(var ii=0; ii<filePaths.length; ii++) {
+				if(ii !=0) {
+					print('\t\t\t');
+				}
+				print('"'+filePaths[ii] + '",\n');
+			}
+			%>
 		],
 
 		frameworks: ['jasmine'],

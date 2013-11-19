@@ -160,13 +160,15 @@
 						{
 							"name":"http",
 							"files": {
-								"js":["http.js"]
+								"js":["http.js"],
+								"test":["http.spec.js"]
 							}
 						},
 						{
 							"name":"auth",
 							"files": {
-								"js":["auth.js"]
+								"js":["auth.js"],
+								"test":["auth.spec.js"]
 							}
 						},
 						{
@@ -201,7 +203,8 @@
 						{
 							"name":"socialAuth",
 							"files": {
-								"js":["socialAuth.js"]
+								"js":["socialAuth.js"],
+								"test":["socialAuth.spec.js"]
 							}
 						}
 					]
@@ -213,7 +216,8 @@
 							"name":"appalert",
 							"files": {
 								"js":["appalert.js"],
-								"less":["appalert.less"]
+								"less":["appalert.less"],
+								"test":["appalert.spec.js"]
 							}
 						},
 						{
@@ -253,7 +257,8 @@
 							"files": {
 								"js":["HeaderCtrl.js"],
 								"html":["header.html"],
-								"less":["header.less"]
+								"less":["header.less"],
+								"test":["HeaderCtrl.spec.js"]
 							}
 						},
 						{
@@ -292,14 +297,16 @@
 							"files": {
 								"js":["PasswordResetCtrl.js"],
 								"html":["password-reset.html"],
-								"less":["password-reset.less"]
+								"less":["password-reset.less"],
+								"test":["PasswordResetCtrl.spec.js"]
 							}
 						},
 						{
 							"name":"logout",
 							"files": {
 								"js":["LogoutCtrl.js"],
-								"html":["logout.html"]
+								"html":["logout.html"],
+								"test":["LogoutCtrl.spec.js"]
 							}
 						},
 						{
