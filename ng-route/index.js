@@ -119,6 +119,7 @@ if(this.subGenerator =='ng-route') {
 								"html":[this.routeName+'.html'],
 								"less":[this.routeName+'.less'],
 								"js":[this.routeNameCtrl+'.js'],
+								"test":[this.routeNameCtrl+'.spec.js']
 							}
 						}
 					);
