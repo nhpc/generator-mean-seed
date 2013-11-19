@@ -50,7 +50,16 @@ module.exports = function (config) {
 		
 		//code coverage (with Instanbul - built into Karma)
 		preprocessors: {
-			'**/*.js':['coverage']
+			// '**/*.js':['coverage']
+			<%
+			var filePaths = grunt.config('filePathsJsCustom');
+			for(var ii=0; ii<filePaths.length; ii++) {
+				if(ii !=0) {
+					print('\t\t\t');
+				}
+				print('"'+filePaths[ii] + '":["coverage"],\n');
+			}
+			%>
 		},
 		reporters: ['coverage'],
 		coverageReporter: {

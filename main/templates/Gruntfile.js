@@ -235,7 +235,8 @@ module.exports = function(grunt) {
 			filePathConcatCss:  staticPath+paths.concatCss,
 			filePathsJsNoPrefix:        '',		//will be filled/created in buildfiles task
 			filePathsCssNoPrefix:        '',		//will be filled/created in buildfiles task
-			filePathsJsTestNoPrefix: '',
+			filePathsJsTestNoPrefix: '',		//for karma .spec files to test
+			filePathsJsCustom: '',			//for karma coverage files to check
 			filePathMinJs:      staticPath+paths.minJs,
 			filePathMinCss:     staticPath+paths.minCss,
 			// lessDirPathRoot:    cfgJson.less.dirPathRootPrefix+cfgJson.server.staticFilePath,
@@ -288,6 +289,12 @@ module.exports = function(grunt) {
 						moduleGroup: 'nonMinifiedLint',
 						outputFiles: {
 							js: ['jshint.beforeconcat.files.src', 'jshint.beforeconcatQ.files.src']
+						}
+					},
+					jshintNoPrefix:{
+						moduleGroup: 'nonMinifiedLint',
+						outputFiles: {
+							js: ['filePathsJsCustom']
 						}
 					},
 					//list of js files to concatenate together - will be stuffed into concat grunt task variable(s)
