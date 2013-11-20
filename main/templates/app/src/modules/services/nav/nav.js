@@ -140,7 +140,7 @@ var inst ={
 			buttons: [
 				{
 					html: "<span class='fa fa-unlock'></span>",
-					href: this.paths.appPathLink+'forgot-password'
+					href: this.paths.appPathLink+'password-reset'
 				},
 				{
 					html: "Design",

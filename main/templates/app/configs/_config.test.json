@@ -63,11 +63,10 @@
 		}
 	},
 	"email":{
-		"from": "Admin <admin@<%= appName %>.com>",
-		"transport":{
-			"sendmail":{
-			}
-		}
+		"from": "admin@<%= appName %>.com",
+		"from_name": "Admin TEST",
+		"mandrillApiKey": "8X-1bNRWtA4rbneppkqahw",
+		"mandrillApiKeyComment":"Make sure to CHANGE this!"
 	},
 	"sms":{
 	},

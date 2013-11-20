@@ -15,8 +15,8 @@ var dependency =require('../../../dependency.js');
 var pathParts =dependency.buildPaths(__dirname, {});
 
 //include the appropriate email service here
-var EmailTemplates =require(pathParts.services+'email/emailTemplates/index.js');
-// var EmailMandrill =require(pathParts.services+'email/mandrill/emailMandrill.js');
+// var EmailTemplates =require(pathParts.services+'email/emailTemplates/index.js');
+var EmailMandrill =require(pathParts.services+'email/mandrill/emailMandrill.js');
 
 var self;
 
@@ -41,10 +41,10 @@ Uses the appropriately installed email method (i.e. email-templates, Mandrill 3r
 */
 Emailer.prototype.send =function(opts) {
 	//call the email service function here
-	// EmailMandrill.send(opts);
-	EmailTemplates.sendTemplate(opts.template, opts.emailParams, opts.templateParams, function(err, response) {
-		var dummy =1;
-	});
+	EmailMandrill.send(opts);
+	// EmailTemplates.sendTemplate(opts.template, opts.emailParams, opts.templateParams, function(err, response) {
+		// var dummy =1;
+	// });
 };
 
 module.exports = new Emailer({});

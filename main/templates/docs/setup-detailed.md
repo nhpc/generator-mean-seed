@@ -30,13 +30,7 @@ npm install && bower install
 	1. NOTE: If you get an EACCESS error on `npm install`, try it with `sudo` in front..
 	2. NOTE: If you are on Windows and get a bson error (or any errors, for that matter), try it with Cygwin. Sometimes it doesn't work on Git Bash, but it will on Cygwin due to permissions issues. See http://stackoverflow.com/questions/14100027/cant-install-js-bson for more information.
 
-4. [ONLY if using NodeMailer with EmailTemplates for email AND on PRODUCTION / non-localhost SERVERS ONLY - this is NOT required so you can skip this step] Install email templates. Since there are both Windows and non-Windows versions and they can create installation issues if used on the wrong machine, these cannot be included in package.json and must instead be installed manually. If on Windows, use `email-templates-windows`.
-```bash
-cd /path/to/project
-npm install email-templates
-```
-
-5. [OPTIONAL] Use a different / non-default config.json file
+4. [OPTIONAL] Use a different / non-default config.json file
 	1. All the config.json files for ALL environments should be in version control in the `app/configs` folder. To determine which file is used, the `config_environment.json` file is checked and IF it exists AND the `environment` key exists, that environment will be used. The naming conventions are: `config-[your environment].json` for the config (i.e. `config-triggerio.json`) and `config-[your environment].test.json` for the accompanying test config (for running tests, which should run on a DIFFERENT, dummy database as it will be wiped clean each time!). So if you want to use the non-default environment, do the steps below:
 	2. FYI, the config.json file is used in the following files:
 		1. Gruntfile.js
@@ -54,7 +48,7 @@ cp app/config-[your environment].json app/config-[your environment].test.json
 # Update your new, copied test config for the test environment - specifically, change 'db.database' and 'session.store.db' to a different testing database, such as 'test_temp'. Also, optionally, change the `server.port` so that way both the test server and the non-test server can run at the same time.
 ```
 
-6. [OPTIONAL] Git init and commit
+5. [OPTIONAL] Git init and commit
 	1. `git init .`
 	2. `git add -A`
 	3. `git commit -m 'init'`
