@@ -18,6 +18,8 @@ Update the following git hook files accordingly:
 5. parseGitLog
 6. sendFailureEmails
 7. gitReset
+7.1. gitTag
+7.2. gitWorkingCommit
 8. buildCode
 9. stopServer
 4. Start server and call appropriate function (worked or failed)
@@ -27,11 +29,18 @@ Update the following git hook files accordingly:
 
 var fs = require('fs');
 var Q = require('q');
+var moment =require('moment');
 
 var exec = require('child_process').exec		//use this for commands we don't need to output to the command line with user interaction
 var spawnCommand =require('./spawn_command');		//for normalizing child_process.spawn across operating systems
 
 //NOTE: some requires must happen AFTER global cfg property is set!
+
+//some "globals" to use across multiple functions
+var tagWorkedSuffix ='-worked';
+var emailInfo ={
+	noWorkingRollbackCommit: false
+};
 
 
 /**
@@ -99,7 +108,10 @@ var Emailer =require(pathParts.services+'emailer/index.js');
 @method worked
 */
 function worked(params) {
-	//do nothing on success?
+	//tag the current commit so we can reset/revert to it later (need to TRACK working commits since resetting back to the last commit will NOT work if the last commit ALSO failed!)
+	gitTag({}, function(ret1) {
+		stopServer({});		//must still do this so CI task completes!
+	});
 }
 
 /**
@@ -215,7 +227,14 @@ function sendFailureEmails(params) {
 		}
 	}
 
-	var html ="Build failed, auto rolled back to previous commit<br />"+
+	var html ="";
+	if(emailInfo.noWorkingRollbackCommit) {
+		html +="Build failed and NO KNOWN LAST WORKING COMMIT, CANNOT ROLLBACK. PUSH A VALID COMMIT IMMEDIATELY as the site is likely currently broken!<br />";
+	}
+	else {
+		html +="Build failed, auto rolled back to previous commit<br />";
+	}
+	html +=
 	"Go to http://"+cfg.server.domain+":"+cfg.ci.server.portCiServer.toString()+"/ to see build/error info<br />"+
 	"FIX ASAP (make sure to run grunt to ensure the build completes locally BEFORE pushing!) and re-push!<br />"+
 	"<br />"+
@@ -249,13 +268,101 @@ Does a hard reset (destroys permanently) the most recent commit
 @method gitReset
 */
 function gitReset(params, callback) {
+	gitWorkingCommit({}, function(retTag) {
+		if(retTag.commit) {
+			var command ='git';
+			// var args =['reset', '--hard', 'HEAD~1'];		//this does NOT work - the past commit could ALSO be bad!
+			var args =['reset', '--hard', retTag.commit];
+			var cmd =spawnCommand(command, args);
+			cmd.on('exit', function(code) {
+				console.log('child process exited with code: '+code);
+				console.log("command run and done: "+command+" args: "+args);
+				callback({});
+			});
+		}
+		else {
+			emailInfo.noWorkingRollbackCommit =true;
+			console.log('ERROR: NO KNOWN LAST WORKING COMMIT, CANNOT ROLLBACK. PUSH A VALID COMMIT IMMEDIATELY!');
+			callback({});
+		}
+	});
+}
+
+/**
+Tags the current commit with a timestamp and tagWorkedSuffix
+@toc 7.1.
+@method gitTag
+*/
+function gitTag(params, callback) {
+	var tagName =moment().format('YYYY-MM-DD-HH-mm-ss')+tagWorkedSuffix;
 	var command ='git';
-	var args =['reset', '--hard', 'HEAD~1'];
+	var args =['tag', tagName];
 	var cmd =spawnCommand(command, args);
 	cmd.on('exit', function(code) {
 		console.log('child process exited with code: '+code);
 		console.log("command run and done: "+command+" args: "+args);
 		callback({});
+	});
+}
+
+/**
+Gets the last WORKING commit SHA (by tag using tagWorkedSuffix)
+@toc 7.2.
+@method gitWorkingCommit
+@return {Object} (via callback)
+	@param {Number} code
+	@param {String} msg
+	@param {String} commit
+*/
+function gitWorkingCommit(params, callback) {
+	var ret ={code:0, msg:'', commit:false};
+	
+	var lastWorkingTag =false;
+	//get tags sorted by creation date (so we can get the most recent WORKING commit)
+	//http://stackoverflow.com/questions/6900328/git-command-to-show-all-lightweight-tags-creation-dates
+	var command;
+	command ='git log --tags --simplify-by-decoration --pretty="format:%ai %d"';
+	var cmd =exec(command, {}, function(err, stdout, stderr) {
+		if(err) {
+			console.log('err: command: '+command+' '+err);
+		}
+		console.log('stderr: '+stderr);
+		//output is in form: '2013-11-20 14:04:15 -0800 (HEAD, tag1, tag2)'
+		var index1 =stdout.indexOf(tagWorkedSuffix);
+		if(index1 >-1) {
+			var beg =stdout.lastIndexOf('(', index1);
+			var end =stdout.indexOf(')', index1);
+			var str =stdout.slice((beg+1), end);
+			// console.log('str: '+str);
+			var tags =str.split(', ');
+			var ii;
+			for(ii =0; ii<tags.length; ii++) {
+				if(tags[ii].indexOf(tagWorkedSuffix) >-1) {
+					lastWorkingTag =tags[ii];
+					break;
+				}
+			}
+			console.log('lastWorkingTag: '+lastWorkingTag);
+		}
+		
+		if(lastWorkingTag) {
+			//use tag to get commit SHA
+			command ='git show-ref --tags '+lastWorkingTag;
+			var cmd =exec(command, {}, function(err, stdout, stderr) {
+				if(err) {
+					console.log('err: command: '+command+' '+err);
+				}
+				console.log('stderr: '+stderr);
+				
+				//stdout is of format: '9asldf2lkjrlrqkjfljk3 regs/tags/tag1'
+				ret.commit =stdout.slice(0, stdout.indexOf(' '));
+				callback(ret);
+			});
+		}
+		else {
+			ret.code =1;
+			callback(ret);
+		}
 	});
 }
 

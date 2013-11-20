@@ -23,7 +23,6 @@
 		"istanbul":"~0.1.44",
 		"grunt": "~0.4.1",
 		"grunt-forever-multi":"~0.4.3",
-		"grunt-wait":"~0.1.0",
 		"grunt-contrib-concat": "~0.3.0",
 		"grunt-contrib-cssmin": "~0.7.0",
 		"grunt-contrib-jshint": "~0.7.2",

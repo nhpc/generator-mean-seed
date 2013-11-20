@@ -103,7 +103,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-parallel');
 	grunt.loadNpmTasks('grunt-forever-multi');
-	grunt.loadNpmTasks('grunt-wait');
+	// grunt.loadNpmTasks('grunt-wait');
 	grunt.loadNpmTasks('grunt-font-awesome-vars');
 	
 
@@ -585,6 +585,7 @@ module.exports = function(grunt) {
 				}
 				*/
 			},
+			/*
 			wait: {
 				afterForever: {
 					options: {
@@ -592,6 +593,7 @@ module.exports = function(grunt) {
 					}
 				}
 			},
+			*/
 			yuidoc: {
 				// NOTE: paths and outdir options (in yuidoc.json file AND/OR in options here) are apparently REQUIRED otherwise it doesn't work!
 				backend:    grunt.file.readJSON('yuidoc-backend.json'),
@@ -745,7 +747,8 @@ module.exports = function(grunt) {
 				var tasks =['build', 'test'];
 				//see if we want to run forever or not
 				if(cfgJson.forever !==undefined && cfgJson.forever) {
-					tasks =['build', 'foreverMulti', 'wait:afterForever', 'test'];		//need to wait after restart server to give a chance to initialize before the tests are attempted (otherwise will just error and fail because the server isn't up/restarted yet)
+					// tasks =['build', 'foreverMulti', 'wait:afterForever', 'test'];		//need to wait after restart server to give a chance to initialize before the tests are attempted (otherwise will just error and fail because the server isn't up/restarted yet)
+					tasks =['build', 'foreverMulti', 'test'];		//do NOT need to wait anymore now that moved test server to be started by test task itself!
 				}
 				// grunt.task.run(['buildfiles', 'ngtemplates:main', 'jshint:backend', 'jshint:beforeconcat', 'uglify:build', 'fontAwesomeVars', 'less:development', 'concat:devCss', 'cssmin:dev', 'concat:devJs', 'test']);
 				grunt.task.run(tasks);
