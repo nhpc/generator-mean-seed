@@ -62,6 +62,14 @@
 			"lines": 30
 		}
 	},
+	"ci":{
+		"server": {
+			"port": 3009,
+			"portCiServer": 3010
+		},
+		"emails_failed":[
+		]
+	},
 	"email":{
 		"from": "admin@<%= appName %>.com",
 		"from_name": "Admin TEST",

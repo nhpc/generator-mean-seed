@@ -44,6 +44,8 @@ RECOMMENDED approach!
 		2. go into the repo - `cd /path/to/cloned/repo`
 	2. copy and set the `config_environment.json` to use this environment with: `cp app/config_environment.json config_environment.json` and then edit the file to set the `environment` key to your new environment (the SAME name you used when creating the new `config-[new-server-environment].json` file earlier - these MUST match!)
 	3. add the concrete runner to the git config so concrete will run: `git config --add concrete.runner "npm install && bower install && grunt --type=prod"`
+	4. create (if not already present) `.git/hooks/build-failed` and add `node ci.js build=failed` to it
+	5. create (if not already present) `.git/hooks/build-worked` and add `node ci.js build=worked` to it
 5. [on new server] run concrete server with forever: `forever start /path/to/concrete/bin/concrete -p [concrete port] .`
 	1. Open a browser to `http://[your domain/ip]:[concrete port]` to see your continuous integration server!
 6. On github.com add a webhook to the concrete server so it will run on each git push!

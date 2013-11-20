@@ -11,6 +11,8 @@ Uses the appropriately installed email method (i.e. Nodemailer (default) or Mand
 
 'use strict';
 
+var Q = require('q');
+
 var dependency =require('../../../dependency.js');
 var pathParts =dependency.buildPaths(__dirname, {});
 
@@ -37,14 +39,25 @@ Uses the appropriately installed email method (i.e. email-templates, Mandrill 3r
 		@param {String} subject
 	@param {String} [template]
 	@param {Object} [templateParams]
-@return NONE
+@param {Function} callback
+@return {Object} (via promise)
 */
 Emailer.prototype.send =function(opts) {
+	var deferred = Q.defer();
+	var ret ={code:0, msg:'Emailer.send '};
+	
 	//call the email service function here
-	EmailMandrill.send(opts);
+	EmailMandrill.send(opts)
+	.then(function(ret1) {
+		deferred.resolve(ret1);		//just pass return through
+	}, function(retErr) {
+		deferred.reject(retErr);		//just pass return through
+	});
 	// EmailTemplates.sendTemplate(opts.template, opts.emailParams, opts.templateParams, function(err, response) {
 		// var dummy =1;
 	// });
+	
+	return deferred.promise;
 };
 
 module.exports = new Emailer({});

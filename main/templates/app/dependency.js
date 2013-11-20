@@ -48,9 +48,17 @@ Dependency.prototype.buildPaths =function(dirname, params) {
 	var self =this;
 	var paths ={};
 	var basePath =path.relative(dirname, self.config.rootDir);
-	if(basePath[0] !='.') {
-		basePath ='.'+basePath;		//need a leading dot otherwise it will be an absolute path, which will not work!
+	// console.log('basePath: '+basePath);
+	if(basePath[0] !=='.') {
+		//need a leading dot otherwise it will be an absolute path, which will not work!
+		if(basePath[1] !=='/') {		//if just a directory, need to add a slash too
+			basePath ='./'+basePath;
+		}
+		else {
+			basePath ='.'+basePath;
+		}
 	}
+	// console.log('basePath: '+basePath);
 	var xx;
 	for(xx in this.config.paths) {
 		paths[xx] =basePath+this.config.paths[xx]+'/';		//add trailing slash

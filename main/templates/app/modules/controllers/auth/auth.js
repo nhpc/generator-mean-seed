@@ -352,7 +352,11 @@ Auth.prototype.forgotPassword = function(db, data, params) {
 					// @todo: add logging for send failures
 					if(Emailer){
 						var emailParams = {
-							to: user.email,
+							to: [
+								{
+									email: user.email
+								}
+							],
 							subject: 'Forgot Password Reset'
 						};
 						var templateParams = {

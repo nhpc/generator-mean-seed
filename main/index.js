@@ -229,6 +229,8 @@ if(this.subGenerator =='main') {
 	this.copy('CHANGELOG.md', 'CHANGELOG.md');
 	this.copy('Gruntfile.js', 'Gruntfile.js');
 	this.copy('run.js', 'run.js');
+	this.copy('ci.js', 'ci.js');
+	this.copy('spawn_command.js', 'spawn_command.js');
 	
 	//app folder
 	this.copy('app/config_environment.json', 'app/config_environment.json');

@@ -26,6 +26,8 @@ Uses config.json email properties (config.email) for configuration
 
 'use strict';
 
+var Q = require('q');
+
 var cfg =global.cfgJson;
 
 var apiKey =cfg.email.mandrillApiKey;
@@ -51,16 +53,33 @@ function EmailMandrill(opts) {
 @method send
 @param {Object} opts
 	@param {Object} emailParams
-		@param {String} to
+		@param {Array} to Array of email objects
+			@param {String} email Email address of this person
+			@param {String} [name] The name of this person
 		@param {String} subject
-		@param {String} from
-		@param {String} from_name
+		@param {String} [from =cfg.email.from]
+		@param {String} [from_name =cfg.email.from_name]
+		@param {String} [html] The html body (will default to trying to read from a template specified by the template parameter)
 	@param {String} [template]
 	@param {Object} [templateParams]
+@param {Function} callback
+@return {Object} (via promise)
+	@param {String} msg
+	@param {Number} code 0 on success, non-zero error code otherwise
 */
 EmailMandrill.prototype.send =function(opts) {
-	// var html ="You got an email!";
-	var html =formTemplateHtml(opts.template, opts.templateParams, {});
+	var deferred = Q.defer();
+	var ret ={msg:'', code:0};
+	
+	var html;
+	// html ="You got an email!";
+	if(opts.emailParams.html !==undefined) {
+		html =opts.emailParams.html;
+	}
+	else {
+		html =formTemplateHtml(opts.template, opts.templateParams, {});
+	}
+	
 	// console.log('EmailMandrill.send opts.emailParams.from: '+opts.emailParams.from);
 	var emailFrom = opts.emailParams.from ? opts.emailParams.from : cfg.email.from;
 	// console.log('EmailMandrill.send emailFrom: '+emailFrom);
@@ -78,16 +97,18 @@ EmailMandrill.prototype.send =function(opts) {
 			subject: opts.emailParams.subject,
 			from_email: emailFrom,
 			from_name: 'Admin',
-			to: [
-				{email: opts.emailParams.to}
-			]
+			// to: [
+				// {email: opts.emailParams.to}
+			// ]
+			to: opts.emailParams.to
 		}
 	});
 	*/
 	
 	mandrill('/messages/send', {
 		message: {
-			to: [{email: opts.emailParams.to}],
+			// to: [{email: opts.emailParams.to}],
+			to: opts.emailParams.to,
 			from_email: emailFrom,
 			from_name: emailFromName,
 			subject: opts.emailParams.subject,
@@ -97,11 +118,18 @@ EmailMandrill.prototype.send =function(opts) {
 	}, function(error, response) {
 		if (error) {	//uh oh, there was an error
 			console.log( JSON.stringify(error) );
+			ret.msg+='ERROR: '+JSON.stringify(error);
+			ret.code =1;
+			deferred.reject(ret);
 		}
 		else {		//everything's good, lets see what mandrill said
 			console.log('Email sent! '+JSON.stringify(response));
+			ret.msg +='Email sent! '+JSON.stringify(response);
+			deferred.resolve(ret);
 		}
 	});
+	
+	return deferred.promise;
 };
 
 /**
