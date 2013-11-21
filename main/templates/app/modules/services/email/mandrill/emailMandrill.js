@@ -66,10 +66,17 @@ function EmailMandrill(opts) {
 @return {Object} (via promise)
 	@param {String} msg
 	@param {Number} code 0 on success, non-zero error code otherwise
+	@param {Boolean|Array} badEmails Array of emails - a shorthand version of badEmailsInfo that just has the 'email' key
+	@param {Boolean|Array} badEmailsInfo Boolean false unless there ARE bad emails, in which case this is an array of objects (straight from mandrill return):
+		@param {String} email
+		@param {String} status
+		@param {String} reject_reason
 */
 EmailMandrill.prototype.send =function(opts) {
 	var deferred = Q.defer();
-	var ret ={msg:'', code:0};
+	var ret ={msg:'EmailMandrill.send: ', code:0, badEmails:false, badEmailsInfo:false};
+	
+	var ii;
 	
 	var html;
 	// html ="You got an email!";
@@ -123,6 +130,22 @@ EmailMandrill.prototype.send =function(opts) {
 			deferred.reject(ret);
 		}
 		else {		//everything's good, lets see what mandrill said
+			//go through EACH email and see if any were rejected
+			for(ii =0; ii<response.length; ii++) {
+				if(response[ii].status =='rejected' || response[ii].status =='invalid') {
+					//ensure proper type first
+					if(!ret.badEmails) {
+						ret.badEmails =[];
+					}
+					if(!ret.badEmailsInfo) {
+						ret.badEmailsInfo =[];
+					}
+					ret.badEmailsInfo.push(response[ii]);
+					ret.badEmails.push(response[ii].email);
+					ret.msg+='ERROR: bad message status: '+response.status;
+					ret.code =2;
+				}
+			}
 			console.log('Email sent! '+JSON.stringify(response));
 			ret.msg +='Email sent! '+JSON.stringify(response);
 			deferred.resolve(ret);
