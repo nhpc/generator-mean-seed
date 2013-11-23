@@ -3,6 +3,7 @@ Version numbers correspond to `package.json` version
 # 1.0.5
 ## Features
 - move protractor test specs to buildfilesModules
+- documentation update - modularize into folders
 
 
 # 1.0.4 (2013-11-20)
