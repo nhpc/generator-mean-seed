@@ -36,11 +36,15 @@
 	- index.js
 	- server.js
 - config_environment.json	[optional] Holds the environment configuration that will be used to determine which `app/configs` config file to use. This file should by copied from `app/config_environment.json` if it is used. It is not tracked in version control.
+- .bowerrc Configuration for bower components - this tells bower to install components in the app/src (frontend) folder
 - .gitignore
+- bower.json Used for bower install
+- ci.js The Continuous Integration node script to run (i.e. with `node ci.js build=failed` or `node ci.js build=worked`) after the (Concrete) CI server has run (grunt) - this will rollback and send emails on failure, etc.
 - Gruntfile.js	Grunt tasks. Build configuration for linting, testing, concating, minifying, generating documentation
 - package.json	Used for npm install
 - README.md
 - run.js	This is the node.js entry script. Run `node run.js` from the command line in the root app directory to start the server.
+- spawn_command.js Helper file for `ci.js`
 - yuidoc-backend.json	Config for YUI auto docs for backend.
 - yuidoc-frontend.json	Config for YUI auto docs for frontend.
 
