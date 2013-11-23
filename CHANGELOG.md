@@ -1,5 +1,10 @@
 Version numbers correspond to `package.json` version
 
+# 1.0.5
+## Features
+- move protractor test specs to buildfilesModules
+
+
 # 1.0.4 (2013-11-20)
 ## Features
 - add test coverage (via Istanbul) for jasmine-node and angular karma unit tests (not yet for Protractor frontend E2E tests) and auto fail Grunt if below coverage thresholds

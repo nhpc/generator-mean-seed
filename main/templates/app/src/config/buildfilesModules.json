@@ -348,6 +348,17 @@
 			"files": {
 				"js":["custom.min.js"]
 			}
+		},
+		{
+			"name": "test",
+			"dirs":[
+				{
+					"name":"e2e",
+					"files": {
+						"test": ["**/*.scenarios.js"]
+					}
+				}
+			]
 		}
 	]
 }

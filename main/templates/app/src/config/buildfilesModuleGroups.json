@@ -22,5 +22,8 @@
 	"nonMinifiedLint": {
 		"modules":["_all"],
 		"skipModules":["build", "buildTemp", "buildTempCss", "bower.minified", "lib.minified", "bower.nonMinified", "lib.nonMinified"]
+	},
+	"testsProtractor": {
+		"modules":["test.e2e"]
 	}
 }

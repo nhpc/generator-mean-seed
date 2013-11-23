@@ -57,7 +57,16 @@ exports.config = {
 	specs: [
 		// 'spec/*_spec.js',
 		// '../test/e2e/**/*.scenarios.js',
-		'../../test/e2e/**/*.scenarios.js',		//need extra ../ because inside one more directory!
+		// '../../test/e2e/**/*.scenarios.js',		//need extra ../ because inside one more directory!
+		<%
+		var filePaths = grunt.config('filePathsTestProtractor');
+		for(var ii=0; ii<filePaths.length; ii++) {
+			if(ii !=0) {
+				print('\t\t');
+			}
+			print('"../../'+filePaths[ii] + '",\n');
+		}
+		%>
 	],
 
 	// ----- Capabilities to be passed to the webdriver instance ----

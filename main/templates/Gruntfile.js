@@ -237,6 +237,7 @@ module.exports = function(grunt) {
 			filePathsCssNoPrefix:        '',		//will be filled/created in buildfiles task
 			filePathsJsTestNoPrefix: '',		//for karma .spec files to test
 			filePathsJsCustom: '',			//for karma coverage files to check
+			filePathsTestProtractor: '',
 			filePathMinJs:      staticPath+paths.minJs,
 			filePathMinCss:     staticPath+paths.minCss,
 			// lessDirPathRoot:    cfgJson.less.dirPathRootPrefix+cfgJson.server.staticFilePath,
@@ -335,6 +336,12 @@ module.exports = function(grunt) {
 						moduleGroup: 'allNoBuild',
 						outputFiles: {
 							js: ['concat.devJsNoMin.src']
+						}
+					},
+					testProtractor: {
+						moduleGroup: 'testsProtractor',
+						outputFiles: {
+							test: ['filePathsTestProtractor']
 						}
 					}
 				},
