@@ -43,7 +43,7 @@ RECOMMENDED approach!
 		1. set permissions on this folder (especially if you cloned with `sudo`)
 		2. go into the repo - `cd /path/to/cloned/repo`
 	2. copy and set the `config_environment.json` to use this environment with: `cp app/config_environment.json config_environment.json` and then edit the file to set the `environment` key to your new environment (the SAME name you used when creating the new `config-[new-server-environment].json` file earlier - these MUST match!)
-	3. add the concrete runner to the git config so concrete will run: `git config --add concrete.runner "npm install && bower install && grunt --type=prod"`
+	3. add the concrete runner to the git config so concrete will run: `git config --add concrete.runner "npm install && bower update && bower install && grunt --type=prod"`
 	4. configure git hooks for worked and failed
 		1. create (if not already present) `.git/hooks/build-failed` and add `node ci.js build=failed` to it, i.e. using `echo 'node ci.js build=failed' > /path/to/.git/hooks/build-failed`
 		2. create (if not already present) `.git/hooks/build-worked` and add `node ci.js build=worked` to it, i.e. using `echo 'node ci.js build=worked' > /path/to/.git/hooks/build-worked`
