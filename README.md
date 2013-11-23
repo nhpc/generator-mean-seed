@@ -42,21 +42,16 @@ $ yo mean-seed
 
 
 ## Documentation / More Info
-See the [generated README.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/_README.md) file and the `docs` folder for all documentation. Key docs (roughly in order of priority) listed below:
+See the [generated README.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/_README.md) file and the `docs` folder for all documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
 
-- [setup-detailed.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-detailed.md) (if you want more info/help than from the Quick Start section above)
-- [running.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/running.md) (if you want more info/help than from the Quick Start section above)
 - [overview.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/overview.md)
-- [file-structure.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/file-structure.md)
-- [common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/common-actions.md)
-- [cloning.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/cloning.md) (give this to OTHER developers to use to get set up AFTER you've run the main Yeoman generator)
-- [deploy.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/deploy.md) (for deploying to a live (staging or production) linux server and setting up Continuous Integration)
-- [testing.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/testing.md)
-- [test-coverage.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/test-coverage.md)
-- [continuous-integration.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/continuous-integration.md)
-- [frontend-angular.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/frontend-angular.md)
-- [backend-node.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/backend-node.md)
-- [design.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/design.md)
+- [setup-running folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-running/)
+	- [setup-running/overview.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-running/overview.md)
+- [tools-dependencies folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/tools-dependencies/)
+- [files folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/files/)
+- [testing-automation folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/testing-automation/)
+- [frontend-angular/common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/frontend-angular/common-actions.md)
+- [backend-node/common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/backend-node/common-actions.md)
 
 
 ## Miscellaneous

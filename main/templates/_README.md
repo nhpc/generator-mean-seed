@@ -35,19 +35,15 @@
 	
 	
 ## More Info
-- see the `docs` folder for more documentation. Key docs (roughly in order of priority) listed below:
-	- setup-detailed.md and running.md (if you want more info/help than from the Quick Start section above)
+- see the `docs` folder for more documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
 	- overview.md
-	- file-structure.md
-	- common-actions.md
-	- cloning.md
-	- deploy.md
-	- testing.md
-	- test-coverage.md
-	- continuous-integration.md
-	- frontend-angular.md
-	- backend-node.md
-	- design.md
+	- setup-running folder
+		- overview.md
+	- tools-dependencies folder
+	- files folder
+	- testing-automation folder
+	- frontend-angular/common-actions.md
+	- backend-node/common-actions.md
 
 	
 
