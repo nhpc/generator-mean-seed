@@ -27,17 +27,34 @@ An "agile" process of rapid iteration and frequent commits (daily) and tests (au
 
 - Grunt (+ (Git) Web Hook) vs CI
 	- Grunt does / can do 90% of Continuous Integration - you can automate your builds and run your tests already so the only things you really need to do on top of that are:
-		- auto run on remote servers the following:
-			- `npm install`
-			- `grunt`
-		- you can do this with a Github "Webhook" which basically auto pings your server after a Git push so you can then run these scripts and "auto-deploy" remotely on every Git push. So you ONE command to deploy (build, run tests, etc.) just becomes 'git push [remote] [branch]'
-			- http://stackoverflow.com/questions/9132144/how-can-i-automatically-deploy-my-app-after-a-git-push-github-and-node-js
-			- http://fideloper.com/node-github-autodeploy
-			- basically there's 'pre-commit', 'post-commit', etc. files that you can run (shell) commands from before/after certain git actions so you can just have those run your scripts/grunt and you're all set (without any additional tools)
-		- so the only thing that a 'Continuous Integration tool' does for you is provide a web interface (and notifications on failures) to display the output/results (for tracking and public viewing by your entire team so they can see if/when it fails) of the deploys and to setup that Git webhook for you. While it can do more, with Grunt, it really just provides visibility/tracking; Grunt + Github can do all the actual work already without any Continuous Integration tool at all. And this fits with the saying that "continuous integration is a mindset and workflow more than a tool". At least as far as I'm aware..
+		- Interface with Github (i.e. post-commit / post-push 'webhook') to trigger the CI server
+			- you can do this with a Github "Webhook" which basically auto pings your server after a Git push so you can then run these scripts and "auto-deploy" remotely on every Git push. So you ONE command to deploy (build, run tests, etc.) just becomes 'git push [remote] [branch]'
+				- http://stackoverflow.com/questions/9132144/how-can-i-automatically-deploy-my-app-after-a-git-push-github-and-node-js
+				- http://fideloper.com/node-github-autodeploy
+				- basically there's 'pre-commit', 'post-commit', etc. files that you can run (shell) commands from before/after certain git actions so you can just have those run your scripts/grunt and you're all set (without any additional tools)
+		- "Before Script": Auto run a set of START commands (on remote servers), i.e.
+			- `npm install && bower update && bower install && grunt`
+		- "After Script": Auto run after success (worked) or after failure commands, which typically:
+			- worked/success
+				- do nothing
+			- failure
+				- auto rollback to last (working) commit
+				- notify (i.e. emails) relevant people (i.e. the author who pushed and potentially the whole team) of the failure so they can fix and re-push
+	- so the only thing that a 'Continuous Integration tool' does for you is provide a web interface (and potentially notifications on failures) to display the output/results (for tracking and public viewing by your entire team so they can see if/when it fails) of the deploys and to setup that Git webhook for you. While it can do more, with Grunt, it really just provides visibility/tracking; Grunt + Github can do all the actual work already without any Continuous Integration tool at all. And this fits with the saying that "continuous integration is a mindset and workflow more than a tool". At least as far as I'm aware..
+	- the main value in a (3rd party) CI server is:
+		- a website that displays the build information
+		- pre-built in notifications (i.e. more than just email - IRC, Hipchat and other communication methods)
+		- additional features??
+	- so if you want a fancy website or fancy notifications, it's probably good to use a pre-built CI solution. But for the core functionality, it's pretty simple and you don't really need more than:
+		- Git Hooks (for before & after commands)
+		- Grunt (to do the actual work - build, run tests, etc.)
+		- basic (email) notifications
+		- auto Git rollback (reset/revert) on failure
+		- a basic website (to display build results / logs)
 
+		
 ## Tools (to get that last 10% more easily)
-- There are many. The most popular ones are Jenkins, TravisCI (and maybe TeamCity) though as we're a node.js app, we'd like something node.js based and simple to setup. The 2 most popular ones seem to be:
+- There are many. The most popular ones are Jenkins, TravisCI (and maybe TeamCity) though as we're a node.js app, we'd like something node.js based and simple to setup (and ideally free). The 2 most popular ones seem to be:
 	- StriderCD - more popular, better maintained, more robust and feature rich BUT not working..
 		- Windows installation issues - need some hard core building stuff so have to install a bunch of stuff.. (works fine on Mac OS X and Linux though as these tools come pre-installed)
 			- https://github.com/ncb000gt/node.bcrypt.js#dependencies
@@ -51,3 +68,4 @@ An "agile" process of rapid iteration and frequent commits (daily) and tests (au
 			- https://github.com/edy/concrete
 				- NOTE: the readme is now outdated as the username is 'edy' NOT 'edy-b' so for the first clone step, use: `git clone https://github.com/edy/concrete.git /path/to/concrete`
 		- NOTE: you MUST be the appropriate Linux/Ubuntu user with the GitHub credentials set up (via git config I believe?) otherwise it won't work and won't fail gracefully - it will just have a blank commit (since it couldn't pull anything due to lack of authorization) and give a breaking syntax error in git.js on commit[2].split line that cannot call method 'split' of undefined..
+		

@@ -341,7 +341,6 @@ if(this.subGenerator =='main') {
 	
 	
 	//B. template files (all templated files TOGETHER here)
-	this.template('app/src/_README.md', 'app/src/README.md');
 	
 	
 	//C. copy files & directories
