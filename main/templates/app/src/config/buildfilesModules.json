@@ -1,21 +1,23 @@
 {
-	"dirs":[
+	"dirs": [
 		{
-			"name":"buildTempCss",
-			"path":"build",
+			"name": "buildTempCss",
+			"path": "build",
 			"comment": "Need this at top since the order of css matters and want the base.css file FIRST. Also, NEED this file in the same directory as 'main.css' for relative file paths - i.e. to font-awesome font so it works with EITHER base.css or main.css..",
 			"files": {
-				"css":["base.css"]
+				"css": [
+					"base.css"
+				]
 			}
 		},
 		{
-			"name":"bower",
-			"path":"bower_components",
-			"dirs":[
+			"name": "bower",
+			"path": "bower_components",
+			"dirs": [
 				{
-					"name":"minified",
-					"path":"",
-					"comment":"directory paths are part of file lists/names",
+					"name": "minified",
+					"path": "",
+					"comment": "directory paths are part of file lists/names",
 					"files": {
 						"js": [
 							"angular/angular.min.js",
@@ -33,38 +35,49 @@
 							"angular-google-auth/google-auth.min.js"
 						]
 					},
-					"dirs":[
+					"dirs": [
 						{
-							"name":"lesshat",
-							"files":{
-								"less":["build/lesshat.less"]
+							"name": "lesshat",
+							"files": {
+								"less": [
+									"build/lesshat.less"
+								]
 							}
 						},
 						{
-							"name":"less-flexbox",
-							"files":{
-								"less":["flexbox-mixins.less", "flexbox.less"]
+							"name": "less-flexbox",
+							"files": {
+								"less": [
+									"flexbox-mixins.less",
+									"flexbox.less"
+								]
 							}
 						},
 						{
-							"name":"font-awesome",
-							"files":{
-								"less":["less/font-awesome.less"]
+							"name": "font-awesome",
+							"files": {
+								"less": [
+									"less/font-awesome.less"
+								]
 							}
 						},
 						{
-							"name":"angular-forminput",
-							"files":{
-								"js":["forminput.min.js"],
-								"less":["forminput.less"]
+							"name": "angular-forminput",
+							"files": {
+								"js": [
+									"forminput.min.js"
+								],
+								"less": [
+									"forminput.less"
+								]
 							}
 						}
 					]
 				},
 				{
-					"name":"nonMinified",
-					"path":"",
-					"comment":"directory paths are part of file lists/names",
+					"name": "nonMinified",
+					"path": "",
+					"comment": "directory paths are part of file lists/names",
 					"files": {
 						"js": [
 							"angular-hammer/angular-hammer.js"
@@ -74,12 +87,12 @@
 			]
 		},
 		{
-			"name":"lib",
-			"dirs":[
+			"name": "lib",
+			"dirs": [
 				{
-					"name":"minified",
-					"path":"",
-					"comment":"directory paths are part of file lists/names. Also, 'facebook/facebook.all.js' is HUGE (170kb minified!) and is currently included for Facebook login but if you are NOT going to use that, make sure to REMOVE this file! In general it may be better to try to shift to just backend facebook calls since this seems like a waste just for login... Similarly (though it is not as large) with google - remove if you are not using it!",
+					"name": "minified",
+					"path": "",
+					"comment": "directory paths are part of file lists/names. Also, 'facebook/facebook.all.js' is HUGE (170kb minified!) and is currently included for Facebook login but if you are NOT going to use that, make sure to REMOVE this file! In general it may be better to try to shift to just backend facebook calls since this seems like a waste just for login... Similarly (though it is not as large) with google - remove if you are not using it!",
 					"files": {
 						"js": [
 							"angular-ui-bootstrap/ui-bootstrap-custom-tpls-0.4.0.min.js",
@@ -89,9 +102,9 @@
 					}
 				},
 				{
-					"name":"nonMinified",
-					"path":"",
-					"comment":"directory paths are part of file lists/names",
+					"name": "nonMinified",
+					"path": "",
+					"comment": "directory paths are part of file lists/names",
 					"files": {
 						"js": [
 							"lawnchair/lawnchair-edit.js"
@@ -101,11 +114,11 @@
 			]
 		},
 		{
-			"name":"commonLess",
-			"path":"common/less",
+			"name": "commonLess",
+			"path": "common/less",
 			"comment": "Separated this from 'common' for ordering purposes",
 			"files": {
-				"less":[
+				"less": [
 					"reset.less",
 					"fonts.less",
 					"bootstrap-parts.less",
@@ -124,211 +137,321 @@
 		{
 			"name": "common",
 			"path": "common",
-			"dirs":[
+			"dirs": [
 				{
-					"name":"js",
-					"path":"js",
+					"name": "js",
+					"path": "js",
 					"files": {
-						"js": ["app.js"]
+						"js": [
+							"app.js"
+						]
 					}
 				}
 			]
 		},
 		{
-			"name":"modules",
-			"dirs":[
+			"name": "modules",
+			"dirs": [
 				{
-					"name":"services",
-					"dirs":[
+					"name": "services",
+					"dirs": [
 						{
-							"name":"models",
-							"dirs":[
+							"name": "models",
+							"dirs": [
 								{
-									"name":"user",
-									"files":{
-										"js":["UserModel.js"]
+									"name": "user",
+									"files": {
+										"js": [
+											"UserModel.js"
+										]
 									}
 								}
 							]
 						},
 						{
-							"name":"config",
+							"name": "config",
 							"files": {
-								"js": ["config.js"]
+								"js": [
+									"config.js"
+								]
 							}
 						},
 						{
-							"name":"http",
+							"name": "http",
 							"files": {
-								"js":["http.js"],
-								"test":["http.spec.js"]
+								"js": [
+									"http.js"
+								],
+								"test": [
+									"http.spec.js"
+								]
 							}
 						},
 						{
-							"name":"auth",
+							"name": "auth",
 							"files": {
-								"js":["auth.js"],
-								"test":["auth.spec.js"]
+								"js": [
+									"auth.js"
+								],
+								"test": [
+									"auth.spec.js"
+								]
 							}
 						},
 						{
-							"name":"storage",
+							"name": "storage",
 							"files": {
-								"js":["storage.js"]
+								"js": [
+									"storage.js"
+								]
 							}
 						},
 						{
-							"name":"nav",
+							"name": "nav",
 							"files": {
-								"js":["nav.js"],
-								"less":["nav.less"]
+								"js": [
+									"nav.js"
+								],
+								"less": [
+									"nav.less"
+								]
 							},
-							"dirs":[
+							"dirs": [
 								{
-									"name":"header-centered",
+									"name": "header-centered",
 									"files": {
-										"html":["header-centered.html"],
-										"less":["header-centered.less"]
+										"html": [
+											"header-centered.html"
+										],
+										"less": [
+											"header-centered.less"
+										]
 									}
 								},
 								{
-									"name":"footer-flex",
+									"name": "footer-flex",
 									"files": {
-										"html":["footer-flex.html"],
-										"less":["footer-flex.less"]
+										"html": [
+											"footer-flex.html"
+										],
+										"less": [
+											"footer-flex.less"
+										]
 									}
 								}
 							]
 						},
 						{
-							"name":"socialAuth",
+							"name": "socialAuth",
 							"files": {
-								"js":["socialAuth.js"],
-								"test":["socialAuth.spec.js"]
+								"js": [
+									"socialAuth.js"
+								],
+								"test": [
+									"socialAuth.spec.js"
+								]
 							}
 						}
 					]
 				},
 				{
-					"name":"directives",
-					"dirs":[
+					"name": "directives",
+					"dirs": [
 						{
-							"name":"appalert",
+							"name": "appalert",
 							"files": {
-								"js":["appalert.js"],
-								"less":["appalert.less"],
-								"test":["appalert.spec.js"]
+								"js": [
+									"appalert.js"
+								],
+								"less": [
+									"appalert.less"
+								],
+								"test": [
+									"appalert.spec.js"
+								]
 							}
 						},
 						{
-							"name":"login",
+							"name": "login",
 							"files": {
-								"js":["login.js"],
-								"less":["login.less"]
+								"js": [
+									"login.js"
+								],
+								"less": [
+									"login.less"
+								]
 							}
 						},
 						{
-							"name":"signup",
+							"name": "signup",
 							"files": {
-								"js":["signup.js"],
-								"less":["signup.less"]
+								"js": [
+									"signup.js"
+								],
+								"less": [
+									"signup.less"
+								]
 							}
 						},
 						{
-							"name":"socialAuth",
+							"name": "socialAuth",
 							"files": {
-								"js":["socialAuth.js"],
-								"less":["social-auth.less"]
+								"js": [
+									"socialAuth.js"
+								],
+								"less": [
+									"social-auth.less"
+								]
 							}
 						}
 					]
 				},
 				{
-					"name":"pages",
-					"dirs":[
+					"name": "pages",
+					"dirs": [
 						{
-							"name":"layout",
+							"name": "layout",
 							"files": {
-								"js":["LayoutCtrl.js"]
+								"js": [
+									"LayoutCtrl.js"
+								]
 							}
 						},
 						{
-							"name":"header",
+							"name": "header",
 							"files": {
-								"js":["HeaderCtrl.js"],
-								"html":["header.html"],
-								"less":["header.less"],
-								"test":["HeaderCtrl.spec.js"]
+								"js": [
+									"HeaderCtrl.js"
+								],
+								"html": [
+									"header.html"
+								],
+								"less": [
+									"header.less"
+								],
+								"test": [
+									"HeaderCtrl.spec.js"
+								]
 							}
 						},
 						{
-							"name":"footer",
+							"name": "footer",
 							"files": {
-								"js":["FooterCtrl.js"],
-								"html":["footer.html"],
-								"less":["footer.less"]
+								"js": [
+									"FooterCtrl.js"
+								],
+								"html": [
+									"footer.html"
+								],
+								"less": [
+									"footer.less"
+								]
 							}
 						},
 						{
-							"name":"home",
+							"name": "home",
 							"files": {
-								"js":["HomeCtrl.js"],
-								"html":["home.html"]
+								"js": [
+									"HomeCtrl.js"
+								],
+								"html": [
+									"home.html"
+								]
 							}
 						},
 						{
-							"name":"login",
+							"name": "login",
 							"files": {
-								"js":["LoginCtrl.js"],
-								"html":["login.html"],
-								"less":["login.less"]
+								"js": [
+									"LoginCtrl.js"
+								],
+								"html": [
+									"login.html"
+								],
+								"less": [
+									"login.less"
+								]
 							}
 						},
 						{
-							"name":"signup",
+							"name": "signup",
 							"files": {
-								"js":["SignupCtrl.js"],
-								"html":["signup.html"],
-								"less":["signup.less"]
+								"js": [
+									"SignupCtrl.js"
+								],
+								"html": [
+									"signup.html"
+								],
+								"less": [
+									"signup.less"
+								]
 							}
 						},
 						{
-							"name":"passwordReset",
+							"name": "passwordReset",
 							"files": {
-								"js":["PasswordResetCtrl.js"],
-								"html":["password-reset.html"],
-								"less":["password-reset.less"],
-								"test":["PasswordResetCtrl.spec.js"]
+								"js": [
+									"PasswordResetCtrl.js"
+								],
+								"html": [
+									"password-reset.html"
+								],
+								"less": [
+									"password-reset.less"
+								],
+								"test": [
+									"PasswordResetCtrl.spec.js"
+								]
 							}
 						},
 						{
-							"name":"logout",
+							"name": "logout",
 							"files": {
-								"js":["LogoutCtrl.js"],
-								"html":["logout.html"],
-								"test":["LogoutCtrl.spec.js"]
+								"js": [
+									"LogoutCtrl.js"
+								],
+								"html": [
+									"logout.html"
+								],
+								"test": [
+									"LogoutCtrl.spec.js"
+								]
 							}
 						},
 						{
-							"name":"userDelete",
+							"name": "userDelete",
 							"files": {
-								"js":["UserDeleteCtrl.js"],
-								"html":["user-delete.html"]
+								"js": [
+									"UserDeleteCtrl.js"
+								],
+								"html": [
+									"user-delete.html"
+								]
 							}
 						},
 						{
-							"name":"test",
+							"name": "test",
 							"files": {
-								"js":["TestCtrl.js"],
-								"html":["test.html"]
+								"js": [
+									"TestCtrl.js"
+								],
+								"html": [
+									"test.html"
+								]
 							}
 						},
 						{
-							"name":"design",
+							"name": "design",
 							"files": {
-								"js":["DesignCtrl.js"],
-								"html":["design.html"],
-								"less":["design.less"]
+								"js": [
+									"DesignCtrl.js"
+								],
+								"html": [
+									"design.html"
+								],
+								"less": [
+									"design.less"
+								]
 							}
 						}
 					]
@@ -336,26 +459,32 @@
 			]
 		},
 		{
-			"name":"build",
-			"path":"build",
-			"files":{
-				"css":["main.css"]
+			"name": "build",
+			"path": "build",
+			"files": {
+				"css": [
+					"main.css"
+				]
 			}
 		},
 		{
-			"name":"buildTemp",
-			"path":"build/temp",
+			"name": "buildTemp",
+			"path": "build/temp",
 			"files": {
-				"js":["custom.min.js"]
+				"js": [
+					"custom.min.js"
+				]
 			}
 		},
 		{
 			"name": "test",
-			"dirs":[
+			"dirs": [
 				{
-					"name":"e2e",
+					"name": "e2e",
 					"files": {
-						"test": ["**/*.scenarios.js"]
+						"test": [
+							"**/*.scenarios.js"
+						]
 					}
 				}
 			]

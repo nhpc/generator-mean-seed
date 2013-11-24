@@ -1,9 +1,12 @@
 Version numbers correspond to `package.json` version
 
-# 1.0.5
+# 1.0.5 (2013-11-23)
 ## Features
-- move protractor test specs to buildfilesModules
+- update ng-route subgenerator to support nested (sub)folders
+- style: fix buildfilesModules.json to use strict proper json syntax (i.e. have spaces after colons) for less git diff when auto-generating an updated version
+- add grunt for dev (linting)
 - documentation update - modularize into folders
+- move protractor test specs to buildfilesModules
 
 
 # 1.0.4 (2013-11-20)

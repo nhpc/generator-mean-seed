@@ -6,6 +6,8 @@ NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle W
 */
 
 'use strict';
+var fs =require('fs');
+
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
@@ -31,7 +33,21 @@ if(this.subGenerator =='ng-route') {
 	var prompts = [
 		{
 			name: 'routeName',
-			message: 'Route name (i.e. my-page)'
+			message: 'Route name (i.e. my-page)',
+			//required input
+			validate: function(input) {
+				if(!input || !input.length) {
+					return false;
+				}
+				else {
+					return true;
+				}
+			}
+		},
+		{
+			name: 'routePath',
+			message: 'Route path - if want to put it one or more sub-folders (i.e. myfolder/ OR myfolder/mysubfolder/ )',
+			default: '',
 		},
 		{
 			type: 'list',
@@ -46,6 +62,13 @@ if(this.subGenerator =='ng-route') {
 	];
 	
 	this.prompt(prompts, function (props) {
+		//format some
+		//ensure routePath has a trailing slash and NO leading slash
+		//regex to remove all leading & trailing slashes first
+		props.routePath =props.routePath.replace(/^\/*/, '').replace(/\/*$/, '');
+		props.routePath +='/';		//add trailing slash
+		// console.log('props.routePath: '+props.routePath);
+		
 		var ii, jj, kk, skip, curName;
 		var skipKeys =[];
 		var toInt =['skipGrunt'];
@@ -84,8 +107,26 @@ if(this.subGenerator =='ng-route') {
 NgRouteGenerator.prototype.files = function files() {
 if(this.subGenerator =='ng-route') {
 
-	var pagePath ='app/src/modules/pages/'+this.routeName;
+	var ii;
+	
+	var pathBase ='app/src/modules/pages/';
+	var pagePath =pathBase+this.routePath+this.routeName;
 	//A. make all directories (do it at top so they're all created since templated files are collected here at the top)
+	//create sub-directories first if they don't exist
+	var subdirs =this.routePath.split('/');
+	var curPath;
+	var curPathBase =pathBase;		//will be used to track the current path as we go through the sub-directories
+	for(ii =0; ii<subdirs.length; ii++) {
+		if(subdirs[ii]) {
+			curPath =curPathBase+subdirs[ii]+'/';
+			// console.log('curPath: '+curPath);
+			if(!fs.existsSync(curPath)) {
+				this.mkdir(curPath);
+			}
+			curPathBase =curPath;		//save for next time
+		}
+	}
+	// console.log('pagePath: '+pagePath);
 	this.mkdir(pagePath);
 	
 	
@@ -106,23 +147,27 @@ NgRouteGenerator.prototype.updateBuildfiles = function updateBuildfiles() {
 if(this.subGenerator =='ng-route') {
 	var path ='app/src/config/buildfilesModules.json';
 	var bfObj = JSON.parse(this.readFileAsString(path));
-	var ii, jj, found =false, modulesIndex =false, pagesIndex =false;
+	var ii, jj, kk, found =false, modulesIndex =false, pagesIndex =false;
 	for(ii =0; ii<bfObj.dirs.length; ii++) {
 		if(bfObj.dirs[ii].name =='modules') {
 			modulesIndex =ii;
 			for(jj =0; jj<bfObj.dirs[ii].dirs.length; jj++) {
 				if(bfObj.dirs[ii].dirs[jj].name =='pages') {
-					bfObj.dirs[ii].dirs[jj].dirs.push(
-						{
-							"name":this.routeName,
-							"files": {
-								"html":[this.routeName+'.html'],
-								"less":[this.routeName+'.less'],
-								"js":[this.routeNameCtrl+'.js'],
-								"test":[this.routeNameCtrl+'.spec.js']
-							}
+				
+					var finalObj ={
+						"name":this.routeName,
+						"files": {
+							"html":[this.routeName+'.html'],
+							"less":[this.routeName+'.less'],
+							"js":[this.routeNameCtrl+'.js'],
+							"test":[this.routeNameCtrl+'.spec.js']
 						}
-					);
+					};
+					// bfObj.dirs[ii].dirs[jj].dirs.push(finalObj);
+					
+					//use recursive function to go through all subdirs and create nested objects if they don't exist
+					bfObj.dirs[ii].dirs[jj] =this._buildfilesSubdirs(bfObj.dirs[ii].dirs[jj], this.routePath, finalObj, {});
+					
 					found =true;
 					break;
 				}
@@ -139,6 +184,82 @@ if(this.subGenerator =='ng-route') {
 }
 };
 
+/**
+Recursive function that takes a path and searches for the first directory/part of it within the subObj.dirs array and adds it in if it doesn't exist
+@param {Object} subObj the current (nested) object we'll search the 'dirs' key for 'name' and update if not found
+@param {String} path The path that will be broken into directories to match with the 'name' key value to search for and add in if not found
+@param {Object} finalObj The final object to stuff in to the LAST (most nested) object.
+@param {Object} params
+@return {Object} subObj The NEW nested object, now inside the 'name' key object
+*/
+NgRouteGenerator.prototype._buildfilesSubdirs =function buildfilesSubdirs(subObj, path, finalObj, params) {
+	var xx;
+	var newObj;
+	var newPath;
+	//regex to remove all leading & trailing slashes
+	path =path.replace(/^\/*/, '').replace(/\/*$/, '');
+	
+	var goTrig =true;
+	//default set the current sub directory to the path (in case no slashes at all and this is the last one)
+	var curSubdir =path;
+	//if slash, remove the first directory and save the rest for the new path to pass to recursive call
+	var indexSlash =path.indexOf('/');
+	if(indexSlash >-1) {
+		curSubdir =path.slice(0, indexSlash);
+		newPath =path.slice((indexSlash+1), path.length);
+	}
+	else if(!curSubdir || curSubdir.length <1) {		//if blank, just add in finalObj now
+		subObj.dirs.push(finalObj);
+		goTrig =false;
+	}
+	
+	console.log('path: '+path+' curSubdir: '+curSubdir+' newPath: '+newPath);
+	
+	if(goTrig) {
+	
+		var subDirIndex;		//need to save the index that corresponds to the newObj for re-stuffing it after recursive call (since each recursive call gets a SMALLER nested object returned and need to append that to the original object for the final return)
+		
+		//go through subObj and see if the curSubdir already exists as a name in the 'dirs' array
+		var ii, found =false;
+		for(ii =0; ii<subObj.dirs.length; ii++) {
+			if(subObj.dirs[ii].name ==curSubdir) {
+				found =true;
+				//ensure it has a 'dirs' key
+				if(subObj.dirs[ii].dirs ===undefined) {
+					subObj.dirs[ii].dirs =[];
+				}
+				if(indexSlash <0) {		//if on LAST one, add in finalObj INSIDE the dirs array (assume dirs is empty since this should be a NEW page)
+					subObj.dirs[ii].dirs.push(finalObj);
+				}
+				newObj =subObj.dirs[ii];
+				subDirIndex =ii;		//save for re-stuffing later
+				break;
+			}
+		}
+		//if doesn't already exist, add it
+		if(!found) {
+			newObj ={
+				name: curSubdir,
+				dirs: []
+			};
+			if(indexSlash <0) {		//if on LAST one, add in finalObj INSIDE the dirs array (assume dirs is empty since this should be a NEW page)
+				newObj.dirs.push(finalObj);
+			}
+			var len1 =subObj.dirs.length;
+			subObj.dirs[len1] =newObj;
+			subDirIndex =len1;		//save for re-stuffing later
+		}
+		
+		//if still have one or more directories, recursively go again
+		if(indexSlash >-1) {
+			//need to set the dirs array for the correct index to the return value - NOT the entire subObj itself since the return will be the updated newObj, which is a SUBSET of subObj!
+			subObj.dirs[subDirIndex] =this._buildfilesSubdirs(newObj, newPath, finalObj, params);
+		}
+	}
+	
+	return subObj;
+};
+
 NgRouteGenerator.prototype.updateAppJs = function updateAppJs() {
 if(this.subGenerator =='ng-route') {
 	var path ='app/src/common/js/app.js';
@@ -150,7 +271,7 @@ if(this.subGenerator =='ng-route') {
 		// console.log(indexStart+' '+indexEnd);
 		// if(indexEnd >-1) {
 		if(1) {
-			var newData ="$routeProvider.when(appPathRoute+'"+this.routeName+"', {templateUrl: pagesPath+'"+this.routeName+"/"+this.routeName+".html',\n"+
+			var newData ="$routeProvider.when(appPathRoute+'"+this.routeName+"', {templateUrl: pagesPath+'"+this.routePath+this.routeName+"/"+this.routeName+".html',\n"+
 			"		resolve: {\n"+
 			"			auth: function(svcAuth) {\n"+
 			"				return svcAuth.checkSess({noLoginRequired:true});\n"+
