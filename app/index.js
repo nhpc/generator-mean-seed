@@ -9,8 +9,8 @@ var fs = require('fs');
 var MeanSeedGenerator = module.exports = function MeanSeedGenerator(args, options, config) {
 	yeoman.generators.Base.apply(this, arguments);
 
-	//call main sub-generator
-	this.hookFor('mean-seed:main', {
+	//call core-default sub-generator
+	this.hookFor('mean-seed:core-default', {
 		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
 		options: {
 			options: this.options
@@ -48,16 +48,17 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 			name: 'subGenerator',
 			message: 'What subgenerator to use?',
 			choices: [
-				'main',
+				'core-default',
 				'ng-route'
 			],
-			default: 'main'
+			default: 'core-default'
 		}
 	];
 
 	this.prompt(prompts, function (props) {
 		this.options.props ={};
-		this.options.props.subGenerator =this.subGenerator = props.subGenerator;
+		//use an array for subGenerators in case want to use more than one (i.e. for modularizing to multiple subgenerators)
+		this.options.props.subGenerators =this.subGenerators = [props.subGenerator];
 		
 		cb();
 	}.bind(this));
@@ -66,7 +67,7 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 	
 MeanSeedGenerator.prototype.askForConfig = function askForConfig() {
 this.options.props.configFile =this.configFile ='';		//default
-if(this.subGenerator =='main') {		//only use config for certain sub-generators
+if(this.subGenerators.indexOf('core-default') >-1) {		//only use config for certain sub-generators
 	var cb = this.async();
 
 	var prompts = [

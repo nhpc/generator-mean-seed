@@ -1,7 +1,35 @@
 # Continuous Integration (CI)
 
+## Terminology: CI vs CD
+We're really talking about and implementing Continuous Delivery (and almost Continuous Deployment as well), specific definitions below.
+
+- CI = Continuous Integration
+- CD = EITHER Continuous Delivery or Continuous Deployment
+	- links:
+		- http://puppetlabs.com/blog/continuous-delivery-vs-continuous-deployment-whats-diff
+		- http://blogs.urbancode.com/continuous-integration/continuous-integration-why-you-dont-really-get-it/
+			- "each integration must not decrease the code QUALITY"
+		- http://www.urbancode.com/html/solutions/continuous-delivery/CI_to_CD.html
+			- "CI" can be strictly defined as unit tests only and "CD" means doing more tests (E2E, etc.) ON staging environments (and ideally on production environments with production databases if possible - basically get as many tests and as real/close to actual as possible when running those tests).
+- Basically, they all build on each other. From least to most robust:
+	- CI: more local and less robust
+	- Continous Delivery
+	- Continuous Deployment: "perfect Continuous Deployment" would be running ALL tests (unit through E2E AND nonfunctional/performance tests), on multiple platforms, on the production server, with the production database (or at least a staging environment that nearly perfectly mimics the production environment).
+- We're doing Unit AND E2E tests LOCALLY AND on a staging (optionally production) server with a TEST database. With SauceLabs, we can test on multiple platforms. So the only "more robust" thing we could do would be to run tests on a real (or at least non-blank / larger) database.
+
+
 ## Overview
-An "agile" process of rapid iteration and frequent commits (daily) and tests (auto-run on every commit/push) so the build is ALWAYS working and as many steps as possible are automated (i.e. you can deploy to any environment with just ONE action/command/push of a button). Testing covers various levels - from unit to end-to-end (E2E) tests and ideally multiple device testing and performance/capacity and manual user testing. So you KNOW that when something has made it through all those steps (again ideally as automated and quickly as possible) that it's high quality and good to know. No more "endless Q&A" and bugs that pop up days, weeks, or months later.
+An "agile" process of rapid iteration and frequent commits (daily) and tests (auto-run on every commit/push) so the build is ALWAYS working and as many steps as possible are automated (i.e. you can deploy to any environment with just ONE action/command/push of a button). Testing covers various levels - from unit to end-to-end (E2E) tests and ideally multiple device testing and performance/capacity and manual user testing. So you KNOW that when something has made it through all those steps (again ideally as automated and quickly as possible) that it's high quality and good to go. No more "endless Q&A" and bugs that pop up days, weeks, or months later.
+
+Summary: need 2 things:
+
+1. a "mindset" of and focus on:
+	1. rapid ("continuous") iteration
+	2. QUALITY (i.e. robust testing)
+	3. automation
+2. tools/automation that ensure:
+	1. deploy in ONE step / command (i.e. `git push origin master`)
+	2. near 100% uptime - final deploy is always working (i.e. unbreakable deploys via auto rollback on failure with notifications so developers can quickly fix - but WHILE they're fixing, the final code is still working on the reverted/existing version)
 
 - Resources / links
 	- http://www.martinfowler.com/articles/originalContinuousIntegration.html

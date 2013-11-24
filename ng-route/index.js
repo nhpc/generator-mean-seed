@@ -1,6 +1,6 @@
 /**
 @todo
-- remove the need to check this.subGenerator in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
+- remove the need to check this.subGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
 
 NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle Windows/different operating systems and can't use 'exec' since that doesn't show (live) output)
 */
@@ -27,7 +27,7 @@ var NgRouteGenerator = module.exports = function NgRouteGenerator(args, options,
 util.inherits(NgRouteGenerator, yeoman.generators.NamedBase);
 
 NgRouteGenerator.prototype.askFor = function askFor() {
-if(this.subGenerator =='ng-route') {
+if(this.subGenerators.indexOf('ng-route') >-1) {
 	var cb = this.async();
 	
 	var prompts = [
@@ -105,7 +105,7 @@ if(this.subGenerator =='ng-route') {
 };
 
 NgRouteGenerator.prototype.files = function files() {
-if(this.subGenerator =='ng-route') {
+if(this.subGenerators.indexOf('ng-route') >-1) {
 
 	var ii;
 	
@@ -144,7 +144,7 @@ if(this.subGenerator =='ng-route') {
 };
 
 NgRouteGenerator.prototype.updateBuildfiles = function updateBuildfiles() {
-if(this.subGenerator =='ng-route') {
+if(this.subGenerators.indexOf('ng-route') >-1) {
 	var path ='app/src/config/buildfilesModules.json';
 	var bfObj = JSON.parse(this.readFileAsString(path));
 	var ii, jj, kk, found =false, modulesIndex =false, pagesIndex =false;
@@ -261,7 +261,7 @@ NgRouteGenerator.prototype._buildfilesSubdirs =function buildfilesSubdirs(subObj
 };
 
 NgRouteGenerator.prototype.updateAppJs = function updateAppJs() {
-if(this.subGenerator =='ng-route') {
+if(this.subGenerators.indexOf('ng-route') >-1) {
 	var path ='app/src/common/js/app.js';
 	// var contents =this.read(path);
 	var contents =this.readFileAsString(path);
@@ -287,7 +287,7 @@ if(this.subGenerator =='ng-route') {
 };
 
 NgRouteGenerator.prototype.commandsGrunt = function commandsGrunt() {
-if(this.subGenerator =='ng-route') {
+if(this.subGenerators.indexOf('ng-route') >-1) {
 	var cb = this.async();
 	var self =this;
 	
@@ -308,7 +308,7 @@ if(this.subGenerator =='ng-route') {
 };
 
 NgRouteGenerator.prototype.logNextSteps = function logNextSteps() {
-if(this.subGenerator =='ng-route') {
+if(this.subGenerators.indexOf('ng-route') >-1) {
 	this.log.writeln('Next steps:\n1. IF you want to make a custom nav (header and/or footer) for this page, add it in `modules/services/nav/nav.js`\n2. Edit the files (html, less, js) for your new page!');
 }
 };

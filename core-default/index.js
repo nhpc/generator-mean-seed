@@ -1,7 +1,7 @@
 /**
 @todo
 - once forminput, etc. are fixed on Angular 1.2.0, update bower.json to no longer be 1.2.0-rc.3
-- remove the need to check this.subGenerator in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
+- remove the need to check this.subGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
 
 NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle Windows/different operating systems and can't use 'exec' since that doesn't show (live) output)
 */
@@ -13,7 +13,7 @@ var yeoman = require('yeoman-generator');
 // var exec = require('child_process').exec;
 // var spawn = require('child_process').spawn;
 
-var MainGenerator = module.exports = function MainGenerator(args, options, config) {
+var CoreDefaultGenerator = module.exports = function CoreDefaultGenerator(args, options, config) {
 	// By calling `NamedBase` here, we get the argument to the subgenerator call
 	// as `this.name`.
 	yeoman.generators.NamedBase.apply(this, arguments);
@@ -26,10 +26,10 @@ var MainGenerator = module.exports = function MainGenerator(args, options, confi
 	}
 };
 
-util.inherits(MainGenerator, yeoman.generators.NamedBase);
+util.inherits(CoreDefaultGenerator, yeoman.generators.NamedBase);
 
-MainGenerator.prototype.askFor = function askFor() {
-if(this.subGenerator =='main') {
+CoreDefaultGenerator.prototype.askFor = function askFor() {
+if(this.subGenerators.indexOf('core-default') >-1) {
 
 if(!this.configFile) {		//only prompt if don't have config file
 	var cb = this.async();
@@ -176,8 +176,8 @@ if(!this.configFile) {		//only prompt if don't have config file
 }
 };
 
-MainGenerator.prototype.files = function files() {
-if(this.subGenerator =='main') {
+CoreDefaultGenerator.prototype.files = function files() {
+if(this.subGenerators.indexOf('core-default') >-1) {
 
 	//A. make all directories (do it at top so they're all created since templated files are collected here at the top)
 	this.mkdir('docs');
@@ -318,8 +318,8 @@ if(this.subGenerator =='main') {
 }
 };
 
-MainGenerator.prototype.filesAngular = function filesAngular() {
-if(this.subGenerator =='main') {
+CoreDefaultGenerator.prototype.filesAngular = function filesAngular() {
+if(this.subGenerators.indexOf('core-default') >-1) {
 	
 	//A. make all directories (do it at top so they're all created since templated files are collected here at the top)
 	this.mkdir('app/src');
@@ -413,8 +413,8 @@ if(this.subGenerator =='main') {
 }
 };
 
-MainGenerator.prototype.commandsNpm = function commandsNpm() {
-if(this.subGenerator =='main') {
+CoreDefaultGenerator.prototype.commandsNpm = function commandsNpm() {
+if(this.subGenerators.indexOf('core-default') >-1) {
 	var cb = this.async();
 	var self =this;
 	
@@ -434,8 +434,8 @@ if(this.subGenerator =='main') {
 }
 };
 
-MainGenerator.prototype.commandsBower = function commandsBower() {
-if(this.subGenerator =='main') {
+CoreDefaultGenerator.prototype.commandsBower = function commandsBower() {
+if(this.subGenerators.indexOf('core-default') >-1) {
 	var cb = this.async();
 	var self =this;
 	
@@ -455,8 +455,8 @@ if(this.subGenerator =='main') {
 }
 };
 
-MainGenerator.prototype.commandsGrunt = function commandsGrunt() {
-if(this.subGenerator =='main') {
+CoreDefaultGenerator.prototype.commandsGrunt = function commandsGrunt() {
+if(this.subGenerators.indexOf('core-default') >-1) {
 	var cb = this.async();
 	var self =this;
 	
@@ -476,8 +476,8 @@ if(this.subGenerator =='main') {
 }
 };
 
-MainGenerator.prototype.commandsSelenium = function commandsSelenium() {
-if(this.subGenerator =='main') {
+CoreDefaultGenerator.prototype.commandsSelenium = function commandsSelenium() {
+if(this.subGenerators.indexOf('core-default') >-1) {
 	var cb = this.async();
 	var self =this;
 	
@@ -497,8 +497,8 @@ if(this.subGenerator =='main') {
 }
 };
 
-MainGenerator.prototype.logNextSteps = function logNextSteps() {
-if(this.subGenerator =='main') {
+CoreDefaultGenerator.prototype.logNextSteps = function logNextSteps() {
+if(this.subGenerators.indexOf('core-default') >-1) {
 	this.log.writeln('Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.');
 }
 };

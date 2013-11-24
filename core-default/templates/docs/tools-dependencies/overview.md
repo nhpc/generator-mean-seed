@@ -48,6 +48,8 @@ Categorized by type/area and roughly in order of priority/importance.
 	- Test runner browsers / tools
 		- PhantomJS (can also add a driver per each browser you want to test on)
 		- SauceLabs (3rd party tool to run the tests)
+	- Test Coverage
+		- Istanbul
 	- Continuous Integration
 		- Concrete
 - (Auto) Documentation

@@ -1,5 +1,15 @@
 Version numbers correspond to `package.json` version
 
+# 1.0.6
+## Features
+- changed to core generators
+	- renamed 'main' generator to 'core-default'
+	- added in 'core-scss' for using SASS instead of LESS
+- modularized core generators to use/call frontend and backend generators to allow for greater code re-use (since LESS and SCSS both use the SAME backend code, we should not duplicate it)
+	- the check in each generator checks an array for `indexOf()` now
+- added `docs` folder with generator documentation
+
+
 # 1.0.5 (2013-11-23)
 ## Features
 - update ng-route subgenerator to support nested (sub)folders

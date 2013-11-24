@@ -13,8 +13,8 @@ module.exports = function(grunt) {
 				//sub:true,
 				node: true
 			},
-			// all: ['Gruntfile.js', 'main/**/*.js', 'ng-route/**/*.js']
-			all: ['Gruntfile.js', 'main/index.js', 'ng-route/index.js']
+			// all: ['Gruntfile.js', 'core-default/**/*.js', 'ng-route/**/*.js']
+			all: ['Gruntfile.js', 'core-default/index.js', 'ng-route/index.js']
 		}
 	});
 

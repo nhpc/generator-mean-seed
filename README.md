@@ -13,7 +13,7 @@
 	
 ## Getting Started
 
-NOTE: This assumes you already have Git, Node.js, MongoDB, and PhantomJS installed; if not, see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)
+NOTE: This assumes you already have Git, Node.js, MongoDB, and PhantomJS installed; if not, see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/setup-server-linux.md)
 
 Install Yeoman Yo, Bower, Grunt and other global node modules we'll need, if you don't have them already:
 ```
@@ -34,7 +34,7 @@ $ yo mean-seed
 - NOTE: if you get an EACCESS / permission denied error during the npm install, find the folder that had permissions issues (from the log output) and run `sudo chown -R $USER [path to problematic folder]`.
 	- http://foohack.com/2010/08/intro-to-npm/#what_no_sudo
 
-[See here](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/_README.md) for more/full info and steps.
+[See here](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/_README.md) for more/full info and steps.
 
 ### Next Steps
 - See the generated README.md file in your new mean-seed app!
@@ -42,16 +42,16 @@ $ yo mean-seed
 
 
 ## Documentation / More Info
-See the [generated README.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/_README.md) file and the `docs` folder for all documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
+See the [generated README.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/_README.md) file and the `docs` folder for all documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
 
-- [overview.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/overview.md)
-- [setup-running folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-running/)
-	- [setup-running/overview.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-running/overview.md)
-- [tools-dependencies folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/tools-dependencies/)
-- [files folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/files/)
-- [testing-automation folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/testing-automation/)
-- [frontend-angular/common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/frontend-angular/common-actions.md)
-- [backend-node/common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/backend-node/common-actions.md)
+- [overview.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/overview.md)
+- [setup-running folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/setup-running/)
+	- [setup-running/overview.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/setup-running/overview.md)
+- [tools-dependencies folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/tools-dependencies/)
+- [files folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/files/)
+- [testing-automation folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/testing-automation/)
+- [frontend-angular/common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/frontend-angular/common-actions.md)
+- [backend-node/common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/backend-node/common-actions.md)
 
 
 ## Miscellaneous
@@ -69,7 +69,7 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 ## Contributing
 - while you can fork on Github, we're actually trying a new approach of leveraging Yeoman for different 'core' builds to avoid all the forks. The reason for 'forking' a project is to change it and add functionality that conflicts with or would add too much code bloat to the original repository. However, with Yeoman, we can add EVERYTHING into this ONE project and by using generators, the end user/developer can take ONLY what (s)he wants. So there's no code bloat or worry of this becoming a "kitchen sink" seed with too many features. That's the beauty of Yeoman! So, to contribute, build another subgenerator - either a 'core' generator or a 'module' generator. All the 'core' generators essentially become like the typical 'forks' - a user will decide what core (s)he wants to use and THEN what modules to include with that core.
-	- core: see the `main` folder/generator for an example
+	- core: see the `core-default` folder/generator for an example
 	- module: see the `ng-route` folder/generator for an example
 - NOTE: this is still a new idea/approach to contributing and is a work in progress - suggestions welcome!
 
