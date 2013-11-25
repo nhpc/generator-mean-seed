@@ -9,7 +9,8 @@ var fs = require('fs');
 var MeanSeedGenerator = module.exports = function MeanSeedGenerator(args, options, config) {
 	yeoman.generators.Base.apply(this, arguments);
 
-	//call core-default sub-generator
+	//hooks to call sub generators - ORDER MATTERS! They'll be called in the order they are listed
+	
 	this.hookFor('mean-seed:core-default', {
 		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
 		options: {
@@ -17,8 +18,51 @@ var MeanSeedGenerator = module.exports = function MeanSeedGenerator(args, option
 		}
 	});
 	
-	//call ng-route sub-generator
+	this.hookFor('mean-seed:core-scss', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
+	this.hookFor('mean-seed:core-default-node', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
+	this.hookFor('mean-seed:core-default-angular', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
+	this.hookFor('mean-seed:core-scss-angular', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
 	this.hookFor('mean-seed:ng-route', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
+	//NOTE: order matters - call this toward end / LAST!
+	this.hookFor('mean-seed:commands', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
+	//NOTE: order matters - call this toward end / LAST!
+	this.hookFor('mean-seed:log-next-steps', {
 		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
 		options: {
 			options: this.options
@@ -49,6 +93,7 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 			message: 'What subgenerator to use?',
 			choices: [
 				'core-default',
+				'core-scss',
 				'ng-route'
 			],
 			default: 'core-default'
@@ -57,8 +102,34 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 
 	this.prompt(prompts, function (props) {
 		this.options.props ={};
+		
 		//use an array for subGenerators in case want to use more than one (i.e. for modularizing to multiple subgenerators)
-		this.options.props.subGenerators =this.subGenerators = [props.subGenerator];
+		var generators =[props.subGenerator];
+		var moreGenerators =false;
+		var logNextStepsMsg =false;
+		
+		if(props.subGenerator =='core-default') {
+			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.';
+			moreGenerators =['core-default-node', 'core-default-angular', 'commands', 'log-next-steps'];
+		}
+		else if(props.subGenerator =='core-scss') {
+			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.';
+			moreGenerators =['core-default-node', 'core-scss-angular', 'commands', 'log-next-steps'];
+		}
+		else if(props.subGenerator =='ng-route') {
+			logNextStepsMsg ='Next steps:\n1. IF you want to make a custom nav (header and/or footer) for this page, add it in `modules/services/nav/nav.js`\n2. Edit the files (html, less, js) for your new page!';
+			moreGenerators =['commands', 'log-next-steps'];
+		}
+		
+		if(moreGenerators) {
+			generators =generators.concat(moreGenerators);
+		}
+		
+		if(logNextStepsMsg) {
+			this.options.props.logNextStepsMsg =this.logNextStepsMsg = logNextStepsMsg;
+		}
+		
+		this.options.props.subGenerators =this.subGenerators = generators;
 		
 		cb();
 	}.bind(this));
@@ -67,7 +138,7 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 	
 MeanSeedGenerator.prototype.askForConfig = function askForConfig() {
 this.options.props.configFile =this.configFile ='';		//default
-if(this.subGenerators.indexOf('core-default') >-1) {		//only use config for certain sub-generators
+if(this.subGenerators.indexOf('core-default') >-1 || this.subGenerators.indexOf('core-scss') >-1) {		//only use config for certain sub-generators
 	var cb = this.async();
 
 	var prompts = [

@@ -19,9 +19,9 @@
 		"testServerPort":3005,
 		"testSocketPort":3006,
 		"testDatabase":"test_temp",
-		"skipNpmInstall":0,
-		"skipBowerInstall":0,
-		"skipSeleniumInstall":0,
-		"skipGrunt":0
+		"npmInstall":1,
+		"bowerInstall":1,
+		"seleniumInstall":1,
+		"gruntQ":1
 	}
 }

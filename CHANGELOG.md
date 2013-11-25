@@ -7,7 +7,17 @@ Version numbers correspond to `package.json` version
 	- added in 'core-scss' for using SASS instead of LESS
 - modularized core generators to use/call frontend and backend generators to allow for greater code re-use (since LESS and SCSS both use the SAME backend code, we should not duplicate it)
 	- the check in each generator checks an array for `indexOf()` now
+	- added in 'helper' generators:
+		- `commands`
+		- `log-next-steps`
 - added `docs` folder with generator documentation
+
+## Breaking Changes
+- changed prompts from skipInstall to install (from negative to positive - defaults to NOT run now), specifically:
+	- `skipNpmInstall` to `npmInstall`
+	- `skipBowerInstall` to `bowerInstall`
+	- `skipGrunt` to `gruntQ`
+	- `skipSeleniumInstall` to `seleniumInstall`
 
 
 # 1.0.5 (2013-11-23)

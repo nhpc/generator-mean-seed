@@ -2,6 +2,14 @@
 @todo
 - remove the need to check this.subGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
 
+@toc
+1. askFor
+2. files
+3. updateBuildfiles
+	3.1. _buildfilesSubdirs
+4. updateAppJs
+
+
 NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle Windows/different operating systems and can't use 'exec' since that doesn't show (live) output)
 */
 
@@ -26,6 +34,10 @@ var NgRouteGenerator = module.exports = function NgRouteGenerator(args, options,
 
 util.inherits(NgRouteGenerator, yeoman.generators.NamedBase);
 
+/**
+@toc 1.
+@method askFor
+*/
 NgRouteGenerator.prototype.askFor = function askFor() {
 if(this.subGenerators.indexOf('ng-route') >-1) {
 	var cb = this.async();
@@ -51,13 +63,13 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 		},
 		{
 			type: 'list',
-			name: 'skipGrunt',
-			message: 'Skip running Grunt (you will have to run yourself after Yeoman completes)?',
+			name: 'gruntQ',
+			message: 'Run Grunt (if skipped, you will have to run yourself after Yeoman completes)?',
 			choices: [
 				'0',
 				'1'
 			],
-			default: '0'
+			default: '1'
 		}
 	];
 	
@@ -71,7 +83,7 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 		
 		var ii, jj, kk, skip, curName;
 		var skipKeys =[];
-		var toInt =['skipGrunt'];
+		var toInt =['gruntQ'];
 		for(ii =0; ii<prompts.length; ii++) {
 			curName =prompts[ii].name;
 			skip =false;
@@ -104,6 +116,10 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 }
 };
 
+/**
+@toc 2.
+@method files
+*/
 NgRouteGenerator.prototype.files = function files() {
 if(this.subGenerators.indexOf('ng-route') >-1) {
 
@@ -143,6 +159,10 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 }
 };
 
+/**
+@toc 3.
+@method updateBuildfiles
+*/
 NgRouteGenerator.prototype.updateBuildfiles = function updateBuildfiles() {
 if(this.subGenerators.indexOf('ng-route') >-1) {
 	var path ='app/src/config/buildfilesModules.json';
@@ -185,6 +205,7 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 };
 
 /**
+@toc 3.1.
 Recursive function that takes a path and searches for the first directory/part of it within the subObj.dirs array and adds it in if it doesn't exist
 @param {Object} subObj the current (nested) object we'll search the 'dirs' key for 'name' and update if not found
 @param {String} path The path that will be broken into directories to match with the 'name' key value to search for and add in if not found
@@ -260,6 +281,10 @@ NgRouteGenerator.prototype._buildfilesSubdirs =function buildfilesSubdirs(subObj
 	return subObj;
 };
 
+/**
+@toc 4.
+@method updateAppJs
+*/
 NgRouteGenerator.prototype.updateAppJs = function updateAppJs() {
 if(this.subGenerators.indexOf('ng-route') >-1) {
 	var path ='app/src/common/js/app.js';
@@ -283,32 +308,5 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 			this.write(path, newContents);
 		}
 	}
-}
-};
-
-NgRouteGenerator.prototype.commandsGrunt = function commandsGrunt() {
-if(this.subGenerators.indexOf('ng-route') >-1) {
-	var cb = this.async();
-	var self =this;
-	
-	if(this.skipGrunt ===undefined || !this.skipGrunt) {
-		var command ='grunt';
-		var args =['q'];
-		var cmd =this.spawnCommand(command, args);
-		cmd.on('exit', function(code) {
-			self.log.writeln('child process exited with code: '+code);
-			self.log.writeln("command run and done: "+command+" args: "+args);
-			cb();
-		});
-	}
-	else {
-		cb();
-	}
-}
-};
-
-NgRouteGenerator.prototype.logNextSteps = function logNextSteps() {
-if(this.subGenerators.indexOf('ng-route') >-1) {
-	this.log.writeln('Next steps:\n1. IF you want to make a custom nav (header and/or footer) for this page, add it in `modules/services/nav/nav.js`\n2. Edit the files (html, less, js) for your new page!');
 }
 };

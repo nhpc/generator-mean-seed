@@ -21,4 +21,15 @@ See `package.json` and `bower.json` for a full list of dependencies (i.e. crypto
 
 
 ## Generators
-[none]
+
+### core-default-node
+Scaffolds the backend plus some common files shared by frontend:
+
+- Gruntfile.js & package.json
+- .gitignore
+- config.json & config.test.json
+- docs folder
+
+
+### core-default-angular
+Scaffolds the frontend
