@@ -1,0 +1,261 @@
+/* spacing */
+/*
+this allows giving margin and/or padding to an element - the idea is that margin and padding are common so with this, should never have to manually set margin/padding styles on individual pages since can just leverage these pre-defined classes everywhere
+- direction suffix:
+no suffix is for margin (or padding) on ALL sides.
+'tb' is for top and bottom margin (or padding) only.
+'lr' is for left and right margin (or padding) only.
+'t' is top padding/margin only
+'b' is bottom padding/margin only
+'l' is left padding/margin only
+'r' is right padding/margin only
+
+- sizing suffix (comes BEFORE direction suffix)
+'small'
+'large'
+'xlarge'
+
+examples:
+<div class='margin padding-small-lr'>&nbsp;</div> <!-- equivalent to: margin:10px; padding-left:5px; padding-right:5px; -->
+*/
+
+//sizes
+$spacing: 10px;
+$spacing-small: 5px;
+$spacing-large: 20px;
+$spacing-xlarge: 30px;
+
+
+//margin
+//mixins
+@mixin margin-t($amount:10px) {
+	margin-top:$amount;
+}
+@mixin margin-b($amount:10px) {
+	margin-bottom:$amount;
+}
+@mixin margin-l($amount:10px) {
+	margin-left:$amount;
+}
+@mixin margin-r($amount:10px) {
+	margin-right:$amount;
+}
+@mixin margin-tb($amount:10px) {
+	@include margin-t($amount);
+	@include margin-b($amount);
+}
+@mixin margin-lr($amount:10px) {
+	@include margin-l($amount);
+	@include margin-r($amount);
+}
+@mixin margin($amount:10px) {
+	@include margin-tb($amount);
+	@include margin-lr($amount);
+}
+//classes
+//regular
+.margin {
+	@include margin($spacing);
+}
+.margin-lr {
+	@include margin-lr($spacing);
+}
+.margin-tb {
+	@include margin-tb($spacing);
+}
+.margin-l {
+	@include margin-l($spacing);
+}
+.margin-r {
+	@include margin-r($spacing);
+}
+.margin-t {
+	@include margin-t($spacing);
+}
+.margin-b {
+	@include margin-b($spacing);
+}
+//small
+.margin-small {
+	@include margin($spacing-small);
+}
+.margin-small-lr {
+	@include margin-lr($spacing-small);
+}
+.margin-small-tb {
+	@include margin-tb($spacing-small);
+}
+.margin-small-t {
+	@include margin-t($spacing-small);
+}
+.margin-small-b {
+	@include margin-b($spacing-small);
+}
+.margin-small-l {
+	@include margin-l($spacing-small);
+}
+.margin-small-r {
+	@include margin-r($spacing-small);
+}
+//large
+.margin-large {
+	@include margin($spacing-large);
+}
+.margin-large-lr {
+	@include margin-lr($spacing-large);
+}
+.margin-large-tb {
+	@include margin-tb($spacing-large);
+}
+.margin-large-t {
+	@include margin-t($spacing-large);
+}
+.margin-large-b {
+	@include margin-b($spacing-large);
+}
+.margin-large-l {
+	@include margin-l($spacing-large);
+}
+.margin-large-r {
+	@include margin-r($spacing-large);
+}
+//xlarge
+.margin-xlarge {
+	@include margin($spacing-xlarge);
+}
+.margin-xlarge-lr {
+	@include margin-lr($spacing-xlarge);
+}
+.margin-xlarge-tb {
+	@include margin-tb($spacing-xlarge);
+}
+.margin-xlarge-t {
+	@include margin-t($spacing-xlarge);
+}
+.margin-xlarge-b {
+	@include margin-b($spacing-xlarge);
+}
+.margin-xlarge-l {
+	@include margin-l($spacing-xlarge);
+}
+.margin-xlarge-r {
+	@include margin-r($spacing-xlarge);
+}
+
+
+
+//padding
+//mixins
+@mixin padding-t($amount:10px) {
+	padding-top:$amount;
+}
+@mixin padding-b($amount:10px) {
+	padding-bottom:$amount;
+}
+@mixin padding-l($amount:10px) {
+	padding-left:$amount;
+}
+@mixin padding-r($amount:10px) {
+	padding-right:$amount;
+}
+@mixin padding-tb($amount:10px) {
+	@include padding-t($amount);
+	@include padding-b($amount);
+}
+@mixin padding-lr($amount:10px) {
+	@include padding-l($amount);
+	@include padding-r($amount);
+}
+@mixin padding($amount:10px) {
+	@include padding-tb($amount);
+	@include padding-lr($amount);
+}
+//classes
+//regular
+.padding {
+	@include padding($spacing);
+}
+.padding-lr {
+	@include padding-lr($spacing);
+}
+.padding-tb {
+	@include padding-tb($spacing);
+}
+.padding-l {
+	@include padding-l($spacing);
+}
+.padding-r {
+	@include padding-r($spacing);
+}
+.padding-t {
+	@include padding-t($spacing);
+}
+.padding-b {
+	@include padding-b($spacing);
+}
+//small
+.padding-small {
+	@include padding($spacing-small);
+}
+.padding-small-lr {
+	@include padding-lr($spacing-small);
+}
+.padding-small-tb {
+	@include padding-tb($spacing-small);
+}
+.padding-small-t {
+	@include padding-t($spacing-small);
+}
+.padding-small-b {
+	@include padding-b($spacing-small);
+}
+.padding-small-l {
+	@include padding-l($spacing-small);
+}
+.padding-small-r {
+	@include padding-r($spacing-small);
+}
+//large
+.padding-large {
+	@include padding($spacing-large);
+}
+.padding-large-lr {
+	@include padding-lr($spacing-large);
+}
+.padding-large-tb {
+	@include padding-tb($spacing-large);
+}
+.padding-large-t {
+	@include padding-t($spacing-large);
+}
+.padding-large-b {
+	@include padding-b($spacing-large);
+}
+.padding-large-l {
+	@include padding-l($spacing-large);
+}
+.padding-large-r {
+	@include padding-r($spacing-large);
+}
+//xlarge
+.padding-xlarge {
+	@include padding($spacing-xlarge);
+}
+.padding-xlarge-lr {
+	@include padding-lr($spacing-xlarge);
+}
+.padding-xlarge-tb {
+	@include padding-tb($spacing-xlarge);
+}
+.padding-xlarge-t {
+	@include padding-t($spacing-xlarge);
+}
+.padding-xlarge-b {
+	@include padding-b($spacing-xlarge);
+}
+.padding-xlarge-l {
+	@include padding-l($spacing-xlarge);
+}
+.padding-xlarge-r {
+	@include padding-r($spacing-xlarge);
+}

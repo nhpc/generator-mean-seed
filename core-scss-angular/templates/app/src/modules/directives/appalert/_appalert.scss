@@ -7,7 +7,7 @@
 	opacity:1;
 }
 .dtv-appalert.hiding {
-	.transition(~"opacity 1.5s");
+	@include transition(opacity 1.5s);
 	opacity:.3;
 }
 .dtv-appalert.hidden {

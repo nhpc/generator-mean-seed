@@ -4,7 +4,7 @@
 
 a, .btn-link {
 	cursor:pointer;
-	color: @linkColor;
+	color: $linkColor;
 	/*
 	text-decoration: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -16,7 +16,7 @@ a, .btn-link {
 	color:inherit;
 }
 
-.btn-base() {
+@mixin btn-base() {
 	display:inline-block;
 	border-radius:4px;
 	cursor:pointer;
@@ -25,7 +25,7 @@ a, .btn-link {
 	&:active {
 		background: darken(#fff, 5%);
 	}
-	.user-select(none);
+	@include user-select(none);
 }
 
 // Block level buttons (full width buttons)
@@ -53,17 +53,15 @@ button[type="submit"].btn-block, .btn-block.jrg-forminput-submit {
 
 //actual button styles and classes
 .btn {
-	.btn-base();
+	@include btn-base();
 	padding:5px 9px;
 	min-width:75px;
-	.background-image(linear-gradient(180deg, #ffffff, #e6e6e6));
-	//.gradient(~"linear-gradient(180deg, #ffffff, #e6e6e6)");
+	@include background-image(linear-gradient(180deg, #ffffff, #e6e6e6));
 	border: 1px solid #bbbbbb;
 	color: #333333;
 }
 .btn:hover {
-	.background-image(linear-gradient(0deg, #ffffff, #e6e6e6));
-	//.gradient(~"linear-gradient(0deg, #ffffff, #e6e6e6)");
+	@include background-image(linear-gradient(0deg, #ffffff, #e6e6e6));
 }
 
 
@@ -73,9 +71,9 @@ button[type="submit"].btn-block, .btn-block.jrg-forminput-submit {
 
 // Large
 .btn-large {
-  padding: @paddingLarge;
-  font-size: @fontSizeLarge;
-  .border-radius(@borderRadiusLarge);
+  padding: $paddingLarge;
+  font-size: $fontSizeLarge;
+  @include border-radius($borderRadiusLarge);
 }
 .btn-large [class^="icon-"], .btn-large [class^="fa-"],
 .btn-large [class*=" icon-"], .btn-large [class*=" fa-"] {
@@ -84,9 +82,9 @@ button[type="submit"].btn-block, .btn-block.jrg-forminput-submit {
 
 // Small
 .btn-small {
-  padding: @paddingSmall;
-  font-size: @fontSizeSmall;
-  .border-radius(@borderRadiusSmall);
+  padding: $paddingSmall;
+  font-size: $fontSizeSmall;
+  @include border-radius($borderRadiusSmall);
   min-width:0;
 }
 .btn-small [class^="icon-"], .btn-small [class^="fa-"],
@@ -100,71 +98,59 @@ button[type="submit"].btn-block, .btn-block.jrg-forminput-submit {
 
 // Mini
 .btn-mini {
-  padding: @paddingMini;
-  font-size: @fontSizeMini;
-  .border-radius(@borderRadiusSmall);
+  padding: $paddingMini;
+  font-size: $fontSizeMini;
+  @include border-radius($borderRadiusSmall);
   min-width:0;
 }
 //end: from Twitter Bootstrap
 
 
 .btn-primary {
-	.btn-base();
-	.background-image(linear-gradient(180deg, #0088cc, #0044cc));
-	//.gradient(~"linear-gradient(180deg, #0088cc, #0044cc)");
+	@include btn-base();
+	@include background-image(linear-gradient(180deg, #0088cc, #0044cc));
 	border:solid 1px #0044cc;
 }
 .btn-primary:hover {
-	.background-image(linear-gradient(0deg, #0088cc, #0044cc));
-	//.gradient(~"linear-gradient(0deg, #0088cc, #0044cc)");
+	@include background-image(linear-gradient(0deg, #0088cc, #0044cc));
 }
 .btn-warning {
-	.btn-base();
-	.background-image(linear-gradient(180deg, #fbb450, #f89406));
-	//.gradient(~"linear-gradient(180deg, #fbb450, #f89406)");
+	@include btn-base();
+	@include background-image(linear-gradient(180deg, #fbb450, #f89406));
 	border:solid 1px #f89406;
 }
 .btn-warning:hover {
-	.background-image(linear-gradient(0deg, #fbb450, #f89406));
-	//.gradient(~"linear-gradient(0deg, #fbb450, #f89406)");
+	@include background-image(linear-gradient(0deg, #fbb450, #f89406));
 }
 .btn-danger {
-	.btn-base();
-	.background-image(linear-gradient(180deg, #ee5f5b, #bd362f));
-	//.gradient(~"linear-gradient(180deg, #ee5f5b, #bd362f)");
+	@include btn-base();
+	@include background-image(linear-gradient(180deg, #ee5f5b, #bd362f));
 	border:solid 1px #bd362f;
 }
 .btn-danger:hover {
-	.background-image(linear-gradient(0deg, #ee5f5b, #bd362f));
-	//.gradient(~"linear-gradient(0deg, #ee5f5b, #bd362f)");
+	@include background-image(linear-gradient(0deg, #ee5f5b, #bd362f));
 }
 .btn-success {
-	.btn-base();
-	.background-image(linear-gradient(180deg, #62c462, #51a351));
-	//.gradient(~"linear-gradient(180deg, #62c462, #51a351)");
+	@include btn-base();
+	@include background-image(linear-gradient(180deg, #62c462, #51a351));
 	border:solid 1px #51a351;
 }
 .btn-success:hover {
-	.background-image(linear-gradient(0deg, #62c462, #51a351));
-	//.gradient(~"linear-gradient(0deg, #62c462, #51a351)");
+	@include background-image(linear-gradient(0deg, #62c462, #51a351));
 }
 .btn-info {
-	.btn-base();
-	.background-image(linear-gradient(180deg, #5bc0de, #2f96b4));
-	//.gradient(~"linear-gradient(180deg, #5bc0de, #2f96b4)");
+	@include btn-base();
+	@include background-image(linear-gradient(180deg, #5bc0de, #2f96b4));
 	border:solid 1px #2f96b4;
 }
 .btn-info:hover {
-	.background-image(linear-gradient(0deg, #5bc0de, #2f96b4));
-	//.gradient(~"linear-gradient(0deg, #5bc0de, #2f96b4)");
+	@include background-image(linear-gradient(0deg, #5bc0de, #2f96b4));
 }
 .btn-inverse {
-	.btn-base();
-	.background-image(linear-gradient(180deg, #444444, #222222));
-	//.gradient(~"linear-gradient(180deg, #444444, #222222)");
+	@include btn-base();
+	@include background-image(linear-gradient(180deg, #444444, #222222));
 	border:solid 1px #222222;
 }
 .btn-inverse:hover {
-	.background-image(linear-gradient(0deg, #444444, #222222));
-	//.gradient(~"linear-gradient(0deg, #444444, #222222)");
+	@include background-image(linear-gradient(0deg, #444444, #222222));
 }

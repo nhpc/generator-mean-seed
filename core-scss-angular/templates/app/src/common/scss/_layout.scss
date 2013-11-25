@@ -1,5 +1,5 @@
 //in house / non-3rd party files
-.clearfix ()
+@mixin clearfix ()
 {
 	content: ".";
 	display: block;
@@ -8,7 +8,7 @@
 	visibility: hidden;
 }
 .clearfix:after {
-	.clearfix();
+	@include clearfix();
 }
 
 .center {
@@ -41,38 +41,4 @@
 }
 .pull-right {
 	float:right;
-}
-
-
-//2 column fixed + fluid layout (using floats instead of flexbox)
-.fluid-left {
-	float:left;
-	width:100%;
-}
-.fixed-right {
-	float:right;
-	/*
-	width:50px;
-	margin-left:-50px;
-	*/
-}
-.fixed-right(@width) {
-	width:@width;
-	margin-left:(-1 *@width);
-	text-align:right;
-}
-.fluid-right {
-	float:right;
-	width:100%;
-}
-.fixed-left {
-	float:left;
-	/*
-	width:50px;
-	margin-right:-50px;
-	*/
-}
-.fixed-left(@width) {
-	width:@width;
-	margin-right:(-1 *@width);
 }

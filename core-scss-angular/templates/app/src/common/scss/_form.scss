@@ -1,5 +1,5 @@
 input, textarea, select {
-	.box-sizing(border-box);
+	@include box-sizing(border-box);
 	padding: 5px 6px;
 	height:auto;
 	width:100%;

@@ -1,18 +1,17 @@
 //IMPORTANT: namespace variables to avoid conflicts in other files!
-@footer-height: 45px;
-.footer-fixed {
+$header-height: 45px;
+.header-fixed {
 	position:fixed;
 	left:0;
 	right:0;
-	bottom:0;
-	height: @footer-height;
+	height: $header-height;
 	z-index:9999;
 }
-.footer-spacer {
+.header-spacer {
 	position:relative;
-	height: @footer-height;
+	height: $header-height;
 }
 
-.footer.hidden {
+.header.hidden {
 	display:none;
 }

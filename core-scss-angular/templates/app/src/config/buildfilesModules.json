@@ -37,27 +37,26 @@
 					},
 					"dirs": [
 						{
-							"name": "lesshat",
+							"name": "bourbon",
 							"files": {
-								"less": [
-									"build/lesshat.less"
+								"scss": [
+									"build/bourbon.scss"
 								]
 							}
 						},
 						{
 							"name": "less-flexbox",
 							"files": {
-								"less": [
-									"flexbox-mixins.less",
-									"flexbox.less"
+								"css": [
+									"flexbox.min.css"
 								]
 							}
 						},
 						{
 							"name": "font-awesome",
 							"files": {
-								"less": [
-									"less/font-awesome.less"
+								"scss": [
+									"scss/font-awesome.scss"
 								]
 							}
 						},
@@ -67,8 +66,8 @@
 								"js": [
 									"forminput.min.js"
 								],
-								"less": [
-									"forminput.less"
+								"css": [
+									"forminput.min.css"
 								]
 							}
 						}
@@ -114,23 +113,23 @@
 			]
 		},
 		{
-			"name": "commonLess",
-			"path": "common/less",
+			"name": "commonScss",
+			"path": "common/scss",
 			"comment": "Separated this from 'common' for ordering purposes",
 			"files": {
-				"less": [
-					"reset.less",
-					"fonts.less",
-					"bootstrap-parts.less",
-					"body-other.less",
-					"form.less",
-					"buttons.less",
-					"typography.less",
-					"layout.less",
-					"margin-padding.less",
-					"layout-animate.less",
-					"list.less",
-					"pop-up.less"
+				"scss": [
+					"_reset.scss",
+					"_fonts.scss",
+					"_bootstrap-parts.scss",
+					"_body-other.scss",
+					"_form.scss",
+					"_buttons.scss",
+					"_typography.scss",
+					"_layout.scss",
+					"_margin-padding.scss",
+					"_layout-animate.scss",
+					"_list.scss",
+					"_pop-up.scss"
 				]
 			}
 		},
@@ -212,8 +211,8 @@
 								"js": [
 									"nav.js"
 								],
-								"less": [
-									"nav.less"
+								"scss": [
+									"_nav.scss"
 								]
 							},
 							"dirs": [
@@ -223,8 +222,8 @@
 										"html": [
 											"header-centered.html"
 										],
-										"less": [
-											"header-centered.less"
+										"scss": [
+											"_header-centered.scss"
 										]
 									}
 								},
@@ -234,8 +233,8 @@
 										"html": [
 											"footer-flex.html"
 										],
-										"less": [
-											"footer-flex.less"
+										"scss": [
+											"_footer-flex.scss"
 										]
 									}
 								}
@@ -263,8 +262,8 @@
 								"js": [
 									"appalert.js"
 								],
-								"less": [
-									"appalert.less"
+								"scss": [
+									"_appalert.scss"
 								],
 								"test": [
 									"appalert.spec.js"
@@ -277,8 +276,8 @@
 								"js": [
 									"login.js"
 								],
-								"less": [
-									"login.less"
+								"scss": [
+									"_login.scss"
 								]
 							}
 						},
@@ -288,8 +287,8 @@
 								"js": [
 									"signup.js"
 								],
-								"less": [
-									"signup.less"
+								"scss": [
+									"_signup.scss"
 								]
 							}
 						},
@@ -299,8 +298,8 @@
 								"js": [
 									"socialAuth.js"
 								],
-								"less": [
-									"social-auth.less"
+								"scss": [
+									"_social-auth.scss"
 								]
 							}
 						}
@@ -326,8 +325,8 @@
 								"html": [
 									"header.html"
 								],
-								"less": [
-									"header.less"
+								"scss": [
+									"_header.scss"
 								],
 								"test": [
 									"HeaderCtrl.spec.js"
@@ -343,8 +342,8 @@
 								"html": [
 									"footer.html"
 								],
-								"less": [
-									"footer.less"
+								"scss": [
+									"_footer.scss"
 								]
 							}
 						},
@@ -368,8 +367,8 @@
 								"html": [
 									"login.html"
 								],
-								"less": [
-									"login.less"
+								"scss": [
+									"_login.scss"
 								]
 							}
 						},
@@ -382,8 +381,8 @@
 								"html": [
 									"signup.html"
 								],
-								"less": [
-									"signup.less"
+								"scss": [
+									"_signup.scss"
 								]
 							}
 						},
@@ -396,8 +395,8 @@
 								"html": [
 									"password-reset.html"
 								],
-								"less": [
-									"password-reset.less"
+								"scss": [
+									"_password-reset.scss"
 								],
 								"test": [
 									"PasswordResetCtrl.spec.js"
@@ -449,8 +448,8 @@
 								"html": [
 									"design.html"
 								],
-								"less": [
-									"design.less"
+								"scss": [
+									"_design.scss"
 								]
 							}
 						}

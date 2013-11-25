@@ -1,8 +1,8 @@
-//@width:250px;
-@width:100%;
-//@leftPx: 200px;
-//@leftPx: 100%;
-@leftPx:@width;
+//$width:250px;
+$width:100%;
+//$leftPx: 200px;
+//$leftPx: 100%;
+$leftPx:$width;
 /*
 //overflow hidden is necessary to prevent horizontal scrollbar during animation BUT if put on the wrong div it won't work OR it will prevent a vertical scrollbar at ALL times (so tall content gets cut off..)
 //doesn't work - cuts off all content
@@ -21,8 +21,8 @@ overflow:hidden;
 //both
 .view-enter, .view-leave {
 	//.transition(~"all .25s linear");		//do NOT transition all properties otherwise it creates width issues
-	.transition(~"left .25s linear");
-	width:@width;
+	@include transition(left .25s linear);
+	width:$width;
 	/*
 	left:0;
 	right:0;
@@ -33,7 +33,7 @@ overflow:hidden;
 }
 //enter
 .view-enter {
-	left:@leftPx;
+	left:$leftPx;
 	//opacity:0;
 }
 .view-enter.view-enter-active {
@@ -47,6 +47,6 @@ overflow:hidden;
 	//opacity:1;
 }
 .view-leave.view-leave-active {
-	left:(-1 * @leftPx);
+	left:(-1 * $leftPx);
 	//opacity:0;
 }

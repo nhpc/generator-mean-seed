@@ -1,0 +1,17 @@
+//variable definitions
+$font-dir: '../common/font/';		//hardcoded - NOTE: this is relative to the compiled css file, NOT this file
+
+//mixins
+@import 'mixins/_text.scss';
+@import 'mixins/_triangle.scss';
+
+//variables
+@import 'variables/_colors.scss';
+@import 'variables/_dir-paths.scss';
+
+<%
+var filePaths = grunt.config('filePathsScss');
+for(var ii=0; ii<filePaths.length; ii++) {
+	print("@import '" + filePaths[ii] + "';\n");
+}
+%>

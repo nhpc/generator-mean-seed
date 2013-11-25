@@ -1,7 +1,7 @@
 .social-auth-button-facebook, .social-auth-button-google {
 	display:inline-block;
 	margin:10px;
-	.border-radius(4px);
+	@include border-radius(4px);
 	padding:5px 5px;
 	cursor:pointer;
 	min-width:125px;
@@ -15,12 +15,10 @@
 }
 .social-auth-button-facebook {
 	color:white;
-	.background-image(linear-gradient(180deg, rgb(112,133,185), rgb(79,96,130)));
-	//.gradient(~"linear-gradient(180deg, rgb(112,133,185), rgb(79,96,130))");
+	@include background-image(linear-gradient(180deg, rgb(112,133,185), rgb(79,96,130)));
 }
 .social-auth-button-facebook:hover {
-	.background-image(linear-gradient(0deg, rgb(112,133,185), rgb(79,96,130)));
-	//.gradient(~"linear-gradient(0deg, rgb(112,133,185), rgb(79,96,130))");
+	@include background-image(linear-gradient(0deg, rgb(112,133,185), rgb(79,96,130)));
 }
 .social-auth-button-google {
 	color:white;

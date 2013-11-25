@@ -13,87 +13,87 @@
 
 /* colors list - 2 css classes (1 swatch, 1 text) for each class; class just uses a scss theme */
 .blue .design-color-swatch {
-	background-color:@blue;
+	background-color:$blue;
 }
 .blue .design-color-text {
-	color:@blue;
+	color:$blue;
 }
 
 .blueDark .design-color-swatch {
-	background-color:@blueDark;
+	background-color:$blueDark;
 }
 .blueDark .design-color-text {
-	color:@blueDark;
+	color:$blueDark;
 }
 
 .green .design-color-swatch {
-	background-color:@green;
+	background-color:$green;
 }
 .green .design-color-text {
-	color:@green;
+	color:$green;
 }
 
 .red .design-color-swatch {
-	background-color:@red;
+	background-color:$red;
 }
 .red .design-color-text {
-	color:@red;
+	color:$red;
 }
 
 .yellow .design-color-swatch {
-	background-color:@yellow;
+	background-color:$yellow;
 }
 .yellow .design-color-text {
-	color:@yellow;
+	color:$yellow;
 }
 
 .orange .design-color-swatch {
-	background-color:@orange;
+	background-color:$orange;
 }
 .orange .design-color-text {
-	color:@orange;
+	color:$orange;
 }
 
 .pink .design-color-swatch {
-	background-color:@pink;
+	background-color:$pink;
 }
 .pink .design-color-text {
-	color:@pink;
+	color:$pink;
 }
 
 .purple .design-color-swatch {
-	background-color:@purple;
+	background-color:$purple;
 }
 .purple .design-color-text {
-	color:@purple;
+	color:$purple;
 }
 
 .warningText .design-color-swatch {
-	background-color:@warningText;
+	background-color:$warningText;
 }
 .warningText .design-color-text {
-	color:@warningText;
+	color:$warningText;
 }
 
 .errorText .design-color-swatch {
-	background-color:@errorText;
+	background-color:$errorText;
 }
 .errorText .design-color-text {
-	color:@errorText;
+	color:$errorText;
 }
 
 .successText .design-color-swatch {
-	background-color:@successText;
+	background-color:$successText;
 }
 .successText .design-color-text {
-	color:@successText;
+	color:$successText;
 }
 
 .infoText .design-color-swatch {
-	background-color:@infoText;
+	background-color:$infoText;
 }
 .infoText .design-color-text {
-	color:@infoText;
+	color:$infoText;
 }
 
 /* end: colors list */
