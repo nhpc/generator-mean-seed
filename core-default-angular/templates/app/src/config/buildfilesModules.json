@@ -48,7 +48,6 @@
 							"name": "less-flexbox",
 							"files": {
 								"less": [
-									"flexbox-mixins.less",
 									"flexbox.less"
 								]
 							}
