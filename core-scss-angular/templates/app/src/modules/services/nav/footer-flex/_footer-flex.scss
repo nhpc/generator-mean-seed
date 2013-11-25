@@ -32,13 +32,13 @@
 
 //steps (show arrow on left)
 .nav-footer.steps >div a::before {
-	@include triangle-right(12px; 23px; $grayDark);
+	@include triangle-right(12px, 23px, $grayDark);
 	top:0;
 	right:-15px;
 	z-index:99;		//so step arrows show up on TOP of background color
 }
 .nav-footer.steps >div a::after {
-	@include triangle-right(12px; 23px; $gray);
+	@include triangle-right(12px, 23px, $gray);
 	top:0;
 	right:-14px;
 	z-index:99;		//so step arrows show up on TOP of background color

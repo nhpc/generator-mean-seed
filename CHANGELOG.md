@@ -2,11 +2,11 @@ Version numbers correspond to `package.json` version
 
 # 1.0.6
 ## Features
+- added in 'core-scss' (sub)generator for using SASS instead of LESS
 - changed to core generators
 	- renamed 'main' generator to 'core-default'
-	- added in 'core-scss' for using SASS instead of LESS
 - modularized core generators to use/call frontend and backend generators to allow for greater code re-use (since LESS and SCSS both use the SAME backend code, we should not duplicate it)
-	- the check in each generator checks an array for `indexOf()` now
+	- the check in each generator checks an array for `indexOf()` now so multiple this.subgenerators can be active at once.
 	- added in 'helper' generators:
 		- `commands`
 		- `log-next-steps`

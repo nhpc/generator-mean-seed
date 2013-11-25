@@ -41,6 +41,18 @@ $ yo mean-seed
 
 
 
+## (Sub)Generators List
+
+- core-default
+- core-scss
+- ng-route
+
+See the `docs/generators` folder for more info.
+
+More generators coming - feel free to create one and submit a pull request!
+
+
+
 ## Documentation / More Info
 See the [generated README.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/_README.md) file and the `docs` folder for all documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
 

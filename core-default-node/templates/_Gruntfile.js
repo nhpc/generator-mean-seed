@@ -409,7 +409,7 @@ module.exports = function(grunt) {
 					else if(cssPreprocessor =='scss') {
 						print("baseScss: {\n"+
 							"\t\t\t\t\t\tsrc: publicPathRelative+'common/scss/_base-grunt.scss',\n"+
-							"\t\t\t\t\t\tdest: publicPathRelative+'common/scss/_base.scss'\n"+
+							"\t\t\t\t\t\tdest: publicPathRelative+'common/scss/base.scss'\n"+
 						"\t\t\t\t\t},");
 					}
 					%>
@@ -562,7 +562,7 @@ module.exports = function(grunt) {
 					"\t\t\t\tdev: {\n"+
 						"\t\t\t\t\toptions: {\n"+
 							"\t\t\t\t\t\tsassDir: publicPathRelative+'common/scss',\n"+
-							"\t\t\t\t\t\tcssDir: buildPath+'css'\n"+
+							"\t\t\t\t\t\tcssDir: buildPath\n"+
 						"\t\t\t\t\t},\n"+
 					"\t\t\t\t}\n"+
 				"\t\t\t},");

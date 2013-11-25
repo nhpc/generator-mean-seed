@@ -25,19 +25,19 @@ $inputHeight:                   $baseLineHeight + 10px; // base line-height + 8p
 // -------------------------
 $warningText:             #c09853;
 $warningBackground:       #fcf8e3;
-$warningBorder:           darken(spin($warningBackground, -10), 3%);
+$warningBorder:           darken($warningBackground, 3%);
 
 $errorText:               #b94a48;
 $errorBackground:         #f2dede;
-$errorBorder:             darken(spin($errorBackground, -10), 3%);
+$errorBorder:             darken($errorBackground, 3%);
 
 $successText:             #468847;
 $successBackground:       #dff0d8;
-$successBorder:           darken(spin($successBackground, -10), 5%);
+$successBorder:           darken($successBackground, 5%);
 
 $infoText:                #3a87ad;
 $infoBackground:          #d9edf7;
-$infoBorder:              darken(spin($infoBackground, -10), 7%);
+$infoBorder:              darken($infoBackground, 7%);
 
 
 
@@ -66,7 +66,7 @@ $borderRadiusSmall:     3px;
 // Opacity
 @mixin opacity($opacity) {
   opacity: $opacity / 100;
-  filter: ~"alpha(opacity=${opacity})";
+  //filter: ~"alpha(opacity=${opacity})";
 }
 
 
@@ -86,12 +86,12 @@ input, textarea, select {
 	line-height: $baseLineHeight;
 	*/
 	color: $gray;
-	.border-radius($inputBorderRadius);
+	border-radius: $inputBorderRadius;
 	vertical-align: middle;
   
 	background-color: $inputBackground;
 	border: 1px solid $inputBorder;
-	@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 	@include transition(border linear .2s, box-shadow linear .2s);
 
 	// Focus state
@@ -99,7 +99,7 @@ input, textarea, select {
 		border-color: rgba(82,168,236,.8);
 		outline: 0;
 		outline: thin dotted \9; /* IE6-9 */
-		@include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6));
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
 	}
 }
 
@@ -130,7 +130,7 @@ select {
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
   background-color: $warningBackground;
   border: 1px solid $warningBorder;
-  @include border-radius($baseBorderRadius);
+  border-radius: $baseBorderRadius;
 }
 .alert,
 .alert h4 {

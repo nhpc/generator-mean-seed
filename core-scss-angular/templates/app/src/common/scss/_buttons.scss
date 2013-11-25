@@ -73,7 +73,7 @@ button[type="submit"].btn-block, .btn-block.jrg-forminput-submit {
 .btn-large {
   padding: $paddingLarge;
   font-size: $fontSizeLarge;
-  @include border-radius($borderRadiusLarge);
+  border-radius: $borderRadiusLarge;
 }
 .btn-large [class^="icon-"], .btn-large [class^="fa-"],
 .btn-large [class*=" icon-"], .btn-large [class*=" fa-"] {
@@ -84,7 +84,7 @@ button[type="submit"].btn-block, .btn-block.jrg-forminput-submit {
 .btn-small {
   padding: $paddingSmall;
   font-size: $fontSizeSmall;
-  @include border-radius($borderRadiusSmall);
+  border-radius: $borderRadiusSmall;
   min-width:0;
 }
 .btn-small [class^="icon-"], .btn-small [class^="fa-"],
@@ -100,7 +100,7 @@ button[type="submit"].btn-block, .btn-block.jrg-forminput-submit {
 .btn-mini {
   padding: $paddingMini;
   font-size: $fontSizeMini;
-  @include border-radius($borderRadiusSmall);
+  border-radius: $borderRadiusSmall;
   min-width:0;
 }
 //end: from Twitter Bootstrap

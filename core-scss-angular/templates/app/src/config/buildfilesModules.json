@@ -40,7 +40,7 @@
 							"name": "bourbon",
 							"files": {
 								"scss": [
-									"build/bourbon.scss"
+									"app/assets/stylesheets/_bourbon.scss"
 								]
 							}
 						},
@@ -120,11 +120,11 @@
 				"scss": [
 					"_reset.scss",
 					"_fonts.scss",
+					"_typography.scss",
 					"_bootstrap-parts.scss",
 					"_body-other.scss",
 					"_form.scss",
 					"_buttons.scss",
-					"_typography.scss",
 					"_layout.scss",
 					"_margin-padding.scss",
 					"_layout-animate.scss",

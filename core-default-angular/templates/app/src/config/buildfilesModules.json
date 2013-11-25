@@ -120,11 +120,11 @@
 				"less": [
 					"reset.less",
 					"fonts.less",
+					"typography.less",
 					"bootstrap-parts.less",
 					"body-other.less",
 					"form.less",
 					"buttons.less",
-					"typography.less",
 					"layout.less",
 					"margin-padding.less",
 					"layout-animate.less",
