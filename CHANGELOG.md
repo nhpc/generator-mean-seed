@@ -14,6 +14,7 @@ Version numbers correspond to `package.json` version
 - added `docs` folder with generator documentation
 
 ## Breaking Changes
+- rename socialAuth directive to socialAuthBtn to not conflict with socialAuth service
 - added `opt` prefix to all prompts for namespacing - i.e. to avoid conflicts with Yeoman properties/methods (such as npmInstall)
 - changed prompts from skipInstall to install (from negative to positive - defaults to NOT run now), specifically:
 	- `skipNpmInstall` to `optNpmInstall`
