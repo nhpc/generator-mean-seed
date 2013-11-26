@@ -39,4 +39,4 @@ Generators (used interchangeably with "subgenerators" since they are ALL subgene
 2. Update the following files:
 	1. `Gruntfile.js` (jshint for linting whatever files you want to lint)
 	2. `app/index.js` for calling your generator (search for `core-default` or an existing generator and update/add yours accordingly)
-3. Add documentation for your new generator to the `docs/generators` folder (either in (modules.md)[modules.md] if it's a non-Core specific module or in the appropriate `core-*.md` file.
+3. Add documentation for your new generator to the `docs/generators` folder - either in (modules.md)[modules.md] if it's a non-Core specific module or in the appropriate `core-*.md` file.
