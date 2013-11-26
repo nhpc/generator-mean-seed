@@ -143,7 +143,6 @@ if(this.optSubGenerators.indexOf('core-scss-angular') >-1) {
 	this.directory('app/src/modules/directives');
 	this.directory('app/src/modules/pages');
 	
-	//this will copy over a grunt generated file (app/src/modules/services/config/config.js) but it's fine since it will be over-writen by grunt later)
 	this.directory('app/src/modules/services');
 	/*
 	this.directory('app/src/modules/services/auth');
