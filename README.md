@@ -13,7 +13,7 @@
 	
 ## Getting Started
 
-NOTE: This assumes you already have the necessary programs (i.e. Git, Node.js, MongoDB, PhantomJS) installed; see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/setup-server-linux.md)
+NOTE: This assumes you already have the necessary programs (i.e. Git, Node.js, MongoDB, PhantomJS) installed; see [here for Mac/Windows](core-default/templates/docs/setup-server-windows-mac.md) or [here for Linux](core-default/templates/docs/setup-server-linux.md)
 
 Install Yeoman Yo, Bower, Grunt and other global node modules we'll need, if you don't have them already:
 ```
@@ -30,11 +30,11 @@ Naviagate to a (new) directory where you want to create your AngularJS and node.
 $ yo mean-seed
 ```
 
-- NOTE: you can also (first) create a `yo-configs` folder with .json files for the prompts so you don't have to type them all out. This is useful for storing multiple different configurations for different projects - just tell the generator which config to use and you're all set! See the [yo_configs folder](https://github.com/jackrabbitsgroup/generator-mean-seed/tree/master/yo-configs) for examples.
+- NOTE: you can also (first) create a `yo-configs` folder with .json files for the prompts so you don't have to type them all out. This is useful for storing multiple different configurations for different projects - just tell the generator which config to use and you're all set! See the [yo_configs folder](yo-configs) for examples.
 - NOTE: if you get an EACCESS / permission denied error during the npm install, find the folder that had permissions issues (from the log output) and run `sudo chown -R $USER [path to problematic folder]`.
 	- http://foohack.com/2010/08/intro-to-npm/#what_no_sudo
 
-[See here](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/_README.md) for more/full info and steps.
+[See here](core-default/templates/_README.md) for more/full info and steps.
 
 ### Next Steps
 - See the generated README.md file in your new mean-seed app!
@@ -54,16 +54,16 @@ More generators coming - feel free to create one and submit a pull request!
 
 
 ## Documentation / More Info
-See the [generated README.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/_README.md) file and the `docs` folder for all documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
+See the [generated README.md](core-default/templates/_README.md) file and the `docs` folder for all documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
 
-- [overview.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/overview.md)
-- [setup-running folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/setup-running/)
-	- [setup-running/overview.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/setup-running/overview.md)
-- [tools-dependencies folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/tools-dependencies/)
-- [files folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/files/)
-- [testing-automation folder](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/testing-automation/)
-- [frontend-angular/common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/frontend-angular/common-actions.md)
-- [backend-node/common-actions.md](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/core-default/templates/docs/backend-node/common-actions.md)
+- [overview.md](core-default/templates/docs/overview.md)
+- [setup-running folder](core-default/templates/docs/setup-running/)
+	- [setup-running/overview.md](core-default/templates/docs/setup-running/overview.md)
+- [tools-dependencies folder](core-default/templates/docs/tools-dependencies/)
+- [files folder](core-default/templates/docs/files/)
+- [testing-automation folder](core-default/templates/docs/testing-automation/)
+- [frontend-angular/common-actions.md](core-default/templates/docs/frontend-angular/common-actions.md)
+- [backend-node/common-actions.md](core-default/templates/docs/backend-node/common-actions.md)
 
 
 ## Miscellaneous
