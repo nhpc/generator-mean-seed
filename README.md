@@ -13,7 +13,7 @@
 	
 ## Getting Started
 
-NOTE: This assumes you already have the necessary programs (i.e. Git, Node.js, MongoDB, PhantomJS) installed; see [here for Mac/Windows](core-default-node/templates/docs/setup-server-windows-mac.md) or [here for Linux](core-default-node/templates/docs/setup-server-linux.md)
+NOTE: This assumes you already have the necessary programs (i.e. Git, Node.js, MongoDB, PhantomJS) installed; see [here for Mac](core-default-node/templates/docs/setup-running/server-mac.md) or [here for Windows](core-default-node/templates/docs/setup-running/server-windows.md)or [here for Linux](core-default-node/templates/docs/setup-running/server-linux.md)
 
 Install Yeoman Yo, Bower, Grunt and other global node modules we'll need, if you don't have them already:
 ```
