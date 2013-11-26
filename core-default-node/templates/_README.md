@@ -8,7 +8,7 @@
 
 ## Quick Start
 
-**NOTE: If you want to CLONE this EXISTING repository, see [cloning.md](docs/cloning.md) instead.** Otherwise, if you want to build a NEW mean-seed from scratch using the Yeoman Generator, follow these steps below.
+**NOTE: If you want to CLONE this EXISTING repository, see [cloning.md](docs/setup-running/cloning.md) instead.** Otherwise, if you want to build a NEW mean-seed from scratch using the Yeoman Generator, follow these steps below.
 
 1. machine (global / program) installs (if you don't have them already)
 	<%
