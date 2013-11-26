@@ -10,11 +10,11 @@ In general you'll have 2-3 terminal/command prompt windows open at once - one fo
 1. machine (global / program) installs (if you don't have them already)
 	<%
 	if(optCssPreprocessor =='less') {
-	print("1. install git, nodejs, mongodb, phantomjs, java - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)\n"+
+	print("1. install git, nodejs, mongodb, phantomjs, java - see [here for Mac](server-mac.md) or [here for Windows](server-windows.md) or [here for Linux](server-linux.md)\n"+
 	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`");
 	}
 	else if(optCssPreprocessor =='scss') {
-	print("1. install git, nodejs, mongodb, phantomjs, java, ruby, sass - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)\n"+
+	print("1. install git, nodejs, mongodb, phantomjs, java, ruby, sass - see [here for Mac](server-mac.md) or [here for Windows](server-windows.md) or [here for Linux](server-linux.md)\n"+
 	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever`");
 	}
 	%>
@@ -45,9 +45,9 @@ In general you'll have 2-3 terminal/command prompt windows open at once - one fo
 	
 
 ### More Info
-See `setup-detailed.md` and `running.md` in the `docs` folder.
+See [setup-detailed.md](setup-detailed.md) and [running.md](running.md) in the `docs` folder.
 
 
 
 ## Configs
-See `configs.md` in the `docs` folder
+See [configs.md](../files/configs.md) in the `docs` folder
