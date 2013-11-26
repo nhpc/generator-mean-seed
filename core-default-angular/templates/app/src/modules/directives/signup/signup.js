@@ -39,7 +39,7 @@ angular.module('dtv').directive('dtvSignup', ['svcConfig', function (svcConfig) 
 					"<button class='btn btn-primary jrg-forminput-submit' type='submit' >Sign Up</button>"+
 				"</form>"+
 
-				"<div dtv-social-auth button-text='Sign Up'></div>"+
+				"<div dtv-social-auth-btn button-text='Sign Up'></div>"+
 				
 			"</div>"+
 			

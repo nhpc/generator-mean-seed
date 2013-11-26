@@ -12,7 +12,7 @@ NOTE: this directive has http (backend) calls in it! In general this is bad prac
 
 @usage
 partial / html:
-<div dtv-social-auth button-text='Sign Up'></div>
+<div dtv-social-auth-btn button-text='Sign Up'></div>
 
 controller / js:
 
@@ -21,7 +21,7 @@ controller / js:
 
 'use strict';
 
-angular.module('dtv').directive('dtvSocialAuth', ['svcHttp', 'UserModel', 'svcConfig', '$rootScope', 'svcSocialAuth',
+angular.module('dtv').directive('dtvSocialAuthBtn', ['svcHttp', 'UserModel', 'svcConfig', '$rootScope', 'svcSocialAuth',
 function (svcHttp, UserModel, svcConfig, $rootScope, svcSocialAuth) {
   return {
 		restrict: 'A',
@@ -35,9 +35,9 @@ function (svcHttp, UserModel, svcConfig, $rootScope, svcSocialAuth) {
 			};
 			attrs =angular.extend(defaultAttrs, attrs);
 			
-			var html ="<div class='social-auth-buttons center margin-t'>"+
-				"<div class='social-auth-button-facebook' ng-click='fbLogin()'><i class='fa fa-facebook padding-lr social-auth-button-icon'></i><div class='social-auth-button-text'>"+attrs.buttonText+"</div></div>"+
-				"<div class='social-auth-button-google' ng-click='googleLogin()'><i class='fa fa-google-plus padding-lr social-auth-button-icon'></i><div class='social-auth-button-text'>"+attrs.buttonText+"</div></div>"+
+			var html ="<div class='social-auth-btn-buttons center margin-t'>"+
+				"<div class='social-auth-btn-button-facebook' ng-click='fbLogin()'><i class='fa fa-facebook padding-lr social-auth-btn-button-icon'></i><div class='social-auth-btn-button-text'>"+attrs.buttonText+"</div></div>"+
+				"<div class='social-auth-btn-button-google' ng-click='googleLogin()'><i class='fa fa-google-plus padding-lr social-auth-btn-button-icon'></i><div class='social-auth-btn-button-text'>"+attrs.buttonText+"</div></div>"+
 			"</div>";
 			return html;
 		},

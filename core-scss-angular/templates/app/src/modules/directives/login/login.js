@@ -47,7 +47,7 @@ angular.module('dtv').directive('dtvLogin', ['svcConfig', function (svcConfig) {
 						"<div class='jrg-forminput-submit btn btn-primary login-form-button-right' ng-click='forgotPassDtv({})' >Remind Me!</div>"+
 					"</div>"+
 					
-					"<div dtv-social-auth button-text='Login'></div>"+
+					"<div dtv-social-auth-btn button-text='Login'></div>"+
 					
 				"</form>"+
 

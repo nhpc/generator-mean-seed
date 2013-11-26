@@ -293,13 +293,13 @@
 							}
 						},
 						{
-							"name": "socialAuth",
+							"name": "socialAuthBtn",
 							"files": {
 								"js": [
-									"socialAuth.js"
+									"socialAuthBtn.js"
 								],
 								"scss": [
-									"_social-auth.scss"
+									"_social-auth-btn.scss"
 								]
 							}
 						}

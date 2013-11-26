@@ -98,7 +98,7 @@ Files are organized in a modular way. Each "component" is a folder containing al
 		- appalert
 		- login
 		- signup
-		- socialAuth
+		- socialAuthBtn
 	- services		Angular services (models/data and libraries of common functions). The important ones are listed below (not an exhaustive list).
 		- auth		Authentication (the `app.js` router calls this function before each page load to see if the user is logged in or not).
 		- config
