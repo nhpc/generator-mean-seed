@@ -1,7 +1,7 @@
 # Deploy
 Steps to deploy your app to a live (linux) staging and/or production server
 
-If you haven't done so already, purchase a (new) Linux server (i.e. from Digital Ocean, Rackspace, Amazon) and follow `setup-server-linux.md` to install/setup your Linux server.
+If you haven't done so already, purchase a (new) Linux server (i.e. from Digital Ocean, Rackspace, Amazon) and follow [server-linux.md](server-linux.md) to install/setup your Linux server.
 
 ## Getting (& updating) files to (another) server
 
