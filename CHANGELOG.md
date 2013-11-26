@@ -2,16 +2,17 @@ Version numbers correspond to `package.json` version
 
 # 1.0.6
 ## Features
-- added in 'core-scss' (sub)generator for using SASS/SCSS instead of LESS
+- add in 'core-scss' (sub)generator for using SASS/SCSS instead of LESS
 - add SCSS support to `ng-route` generator
-- changed to core generators
-	- renamed 'main' generator to 'core-default'
-- modularized core generators to use/call frontend and backend generators to allow for greater code re-use (since LESS and SCSS both use the SAME backend code, we should not duplicate it)
+- change to core generators
+	- rename 'main' generator to 'core-default'
+- modularize core generators to use/call frontend and backend generators to allow for greater code re-use (since LESS and SCSS both use the SAME backend code, we should not duplicate it)
 	- the check in each generator checks an array for `indexOf()` now so multiple this.optSubgenerators can be active at once.
-	- added in 'helper' generators:
+	- add in 'helper' generators:
 		- `helper-commands`
 		- `helper-log-next-steps`
-- added `docs` folder with generator documentation
+- add `docs` folder with generator documentation
+- add `grunt-contrib-clean` for removing coverage folders first
 - rename `coverage` folder to `coverage-angular` for frontend test coverage output
 
 ## Breaking Changes
