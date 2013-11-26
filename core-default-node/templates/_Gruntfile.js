@@ -86,10 +86,10 @@ module.exports = function(grunt) {
 	*/
     grunt.loadNpmTasks('grunt-contrib-concat');
 	<%
-	if(cssPreprocessor =='less') {
+	if(optCssPreprocessor =='less') {
 		print("grunt.loadNpmTasks('grunt-contrib-less');");
 	}
-	else if(cssPreprocessor =='scss') {
+	else if(optCssPreprocessor =='scss') {
 		print("grunt.loadNpmTasks('grunt-contrib-compass');");
 	}
 	%>
@@ -236,10 +236,10 @@ module.exports = function(grunt) {
 			//will be filled/created in buildfiles task
 			filePathsCss:       '',
 			<%
-			if(cssPreprocessor =='less') {
+			if(optCssPreprocessor =='less') {
 				print("filePathsLess: '',");
 			}
-			else if(cssPreprocessor =='scss') {
+			else if(optCssPreprocessor =='scss') {
 				print("filePathsScss: '',");
 			}
 			%>
@@ -254,10 +254,10 @@ module.exports = function(grunt) {
 			filePathMinCss:     staticPath+paths.minCss,
 			//lessDirPathRoot: '../'+cfgJson.serverPath,        //mobile phonegap
 			<%
-			if(cssPreprocessor =='less') {
+			if(optCssPreprocessor =='less') {
 				print("lessDirPathRoot:    cfgJson.less.dirPathRootPrefix+staticPath,");
 			}
-			else if(cssPreprocessor =='scss') {
+			else if(optCssPreprocessor =='scss') {
 				print("scssDirPathRoot:    cfgJson.scss.dirPathRootPrefix+staticPath,");
 			}
 			%>
@@ -295,7 +295,7 @@ module.exports = function(grunt) {
 						}
 					},
 					<%
-					if(cssPreprocessor =='less') {
+					if(optCssPreprocessor =='less') {
 						print("//_base.less file paths (have a prefix path relative to this file for @import)\n"+
 						"\t\t\t\t\tlessFilePaths:{\n"+
 							"\t\t\t\t\t\tprefix: '../../',\n"+
@@ -305,7 +305,7 @@ module.exports = function(grunt) {
 							"\t\t\t\t\t\t}\n"+
 						"\t\t\t\t\t},");
 					}
-					else if(cssPreprocessor =='scss') {
+					else if(optCssPreprocessor =='scss') {
 						print("//@todo - _base.scss file paths (have a prefix path relative to this file for @import)\n"+
 						"\t\t\t\t\tscssFilePaths:{\n"+
 							"\t\t\t\t\t\tprefix: '../../',\n"+
@@ -400,13 +400,13 @@ module.exports = function(grunt) {
 						dest:       publicPathRelative+"index.html"
 					},
 					<%
-					if(cssPreprocessor =='less') {
+					if(optCssPreprocessor =='less') {
 						print("baseLess: {\n"+
 							"\t\t\t\t\t\tsrc: publicPathRelative+'common/less/_base-grunt.less',\n"+
 							"\t\t\t\t\t\tdest: publicPathRelative+'common/less/_base.less'\n"+
 						"\t\t\t\t\t},");
 					}
-					else if(cssPreprocessor =='scss') {
+					else if(optCssPreprocessor =='scss') {
 						print("baseScss: {\n"+
 							"\t\t\t\t\t\tsrc: publicPathRelative+'common/scss/_base-grunt.scss',\n"+
 							"\t\t\t\t\t\tdest: publicPathRelative+'common/scss/base.scss'\n"+
@@ -430,13 +430,13 @@ module.exports = function(grunt) {
 						dest:       publicPathRelativeRoot+"config/karma.conf.js"
 					},
 					<%
-					if(cssPreprocessor =='less') {
+					if(optCssPreprocessor =='less') {
 						print("less: {\n"+
 							"\t\t\t\t\t\tsrc: publicPathRelative+'common/less/variables/_dir-paths.tpl',\n"+
 							"\t\t\t\t\t\tdest: publicPathRelative+'common/less/variables/_dir-paths.less'\n"+
 						"\t\t\t\t\t},");
 					}
-					else if(cssPreprocessor =='scss') {
+					else if(optCssPreprocessor =='scss') {
 						print("scss: {\n"+
 							"\t\t\t\t\t\tsrc: publicPathRelative+'common/scss/variables/_dir-paths.tpl',\n"+
 							"\t\t\t\t\t\tdest: publicPathRelative+'common/scss/variables/_dir-paths.scss'\n"+
@@ -545,7 +545,7 @@ module.exports = function(grunt) {
 				}
 			},
 			<%
-			if(cssPreprocessor =='less') {
+			if(optCssPreprocessor =='less') {
 				print("less: {\n"+
 					"\t\t\t\tdev: {\n"+
 						"\t\t\t\t\toptions: {\n"+
@@ -557,7 +557,7 @@ module.exports = function(grunt) {
 					"\t\t\t\t}\n"+
 				"\t\t\t},");
 			}
-			else if(cssPreprocessor =='scss') {
+			else if(optCssPreprocessor =='scss') {
 				print("compass: {\n"+
 					"\t\t\t\tdev: {\n"+
 						"\t\t\t\t\toptions: {\n"+
@@ -755,10 +755,10 @@ module.exports = function(grunt) {
 			fontAwesomeVars: {
 				main: {
 					<%
-					if(cssPreprocessor =='less') {
+					if(optCssPreprocessor =='less') {
 						print("variablesLessPath: publicPathRelativeRoot+'bower_components/font-awesome/less/variables.less',");
 					}
-					else if(cssPreprocessor =='scss') {
+					else if(optCssPreprocessor =='scss') {
 						print("variablesScssPath: publicPathRelativeRoot+'bower_components/font-awesome/scss/_variables.scss',");
 					}
 					%>
@@ -787,10 +787,10 @@ module.exports = function(grunt) {
 		
 		grunt.registerTask('build', ['buildfiles', 'ngtemplates:main', 'jshint:backend', 'jshint:beforeconcat', 'uglify:build', 'fontAwesomeVars',
 			<%
-			if(cssPreprocessor =='less') {
+			if(optCssPreprocessor =='less') {
 				print("'less:dev',");
 			}
-			else if(cssPreprocessor =='scss') {
+			else if(optCssPreprocessor =='scss') {
 				print("'compass:dev',");
 			}
 			%>
@@ -833,10 +833,10 @@ module.exports = function(grunt) {
 		//quick version of default task testing/viewing quick changes
 		grunt.registerTask('q', ['buildfiles', 'ngtemplates:main', 'jshint:backendQ', 'jshint:beforeconcatQ', 'uglify:build', 'fontAwesomeVars',
 			<%
-			if(cssPreprocessor =='less') {
+			if(optCssPreprocessor =='less') {
 				print("'less:dev',");
 			}
-			else if(cssPreprocessor =='scss') {
+			else if(optCssPreprocessor =='scss') {
 				print("'compass:dev',");
 			}
 			%>
@@ -850,10 +850,10 @@ module.exports = function(grunt) {
 		
 			grunt.task.run(['buildfiles', 'ngtemplates:main', 'uglify:build', 'fontAwesomeVars',
 				<%
-				if(cssPreprocessor =='less') {
+				if(optCssPreprocessor =='less') {
 					print("'less:dev',");
 				}
-				else if(cssPreprocessor =='scss') {
+				else if(optCssPreprocessor =='scss') {
 					print("'compass:dev',");
 				}
 				%>
@@ -862,10 +862,10 @@ module.exports = function(grunt) {
 		
 		grunt.registerTask('noMin', ['buildfiles', 'ngtemplates:main', 'fontAwesomeVars',
 			<%
-			if(cssPreprocessor =='less') {
+			if(optCssPreprocessor =='less') {
 				print("'less:dev',");
 			}
-			else if(cssPreprocessor =='scss') {
+			else if(optCssPreprocessor =='scss') {
 				print("'compass:dev',");
 			}
 			%>

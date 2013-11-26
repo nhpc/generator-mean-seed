@@ -1,7 +1,7 @@
 /**
 @todo
 - once forminput, etc. are fixed on Angular 1.2.0, update bower.json to no longer be 1.2.0-rc.3
-- remove the need to check this.subGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
+- remove the need to check this.optSubGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if sub generator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
 
 @toc
 1. askFor
@@ -25,7 +25,7 @@ var CoreDefaultGenerator = module.exports = function CoreDefaultGenerator(args, 
 	var xx;
 	for(xx in this.options.props) {
 		this[xx] =this.options.props[xx];
-		console.log(xx+': '+this[xx]);
+		// console.log(xx+': '+this[xx]);
 	}
 };
 
@@ -36,43 +36,43 @@ util.inherits(CoreDefaultGenerator, yeoman.generators.NamedBase);
 @method askFor
 */
 CoreDefaultGenerator.prototype.askFor = function askFor() {
-if(this.subGenerators.indexOf('core-default') >-1) {
+if(this.optSubGenerators.indexOf('core-default') >-1) {
 
-if(!this.configFile) {		//only prompt if don't have config file
+if(!this.optConfigFile) {		//only prompt if don't have config file
 	var cb = this.async();
 
 	var prompts = [
 		{
-			name: 'appName',
+			name: 'optAppName',
 			message: 'Application name',
 			default: 'myproject'
 		},
 		{
-			name: 'appTitle',
+			name: 'optAppTitle',
 			message: 'Application title',
 			default: 'My Project'
 		},
 		{
-			name: 'appDescription',
+			name: 'optAppDescription',
 			message: 'Application description',
 			default: 'My really cool app!'
 		},
 		{
-			name: 'appKeywords',
+			name: 'optAppKeywords',
 			message: 'Application (NPM/Bower) keywords, space separated',
 			default: 'mean-seed javascript angular node myproject app'
 		},
 		{
-			name: 'githubName',
+			name: 'optGithubName',
 			message: 'Github User or Organization Name'
 		},
 		{
-			name: 'authorName',
+			name: 'optAuthorName',
 			message: 'Author name and email (i.e. John Smith <johnsmith@email.com>)'
 		},
 		//should not be a prompt, just force set the value
 		// {
-			// name: 'cssPreprocessor',
+			// name: 'optCssPreprocessor',
 			// message: 'CSS Pre-processor',
 			// choices: [
 				// 'less',
@@ -82,7 +82,7 @@ if(!this.configFile) {		//only prompt if don't have config file
 		// },
 		{
 			type: 'list',
-			name: 'operatingSystem',
+			name: 'optOperatingSystem',
 			message: 'Operating system',
 			choices: [
 				'mac',
@@ -92,33 +92,33 @@ if(!this.configFile) {		//only prompt if don't have config file
 			default: 'mac'
 		},
 		{
-			name: 'serverPort',
+			name: 'optServerPort',
 			message: 'What port to run the application on?',
 			default: 3000
 		},
 		{
-			name: 'socketPort',
+			name: 'optSocketPort',
 			message: 'What port to run any socket connections on?',
 			default: 3001
 		},
 		{
-			name: 'testServerPort',
+			name: 'optTestServerPort',
 			message: 'What port to run the TESTS on?',
 			default: 3005
 		},
 		{
-			name: 'testSocketPort',
+			name: 'optTestSocketPort',
 			message: 'What port to run any socket connections for TESTS on?',
 			default: 3006
 		},
 		{
-			name: 'testDatabase',
+			name: 'optTestDatabase',
 			message: 'What (MongoDB) database to use for the TESTS?',
 			default: 'test_temp'
 		},
 		{
 			type: 'list',
-			name: 'npmInstall',
+			name: 'optNpmInstall',
 			message: 'Run npm install (if skipped, you will have to run yourself after Yeoman completes)?',
 			choices: [
 				'0',
@@ -128,7 +128,7 @@ if(!this.configFile) {		//only prompt if don't have config file
 		},
 		{
 			type: 'list',
-			name: 'bowerInstall',
+			name: 'optBowerInstall',
 			message: 'Run bower install (if skipped, you will have to run yourself after Yeoman completes)?',
 			choices: [
 				'0',
@@ -138,7 +138,7 @@ if(!this.configFile) {		//only prompt if don't have config file
 		},
 		{
 			type: 'list',
-			name: 'seleniumInstall',
+			name: 'optSeleniumInstall',
 			message: 'Run selenium (for protractor tests) install (if skipped, you will have to run yourself after Yeoman completes)? NOTE: this may not work on Windows so you may have to install yourself anyway - see the README for more info.',
 			choices: [
 				'0',
@@ -148,7 +148,7 @@ if(!this.configFile) {		//only prompt if don't have config file
 		},
 		{
 			type: 'list',
-			name: 'gruntQ',
+			name: 'optGruntQ',
 			message: 'Run Grunt (if skipped, you will have to run yourself after Yeoman completes)?',
 			choices: [
 				'0',
@@ -160,8 +160,8 @@ if(!this.configFile) {		//only prompt if don't have config file
 
 	this.prompt(prompts, function (props) {
 		var ii, jj, kk, skip, curName;
-		var skipKeys =['appKeywords'];
-		var toInt =['npmInstall', 'bowerInstall', 'seleniumInstall', 'gruntQ'];
+		var skipKeys =['optAppKeywords'];
+		var toInt =['optNpmInstall', 'optBowerInstall', 'optSeleniumInstall', 'optGruntQ'];
 		for(ii =0; ii<prompts.length; ii++) {
 			curName =prompts[ii].name;
 			skip =false;
@@ -184,16 +184,16 @@ if(!this.configFile) {		//only prompt if don't have config file
 		}
 		
 		//handle some special ones (the skipKeys from above)
-		this.options.props.appKeywords =this.appKeywords = props.appKeywords.split(' ');
+		this.options.props.optAppKeywords =this.optAppKeywords = props.optAppKeywords.split(' ');
 		
-		this.options.props.cssPreprocessor =this.cssPreprocessor ='less';
+		this.options.props.optCssPreprocessor =this.optCssPreprocessor ='less';
 
 		cb();
 	}.bind(this));
 }
 
 //have to set this either way
-this.options.props.cssPreprocessor =this.cssPreprocessor ='less';
+this.options.props.optCssPreprocessor =this.optCssPreprocessor ='less';
 
 }
 };

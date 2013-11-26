@@ -4,19 +4,19 @@
 		"pkg": "0.0.0"
 	},
 	"env": "development",
-	"operatingSystem":"<%= operatingSystem %>",
+	"operatingSystem":"<%= optOperatingSystem %>",
 	"operatingSystemComment":"One of: 'windows', 'mac', 'linux'",
 	"forever": 0,
 	"app": {
-		"name": "<%= appName %>",
-		"title": "<%= appTitle %>"
+		"name": "<%= optAppName %>",
+		"title": "<%= optAppTitle %>"
 	},
 	"platform":"",
 	"server": {
 		"domain": "localhost",
-		"port": <%= testServerPort %>,
+		"port": <%= optTestServerPort %>,
 		"httpsPort": 443,
-		"socketPort": <%= testSocketPort %>,
+		"socketPort": <%= optTestSocketPort %>,
 		"serverPath": "/",
 		"appPath": "/",
 		"staticFilePath": "/src/",
@@ -30,7 +30,7 @@
 		"fullURI": "",
 		"host": "localhost",
 		"port": 27017,
-		"database": "<%= testDatabase %>",
+		"database": "<%= optTestDatabase %>",
 		"username": false,
 		"password": false
 	},
@@ -71,7 +71,7 @@
 		]
 	},
 	"email":{
-		"from": "admin@<%= appName %>.com",
+		"from": "admin@<%= optAppName %>.com",
 		"from_name": "Admin TEST",
 		"mandrillApiKey": "8X-1bNRWtA4rbneppkqahw",
 		"mandrillApiKeyComment":"Make sure to CHANGE this!"
@@ -83,7 +83,7 @@
 		"appIdComment":"Make sure to CHANGE this!"
 	},
 	<%
-	if(cssPreprocessor =='scss') {
+	if(optCssPreprocessor =='scss') {
 	print('"scss":{');
 	}
 	else {

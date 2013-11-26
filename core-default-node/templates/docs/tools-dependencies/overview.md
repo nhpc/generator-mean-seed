@@ -19,10 +19,10 @@ So basically, we use:
 - Frontend
 	- AngularJS
 	<%
-	if(cssPreprocessor =='less') {
+	if(optCssPreprocessor =='less') {
 	print("- LESS - CSS pre-processor. Twitter Bootstrap CSS framework is currently NOT used but can be easily integrated. SASS/SCSS/Compass can be switched in instead of LESS pretty easily as well. The main reasons for going with LESS by default are because it seems to compile a bit faster and because Angular UI and Twitter Bootstrap use LESS so it makes it easier to develop/augment those.");
 	}
-	else if(cssPreprocessor =='scss') {
+	else if(optCssPreprocessor =='scss') {
 	print("- SCSS - CSS pre-processor. LESS can easily be used instead of SASS/SCSS.");
 	}
 	%>

@@ -3,7 +3,7 @@
 
 'use strict';
 
-angular.module('myApp').controller('<%= routeNameCtrl %>', ['$scope',
+angular.module('myApp').controller('<%= optRouteNameCtrl %>', ['$scope',
 function($scope) {
 	
 }]);

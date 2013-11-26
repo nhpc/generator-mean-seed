@@ -1,8 +1,8 @@
 {
-	"name": "<%= appName %>",
-    "description": "<%= appDescription %>",
+	"name": "<%= optAppName %>",
+    "description": "<%= optAppDescription %>",
     "version": "0.0.0",
-    "url": "https://github.com/<%= githubName%>/<%= appName %>",
+    "url": "https://github.com/<%= optGithubName%>/<%= optAppName %>",
     "options": {
         "paths": "./app/src/",
         "outdir": "yuidocs/frontend",

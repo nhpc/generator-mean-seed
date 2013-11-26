@@ -1,6 +1,6 @@
 /**
 @todo
-- remove the need to check this.subGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
+- remove the need to check this.optSubGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if sub generator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
 
 @toc
 1. askFor
@@ -39,12 +39,12 @@ util.inherits(NgRouteGenerator, yeoman.generators.NamedBase);
 @method askFor
 */
 NgRouteGenerator.prototype.askFor = function askFor() {
-if(this.subGenerators.indexOf('ng-route') >-1) {
+if(this.optSubGenerators.indexOf('ng-route') >-1) {
 	var cb = this.async();
 	
 	var prompts = [
 		{
-			name: 'routeName',
+			name: 'optRouteName',
 			message: 'Route name (i.e. my-page)',
 			//required input
 			validate: function(input) {
@@ -57,17 +57,27 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 			}
 		},
 		{
-			name: 'routePath',
-			message: 'Route path - if want to put it one or more sub-folders (i.e. myfolder/ OR myfolder/mysubfolder/ )',
+			name: 'optRoutePath',
+			message: 'Route path - if want to put it one or more sub-folders (i.e. myfolder/ OR myfolder/mysubfolder/ ). Otherwise just leave blank.',
 			default: '',
 		},
 		{
 			type: 'list',
-			name: 'gruntQ',
+			name: 'optCssPreprocessor',
+			message: 'What CSS pre-processor to use?',
+			choices: [
+				'less',
+				'scss'
+			],
+			default: 'less'
+		},
+		{
+			type: 'list',
+			name: 'optGruntQ',
 			message: 'Run Grunt (if skipped, you will have to run yourself after Yeoman completes)?',
 			choices: [
-				'0',
-				'1'
+				'1',
+				'0'
 			],
 			default: '1'
 		}
@@ -75,15 +85,15 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 	
 	this.prompt(prompts, function (props) {
 		//format some
-		//ensure routePath has a trailing slash and NO leading slash
+		//ensure optRoutePath has a trailing slash and NO leading slash
 		//regex to remove all leading & trailing slashes first
-		props.routePath =props.routePath.replace(/^\/*/, '').replace(/\/*$/, '');
-		props.routePath +='/';		//add trailing slash
-		// console.log('props.routePath: '+props.routePath);
+		props.optRoutePath =props.optRoutePath.replace(/^\/*/, '').replace(/\/*$/, '');
+		props.optRoutePath +='/';		//add trailing slash
+		// console.log('props.optRoutePath: '+props.optRoutePath);
 		
 		var ii, jj, kk, skip, curName;
 		var skipKeys =[];
-		var toInt =['gruntQ'];
+		var toInt =['optGruntQ'];
 		for(ii =0; ii<prompts.length; ii++) {
 			curName =prompts[ii].name;
 			skip =false;
@@ -106,10 +116,9 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 		}
 		
 		//handle some special ones (the skipKeys from above)
-		// this.options.props.appKeywords =this.appKeywords = props.appKeywords.split(' ');
 		
 		//add some
-		this.options.props.routeNameCtrl =this.routeNameCtrl = this._.capitalize(this._.camelize(this.routeName))+'Ctrl';
+		this.options.props.optRouteNameCtrl =this.optRouteNameCtrl = this._.capitalize(this._.camelize(this.optRouteName))+'Ctrl';
 		
 		cb();
 	}.bind(this));
@@ -121,15 +130,15 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 @method files
 */
 NgRouteGenerator.prototype.files = function files() {
-if(this.subGenerators.indexOf('ng-route') >-1) {
+if(this.optSubGenerators.indexOf('ng-route') >-1) {
 
 	var ii;
 	
 	var pathBase ='app/src/modules/pages/';
-	var pagePath =pathBase+this.routePath+this.routeName;
+	var pagePath =pathBase+this.optRoutePath+this.optRouteName;
 	//A. make all directories (do it at top so they're all created since templated files are collected here at the top)
 	//create sub-directories first if they don't exist
-	var subdirs =this.routePath.split('/');
+	var subdirs =this.optRoutePath.split('/');
 	var curPath;
 	var curPathBase =pathBase;		//will be used to track the current path as we go through the sub-directories
 	for(ii =0; ii<subdirs.length; ii++) {
@@ -147,10 +156,15 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 	
 	
 	//B. template files (all templated files TOGETHER here)
-	this.template('new-page/_new-page.html', pagePath+'/'+this.routeName+'.html');
-	this.template('new-page/_new-page.less', pagePath+'/'+this.routeName+'.less');
-	this.template('new-page/_NewPageCtrl.js', pagePath+'/'+this.routeNameCtrl+'.js');
-	this.template('new-page/_NewPageCtrl.spec.js', pagePath+'/'+this.routeNameCtrl+'.spec.js');
+	this.template('new-page/_new-page.html', pagePath+'/'+this.optRouteName+'.html');
+	if(this.optCssPreprocessor =='less') {
+		this.template('new-page/_new-page.less', pagePath+'/'+this.optRouteName+'.less');
+	}
+	if(this.optCssPreprocessor =='scss') {
+		this.template('new-page/_new-page.scss', pagePath+'/_'+this.optRouteName+'.scss');
+	}
+	this.template('new-page/_NewPageCtrl.js', pagePath+'/'+this.optRouteNameCtrl+'.js');
+	this.template('new-page/_NewPageCtrl.spec.js', pagePath+'/'+this.optRouteNameCtrl+'.spec.js');
 	
 	
 	//C. copy files & directories
@@ -164,7 +178,7 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 @method updateBuildfiles
 */
 NgRouteGenerator.prototype.updateBuildfiles = function updateBuildfiles() {
-if(this.subGenerators.indexOf('ng-route') >-1) {
+if(this.optSubGenerators.indexOf('ng-route') >-1) {
 	var path ='app/src/config/buildfilesModules.json';
 	var bfObj = JSON.parse(this.readFileAsString(path));
 	var ii, jj, kk, found =false, modulesIndex =false, pagesIndex =false;
@@ -175,18 +189,23 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 				if(bfObj.dirs[ii].dirs[jj].name =='pages') {
 				
 					var finalObj ={
-						"name":this.routeName,
+						"name":this.optRouteName,
 						"files": {
-							"html":[this.routeName+'.html'],
-							"less":[this.routeName+'.less'],
-							"js":[this.routeNameCtrl+'.js'],
-							"test":[this.routeNameCtrl+'.spec.js']
+							"html":[this.optRouteName+'.html'],
+							"js":[this.optRouteNameCtrl+'.js'],
+							"test":[this.optRouteNameCtrl+'.spec.js']
 						}
 					};
+					if(this.optCssPreprocessor =='less') {
+						finalObj.files.less =[this.optRouteName+'.less'];
+					}
+					else if(this.optCssPreprocessor =='scss') {
+						finalObj.files.scss =['_'+this.optRouteName+'.scss'];
+					}
 					// bfObj.dirs[ii].dirs[jj].dirs.push(finalObj);
 					
 					//use recursive function to go through all subdirs and create nested objects if they don't exist
-					bfObj.dirs[ii].dirs[jj] =this._buildfilesSubdirs(bfObj.dirs[ii].dirs[jj], this.routePath, finalObj, {});
+					bfObj.dirs[ii].dirs[jj] =this._buildfilesSubdirs(bfObj.dirs[ii].dirs[jj], this.optRoutePath, finalObj, {});
 					
 					found =true;
 					break;
@@ -234,7 +253,7 @@ NgRouteGenerator.prototype._buildfilesSubdirs =function buildfilesSubdirs(subObj
 		goTrig =false;
 	}
 	
-	console.log('path: '+path+' curSubdir: '+curSubdir+' newPath: '+newPath);
+	// console.log('path: '+path+' curSubdir: '+curSubdir+' newPath: '+newPath);
 	
 	if(goTrig) {
 	
@@ -286,7 +305,7 @@ NgRouteGenerator.prototype._buildfilesSubdirs =function buildfilesSubdirs(subObj
 @method updateAppJs
 */
 NgRouteGenerator.prototype.updateAppJs = function updateAppJs() {
-if(this.subGenerators.indexOf('ng-route') >-1) {
+if(this.optSubGenerators.indexOf('ng-route') >-1) {
 	var path ='app/src/common/js/app.js';
 	// var contents =this.read(path);
 	var contents =this.readFileAsString(path);
@@ -296,7 +315,7 @@ if(this.subGenerators.indexOf('ng-route') >-1) {
 		// console.log(indexStart+' '+indexEnd);
 		// if(indexEnd >-1) {
 		if(1) {
-			var newData ="$routeProvider.when(appPathRoute+'"+this.routeName+"', {templateUrl: pagesPath+'"+this.routePath+this.routeName+"/"+this.routeName+".html',\n"+
+			var newData ="$routeProvider.when(appPathRoute+'"+this.optRouteName+"', {templateUrl: pagesPath+'"+this.optRoutePath+this.optRouteName+"/"+this.optRouteName+".html',\n"+
 			"		resolve: {\n"+
 			"			auth: function(svcAuth) {\n"+
 			"				return svcAuth.checkSess({noLoginRequired:true});\n"+

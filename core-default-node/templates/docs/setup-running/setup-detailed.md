@@ -12,10 +12,10 @@
 			3. `git config --global --add color.ui true`
 	2. Install global NPM packages.
 		<%
-		if(cssPreprocessor =='less') {
+		if(optCssPreprocessor =='less') {
 		print("1. `sudo npm install -g grunt-cli bower yo karma yuidocjs forever generator-mean-seed less`");
 		}
-		else if(cssPreprocessor =='scss') {
+		else if(optCssPreprocessor =='scss') {
 		print("1. `sudo npm install -g grunt-cli bower yo karma yuidocjs forever generator-mean-seed`");
 		}
 		%>

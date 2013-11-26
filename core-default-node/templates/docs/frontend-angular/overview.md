@@ -2,12 +2,12 @@
 
 ## Common components and conventions to be aware of and use
 <%
-if(cssPreprocessor =='less') {
+if(optCssPreprocessor =='less') {
 print("- LESS / styles\n"+
 	"\t- classes: Any of the LESS files in the main `less` folder should be used within HTML files. These are pre-defined common classes. BEFORE you define any styles, make sure to check these first and use them. If a style class doesn't already exist, in general create it here (unless it's super specific and will never be used again). Currently we follow this \"Twitter Bootstrap style\" where most pages do NOT have their own stylesheet but rather leverage pre-existing common components (directives which have their own stylesheets and/or common classes) rather than using lots of variables and mixins.\n"+
 	"\t- mixins & variables (anything in `less/mixins` and `less/variables`)");
 }
-else if(cssPreprocessor =='scss') {
+else if(optCssPreprocessor =='scss') {
 print("- SCSS / styles\n"+
 	"\t- classes: Any of the SCSS files in the main `scss` folder should be used within HTML files. These are pre-defined common classes. BEFORE you define any styles, make sure to check these first and use them. If a style class doesn't already exist, in general create it here (unless it's super specific and will never be used again). Currently we follow this \"Twitter Bootstrap style\" where most pages do NOT have their own stylesheet but rather leverage pre-existing common components (directives which have their own stylesheets and/or common classes) rather than using lots of variables and mixins.\n"+
 	"\t- mixins & variables (anything in `scss/mixins` and `scss/variables`)");

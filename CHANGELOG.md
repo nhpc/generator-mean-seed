@@ -3,21 +3,23 @@ Version numbers correspond to `package.json` version
 # 1.0.6
 ## Features
 - added in 'core-scss' (sub)generator for using SASS instead of LESS
+- add scss support to `ng-route` generator
 - changed to core generators
 	- renamed 'main' generator to 'core-default'
 - modularized core generators to use/call frontend and backend generators to allow for greater code re-use (since LESS and SCSS both use the SAME backend code, we should not duplicate it)
-	- the check in each generator checks an array for `indexOf()` now so multiple this.subgenerators can be active at once.
+	- the check in each generator checks an array for `indexOf()` now so multiple this.optSubgenerators can be active at once.
 	- added in 'helper' generators:
 		- `commands`
 		- `log-next-steps`
 - added `docs` folder with generator documentation
 
 ## Breaking Changes
+- added `opt` prefix to all prompts for namespacing - i.e. to avoid conflicts with Yeoman properties/methods (such as npmInstall)
 - changed prompts from skipInstall to install (from negative to positive - defaults to NOT run now), specifically:
-	- `skipNpmInstall` to `npmInstall`
-	- `skipBowerInstall` to `bowerInstall`
-	- `skipGrunt` to `gruntQ`
-	- `skipSeleniumInstall` to `seleniumInstall`
+	- `skipNpmInstall` to `optNpmInstall`
+	- `skipBowerInstall` to `optBowerInstall`
+	- `skipGrunt` to `optGruntQ`
+	- `skipSeleniumInstall` to `optSeleniumInstall`
 
 
 # 1.0.5 (2013-11-23)

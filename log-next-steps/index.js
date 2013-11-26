@@ -1,6 +1,6 @@
 /**
 @todo
-- remove the need to check this.subGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
+- remove the need to check this.optSubGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if sub generator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
 
 @toc
 1. logNextSteps
@@ -31,7 +31,7 @@ util.inherits(LogNextStepsGenerator, yeoman.generators.NamedBase);
 @method logNextSteps
 */
 LogNextStepsGenerator.prototype.logNextSteps = function logNextSteps() {
-if(this.subGenerators.indexOf('log-next-steps') >-1 && this.logNextStepsMsg) {
-	this.log.writeln(this.logNextStepsMsg);
+if(this.optSubGenerators.indexOf('log-next-steps') >-1 && this.optLogNextStepsMsg) {
+	this.log.writeln(this.optLogNextStepsMsg);
 }
 };

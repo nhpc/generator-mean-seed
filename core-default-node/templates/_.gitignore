@@ -39,13 +39,14 @@ yuidocs
 # ignore files compiled / built by grunt
 app/src/build
 <%
-if(cssPreprocessor =='less') {
+if(optCssPreprocessor =='less') {
 print('app/src/common/less/_base.less\n'+
 '_dir-paths.less');
 }
-else if(cssPreprocessor =='scss') {
+else if(optCssPreprocessor =='scss') {
 print('app/src/common/scss/_base.scss\n'+
-'_dir-paths.scss');
+'_dir-paths.scss\n'+
+'.sass-cache');
 }
 %>
 app/src/modules/services/config/config.js

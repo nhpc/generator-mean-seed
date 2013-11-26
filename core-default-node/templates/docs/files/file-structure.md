@@ -71,13 +71,13 @@ Files are organized in a modular way. Each "component" is a folder containing al
 	- js
 		- app.js Main/entry AngularJS file that loads modules and declares routes
 	<%
-	if(cssPreprocessor =='less') {
+	if(optCssPreprocessor =='less') {
 	print("- less	LESS (CSS pre-processor) files. This is where all the COMMON/global classes are declared. Read through and memorize these as you'll use them often!\n"+
 		"\t\t- mixins		Custom defined LESS mixins that along with LessHat mixins can/should be used for writing LESS styles for other (modularized) pages/views/directives.\n"+
 		"\t\t- variables		Custom defined LESS variables that can/should be used for writing LESS styles for other (modularized) pages/views/directives.\n"+
 			"\t\t\t- colors.less		Holds the themes/colors for this app. You should almost always be using a pre-defined color variable; do NOT use a hardcoded color code (i.e. `#ff00aa` or `rgb(100,100,150)` or `blue`) if you can avoid it. Keep things referencing common/global variables and mixins so it's easy to change later (this applies to things outside of just colors as well).");
 	}
-	else if(cssPreprocessor =='scss') {
+	else if(optCssPreprocessor =='scss') {
 	print("- scss	SASS (CSS pre-processor) files. This is where all the COMMON/global classes are declared. Read through and memorize these as you'll use them often!\n"+
 		"\t\t- mixins		Custom defined SCSS mixins that along with Bourbon mixins can/should be used for writing SCSS styles for other (modularized) pages/views/directives.\n"+
 		"\t\t- variables		Custom defined SCSS variables that can/should be used for writing SCSS styles for other (modularized) pages/views/directives.\n"+
@@ -143,10 +143,10 @@ Files are organized in a modular way. Each "component" is a folder containing al
 - common/js/app.js is the Angular router and module loader. Each time a new module (directive or service) is created, it needs to be added/defined at the top of this file. And similarly, to create a new page / route, define it here. Though Yeoman ng-route subgenerator will do this for you!
 
 <%
-if(cssPreprocessor =='less') {
+if(optCssPreprocessor =='less') {
 print("- common/less fold has all the LESS CSS files.");
 }
-else if(cssPreprocessor =='scss') {
+else if(optCssPreprocessor =='scss') {
 print("- common/scss fold has all the SCSS CSS files.");
 }
 %>
@@ -161,12 +161,12 @@ NOTE: this does NOT include files in the `common` directory, which obviously are
 	- js
 		- app.js
 	<%
-	if(cssPreprocessor =='less') {
+	if(optCssPreprocessor =='less') {
 	print("- less [every file in the this main folder plus the following sub-folders/files below]\n"+
 		"\t\t- variables\n"+
 			"\t\t\t- colors.less");
 	}
-	else if(cssPreprocessor =='scss') {
+	else if(optCssPreprocessor =='scss') {
 	print("- scss [every file in the this main folder plus the following sub-folders/files below]\n"+
 		"\t\t- variables\n"+
 			"\t\t\t- _colors.scss");

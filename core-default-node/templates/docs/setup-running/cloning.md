@@ -9,11 +9,11 @@ In general you'll have 2-3 terminal/command prompt windows open at once - one fo
 
 1. machine (global / program) installs (if you don't have them already)
 	<%
-	if(cssPreprocessor =='less') {
+	if(optCssPreprocessor =='less') {
 	print("1. install git, nodejs, mongodb, phantomjs, java - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)\n"+
 	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`");
 	}
-	else if(cssPreprocessor =='scss') {
+	else if(optCssPreprocessor =='scss') {
 	print("1. install git, nodejs, mongodb, phantomjs, java, ruby, sass - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)\n"+
 	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever`");
 	}

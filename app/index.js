@@ -89,7 +89,7 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 	var prompts = [
 		{
 			type: 'list',
-			name: 'subGenerator',
+			name: 'optSubGenerator',
 			message: 'What subgenerator to use?',
 			choices: [
 				'core-default',
@@ -104,20 +104,20 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 		this.options.props ={};
 		
 		//use an array for subGenerators in case want to use more than one (i.e. for modularizing to multiple subgenerators)
-		var generators =[props.subGenerator];
+		var generators =[props.optSubGenerator];
 		var moreGenerators =false;
 		var logNextStepsMsg =false;
 		
-		if(props.subGenerator =='core-default') {
+		if(props.optSubGenerator =='core-default') {
 			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.';
 			moreGenerators =['core-default-node', 'core-default-angular', 'commands', 'log-next-steps'];
 		}
-		else if(props.subGenerator =='core-scss') {
+		else if(props.optSubGenerator =='core-scss') {
 			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.';
 			moreGenerators =['core-default-node', 'core-scss-angular', 'commands', 'log-next-steps'];
 		}
-		else if(props.subGenerator =='ng-route') {
-			logNextStepsMsg ='Next steps:\n1. IF you want to make a custom nav (header and/or footer) for this page, add it in `modules/services/nav/nav.js`\n2. Edit the files (html, less, js) for your new page!';
+		else if(props.optSubGenerator =='ng-route') {
+			logNextStepsMsg ='Next steps:\n1. IF you want to make a custom nav (header and/or footer) for this page, add it in `modules/services/nav/nav.js`\n2. Edit the files (html, js, less/scss) for your new page!';
 			moreGenerators =['commands', 'log-next-steps'];
 		}
 		
@@ -126,10 +126,10 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 		}
 		
 		if(logNextStepsMsg) {
-			this.options.props.logNextStepsMsg =this.logNextStepsMsg = logNextStepsMsg;
+			this.options.props.optLogNextStepsMsg =this.optLogNextStepsMsg = logNextStepsMsg;
 		}
 		
-		this.options.props.subGenerators =this.subGenerators = generators;
+		this.options.props.optSubGenerators =this.optSubGenerators = generators;
 		
 		cb();
 	}.bind(this));
@@ -137,13 +137,13 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 	
 	
 MeanSeedGenerator.prototype.askForConfig = function askForConfig() {
-this.options.props.configFile =this.configFile ='';		//default
-if(this.subGenerators.indexOf('core-default') >-1 || this.subGenerators.indexOf('core-scss') >-1) {		//only use config for certain sub-generators
+this.options.props.optConfigFile =this.optConfigFile ='';		//default
+if(this.optSubGenerators.indexOf('core-default') >-1 || this.optSubGenerators.indexOf('core-scss') >-1) {		//only use config for certain sub-generators
 	var cb = this.async();
 
 	var prompts = [
 		{
-			name: 'configFile',
+			name: 'optConfigFile',
 			message: 'What config file to use? (type "none" or any bad file path to use prompts here instead)',
 			default: 'yo-configs/default.json'
 		}
@@ -152,14 +152,14 @@ if(this.subGenerators.indexOf('core-default') >-1 || this.subGenerators.indexOf(
 	// console.log('dirname: '+__dirname);
 
 	this.prompt(prompts, function (props) {
-		var configFile =this.options.props.configFile =this.configFile =props.configFile;
-		if(configFile) {
+		var optConfigFile =this.options.props.optConfigFile =this.optConfigFile =props.optConfigFile;
+		if(optConfigFile) {
 			//parse config file into a json object
-			// var configPath =path.join(__dirname, configFile);
-			var configPath =configFile;
+			// var configPath =path.join(__dirname, optConfigFile);
+			var configPath =optConfigFile;
 			if(!fs.existsSync(configPath)) {
-				console.log('configFile '+configFile+' does not exist, using prompts here');
-				this.options.props.configFile =this.configFile ='';		//set configFile to blank to trigger prompts
+				console.log('optConfigFile '+optConfigFile+' does not exist, using prompts here');
+				this.options.props.optConfigFile =this.optConfigFile ='';		//set optConfigFile to blank to trigger prompts
 			}
 			else {
 				var config = JSON.parse(this.readFileAsString(configPath));

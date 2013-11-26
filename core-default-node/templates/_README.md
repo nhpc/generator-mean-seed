@@ -1,4 +1,4 @@
-# <%= appName %>
+# <%= optAppName %>
 
 ## Demo
 - [Website](http://198.199.118.44:3000/)
@@ -12,11 +12,11 @@
 
 1. machine (global / program) installs (if you don't have them already)
 	<%
-	if(cssPreprocessor =='less') {
+	if(optCssPreprocessor =='less') {
 	print("1. install git, nodejs, mongodb, phantomjs\n");
 	print("\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`");
 	}
-	else if(cssPreprocessor =='scss') {
+	else if(optCssPreprocessor =='scss') {
 	print("1. install git, nodejs, mongodb, phantomjs, ruby, sass\n");
 	print("\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever`");
 	}

@@ -1,7 +1,7 @@
 /**
 @todo
 - once forminput, etc. are fixed on Angular 1.2.0, update bower.json to no longer be 1.2.0-rc.3
-- remove the need to check this.subGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
+- remove the need to check this.optSubGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if sub generator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
 
 @toc
 1. askFor
@@ -36,9 +36,9 @@ util.inherits(CoreScssAngularGenerator, yeoman.generators.NamedBase);
 @method askFor
 */
 CoreScssAngularGenerator.prototype.askFor = function askFor() {
-if(this.subGenerators.indexOf('core-scss-angular') >-1) {
+if(this.optSubGenerators.indexOf('core-scss-angular') >-1) {
 
-if(!this.configFile) {		//only prompt if don't have config file
+if(!this.optConfigFile) {		//only prompt if don't have config file
 	var cb = this.async();
 
 	var prompts = [
@@ -83,7 +83,7 @@ if(!this.configFile) {		//only prompt if don't have config file
 @method filesAngular
 */
 CoreScssAngularGenerator.prototype.filesAngular = function filesAngular() {
-if(this.subGenerators.indexOf('core-scss-angular') >-1) {
+if(this.optSubGenerators.indexOf('core-scss-angular') >-1) {
 	
 	//A. make all directories (do it at top so they're all created since templated files are collected here at the top)
 	this.mkdir('app/src');

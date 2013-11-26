@@ -29,7 +29,7 @@
 	4. download then install
 	5. add to your system PATH (so you can run `java` from the command line from any location), i.e. `;C:\Downloads\Website\JavaRE\bin`
 <%
-if(cssPreprocessor =='scss') {
+if(optCssPreprocessor =='scss') {
 print("7. Install Ruby and Sass ( http://sass-lang.com/install )");
 }
 %>

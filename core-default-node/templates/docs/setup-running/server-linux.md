@@ -31,7 +31,7 @@ For a remote server, SSH in to login with `ssh [user]@[ip address or domain of s
 7. Install PhantomJS
 	1. `sudo apt-get install phantomjs`
 <%
-if(cssPreprocessor =='scss') {
+if(optCssPreprocessor =='scss') {
 print("8. Install Ruby and Sass ( http://sass-lang.com/install )");
 }
 %>

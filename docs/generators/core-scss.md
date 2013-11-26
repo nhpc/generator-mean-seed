@@ -5,7 +5,7 @@ Uses (Bourbon)[http://bourbon.io/] instead of LESSHat for mixins
 
 NOTE: You must install Ruby and then do `gem install sass` for it to work! See http://sass-lang.com/
 
-- uses same 'core-default-node' backend generator with the cssPreprocessor yeoman variable to conditionally replace LESS with SCSS in the following files:
+- uses same 'core-default-node' backend generator with the optCssPreprocessor yeoman variable to conditionally replace LESS with SCSS in the following files:
 	- Gruntfile.js
 	- .gitignore
 	- package.json

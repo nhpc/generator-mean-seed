@@ -1,9 +1,9 @@
 {
-	"author": "<%= authorName %>",
-	"name": "<%= appName %>",
+	"author": "<%= optAuthorName %>",
+	"name": "<%= optAppName %>",
 	"version": "0.0.0",
-	"description": "<%= appDescription %>",
-	"homepage": "https://github.com/<%= githubName%>/<%= appName %>",
+	"description": "<%= optAppDescription %>",
+	"homepage": "https://github.com/<%= optGithubName%>/<%= optAppName %>",
 	"dependencies": {
 		"rpc.js": "~0.4.3",
 		"express": "~3.1.2",
@@ -27,10 +27,10 @@
 		"grunt-contrib-cssmin": "~0.7.0",
 		"grunt-contrib-jshint": "~0.7.2",
 		<%
-		if(cssPreprocessor =='less') {
+		if(optCssPreprocessor =='less') {
 			print('"grunt-contrib-less": "~0.8.2",');
 		}
-		else if(cssPreprocessor =='scss') {
+		else if(optCssPreprocessor =='scss') {
 			print('"grunt-contrib-compass": "~0.6.0",');
 		}
 		%>

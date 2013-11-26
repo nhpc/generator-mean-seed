@@ -1,6 +1,6 @@
 /**
 @todo
-- remove the need to check this.subGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if subGenerator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
+- remove the need to check this.optSubGenerators in EVERY function (i.e. find a way to NOT call this generator AT ALL if sub generator is wrong, but hookFor doesn't seem to be able to be conditionally called based on prompts..?)
 
 @toc
 1. askFor
@@ -35,9 +35,8 @@ util.inherits(CommandsGenerator, yeoman.generators.NamedBase);
 @method askFor
 */
 CommandsGenerator.prototype.askFor = function askFor() {
-if(this.subGenerators.indexOf('commands') >-1) {
+if(this.optSubGenerators.indexOf('commands') >-1) {
 
-if(!this.configFile) {		//only prompt if don't have config file
 	var cb = this.async();
 
 	var prompts = [
@@ -72,7 +71,6 @@ if(!this.configFile) {		//only prompt if don't have config file
 
 		cb();
 	}.bind(this));
-}
 
 }
 };
@@ -82,11 +80,11 @@ if(!this.configFile) {		//only prompt if don't have config file
 @method commandsNpm
 */
 CommandsGenerator.prototype.commandsNpm = function commandsNpm() {
-if(this.subGenerators.indexOf('commands') >-1) {
+if(this.optSubGenerators.indexOf('commands') >-1) {
 	var cb = this.async();
 	var self =this;
 	
-	if(this.npmInstall !==undefined && this.npmInstall) {
+	if(this.optNpmInstall !==undefined && this.optNpmInstall) {
 		var command ='npm';
 		var args =['install'];
 		var cmd =this.spawnCommand(command, args);
@@ -107,11 +105,11 @@ if(this.subGenerators.indexOf('commands') >-1) {
 @method commandsBower
 */
 CommandsGenerator.prototype.commandsBower = function commandsBower() {
-if(this.subGenerators.indexOf('commands') >-1) {
+if(this.optSubGenerators.indexOf('commands') >-1) {
 	var cb = this.async();
 	var self =this;
 	
-	if(this.bowerInstall !==undefined && this.bowerInstall) {
+	if(this.optBowerInstall !==undefined && this.optBowerInstall) {
 		var command ='bower';
 		var args =['install'];
 		var cmd =this.spawnCommand(command, args);
@@ -132,11 +130,11 @@ if(this.subGenerators.indexOf('commands') >-1) {
 @method commandsGrunt
 */
 CommandsGenerator.prototype.commandsGrunt = function commandsGrunt() {
-if(this.subGenerators.indexOf('commands') >-1) {
+if(this.optSubGenerators.indexOf('commands') >-1) {
 	var cb = this.async();
 	var self =this;
 	
-	if(this.gruntQ !==undefined && this.gruntQ) {
+	if(this.optGruntQ !==undefined && this.optGruntQ) {
 		var command ='grunt';
 		var args =['q'];
 		var cmd =this.spawnCommand(command, args);
@@ -157,11 +155,11 @@ if(this.subGenerators.indexOf('commands') >-1) {
 @method commandsSelenium
 */
 CommandsGenerator.prototype.commandsSelenium = function commandsSelenium() {
-if(this.subGenerators.indexOf('commands') >-1) {
+if(this.optSubGenerators.indexOf('commands') >-1) {
 	var cb = this.async();
 	var self =this;
 	
-	if(this.seleniumInstall !==undefined && this.seleniumInstall) {
+	if(this.optSeleniumInstall !==undefined && this.optSeleniumInstall) {
 		var command ='./node_modules/protractor/bin/install_selenium_standalone';
 		var args =[];
 		var cmd =this.spawnCommand(command, args);

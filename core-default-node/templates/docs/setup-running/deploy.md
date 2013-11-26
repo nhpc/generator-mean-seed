@@ -6,10 +6,10 @@ If you haven't done so already, purchase a (new) Linux server (i.e. from Digital
 ## Getting (& updating) files to (another) server
 
 <%
-if(cssPreprocessor =='less') {
+if(optCssPreprocessor =='less') {
 print("1. [on new server] Install global npm packages: `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`");
 }
-else if(cssPreprocessor =='scss') {
+else if(optCssPreprocessor =='scss') {
 print("1. [on new server] Install global npm packages: `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever`");
 }
 %>

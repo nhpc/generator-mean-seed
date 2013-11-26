@@ -16,6 +16,7 @@ module.exports = function(grunt) {
 			// all: ['Gruntfile.js', 'core-default/**/*.js', 'ng-route/**/*.js']
 			all: ['Gruntfile.js',
 				'core-default/index.js', 'core-default-node/index.js', 'core-default-angular/index.js',
+				'core-scss/index.js', 'core-scss-angular/index.js',
 				'ng-route/index.js',
 				'commands/index.js',
 				'log-next-steps/index.js'
