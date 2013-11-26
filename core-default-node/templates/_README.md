@@ -8,7 +8,7 @@
 
 ## Quick Start
 
-**NOTE: If you want to CLONE this EXISTING repository, see `cloning.md` (in the `docs` folder) instead.** Otherwise, if you want to build a NEW mean-seed from scratch using the Yeoman Generator, follow these steps below.
+**NOTE: If you want to CLONE this EXISTING repository, see (cloning.md)[docs/cloning.md] instead.** Otherwise, if you want to build a NEW mean-seed from scratch using the Yeoman Generator, follow these steps below.
 
 1. machine (global / program) installs (if you don't have them already)
 	<%
@@ -39,19 +39,19 @@
 
 
 ## Setup + Running (Longer Version)
-- see `setup-detailed.md` and `running.md` in the `docs` folder
+- see (setup-detailed.md)[docs/setup-running/setup-detailed.md] and (running.md)[docs/setup-running/running.md] in the `docs` folder
 	
 	
 ## More Info
 - see the `docs` folder for more documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
-	- overview.md
-	- setup-running folder
-		- overview.md
-	- tools-dependencies folder
-	- files folder
-	- testing-automation folder
-	- frontend-angular/common-actions.md
-	- backend-node/common-actions.md
+	- (overview.md)[docs/overview.md]
+	- (setup-running folder)[docs/setup-running]
+		- (overview.md)[docs/setup-running/overview.md]
+	- (tools-dependencies folder)[docs/tools-dependencies]
+	- (files folder)[docs/files]
+	- (testing-automation folder)[docs/testing-automation]
+	- (frontend-angular/common-actions.md)[docs/frontend-angular/common-actions.md]
+	- (backend-node/common-actions.md)[docs/backend-node/common-actions.md]
 
 	
 
