@@ -16,7 +16,7 @@ NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle W
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
-var CommandsGenerator = module.exports = function CommandsGenerator(args, options, config) {
+var HelperCommandsGenerator = module.exports = function HelperCommandsGenerator(args, options, config) {
 	// By calling `NamedBase` here, we get the argument to the subgenerator call
 	// as `this.name`.
 	yeoman.generators.NamedBase.apply(this, arguments);
@@ -28,14 +28,14 @@ var CommandsGenerator = module.exports = function CommandsGenerator(args, option
 	}
 };
 
-util.inherits(CommandsGenerator, yeoman.generators.NamedBase);
+util.inherits(HelperCommandsGenerator, yeoman.generators.NamedBase);
 
 /**
 @toc 1.
 @method askFor
 */
-CommandsGenerator.prototype.askFor = function askFor() {
-if(this.optSubGenerators.indexOf('commands') >-1) {
+HelperCommandsGenerator.prototype.askFor = function askFor() {
+if(this.optSubGenerators.indexOf('helper-commands') >-1) {
 
 	var cb = this.async();
 
@@ -79,8 +79,8 @@ if(this.optSubGenerators.indexOf('commands') >-1) {
 @toc 2.
 @method commandsNpm
 */
-CommandsGenerator.prototype.commandsNpm = function commandsNpm() {
-if(this.optSubGenerators.indexOf('commands') >-1) {
+HelperCommandsGenerator.prototype.commandsNpm = function commandsNpm() {
+if(this.optSubGenerators.indexOf('helper-commands') >-1) {
 	var cb = this.async();
 	var self =this;
 	
@@ -104,8 +104,8 @@ if(this.optSubGenerators.indexOf('commands') >-1) {
 @toc 3.
 @method commandsBower
 */
-CommandsGenerator.prototype.commandsBower = function commandsBower() {
-if(this.optSubGenerators.indexOf('commands') >-1) {
+HelperCommandsGenerator.prototype.commandsBower = function commandsBower() {
+if(this.optSubGenerators.indexOf('helper-commands') >-1) {
 	var cb = this.async();
 	var self =this;
 	
@@ -129,8 +129,8 @@ if(this.optSubGenerators.indexOf('commands') >-1) {
 @toc 4.
 @method commandsGrunt
 */
-CommandsGenerator.prototype.commandsGrunt = function commandsGrunt() {
-if(this.optSubGenerators.indexOf('commands') >-1) {
+HelperCommandsGenerator.prototype.commandsGrunt = function commandsGrunt() {
+if(this.optSubGenerators.indexOf('helper-commands') >-1) {
 	var cb = this.async();
 	var self =this;
 	
@@ -154,8 +154,8 @@ if(this.optSubGenerators.indexOf('commands') >-1) {
 @toc 5.
 @method commandsSelenium
 */
-CommandsGenerator.prototype.commandsSelenium = function commandsSelenium() {
-if(this.optSubGenerators.indexOf('commands') >-1) {
+HelperCommandsGenerator.prototype.commandsSelenium = function commandsSelenium() {
+if(this.optSubGenerators.indexOf('helper-commands') >-1) {
 	var cb = this.async();
 	var self =this;
 	

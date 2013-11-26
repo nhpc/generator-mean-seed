@@ -12,7 +12,7 @@ NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle W
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
-var LogNextStepsGenerator = module.exports = function LogNextStepsGenerator(args, options, config) {
+var HelperLogNextStepsGenerator = module.exports = function HelperLogNextStepsGenerator(args, options, config) {
 	// By calling `NamedBase` here, we get the argument to the subgenerator call
 	// as `this.name`.
 	yeoman.generators.NamedBase.apply(this, arguments);
@@ -24,14 +24,14 @@ var LogNextStepsGenerator = module.exports = function LogNextStepsGenerator(args
 	}
 };
 
-util.inherits(LogNextStepsGenerator, yeoman.generators.NamedBase);
+util.inherits(HelperLogNextStepsGenerator, yeoman.generators.NamedBase);
 
 /**
 @toc 1.
 @method logNextSteps
 */
-LogNextStepsGenerator.prototype.logNextSteps = function logNextSteps() {
-if(this.optSubGenerators.indexOf('log-next-steps') >-1 && this.optLogNextStepsMsg) {
+HelperLogNextStepsGenerator.prototype.logNextSteps = function logNextSteps() {
+if(this.optSubGenerators.indexOf('helper-log-next-steps') >-1 && this.optLogNextStepsMsg) {
 	this.log.writeln(this.optLogNextStepsMsg);
 }
 };

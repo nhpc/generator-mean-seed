@@ -30,10 +30,12 @@ Generators (used interchangeably with "subgenerators" since they are ALL subgene
 				
 3. Helper
 	1. These are (typically) NOT standalone generators and are just for modularity and to keep things DRY - other generators may use these to perform common actions such as running commands or logging next steps output. See `helpers.md` for a list and more info.
+	2. Naming convention: "helper-[helper name]" i.e. "helper-commands".
 				
 				
 ## Adding a new generator
 1. Copy an existing generator folder and modify accordingly
+	1. Make sure to name it with the naming conventions / prefixes above!
 2. Update the following files:
 	1. `Gruntfile.js` (jshint for linting whatever files you want to lint)
 	2. `app/index.js` for calling your generator (search for `core-default` or an existing generator and update/add yours accordingly)
