@@ -13,7 +13,7 @@ attrs
 
 EXAMPLE usage:
 partial / html:
-<div dtv-appalert></div>
+<div app-appalert></div>
 
 controller / js:
 //NOTE: $scope.$emit can likely be used in place of $rootScope.$broadcast
@@ -31,14 +31,14 @@ $rootScope.$broadcast('evtAppalertAlert', {close:true});
 
 'use strict';
 
-angular.module('dtv').directive('dtvAppalert', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
+angular.module('app').directive('appAppalert', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
   return {
 		restrict: 'A',
 		//transclude: true,
 		scope: {
 		},
 
-		template: "<div class='dtv-appalert {{alert.classes}}'>"+
+		template: "<div class='app-appalert {{alert.classes}}'>"+
 			"<alert type='alert.type' close='closeAlert({})'>{{alert.msg}}</alert>"+
 		"</div>",
 		
@@ -91,7 +91,7 @@ angular.module('dtv').directive('dtvAppalert', ['$rootScope', '$timeout', functi
 				@param {Number} [delay=2000] How many milliseconds to wait before auto closing the alert
 			*/
 			function hideAlert(opts) {
-				var hidingTime =1250;		//hardcoded should match (or just be around .25s under) what's set in fade transition css in appalert.less on .dtv-appalert class
+				var hidingTime =1250;		//hardcoded should match (or just be around .25s under) what's set in fade transition css in appalert.less on .app-appalert class
 				var defaults ={
 					delay: 2000
 				};

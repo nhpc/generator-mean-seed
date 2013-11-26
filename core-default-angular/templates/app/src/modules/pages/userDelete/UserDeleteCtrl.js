@@ -11,11 +11,11 @@ NOTE: backend security should prevent user from deleting anyone but himself so t
 
 'use strict';
 
-angular.module('myApp').controller('UserDeleteCtrl', ['$scope', '$location', 'svcHttp', 'UserModel', '$routeParams', function($scope, $location, svcHttp, UserModel, $routeParams) {
+angular.module('myApp').controller('UserDeleteCtrl', ['$scope', '$location', 'appHttp', 'UserModel', '$routeParams', function($scope, $location, appHttp, UserModel, $routeParams) {
 	var user =UserModel.load();
 	var dataUser =user;
 	
-	var promise1 =svcHttp.go({}, {'url':'user/delete1', data: {user_id:dataUser._id} }, {});
+	var promise1 =appHttp.go({}, {'url':'user/delete1', data: {user_id:dataUser._id} }, {});
 	promise1.then( function(data) {
 		//go to logout now to log this user out
 		$location.url($scope.appPathLocation+"logout");

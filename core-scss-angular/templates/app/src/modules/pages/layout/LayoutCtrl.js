@@ -21,33 +21,33 @@ The "pages" array defines the pages and is used to set the layout and top level 
 
 'use strict';
 
-angular.module('myApp').controller('LayoutCtrl', ['$scope', 'svcConfig', '$location', '$cookieStore', '$rootScope', 'svcAuth', '$timeout',
- function($scope, svcConfig, $location, $cookieStore, $rootScope, svcAuth, $timeout) {
+angular.module('myApp').controller('LayoutCtrl', ['$scope', 'appConfig', '$location', '$cookieStore', '$rootScope', 'appAuth', '$timeout',
+ function($scope, appConfig, $location, $cookieStore, $rootScope, appAuth, $timeout) {
 	/**
 	define 'global' properties
 	@toc 1.
 	*/
 	
 	/**
-	Most common and default use of appPath, which is set from svcConfig and is used to allow using absolute paths for ng-include and all other file structure / path references
+	Most common and default use of appPath, which is set from appConfig and is used to allow using absolute paths for ng-include and all other file structure / path references
 	@property $scope.appPath
 	@type String
 	*/
-	$scope.appPath =svcConfig.dirPaths.appPath;		//so all children can access this without having to set it in each one
+	$scope.appPath =appConfig.dirPaths.appPath;		//so all children can access this without having to set it in each one
 	
 	/**
 	For use in <a ng-href=''> </a> tags in HTML partial files
 	@property $scope.appPathLink
 	@type String
 	*/
-	$scope.appPathLink =svcConfig.dirPaths.appPathLink;
+	$scope.appPathLink =appConfig.dirPaths.appPathLink;
 	
 	/**
 	For use with $location.url(..) in javascript controller files
 	@property $scope.appPathLocation
 	@type String
 	*/
-	$scope.appPathLocation =svcConfig.dirPaths.appPathLocation;
+	$scope.appPathLocation =appConfig.dirPaths.appPathLocation;
 	
 	/**
 	For use with displaying images that are located in the common/img folder (where all images should be) inside <img> tags in the HTML/partial. This is so all children controllers/partials (which is every one since LayoutCtrl is the parent controller to everything) can access this without having to set it in each one.
@@ -55,28 +55,28 @@ angular.module('myApp').controller('LayoutCtrl', ['$scope', 'svcConfig', '$locat
 	@type String
 	@usage <img ng-src='{{appPathImg}}/ie-chrome-logo.png' />		<!-- assumes there's an image file named 'ie-chrome-logo.png' in the common/img folder -->
 	*/
-	$scope.appPathImg =svcConfig.dirPaths.appPath+'src/common/img';
+	$scope.appPathImg =appConfig.dirPaths.appPath+'src/common/img';
 	
 	/**
 	For use in referencing static files like partials
 	@property $scope.staticPath
 	@type String
 	**/
-	$scope.staticPath = svcConfig.dirPaths.staticPath;
+	$scope.staticPath = appConfig.dirPaths.staticPath;
 	
 	/**
 	For use in referencing pages folders like partials
 	@property $scope.pagesFullPath
 	@type String
 	**/
-	$scope.pagesFullPath = svcConfig.dirPaths.staticPath+svcConfig.dirPaths.pagesPath;
+	$scope.pagesFullPath = appConfig.dirPaths.staticPath+appConfig.dirPaths.pagesPath;
 	
 	/**
-	Stores the title of the application (as set in svcConfig) - can be used in (any) HTML partial files or javascript controller files
+	Stores the title of the application (as set in appConfig) - can be used in (any) HTML partial files or javascript controller files
 	@property $scope.appTitle
 	@type String
 	*/
-	$scope.appTitle =svcConfig.info.appTitle;
+	$scope.appTitle =appConfig.info.appTitle;
 
 	$scope.ids ={'header':'header', 'content':'content', 'footer':'footer'};
 	/**
@@ -97,7 +97,7 @@ angular.module('myApp').controller('LayoutCtrl', ['$scope', 'svcConfig', '$locat
 
 	/**
 	Handles post login (or reverse for logout)
-	- sets svcConfig.state.loggedIn
+	- sets appConfig.state.loggedIn
 	- sets $scope.classes.loggedIn
 	- sets (or clears for logout) cookies for session and user
 	- redirects to the appropriate page if need be
@@ -110,13 +110,13 @@ angular.module('myApp').controller('LayoutCtrl', ['$scope', 'svcConfig', '$locat
 		@param {Boolean} [noRedirect] true to not change/page location
 	*/
 	$scope.$on('loginEvt', function(evt, params) {
-		var appPath1 =svcConfig.dirPaths.appPath;
+		var appPath1 =appConfig.dirPaths.appPath;
 		//strip slashes for matching to ensure no single character mismatch issues
 		var locPathMatch =$location.path().replace(/^[//]+/g, '');
 		var appPath1Match =appPath1.replace(/^[//]/g, '');
 		if(params.loggedIn) {
 			$scope.classes.loggedIn ='logged-in';
-			svcConfig.state.loggedIn =true;
+			appConfig.state.loggedIn =true;
 			if(params.sess_id !==undefined) {
 				$cookieStore.put('sess_id', params.sess_id);
 			}
@@ -126,13 +126,13 @@ angular.module('myApp').controller('LayoutCtrl', ['$scope', 'svcConfig', '$locat
 			if(params.noRedirect ===undefined || !params.noRedirect || (params.loggedIn && (locPathMatch ==appPath1Match+'login' || locPathMatch ==appPath1Match+'password-reset' || locPathMatch ==appPath1Match+'signup') ) ) {
 				var page ='home';
 				var redirect =false;
-				if(svcAuth.data.redirectUrl) {
+				if(appAuth.data.redirectUrl) {
 				//if(0) {
-					if(svcAuth.data.redirectUrl.indexOf('login') <0 && svcAuth.data.redirectUrl.indexOf('password-reset') <0 && svcAuth.data.redirectUrl.indexOf('signup') <0) {		//prevent infinite loop //UPDATE: android appends weird stuff in front so can't do exact match..
-						page =svcAuth.data.redirectUrl;
+					if(appAuth.data.redirectUrl.indexOf('login') <0 && appAuth.data.redirectUrl.indexOf('password-reset') <0 && appAuth.data.redirectUrl.indexOf('signup') <0) {		//prevent infinite loop //UPDATE: android appends weird stuff in front so can't do exact match..
+						page =appAuth.data.redirectUrl;
 						redirect =true;
 					}
-					svcAuth.data.redirectUrl =false;		//reset for next time
+					appAuth.data.redirectUrl =false;		//reset for next time
 					$cookieStore.remove('redirectUrl');
 				}
 				//ensure page refreshes by adding param to end
@@ -143,14 +143,14 @@ angular.module('myApp').controller('LayoutCtrl', ['$scope', 'svcConfig', '$locat
 				else {
 					ppAdd ='?'+ppAdd;
 				}
-				$location.url(svcConfig.dirPaths.appPathLocation+page+ppAdd);
+				$location.url(appConfig.dirPaths.appPathLocation+page+ppAdd);
 			}
 		}
 		else {
 			$scope.classes.loggedIn ='logged-out';
-			svcConfig.state.loggedIn =false;
+			appConfig.state.loggedIn =false;
 			if(params.noRedirect ===undefined || !params.noRedirect || (params.loggedIn && (locPathMatch ==appPath1Match+'login' || locPathMatch ==appPath1Match+'password-reset' || locPathMatch ==appPath1Match+'signup') ) ) {
-				$location.url(svcConfig.dirPaths.appPathLocation+"home");
+				$location.url(appConfig.dirPaths.appPathLocation+"home");
 			}
 		}
 	});

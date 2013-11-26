@@ -3,7 +3,7 @@
 
 'use strict';
 
-angular.module('myApp').controller('SignupCtrl', ['$scope', 'svcHttp', 'UserModel', '$rootScope', function($scope, svcHttp, UserModel, $rootScope) {
+angular.module('myApp').controller('SignupCtrl', ['$scope', 'appHttp', 'UserModel', '$rootScope', function($scope, appHttp, UserModel, $rootScope) {
 	
 	/**
 	@method $scope.signup
@@ -12,7 +12,7 @@ angular.module('myApp').controller('SignupCtrl', ['$scope', 'svcHttp', 'UserMode
 	@param {Function} callback
 	*/
 	$scope.signup =function(params, callback) {
-		var promise1 =svcHttp.go({}, {url:'auth/create', data:params.vals}, {});
+		var promise1 =appHttp.go({}, {url:'auth/create', data:params.vals}, {});
 		promise1.then(function(response) {
 			var user =response.result.user;
 			UserModel.save(user);

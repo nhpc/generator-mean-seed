@@ -5,8 +5,8 @@
 
 'use strict';
 
-angular.module('myApp').controller('PasswordResetCtrl', ['$scope', '$routeParams', '$location', 'svcHttp', 'UserModel',
-function($scope, $routeParams, $location, svcHttp, UserModel) {
+angular.module('myApp').controller('PasswordResetCtrl', ['$scope', '$routeParams', '$location', 'appHttp', 'UserModel',
+function($scope, $routeParams, $location, appHttp, UserModel) {
 	$scope.formVals = {};
 	
 	//see if email and/or password reset key is set in url
@@ -25,7 +25,7 @@ function($scope, $routeParams, $location, svcHttp, UserModel) {
 			$scope.$emit('evtAppalertAlert', {close:true});		//clear existing messages
 			
 			$scope.formVals.reset_key =$scope.formVals.password_reset_key;
-			var promise =svcHttp.go({}, {url:'auth/resetPassword', data:$scope.formVals}, {});
+			var promise =appHttp.go({}, {url:'auth/resetPassword', data:$scope.formVals}, {});
 			promise.then(function(response) {
 				var user =response.result.user;
 				UserModel.save(user);

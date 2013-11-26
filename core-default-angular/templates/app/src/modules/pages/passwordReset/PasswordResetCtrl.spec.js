@@ -8,7 +8,7 @@ describe('PasswordResetCtrl', function(){
 	var ctrl, scope ={}, $routeParams;
 
 	beforeEach(module('myApp'));
-	beforeEach(module('svc'));		//all need svcConfig for svcConfig provider in app.js
+	beforeEach(module('app'));		//all need appConfig for appConfig provider in app.js
 	
 	/*
 	beforeEach(inject(function($rootScope, $controller, $routeParams) {

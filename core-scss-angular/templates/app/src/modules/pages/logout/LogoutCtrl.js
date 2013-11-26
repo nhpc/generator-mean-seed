@@ -8,11 +8,11 @@
 
 'use strict';
 
-angular.module('myApp').controller('LogoutCtrl', ['$scope', '$location', '$cookieStore', 'svcHttp', 'UserModel', '$rootScope', 'svcStorage', function($scope, $location, $cookieStore, svcHttp, UserModel, $rootScope, svcStorage) {
+angular.module('myApp').controller('LogoutCtrl', ['$scope', '$location', '$cookieStore', 'appHttp', 'UserModel', '$rootScope', 'appStorage', function($scope, $location, $cookieStore, appHttp, UserModel, $rootScope, appStorage) {
 	var user =UserModel.load();
 	var sessId =$cookieStore.get('sess_id');
 	
-	var promise1 =svcHttp.go({}, {url: 'auth/logout', data: {user_id:user._id, sess_id:sessId}}, {suppressErrorAlert:true});
+	var promise1 =appHttp.go({}, {url: 'auth/logout', data: {user_id:user._id, sess_id:sessId}}, {suppressErrorAlert:true});
 	promise1.then( function(data) {
 		clearData({});
 		$rootScope.$broadcast('loginEvt', {'loggedIn':false});
@@ -31,7 +31,7 @@ angular.module('myApp').controller('LogoutCtrl', ['$scope', '$location', '$cooki
 		$cookieStore.remove('sess_id');
 		$cookieStore.remove('user_id');
 		UserModel.destroy();
-		svcStorage.delete1();
-		// svcStorage.delete1('user');		//the above wasn't working..
+		appStorage.delete1();
+		// appStorage.delete1('user');		//the above wasn't working..
 	}
 }]);

@@ -5,7 +5,7 @@
 
 'use strict';
 
-angular.module('myApp').controller('HeaderCtrl', ['$scope', 'svcNav', function($scope, svcNav) {
+angular.module('myApp').controller('HeaderCtrl', ['$scope', 'appNav', function($scope, appNav) {
 	$scope.nav ={};
 	
 	$scope.classes ={
@@ -31,12 +31,12 @@ angular.module('myApp').controller('HeaderCtrl', ['$scope', 'svcNav', function($
 	@param {Object} params
 		@param {Object} nav
 	*/
-	$scope.$on('svcNavHeaderUpdate', function(evt, params) {
+	$scope.$on('appNavHeaderUpdate', function(evt, params) {
 		setNav(params.nav.header, {});
 	});
 	
 	//init (since first load the $scope.$on may not be called)
-	var nav =svcNav.getNav({});
+	var nav =appNav.getNav({});
 	setNav(nav.header, {});
 	
 }]);

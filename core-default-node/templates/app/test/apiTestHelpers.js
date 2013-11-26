@@ -139,7 +139,7 @@ var inst ={
 	},
 	
 	/**
-	Mimics frontend svcHttp service for making an api call
+	Mimics frontend appHttp service for making an api call
 	@toc 2.
 	@method httpGo
 	@param {Object} rpcOpts

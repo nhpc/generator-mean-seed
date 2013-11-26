@@ -421,7 +421,7 @@ module.exports = function(grunt) {
 						// src:        publicPathRelative+"partials/resources/no-touch-grunt.html",
 						// dest:       publicPathRelative+"partials/resources/no-touch.html"
 					// },
-					svcConfig: {
+					appConfig: {
 						src:        publicPathRelative+"modules/services/config/config-grunt.js",
 						dest:       publicPathRelative+"modules/services/config/config.js"
 					},

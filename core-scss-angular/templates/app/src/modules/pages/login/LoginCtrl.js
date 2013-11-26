@@ -3,7 +3,7 @@
 
 'use strict';
 
-angular.module('myApp').controller('LoginCtrl', ['$scope', 'svcHttp', '$location', 'UserModel', '$rootScope', function($scope, svcHttp, $location, UserModel, $rootScope) {
+angular.module('myApp').controller('LoginCtrl', ['$scope', 'appHttp', '$location', 'UserModel', '$rootScope', function($scope, appHttp, $location, UserModel, $rootScope) {
 	
 	/**
 	@method $scope.login
@@ -12,7 +12,7 @@ angular.module('myApp').controller('LoginCtrl', ['$scope', 'svcHttp', '$location
 	@param {Function} callback
 	*/
 	$scope.login =function(params, callback) {
-		var promise1 =svcHttp.go({}, {url:'auth/login', data:params.vals}, {});
+		var promise1 =appHttp.go({}, {url:'auth/login', data:params.vals}, {});
 		promise1.then(function(response) {
 			var user =response.result.user;
 			UserModel.save(user);
@@ -28,7 +28,7 @@ angular.module('myApp').controller('LoginCtrl', ['$scope', 'svcHttp', '$location
 	@param {Function} callback
 	*/
 	$scope.forgotPass =function(params, callback) {
-		var promise =svcHttp.go({}, {url:'auth/forgotPassword', data: {email:params.email} }, {});
+		var promise =appHttp.go({}, {url:'auth/forgotPassword', data: {email:params.email} }, {});
 		promise.then(function(response) {
 			$location.url($scope.appPathLocation+"password-reset");
 			callback({});

@@ -1,15 +1,15 @@
 //@todo
 'use strict';
 
-describe('svcSocialAuth', function(){
-	var ctrl, scope ={}, $httpBackend, svcHttp, svcAuth, svcConfig, UserModel;
+describe('appSocialAuth', function(){
+	var ctrl, scope ={}, $httpBackend, appHttp, appAuth, appConfig, UserModel;
 
-    beforeEach(module('svc'));
+    beforeEach(module('app'));
 	
-	beforeEach(inject(function($rootScope, $controller, $injector, _svcHttp_, _svcAuth_, _svcConfig_, _UserModel_) {
-		svcHttp =_svcHttp_;
-		svcAuth =_svcAuth_;
-		svcConfig =_svcConfig_;
+	beforeEach(inject(function($rootScope, $controller, $injector, _appHttp_, _appAuth_, _appConfig_, _UserModel_) {
+		appHttp =_appHttp_;
+		appAuth =_appAuth_;
+		appConfig =_appConfig_;
 		UserModel =_UserModel_;
 		$httpBackend = $injector.get('$httpBackend');
 		

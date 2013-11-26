@@ -5,20 +5,20 @@
 'use strict';
 
 describe('LogoutCtrl', function(){
-	var ctrl, scope ={}, $httpBackend, UserModel, svcConfig, svcHttp;
+	var ctrl, scope ={}, $httpBackend, UserModel, appConfig, appHttp;
 
 	beforeEach(module('myApp'));
-	beforeEach(module('svc'));
+	beforeEach(module('app'));
 	
-	beforeEach(inject(function($rootScope, $controller, $injector, _svcHttp_, _UserModel_, _svcConfig_) {
-		svcConfig =_svcConfig_;
-		svcHttp =_svcHttp_;
+	beforeEach(inject(function($rootScope, $controller, $injector, _appHttp_, _UserModel_, _appConfig_) {
+		appConfig =_appConfig_;
+		appHttp =_appHttp_;
 		UserModel =_UserModel_;
 		//$httpBackend = _$httpBackend_;
 		$httpBackend = $injector.get('$httpBackend');
 		
 		var success;
-		var promise1 = svcHttp.go({method:'Auth.logout'}, {}, {});
+		var promise1 = appHttp.go({method:'Auth.logout'}, {}, {});
 		promise1.then(function(response) {
 			success = response.result;
 			//var dummy =1;
@@ -50,7 +50,7 @@ describe('LogoutCtrl', function(){
 		$httpBackend.when('POST', '/api/auth/').respond({result: true});
 
 		// var success;
-		// var promise1 = svcHttp.go({method:'Auth.logout'}, {}, {});
+		// var promise1 = appHttp.go({method:'Auth.logout'}, {}, {});
 		// promise1.then(function(response) {
 			// success = response.result;
 		// });
@@ -68,17 +68,17 @@ describe('LogoutCtrl', function(){
 'use strict';
 
 describe('LogoutCtrl', function(){
-	var ctrl, scope ={}, $httpBackend, UserModel, svcConfig, svcHttp;
+	var ctrl, scope ={}, $httpBackend, UserModel, appConfig, appHttp;
 
 	beforeEach(module('myApp'));
-	beforeEach(module('svc'));
+	beforeEach(module('app'));
 	
-	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, _svcHttp_, _UserModel_, _svcConfig_) {
-		svcConfig =_svcConfig_;
-		svcHttp =_svcHttp_;
+	beforeEach(inject(function($rootScope, $controller, _$httpBackend_, _appHttp_, _UserModel_, _appConfig_) {
+		appConfig =_appConfig_;
+		appHttp =_appHttp_;
 		UserModel =_UserModel_;
 		$httpBackend = _$httpBackend_;
-		var url =svcConfig.dirPaths.ajaxUrl.api+"user/logout";
+		var url =appConfig.dirPaths.ajaxUrl.api+"user/logout";
 		var user =false;
 		if(0) {
 		if(0) {

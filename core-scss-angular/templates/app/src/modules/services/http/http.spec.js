@@ -1,13 +1,13 @@
 'use strict';
 
-describe('svcHttp', function(){
-	var ctrl, scope ={}, $httpBackend, svcHttp;
+describe('appHttp', function(){
+	var ctrl, scope ={}, $httpBackend, appHttp;
 
 	beforeEach(module('ngCookies'));
-    beforeEach(module('svc'));
+    beforeEach(module('app'));
 	
-	beforeEach(inject(function($rootScope, $controller, $injector, _svcHttp_) {
-		svcHttp =_svcHttp_;
+	beforeEach(inject(function($rootScope, $controller, $injector, _appHttp_) {
+		appHttp =_appHttp_;
 		$httpBackend = $injector.get('$httpBackend');
 		
 		scope = $rootScope.$new();
@@ -30,8 +30,8 @@ describe('svcHttp', function(){
 			email: 't@t.com',
 			password: 'testing'
 		};
-		// var promise1 =svcHttp.go({method:'Auth.login'}, {data:loginVals}, {});
-		var promise1 =svcHttp.go({}, {url:'auth/login', data:loginVals}, {});
+		// var promise1 =appHttp.go({method:'Auth.login'}, {data:loginVals}, {});
+		var promise1 =appHttp.go({}, {url:'auth/login', data:loginVals}, {});
 		promise1.then(function(response) {
 			user =response.result;
 		});

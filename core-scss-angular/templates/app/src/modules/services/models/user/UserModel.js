@@ -8,7 +8,7 @@
 'use strict';
 
 angular.module('models').
-factory('UserModel', ['svcStorage', function(svcStorage){
+factory('UserModel', ['appStorage', function(appStorage){
 var inst ={
 
 	data: {},
@@ -32,7 +32,7 @@ var inst ={
 	save: function(data, params)
 	{
 		this.data =angular.extend(this.data, data);
-		svcStorage.save('user', this.data, {});
+		appStorage.save('user', this.data, {});
 	},
 
 	//2.

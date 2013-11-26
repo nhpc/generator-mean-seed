@@ -12,7 +12,7 @@
 
 @usage
 partial / html:
-<div dtv-login forgot-pass='forgotPass' login='login'></div>
+<div app-login forgot-pass='forgotPass' login='login'></div>
 
 controller / js:
 
@@ -21,7 +21,7 @@ controller / js:
 
 'use strict';
 
-angular.module('dtv').directive('dtvLogin', ['svcConfig', function (svcConfig) {
+angular.module('app').directive('appLogin', ['appConfig', function (appConfig) {
   return {
 		restrict: 'A',
 		scope: {
@@ -47,7 +47,7 @@ angular.module('dtv').directive('dtvLogin', ['svcConfig', function (svcConfig) {
 						"<div class='jrg-forminput-submit btn btn-primary login-form-button-right' ng-click='forgotPassDtv({})' >Remind Me!</div>"+
 					"</div>"+
 					
-					"<div dtv-social-auth-btn button-text='Login'></div>"+
+					"<div app-social-auth-btn button-text='Login'></div>"+
 					
 				"</form>"+
 
@@ -58,8 +58,8 @@ angular.module('dtv').directive('dtvLogin', ['svcConfig', function (svcConfig) {
 		},
 		
 		controller: function($scope, $element, $attrs) {
-			$scope.appTitle =svcConfig.info.appTitle;
-			$scope.appPathLink =svcConfig.dirPaths.appPathLink;
+			$scope.appTitle =appConfig.info.appTitle;
+			$scope.appPathLink =appConfig.dirPaths.appPathLink;
 			
 			$scope.formVals = {};
 

@@ -14,8 +14,8 @@ lawnchair.io
 
 'use strict';
 
-angular.module('svc').
-factory('svcStorage', ['$q',
+angular.module('app').
+factory('appStorage', ['$q',
 function($q) {
 var inst ={
 

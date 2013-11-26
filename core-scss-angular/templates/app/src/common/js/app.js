@@ -31,27 +31,26 @@ angular.module('jrg', [
 
 //declare some other modules so can group sets of services & directives together for easy reference elsewhere
 angular.module('models', []);
-angular.module('svc', [
-	'models'		//so don't have to actually use/include 'models' anywhere, just use 'svc' instead
+angular.module('app', [
+	'models'		//so don't have to actually use/include 'models' anywhere, just use 'app' instead
 ]);
-angular.module('dtv', []);
 
 angular.module('myApp', [
 'ngRoute', 'ngSanitize', 'ngTouch', 'ngAnimate', 'ngCookies',		//additional angular modules
 'hmTouchEvents',		//hammer swipe / touch
 'ui.bootstrap',
 'jrg',
-'dtv', 'svc'		//local / app specific directives and services (anything that can be used across apps should be added to an external (bower) directive or service library)
+'app'		//local / app specific directives and services (anything that can be used across apps should be added to an external (bower) directive or service library)
 ]).
-config(['$routeProvider', '$locationProvider', 'svcConfigProvider', '$compileProvider', function($routeProvider, $locationProvider, svcConfigProvider, $compileProvider) {
+config(['$routeProvider', '$locationProvider', 'appConfigProvider', '$compileProvider', function($routeProvider, $locationProvider, appConfigProvider, $compileProvider) {
 	/**
 	setup - whitelist, appPath, html5Mode
 	@toc 1.
 	*/
 	$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|content|geo|http?):/);		//otherwise ng-href links don't work on Android within TriggerIO: http://stackoverflow.com/questions/16130902/angular-js-and-trigger-io-cant-follow-a-link-on-android-that-works-on-ios		//UPDATE: Angular 1.2.0 no longer has urlSanitizationWhitelist; it's been renamed to aHrefSanitizationWhitelist and may no longer even be necessary: http://stackoverflow.com/questions/15105910/angular-ng-view-routing-not-working-in-phonegap
 	
-	var appPath =svcConfigProvider.dirPaths.appPath;
-	var staticPath = svcConfigProvider.dirPaths.staticPath;
+	var appPath =appConfigProvider.dirPaths.appPath;
+	var staticPath = appConfigProvider.dirPaths.staticPath;
 
 	//handle browsers with no html5 history api (AND Android <3 which checks as true but doesn't really fully support it..)
 	var appPathRoute =appPath;
@@ -75,8 +74,8 @@ config(['$routeProvider', '$locationProvider', 'svcConfigProvider', '$compilePro
 	}
 	else {		//update for route matching and forming
 		appPathRoute ='/';
-		svcConfigProvider.dirPaths.appPathLink =svcConfigProvider.dirPaths.appPathLink+"#/";
-		svcConfigProvider.dirPaths.appPathLocation ='';
+		appConfigProvider.dirPaths.appPathLink =appConfigProvider.dirPaths.appPathLink+"#/";
+		appConfigProvider.dirPaths.appPathLocation ='';
 	}
 	
 	var pagesPath =staticPath+'modules/pages/';
@@ -89,8 +88,8 @@ config(['$routeProvider', '$locationProvider', 'svcConfigProvider', '$compilePro
 	/*
 	$routeProvider.when(appPathRoute+'home', {templateUrl: pagesPath+'home/home.html',
 		resolve: {
-			auth: function(svcAuth) {
-				return svcAuth.checkSess({'noLoginRequired':true});
+			auth: function(appAuth) {
+				return appAuth.checkSess({'noLoginRequired':true});
 			}
 		}
 	});
@@ -99,37 +98,37 @@ config(['$routeProvider', '$locationProvider', 'svcConfigProvider', '$compilePro
 	
 	$routeProvider.when(appPathRoute+'login', {templateUrl: pagesPath+'login/login.html',
 		resolve: {
-			auth: function(svcAuth) {
-				return svcAuth.checkSess({'noLoginRequired':true});
+			auth: function(appAuth) {
+				return appAuth.checkSess({'noLoginRequired':true});
 			}
 		}
 	});
 	$routeProvider.when(appPathRoute+'signup', {templateUrl: pagesPath+'signup/signup.html',
 		resolve: {
-			auth: function(svcAuth) {
-				return svcAuth.checkSess({'noLoginRequired':true});
+			auth: function(appAuth) {
+				return appAuth.checkSess({'noLoginRequired':true});
 			}
 		}
 	});
 	$routeProvider.when(appPathRoute+'logout', {templateUrl: pagesPath+'logout/logout.html',
 		resolve: {
-			auth: function(svcAuth) {
-				return svcAuth.checkSess({'noLoginRequired':true});
+			auth: function(appAuth) {
+				return appAuth.checkSess({'noLoginRequired':true});
 			}
 		}
 	});
 	$routeProvider.when(appPathRoute+'user-delete', {templateUrl: pagesPath+'userDelete/user-delete.html',
 		resolve: {
-			auth: function(svcAuth) {
-				return svcAuth.checkSess({'noLoginRequired':true});
+			auth: function(appAuth) {
+				return appAuth.checkSess({'noLoginRequired':true});
 			}
 		}
 	});
 		
 	$routeProvider.when(appPathRoute+'password-reset', {templateUrl: pagesPath+'passwordReset/password-reset.html',
 		resolve: {
-			auth: function(svcAuth) {
-				return svcAuth.checkSess({'noLoginRequired':true});
+			auth: function(appAuth) {
+				return appAuth.checkSess({'noLoginRequired':true});
 			}
 		}
 	});
@@ -137,16 +136,16 @@ config(['$routeProvider', '$locationProvider', 'svcConfigProvider', '$compilePro
 	// $routeProvider.when(appPathRoute+'test', {templateUrl: pagesPath+'test/test.html'});
 	$routeProvider.when(appPathRoute+'test', {templateUrl: pagesPath+'test/test.html',
 		resolve: {
-			auth: function(svcAuth) {
-				return svcAuth.checkSess({noLoginRequired:true});
+			auth: function(appAuth) {
+				return appAuth.checkSess({noLoginRequired:true});
 			}
 		}
 	});
 	
 	$routeProvider.when(appPathRoute+'design', {templateUrl: pagesPath+'design/design.html',
 		resolve: {
-			auth: function(svcAuth) {
-				return svcAuth.checkSess({noLoginRequired:true});
+			auth: function(appAuth) {
+				return appAuth.checkSess({noLoginRequired:true});
 			}
 		}
 	});

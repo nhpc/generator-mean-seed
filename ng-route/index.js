@@ -317,8 +317,8 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 		if(1) {
 			var newData ="$routeProvider.when(appPathRoute+'"+this.optRouteName+"', {templateUrl: pagesPath+'"+this.optRoutePath+this.optRouteName+"/"+this.optRouteName+".html',\n"+
 			"		resolve: {\n"+
-			"			auth: function(svcAuth) {\n"+
-			"				return svcAuth.checkSess({noLoginRequired:true});\n"+
+			"			auth: function(appAuth) {\n"+
+			"				return appAuth.checkSess({noLoginRequired:true});\n"+
 			"			}\n"+
 			"		}\n"+
 			"	});\n";

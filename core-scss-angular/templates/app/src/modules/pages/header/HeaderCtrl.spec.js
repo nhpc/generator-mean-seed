@@ -1,7 +1,7 @@
 'use strict';
 
 describe('HeaderCtrl', function(){
-	var ctrl, scope ={}, svcConfig;
+	var ctrl, scope ={}, appConfig;
 
 	/*
 	beforeEach(function(){
@@ -10,16 +10,16 @@ describe('HeaderCtrl', function(){
 	*/
 	
 	beforeEach(module('myApp'));
-	beforeEach(module('svc'));
+	beforeEach(module('app'));
 	
-	beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, _svcConfig_) {
+	beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, _appConfig_) {
 		/*
 		$httpBackend = _$httpBackend_;
 		$httpBackend.expectGET('phones/phones.json').
 				respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
 		*/
 		
-		svcConfig =_svcConfig_;
+		appConfig =_appConfig_;
 		scope = $rootScope.$new();
 		ctrl = $controller('HeaderCtrl', {$scope: scope});
 		
@@ -27,6 +27,6 @@ describe('HeaderCtrl', function(){
 	}));
 	
 	it('should start with user logged out', function() {
-		expect(svcConfig.state.loggedIn).toBe(false);
+		expect(appConfig.state.loggedIn).toBe(false);
 	});
 });

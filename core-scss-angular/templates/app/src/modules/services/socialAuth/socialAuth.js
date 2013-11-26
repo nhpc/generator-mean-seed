@@ -9,9 +9,9 @@
 
 'use strict';
 
-angular.module('svc').
-factory('svcSocialAuth', ['svcHttp', 'svcConfig', '$rootScope', '$q', 'jrgGoogleAuth', 'jrgFacebookAuth', 'UserModel', '$timeout',
-function(svcHttp, svcConfig, $rootScope, $q, jrgGoogleAuth, jrgFacebookAuth, UserModel, $timeout) {
+angular.module('app').
+factory('appSocialAuth', ['appHttp', 'appConfig', '$rootScope', '$q', 'jrgGoogleAuth', 'jrgFacebookAuth', 'UserModel', '$timeout',
+function(appHttp, appConfig, $rootScope, $q, jrgGoogleAuth, jrgFacebookAuth, UserModel, $timeout) {
 var inst ={
 
 	/**
@@ -38,7 +38,7 @@ var inst ={
 		@param {String} google_id Authenticated user's google id
 		@param {String} [email] authenticated user's email address (not guaranteed to exist)
 	@example
-		var promise =svcSocialAuth.checkAuthGoogle({});
+		var promise =appSocialAuth.checkAuthGoogle({});
 		promise.then(function(data) {
 			//do stuff here
 		}, function(data) {
@@ -53,8 +53,8 @@ var inst ={
 		}
 		else {		//have to authenticate
 			//initialize google auth with client id
-			//jrgGoogleAuth.init({'client_id':svcConfig.info.googleClientId, 'scope':'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email'});
-			jrgGoogleAuth.init({'client_id':svcConfig.info.googleClientId, 'scopeHelp':['login', 'email', 'contacts'] });
+			//jrgGoogleAuth.init({'client_id':appConfig.info.googleClientId, 'scope':'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email'});
+			jrgGoogleAuth.init({'client_id':appConfig.info.googleClientId, 'scopeHelp':['login', 'email', 'contacts'] });
 			
 			//handle actual google login
 			var evtGoogleLogin ="evtGoogleLogin";
@@ -96,7 +96,7 @@ var inst ={
 		@param {String} facebook_id Authenticated user's facebook id
 		@param {String} [email] authenticated user's email address (not guaranteed to exist)
 	@example
-		var promise =svcSocialAuth.checkAuthFacebook({});
+		var promise =appSocialAuth.checkAuthFacebook({});
 		promise.then(function(data) {
 			//do stuff here
 		}, function(data) {
@@ -111,7 +111,7 @@ var inst ={
 		}
 		else {		//have to authenticate
 			//initialize facebook auth with app id
-			jrgFacebookAuth.init({'fbAppId':svcConfig.info.fbAppId, 'fbPerms':svcConfig.info.fbPerms});
+			jrgFacebookAuth.init({'fbAppId':appConfig.info.fbAppId, 'fbPerms':appConfig.info.fbPerms});
 			
 			//$timeout(function() {
 				//handle actual facebook login

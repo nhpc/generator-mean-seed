@@ -11,7 +11,7 @@
 
 @usage
 partial / html:
-<div dtv-signup signup='signup'></div>
+<div app-signup signup='signup'></div>
 
 controller / js:
 
@@ -20,7 +20,7 @@ controller / js:
 
 'use strict';
 
-angular.module('dtv').directive('dtvSignup', ['svcConfig', function (svcConfig) {
+angular.module('app').directive('appSignup', ['appConfig', function (appConfig) {
   return {
 		restrict: 'A',
 		scope: {
@@ -39,7 +39,7 @@ angular.module('dtv').directive('dtvSignup', ['svcConfig', function (svcConfig) 
 					"<button class='btn btn-primary jrg-forminput-submit' type='submit' >Sign Up</button>"+
 				"</form>"+
 
-				"<div dtv-social-auth-btn button-text='Sign Up'></div>"+
+				"<div app-social-auth-btn button-text='Sign Up'></div>"+
 				
 			"</div>"+
 			
@@ -48,8 +48,8 @@ angular.module('dtv').directive('dtvSignup', ['svcConfig', function (svcConfig) 
 		},
 		
 		controller: function($scope, $element, $attrs) {
-			$scope.appTitle =svcConfig.info.appTitle;
-			$scope.appPathLink =svcConfig.dirPaths.appPathLink;
+			$scope.appTitle =appConfig.info.appTitle;
+			$scope.appPathLink =appConfig.dirPaths.appPathLink;
 			
 			$scope.formVals = {};
 	

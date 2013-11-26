@@ -1,16 +1,16 @@
 'use strict';
 
-describe('dtvAppalert', function () {
+describe('appAppalert', function () {
 	var elm, scope, $compile, $timeout;
 	
 	beforeEach(module('ui.bootstrap'));
-	beforeEach(module('dtv'));
+	beforeEach(module('app'));
 	
 	/**
 	@param params
 	*/
 	var createElm =function(params) {
-		var html ="<div><div dtv-appalert>"+
+		var html ="<div><div app-appalert>"+
 		"</div></div>";
 		elm =angular.element(html);
 		
@@ -55,7 +55,7 @@ describe('dtvAppalert', function () {
 		expect(eles.msg.text()).toBe('Success!');
 		
 		//var elmAlert =elm.find('div div.alert');
-		//var elmAlert =elm.find('div.dtv-appalert');
+		//var elmAlert =elm.find('div.app-appalert');
 		//var elmAlert =elm.children().children()[0];
 		//var elmAlert =elm.children().find('div').toHaveClass('alert');
 		//var elmAlert =elm.find('div').children().eq(0);

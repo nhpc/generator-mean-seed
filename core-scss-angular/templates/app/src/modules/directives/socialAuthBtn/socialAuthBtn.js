@@ -12,7 +12,7 @@ NOTE: this directive has http (backend) calls in it! In general this is bad prac
 
 @usage
 partial / html:
-<div dtv-social-auth-btn button-text='Sign Up'></div>
+<div app-social-auth-btn button-text='Sign Up'></div>
 
 controller / js:
 
@@ -21,8 +21,8 @@ controller / js:
 
 'use strict';
 
-angular.module('dtv').directive('dtvSocialAuthBtn', ['svcHttp', 'UserModel', 'svcConfig', '$rootScope', 'svcSocialAuth',
-function (svcHttp, UserModel, svcConfig, $rootScope, svcSocialAuth) {
+angular.module('app').directive('appSocialAuthBtn', ['appHttp', 'UserModel', 'appConfig', '$rootScope', 'appSocialAuth',
+function (appHttp, UserModel, appConfig, $rootScope, appSocialAuth) {
   return {
 		restrict: 'A',
 		scope: {
@@ -49,7 +49,7 @@ function (svcHttp, UserModel, svcConfig, $rootScope, svcSocialAuth) {
 			@method $scope.fbLogin
 			*/
 			$scope.fbLogin =function() {
-				var promise =svcSocialAuth.checkAuthFacebook({});
+				var promise =appSocialAuth.checkAuthFacebook({});
 				promise.then(function(data) {
 					var vals ={
 						type: 'facebook',
@@ -62,7 +62,7 @@ function (svcHttp, UserModel, svcConfig, $rootScope, svcSocialAuth) {
 					if(data.email) {
 						vals.user.email =data.email;
 					}
-					var promise1 =svcHttp.go({}, {url:'auth/socialLogin', data:vals}, {}, {});
+					var promise1 =appHttp.go({}, {url:'auth/socialLogin', data:vals}, {}, {});
 					promise1.then(function(response) {
 						var user =response.result.user;
 						UserModel.save(user);
@@ -80,7 +80,7 @@ function (svcHttp, UserModel, svcConfig, $rootScope, svcSocialAuth) {
 			@method $scope.googleLogin
 			*/
 			$scope.googleLogin =function() {
-				var promise =svcSocialAuth.checkAuthGoogle({});
+				var promise =appSocialAuth.checkAuthGoogle({});
 				promise.then(function(data) {
 					var vals ={
 						type: 'google',
@@ -93,7 +93,7 @@ function (svcHttp, UserModel, svcConfig, $rootScope, svcSocialAuth) {
 					if(data.email) {
 						vals.user.email =data.email;
 					}
-					var promise1 =svcHttp.go({}, {url:'auth/socialLogin', data:vals}, {}, {});
+					var promise1 =appHttp.go({}, {url:'auth/socialLogin', data:vals}, {}, {});
 					promise1.then(function(response) {
 						var user =response.result.user;
 						UserModel.save(user);
