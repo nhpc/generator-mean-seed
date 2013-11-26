@@ -3,7 +3,7 @@
 ### Setup
 1. [ONCE PER MACHINE/ENVIRONMENT] machine (global / program) installs
 	1. Install git, nodejs, mongodb, and phantomjs
-		1. See other README's (i.e. `docs/setup-server-windows-mac.md` or `docs/setup-server-linux.md`) or just google search for steps on how to do this.
+		1. See other README's (i.e. [server-mac.md](server-mac.md) or [server-windows.md](server-windows.md) or [server-linux.md](server-linux.md)) or just google search for steps on how to do this.
 		2. Configure git (required for pushing and pulling)
 			1. `git config --global user.name "<your name>"`
 				1. i.e. git config --global user.name "Joe Bob"
@@ -25,7 +25,7 @@
 		1. `./node_modules/protractor/bin/install_selenium_standalone`
 
 2. Create a new directory where you want your app to be and then navigate to it (with `cd`) and run yeoman generator with `yo mean-seed`
-	1. NOTE: if you're cloning / copying an EXISTING code repository, see `cloning.md` instead!
+	1. NOTE: if you're cloning / copying an EXISTING code repository, see [cloning.md](cloning.md) instead!
 	2. You can skip the prompts if you want by using a JSON config file. To do so, create a `yo-configs` folder and add a JSON file to it with the answers to the prompts (see or copy a file in the `yo-configs` folder from here for reference: https://github.com/jackrabbitsgroup/generator-mean-seed ).
 		1. To copy from the global generator-mean-seed install (and edit on command line - i.e. with `sudo vi default.json`) use `cp [path to generator-mean-seed]/yo-configs/default.json yo-configs/default.json` and then edit is as needed.
 		2. To edit locally and then copy remotely to your server use `scp default.json [user]@[remote host ip/domain]:/[path to new app]/yo-configs/default.json`
@@ -44,7 +44,7 @@ npm install && bower install
 		1. Gruntfile.js
 		2. run.js
 		3. app/test/apiTestHelpers.js
-	3. More info on configs: see `configs.md`
+	3. More info on configs: see [configs.md](../files/configs.md)
 ```bash
 # cd to root project directory
 cd /path/to/project
@@ -66,4 +66,4 @@ cp app/config-[your environment].json app/config-[your environment].test.json
 	
 
 ### Run The App!
-- see `running.md`
+- see [running.md](running.md)

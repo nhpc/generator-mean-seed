@@ -61,7 +61,7 @@ MongoDB and node forever took up space; here's one of my servers that maxed out 
 
 
 ## Getting (& updating) files from your local (development) code
-- see `deploy.md` file
+- see [deploy.md](deploy.md) file
 
 
 ## AWS (Amazon Web Services) setup
