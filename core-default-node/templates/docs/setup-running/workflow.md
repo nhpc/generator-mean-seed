@@ -26,7 +26,7 @@ There are a lot of tools we leverage but they're virtually all assimilated in wi
 		1. Make sure to also write automated tests for your new changes! Use `grunt test` to run just tests.
 	2. Run `grunt q` to rebuild the code with your new changes.
 	3. Manually test/view the changes in a browser to ensure your changes are good.
-		1. Make sure MongoDB & node are running first (see `running.md` for more info)
+		1. Make sure MongoDB & node are running first (see [running.md](running.md) for more info)
 	4. Run `grunt` to run automated tests and quality control checks to ensure your code is good and bug free.
 		1. NEVER PUSH CODE THAT FAILS A GRUNT BUILD! This is our quality control check and any code that doesn't pass will be auto-rejected by the Continuous Integration server anyway and break the build and halt updates for EVERYONE until the build is fixed - don't do it!
 3. Use Git to add, commit, and push your changes

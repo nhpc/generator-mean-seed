@@ -31,7 +31,7 @@ There's LOTS of different testing definitions but in general we use 5:
 
 	
 ## Coverage
-See test-coverage.md
+See [test-coverage.md](test-coverage.md)
 
 
 ## Backend

@@ -38,7 +38,7 @@ Categorized by type/area and roughly in order of priority/importance.
 - Version control / file (code) management
 	- Git
 - Building / Generating
-	- Grunt - build tool ( See `grunt.md` )
+	- Grunt - build tool ( See [grunt.md](grunt.md) )
 	- Yo - scaffolding tool
 		- generator-mean-seed
 - Dependency management
