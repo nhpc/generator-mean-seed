@@ -65,7 +65,7 @@ module.exports = function (config) {
 		coverageReporter: {
 			type: 'html',
 			// type: 'lcov',
-			dir: 'coverage/'
+			dir: 'coverage-angular/'
 		}
 		
 	});

@@ -12,8 +12,11 @@ Version numbers correspond to `package.json` version
 		- `helper-commands`
 		- `helper-log-next-steps`
 - added `docs` folder with generator documentation
+- rename `coverage` folder to `coverage-angular` for frontend test coverage output
 
 ## Breaking Changes
+- rename / merge 'svc' and 'dtv' module namespace to single 'app' namespace
+	- namespacing is very important to avoid conflicts but there's no reason to take up 2 separate namespaces.
 - rename socialAuth directive to socialAuthBtn to not conflict with socialAuth service
 - added `opt` prefix to all prompts for namespacing - i.e. to avoid conflicts with Yeoman properties/methods (such as npmInstall)
 - changed prompts from skipInstall to install (from negative to positive - defaults to NOT run now), specifically:

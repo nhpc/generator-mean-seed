@@ -698,7 +698,7 @@ module.exports = function(grunt) {
 						statements: cfgJson.test_coverage.angular_karma.statements,
 						lines: cfgJson.test_coverage.angular_karma.lines
 					},
-					dir: 'coverage',
+					dir: 'coverage-angular',
 					root: 'app/src'
 				},
 				//not really a multi task?!

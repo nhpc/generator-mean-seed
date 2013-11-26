@@ -18,5 +18,5 @@ We use [Istanbul](https://github.com/gotwarlost/istanbul) through various (Grunt
 2. run `grunt` (or `grunt-test` if you do not need to compile any code changes) and when the tests are run, Istanbul will automatically be run and calculate test coverage for various types (lines, statements, functions, branches) as well as auto-failing the grunt build/command if coverage is below any thresholds.
 3. to see the coverage reports (and improve test coverage accordingly), go the following URL's in a browser (replace `localhost` and `3000` with your `server.domain` and `server.port` in `config.json` accordingly)
 	1. jasmine-node backend tests: `http://localhost:3000/src/coverage-node/lcov-report/`
-	2. angular karma unit tests: `http://localhost:3000/src/coverage/[test runner browser]/` i.e. `http://localhost:3000/src/coverage/PhantomJS 1.9.2 (Windows 7)/`
-		1. look in the `app/src/coverage` directory to see the 'test runner browser' value (the folder name)
+	2. angular karma unit tests: `http://localhost:3000/src/coverage-angular/[test runner browser]/` i.e. `http://localhost:3000/src/coverage-angular/PhantomJS 1.9.2 (Windows 7)/`
+		1. look in the `app/src/coverage-angular` directory to see the 'test runner browser' value (the folder name)
