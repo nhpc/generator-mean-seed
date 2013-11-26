@@ -1,6 +1,22 @@
 Version numbers correspond to `package.json` version
 
 # 1.0.6
+## Breaking Changes
+- rename / merge 'svc' and 'dtv' module namespace to single 'app' namespace
+	- namespacing is very important to avoid conflicts but there's no reason to take up 2 separate namespaces.
+- rename socialAuth directive to socialAuthBtn to not conflict with socialAuth service
+	- you should remove the now outdated `app/src/modules/directives/socialAuth` folder if still there
+- added `opt` prefix to all prompts for namespacing - i.e. to avoid conflicts with Yeoman properties/methods (such as npmInstall)
+- changed prompts from skipInstall to install (from negative to positive - defaults to NOT run now), specifically:
+	- `skipNpmInstall` to `optNpmInstall`
+	- `skipBowerInstall` to `optBowerInstall`
+	- `skipGrunt` to `optGruntQ`
+	- `skipSeleniumInstall` to `optSeleniumInstall`
+	
+## Bug Fixes
+- add `grunt-contrib-clean` for removing coverage folders first
+	- this would sometimes cause the grunt task to fail if not cleaned up first
+	
 ## Features
 - add in 'core-scss' (sub)generator for using SASS/SCSS instead of LESS
 - add SCSS support to `ng-route` generator
@@ -12,19 +28,7 @@ Version numbers correspond to `package.json` version
 		- `helper-commands`
 		- `helper-log-next-steps`
 - add `docs` folder with generator documentation
-- add `grunt-contrib-clean` for removing coverage folders first
 - rename `coverage` folder to `coverage-angular` for frontend test coverage output
-
-## Breaking Changes
-- rename / merge 'svc' and 'dtv' module namespace to single 'app' namespace
-	- namespacing is very important to avoid conflicts but there's no reason to take up 2 separate namespaces.
-- rename socialAuth directive to socialAuthBtn to not conflict with socialAuth service
-- added `opt` prefix to all prompts for namespacing - i.e. to avoid conflicts with Yeoman properties/methods (such as npmInstall)
-- changed prompts from skipInstall to install (from negative to positive - defaults to NOT run now), specifically:
-	- `skipNpmInstall` to `optNpmInstall`
-	- `skipBowerInstall` to `optBowerInstall`
-	- `skipGrunt` to `optGruntQ`
-	- `skipSeleniumInstall` to `optSeleniumInstall`
 
 
 # 1.0.5 (2013-11-23)
