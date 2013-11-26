@@ -6,7 +6,7 @@
 2. [just in case] run `npm install && bower update && bower install` (from the root directory of this app - all commands are from the root directory of this app unless noted otherwise)
 
 3. Run grunt from the root project folder (the folder that has "Gruntfile.js" in it) to build all files. Grunt should be run after most file changes and prior to any commits. NOTE: the default `grunt` command also runs tests and requires a node test server to be running first (more below) and there are other grunt commands as well.
-	1. NOTE: you'll have to re-run this command every time you update a (frontend) .less or .html file to rebuild assets. When in doubt, re-run grunt!
+	1. NOTE: you'll have to re-run this command every time you update a (frontend) .less (or .scss) or .html file to rebuild assets. When in doubt, re-run grunt!
 ```bash
 grunt q
 ```

@@ -11,8 +11,16 @@ When possible, use vectors (icon font, svg) instead of rasterized images (jpg, p
 	- copy each icon to a font program (i.e. FontCreator) to create your font. This will usually save as a .ttf file
 	- create the other font formats (.otf, .eot, .woff, .svg) using http://www.font2web.com/
 	- copy your fonts into the `app/src/common/fonts` directory
-	- add your new font to the `app/src/common/less/fonts.less` file
-	- create a new `app/src/common/less/font-icon-[your font name].less` file that defines classes for each icon. Make sure to include this file with less/grunt so it's loaded
+	<%
+	if(cssPreprocessor =='less') {
+	print("- add your new font to the `app/src/common/less/fonts.less` file\n"+
+	"\t- create a new `app/src/common/less/font-icon-[your font name].less` file that defines classes for each icon. Make sure to include this file with less/grunt so it's loaded");
+	}
+	else if(cssPreprocessor =='scss') {
+	print("- add your new font to the `app/src/common/scss/_fonts.scss` file\n"+
+	"\t- create a new `app/src/common/scss/_font-icon-[your font name].scss` file that defines classes for each icon. Make sure to include this file with scss/grunt so it's loaded");
+	}
+	%>
 	- use/reference your icons by CSS class name
 		- i.e. `<span class='icon-home'></span>`
 

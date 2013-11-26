@@ -8,8 +8,16 @@ NOTE: all commands should be run in a terminal/command prompt window.
 In general you'll have 2-3 terminal/command prompt windows open at once - one for running MongoDB (if not running by default / as a service), one for running node.js, and one for commands (mostly grunt)
 
 1. machine (global / program) installs (if you don't have them already)
-	1. install git, nodejs, mongodb, phantomjs, java - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)
-	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed less karma yuidocjs forever`
+	<%
+	if(cssPreprocessor =='less') {
+	print("1. install git, nodejs, mongodb, phantomjs, java - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)\n"+
+	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`");
+	}
+	else if(cssPreprocessor =='scss') {
+	print("1. install git, nodejs, mongodb, phantomjs, java, ruby, sass - see [here for Mac/Windows](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-windows-mac.md) or [here for Linux](https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/main/templates/docs/setup-server-linux.md)\n"+
+	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever`");
+	}
+	%>
 	3. IF using Github (to clone/push/pull from), set it up:
 		1. `git config --global user.name "<your name>"`
 			1. i.e. git config --global user.name "Joe Bob"
@@ -26,7 +34,7 @@ In general you'll have 2-3 terminal/command prompt windows open at once - one fo
 	1. `npm install && bower install`
 		1. NOTE: you'll have to re-run this any time `package.json` or `bower.json` changes
 	2. `grunt q` to build assets
-		1. NOTE: you'll have to re-run this any time a `*.less` or `*.html` file changes
+		1. NOTE: you'll have to re-run this any time a `*.less` (or `_*.scss`) or `*.html` file changes
 	3. `./node_modules/protractor/bin/install_selenium_standalone` - for Protractor (local) tests
 5. start server and view app
 	1. `node run.js` to start node server (make sure MongoDB is already running first)

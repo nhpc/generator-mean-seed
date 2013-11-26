@@ -11,8 +11,16 @@
 **NOTE: If you want to CLONE this EXISTING repository, see `cloning.md` (in the `docs` folder) instead.** Otherwise, if you want to build a NEW mean-seed from scratch using the Yeoman Generator, follow these steps below.
 
 1. machine (global / program) installs (if you don't have them already)
-	1. install git, nodejs, mongodb, phantomjs
-	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed less karma yuidocjs forever`
+	<%
+	if(cssPreprocessor =='less') {
+	print("1. install git, nodejs, mongodb, phantomjs\n");
+	print("\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`");
+	}
+	else if(cssPreprocessor =='scss') {
+	print("1. install git, nodejs, mongodb, phantomjs, ruby, sass\n");
+	print("\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever`");
+	}
+	%>
 2. `yo mean-seed` (from the NEW directory you want to create the app in)
 	1. `npm install && bower install` (if not already run successfully by Yeoman or any time `package.json` or `bower.json` change)
 	2. `./node_modules/protractor/bin/install_selenium_standalone` (if not already run successfully by Yeoman)

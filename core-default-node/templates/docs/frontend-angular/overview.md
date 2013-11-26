@@ -1,9 +1,18 @@
 # Frontend (AngularJS)
 
 ## Common components and conventions to be aware of and use
-- LESS / styles
-	- classes: Any of the LESS files in the main `less` folder should be used within HTML files. These are pre-defined common classes. BEFORE you define any styles, make sure to check these first and use them. If a style class doesn't already exist, in general create it here (unless it's super specific and will never be used again). Currently we follow this "Twitter Bootstrap style" where most pages do NOT have their own stylesheet but rather leverage pre-existing common components (directives which have their own stylesheets and/or common classes) rather than using lots of variables and mixins.
-	- mixins & variables (anything in `less/mixins` and `less/variables`)
+<%
+if(cssPreprocessor =='less') {
+print("- LESS / styles\n"+
+	"\t- classes: Any of the LESS files in the main `less` folder should be used within HTML files. These are pre-defined common classes. BEFORE you define any styles, make sure to check these first and use them. If a style class doesn't already exist, in general create it here (unless it's super specific and will never be used again). Currently we follow this \"Twitter Bootstrap style\" where most pages do NOT have their own stylesheet but rather leverage pre-existing common components (directives which have their own stylesheets and/or common classes) rather than using lots of variables and mixins.\n"+
+	"\t- mixins & variables (anything in `less/mixins` and `less/variables`)");
+}
+else if(cssPreprocessor =='scss') {
+print("- SCSS / styles\n"+
+	"\t- classes: Any of the SCSS files in the main `scss` folder should be used within HTML files. These are pre-defined common classes. BEFORE you define any styles, make sure to check these first and use them. If a style class doesn't already exist, in general create it here (unless it's super specific and will never be used again). Currently we follow this \"Twitter Bootstrap style\" where most pages do NOT have their own stylesheet but rather leverage pre-existing common components (directives which have their own stylesheets and/or common classes) rather than using lots of variables and mixins.\n"+
+	"\t- mixins & variables (anything in `scss/mixins` and `scss/variables`)");
+}
+%>
 - javascript: directives & services
 	- anything in the `bower_components` and/or `lib` folder (3rd party dependencies - i.e. `moment.js`)
 	- `modules/directives` and `modules/services`
@@ -21,19 +30,19 @@
 				- if necessary, services may have 'transformFromBackend' and 'transformForBackend' functions that convert/format data between frontend (which may need additional display data/fields/values) and backend.
 - keep controllers as slim as possible - they should ONLY handle wiring - just a bunch of function calls between different things (setting up directives, making API/AJAX calls, making service function calls)
 	
-## A note on how to structure common/reusable LESS/style components
+## A note on how to structure common/reusable LESS/SCSS/style components
 There are TWO ways to pre-define styles. There are pros and cons to each and in general the "Classes" approach is better at first and for simpler things but the "Mixins" approach is better where higher customization is needed. But the most important thing is to pick one approach and stick to it so all the HTML files are similarly structured and consistent.
 
-1. Mixins: define styles within a LESS mixin then define a class that uses that mixin.
+1. Mixins: define styles within a LESS/SCSS mixin then define a class that uses that mixin.
 	1. Pros:
-		1. All changes are kept within LESS/CSS files (no need to touch HTML files to change styles)
+		1. All changes are kept within LESS/SCSS/CSS files (no need to touch HTML files to change styles)
 	2. Cons:
 		1. Each HTML element needs it's own UNIQUELY named (i.e. namespaced) class. This leads to very verbose HTML files with long class names
-		2. Reading an HTML file requires also having the LESS file open to be able to understand how things are styled (the HTML file is not self-explanatory and not very useful by itself)
-2. Classes: define common classes with LESS files then reference those common classes within the HTML files
+		2. Reading an HTML file requires also having the LESS/SCSS file open to be able to understand how things are styled (the HTML file is not self-explanatory and not very useful by itself)
+2. Classes: define common classes with LESS/SCSS files then reference those common classes within the HTML files
 	1. Pros:
 		1. Once the classes are learned, reading HTML files become self-explanatory since these common classes will show up often.
-		2. Many new pages/files will require little to no new classes or styles defined (some pages won't even have a new LESS file at all).
+		2. Many new pages/files will require little to no new classes or styles defined (some pages won't even have a new LESS/SCSS file at all).
 		3. Ensures a themed and consistent look throughout the site due to the shared classes.
 	2. Cons:
 		1. Have to be careful with these "global classes" to ensure no conflicts with namespacing

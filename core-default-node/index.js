@@ -86,6 +86,7 @@ if(this.subGenerators.indexOf('core-default-node') >-1) {
 
 	//A. make all directories (do it at top so they're all created since templated files are collected here at the top)
 	this.mkdir('docs');
+	// this.mkdir('docs/files');
 	this.mkdir('app');
 	this.mkdir('app/configs');
 	this.mkdir('app/test');
@@ -125,15 +126,30 @@ if(this.subGenerators.indexOf('core-default-node') >-1) {
 	this.template('app/configs/_config.json', 'app/configs/config.json');
 	this.template('app/configs/_config.test.json', 'app/configs/config.test.json');
 	
+	//docs
+	// this.template('docs/files/_file-structure.md', 'docs/files/file-structure.md');
+	
 	
 	//C. copy files & directories
 	//NOTE: leading with just a '.' sometimes doesn't copy over properly / gives error so add the '_' even though not templating
-	this.directory('docs');
 	
 	this.copy('CHANGELOG.md', 'CHANGELOG.md');
 	this.copy('run.js', 'run.js');
 	this.copy('ci.js', 'ci.js');
 	this.copy('spawn_command.js', 'spawn_command.js');
+	
+	//docs
+	this.directory('docs');
+	// this.copy('docs/overview.md', 'docs/overview.md');
+	// this.directory('docs/backend-node');
+	// this.directory('docs/conventions-style-guide');
+	// this.directory('docs/frontend-angular');
+	// this.directory('docs/setup-running');
+	// this.directory('docs/testing-automation');
+	// this.directory('docs/tools-dependencies');
+	
+	// this.copy('docs/files/configs.md');
+	
 	
 	//app folder
 	this.copy('app/config_environment.json', 'app/config_environment.json');

@@ -11,7 +11,14 @@
 				1. i.e. git config --global user.email youremail@email.com
 			3. `git config --global --add color.ui true`
 	2. Install global NPM packages.
-		1. `sudo npm install -g grunt-cli bower yo less karma yuidocjs forever generator-mean-seed`
+		<%
+		if(cssPreprocessor =='less') {
+		print("1. `sudo npm install -g grunt-cli bower yo karma yuidocjs forever generator-mean-seed less`");
+		}
+		else if(cssPreprocessor =='scss') {
+		print("1. `sudo npm install -g grunt-cli bower yo karma yuidocjs forever generator-mean-seed`");
+		}
+		%>
 			1. NOTE: karma doesn't seem to always work if install globally?? so it's in package.json now so will be installed locally (as well)
 		2. NOTE: IF new global npm packages are installed, you'll need to run this again.
 	3. Install Selenium server (for local Protractor tests, if using SauceLabs or another remote server, this can be skipped. Also NOTE this must be done AFTER `npm install` below since it requires Protractor first)
