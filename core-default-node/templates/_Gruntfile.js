@@ -84,6 +84,7 @@ module.exports = function(grunt) {
 	Load grunt plugins
 	@toc 2.
 	*/
+	grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
 	<%
 	if(optCssPreprocessor =='less') {
@@ -147,7 +148,8 @@ module.exports = function(grunt) {
 			protractorPath ='node_modules\\.bin\\protractor';		//Windows
 		}
 		
-		var publicPathRelativeRoot ="app/src/";
+		var publicPathRelativeRootNoSlash ="app/src";
+		var publicPathRelativeRoot =publicPathRelativeRootNoSlash+"/";
 		
 		var buildfilesModules = require('./'+publicPathRelativeRoot+'config/buildfilesModules.json');		//the file with the object/arrays of all modules (directories and files to form paths for (css, js, html))
 		var buildfilesModuleGroups = require('./'+publicPathRelativeRoot+'config/buildfilesModuleGroups.json');
@@ -155,7 +157,7 @@ module.exports = function(grunt) {
 		var publicPathRelative = publicPathRelativeRoot;
 		var publicPathRelativeDot = "./"+publicPathRelative;		//the "./" is necessary for some file paths to work in grunt tasks
 		
-		//relative to app/src folder (prepend this when using it)
+		//relative to publicPathRelativeRoot folder (prepend this when using it)
 		var pathsPhonegap ={
 			android: "deploys/phonegap/platforms/android/assets/www",
 			ios: "deploys/phonegap/platforms/ios/assets/www"
@@ -449,6 +451,13 @@ module.exports = function(grunt) {
 					}
 				}
 			},
+			clean: {
+				dev: [
+					publicPathRelativeRoot+'coverage-node',
+					publicPathRelativeRoot+'coverage-angular',
+					publicPathRelativeRoot+'coverage'		//just in case for old folder name
+				]
+			},
 			concat: {
 				devCss: {
 					// will be filled via buildfiles task
@@ -667,7 +676,7 @@ module.exports = function(grunt) {
 				forceExit: false,		//need this to be false otherwise it just exits after this task
 				
 				coverage: {
-					savePath: 'app/src/coverage-node',		//needs to be a file in app/src otherwise will not be accessible to view from the node server!
+					savePath: publicPathRelativeRoot+'coverage-node',		//needs to be a file in publicPathRelativeRoot otherwise will not be accessible to view from the node server!
 					excludes: [
 						// '**/modules/services/**',		//not sure what the relative path is from but using 'app/modules/services' does NOT work - only '**/modules/services/**' and 'modules/services/**' work..
 						'**.test.js'
@@ -699,7 +708,7 @@ module.exports = function(grunt) {
 						lines: cfgJson.test_coverage.angular_karma.lines
 					},
 					dir: 'coverage-angular',
-					root: 'app/src'
+					root: publicPathRelativeRootNoSlash
 				},
 				//not really a multi task?!
 				// karmaFrontend: {
@@ -710,19 +719,13 @@ module.exports = function(grunt) {
 					options: {
 						// base: 'app',
 						// prepend: '/',
-						base: 'app/src',
+						base: publicPathRelativeRootNoSlash,
 						prepend: staticPath,
 						// module: 'templates-main'
 						module: 'myApp'
 					},
 					// will be filled via buildfiles task
 					src: [
-						// 'app/src/modules/pages/header/header.html',
-						// 'app/src/modules/pages/footer/footer.html',
-						// 'app/src/modules/pages/events/events.html',
-						// 'app/src/modules/pages/tribes/tribes.html'
-						
-						// 'app/src/**/*.html'
 					],
 					dest: "<%%= buildPath %>/templates.js"
 				}
@@ -785,7 +788,7 @@ module.exports = function(grunt) {
 
 		grunt.registerTask('lint-backend', ['jshint:backend']);
 		
-		grunt.registerTask('build', ['buildfiles', 'ngtemplates:main', 'jshint:backend', 'jshint:beforeconcat', 'uglify:build', 'fontAwesomeVars',
+		grunt.registerTask('build', ['clean', 'buildfiles', 'ngtemplates:main', 'jshint:backend', 'jshint:beforeconcat', 'uglify:build', 'fontAwesomeVars',
 			<%
 			if(optCssPreprocessor =='less') {
 				print("'less:dev',");
@@ -831,7 +834,7 @@ module.exports = function(grunt) {
 		});
 
 		//quick version of default task testing/viewing quick changes
-		grunt.registerTask('q', ['buildfiles', 'ngtemplates:main', 'jshint:backendQ', 'jshint:beforeconcatQ', 'uglify:build', 'fontAwesomeVars',
+		grunt.registerTask('q', ['clean', 'buildfiles', 'ngtemplates:main', 'jshint:backendQ', 'jshint:beforeconcatQ', 'uglify:build', 'fontAwesomeVars',
 			<%
 			if(optCssPreprocessor =='less') {
 				print("'less:dev',");
@@ -848,7 +851,7 @@ module.exports = function(grunt) {
 			grunt.option('type', 'prod');
 			init({});		//re-init (since changed grunt options)
 		
-			grunt.task.run(['buildfiles', 'ngtemplates:main', 'uglify:build', 'fontAwesomeVars',
+			grunt.task.run(['clean', 'buildfiles', 'ngtemplates:main', 'uglify:build', 'fontAwesomeVars',
 				<%
 				if(optCssPreprocessor =='less') {
 					print("'less:dev',");
@@ -860,7 +863,7 @@ module.exports = function(grunt) {
 				'concat:devCss', 'cssmin:dev', 'concat:devJs', 'copy:phonegapAndroid', 'copy:phonegapIOS']);
 		});
 		
-		grunt.registerTask('noMin', ['buildfiles', 'ngtemplates:main', 'fontAwesomeVars',
+		grunt.registerTask('noMin', ['clean', 'buildfiles', 'ngtemplates:main', 'fontAwesomeVars',
 			<%
 			if(optCssPreprocessor =='less') {
 				print("'less:dev',");
