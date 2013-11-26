@@ -43,7 +43,7 @@
 	
 	
 ## More Info
-- see the `docs` folder for more documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
+- see the [docs](docs) folder for more documentation. Each (sub)folder typically has an `overview.md` file - start there. Some key docs (roughly in order of priority) listed below:
 	- [overview.md](docs/overview.md)
 	- [setup-running folder](docs/setup-running)
 		- [overview.md](docs/setup-running/overview.md)
