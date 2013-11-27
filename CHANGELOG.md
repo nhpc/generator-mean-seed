@@ -1,6 +1,6 @@
 Version numbers correspond to `package.json` version
 
-# 1.0.6 (WIP)
+# 1.0.6 (2013-11-27)
 ## Breaking Changes
 - rename / merge 'svc' and 'dtv' module namespace to single 'app' namespace
 	- namespacing is very important to avoid conflicts but there's no reason to take up 2 separate namespaces.
