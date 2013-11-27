@@ -50,7 +50,7 @@ There are a lot of tools we leverage but they're virtually all assimilated in wi
 
 ## Git Commit Message Conventions
 
-- (Full details here)[https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#] but basically:
+- [Full details here](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#) but basically:
 	- <type>(<scope>): <subject>
 	- where:
 		- <type> is one of:

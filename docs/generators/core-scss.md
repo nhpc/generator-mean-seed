@@ -1,7 +1,7 @@
 # core-scss Generator
 
 Based on core-default generator but with SASS/SCSS instead of LESS.
-Uses (Bourbon)[http://bourbon.io/] instead of LESSHat for mixins
+Uses [Bourbon](http://bourbon.io/) instead of LESSHat for mixins
 
 NOTE: You must install Ruby and then do `gem install sass` for it to work! See http://sass-lang.com/
 
