@@ -16,6 +16,7 @@ Version numbers correspond to `package.json` version
 ## Bug Fixes
 - add `grunt-contrib-clean` for removing coverage folders first
 	- this would sometimes cause the grunt task to fail if not cleaned up first
+- add `bower update` to optBowerInstall helper command (could cause errors otherwise if outdated bower packages)
 	
 ## Features
 - add `ng-directive` (sub)generator
