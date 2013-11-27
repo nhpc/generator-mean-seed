@@ -19,6 +19,7 @@ module.exports = function(grunt) {
 				'core-scss/index.js', 'core-scss-angular/index.js',
 				'ng-route/index.js',
 				'ng-directive/index.js',
+				'ng-service/index.js',
 				'helper-commands/index.js',
 				'helper-log-next-steps/index.js'
 			]

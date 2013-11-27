@@ -60,6 +60,13 @@ var MeanSeedGenerator = module.exports = function MeanSeedGenerator(args, option
 		}
 	});
 	
+	this.hookFor('mean-seed:ng-service', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
 	//NOTE: order matters - call this toward end / LAST!
 	this.hookFor('mean-seed:helper-commands', {
 		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
@@ -102,7 +109,8 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 				'core-default',
 				'core-scss',
 				'ng-route',
-				'ng-directive'
+				'ng-directive',
+				'ng-service'
 			],
 			default: 'core-default'
 		}
@@ -130,6 +138,10 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 		}
 		else if(props.optSubGenerator =='ng-directive') {
 			logNextStepsMsg ='Next steps:\n1. Edit the files (js, less/scss) for your new directive!';
+			moreGenerators =['helper-commands', 'helper-log-next-steps'];
+		}
+		else if(props.optSubGenerator =='ng-service') {
+			logNextStepsMsg ='Next steps:\n1. Edit the files (js) for your new service!';
 			moreGenerators =['helper-commands', 'helper-log-next-steps'];
 		}
 		

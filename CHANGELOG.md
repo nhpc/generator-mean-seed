@@ -19,6 +19,7 @@ Version numbers correspond to `package.json` version
 	
 ## Features
 - add `ng-directive` (sub)generator
+- add `ng-service` (sub)generator
 - add SCSS support to `ng-route` generator
 
 - add in 'core-scss' (sub)generator for using SASS/SCSS instead of LESS

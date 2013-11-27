@@ -140,7 +140,7 @@ Files are organized in a modular way. Each "component" is a folder containing al
 
 
 ### Other key files
-- common/js/app.js is the Angular router and module loader. Each time a new module (directive or service) is created, it needs to be added/defined at the top of this file. And similarly, to create a new page / route, define it here. Though Yeoman ng-route subgenerator will do this for you!
+- common/js/app.js is the Angular router and module loader. Each time a new module (directive or service) is created, it needs to be added/defined at the top of this file. And similarly, to create a new page / route, define it here. Though Yeoman ng-route, ng-directive, and ng-service subgenerators will do this for you!
 
 <%
 if(optCssPreprocessor =='less') {

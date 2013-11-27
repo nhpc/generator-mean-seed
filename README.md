@@ -47,6 +47,7 @@ $ yo mean-seed
 - core-scss
 - ng-route
 - ng-directive
+- ng-service
 
 See the [docs/generators](docs/generators) folder for more info.
 

@@ -21,3 +21,13 @@ Scaffolds a new Angular directive:
 	- new-directive.spec.js
 - updates `buildfilesModules.json` accordingly to include your new directive
 - [since it assumes the 'app' module namespace, there's no need to update `app.js`]
+
+
+### ng-service
+Scaffolds a new Angular service (factory or provider):
+
+- creates a new folder in `src/modules/services` (optionally in one or more sub-directories) with:
+	- new-service.js
+	- new-service.spec.js
+- updates `buildfilesModules.json` accordingly to include your new service
+- [since it assumes the 'app' module namespace, there's no need to update `app.js`]
