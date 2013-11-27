@@ -46,6 +46,7 @@ $ yo mean-seed
 - core-default
 - core-scss
 - ng-route
+- ng-directive
 
 See the [docs/generators](docs/generators) folder for more info.
 
