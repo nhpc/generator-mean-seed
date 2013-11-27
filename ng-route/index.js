@@ -18,7 +18,8 @@ var fs =require('fs');
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
-var BuildfilesMod =require('../common/buildfiles.js');
+var BuildfilesMod =require('../common/buildfiles/buildfiles.js');
+var ArrayMod =require('../common/array/array.js');
 
 var NgRouteGenerator = module.exports = function NgRouteGenerator(args, options, config) {
 	// By calling `NamedBase` here, we get the argument to the subgenerator call
@@ -180,33 +181,52 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 */
 NgRouteGenerator.prototype.updateBuildfiles = function updateBuildfiles() {
 if(this.optSubGenerators.indexOf('ng-route') >-1) {
+
+	var finalObj ={
+		"name":this.optRouteName,
+		"files": {
+			"html":[this.optRouteName+'.html'],
+			"js":[this.optRouteNameCtrl+'.js'],
+			"test":[this.optRouteNameCtrl+'.spec.js']
+		}
+	};
+	if(this.optCssPreprocessor =='less') {
+		finalObj.files.less =[this.optRouteName+'.less'];
+	}
+	else if(this.optCssPreprocessor =='scss') {
+		finalObj.files.scss =['_'+this.optRouteName+'.scss'];
+	}
+	
 	var path ='app/src/config/buildfilesModules.json';
 	var bfObj = JSON.parse(this.readFileAsString(path));
+	
+	//get the keys to get to where we want to insert the new finalObj
+	var keys =BuildfilesMod.getFullKeys(bfObj, ['modules', 'pages'], {});
+	console.log('keys: '+JSON.stringify(keys));
+	
+	//get the nested sub object
+	var subObj =ArrayMod.evalBase(bfObj, keys, {});
+	console.log('subObj: '+subObj);
+	
+	//use recursive function to go through all subdirs and create nested objects if they don't exist
+	var retObj =BuildfilesMod.subdirs(subObj, this.optRoutePath, finalObj, {});
+	
+	//set the new retObj in the appropriate place
+	// bfObj =ArrayMod.setNestedKeyVal(bfObj, keys, retObj, {});		//@todo - not currently working
+	
+	
+	/*
 	var ii, jj, kk, found =false, modulesIndex =false, pagesIndex =false;
 	for(ii =0; ii<bfObj.dirs.length; ii++) {
 		if(bfObj.dirs[ii].name =='modules') {
 			modulesIndex =ii;
 			for(jj =0; jj<bfObj.dirs[ii].dirs.length; jj++) {
 				if(bfObj.dirs[ii].dirs[jj].name =='pages') {
-				
-					var finalObj ={
-						"name":this.optRouteName,
-						"files": {
-							"html":[this.optRouteName+'.html'],
-							"js":[this.optRouteNameCtrl+'.js'],
-							"test":[this.optRouteNameCtrl+'.spec.js']
-						}
-					};
-					if(this.optCssPreprocessor =='less') {
-						finalObj.files.less =[this.optRouteName+'.less'];
-					}
-					else if(this.optCssPreprocessor =='scss') {
-						finalObj.files.scss =['_'+this.optRouteName+'.scss'];
-					}
 					// bfObj.dirs[ii].dirs[jj].dirs.push(finalObj);
 					
 					//use recursive function to go through all subdirs and create nested objects if they don't exist
-					bfObj.dirs[ii].dirs[jj] =BuildfilesMod.subdirs(bfObj.dirs[ii].dirs[jj], this.optRoutePath, finalObj, {});
+					var retObj =BuildfilesMod.subdirs(bfObj.dirs[ii].dirs[jj], this.optRoutePath, finalObj, {});
+					bfObj.dirs[ii].dirs[jj] =retObj;
 					
 					found =true;
 					break;
@@ -217,6 +237,7 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 			}
 		}
 	}
+	*/
 	
 	//write new object back to file
 	this.write(path, JSON.stringify(bfObj, null, '\t'));		//make sure to use the 3rd parameter to make the output JSON formatted (a tab character in this case)! - http://stackoverflow.com/questions/5670752/write-pretty-json-to-file-using-node-js

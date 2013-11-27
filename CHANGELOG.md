@@ -29,6 +29,8 @@ Version numbers correspond to `package.json` version
 		- `helper-log-next-steps`
 - add `common` folder for private functions / modules to use in/share across generators to keep things modularized and DRY
 	- add `buildfiles` for updating buildfilesModules.json file and use this in ng-route generator
+	- add `array` for array operations
+- add grunt-jasmine-node-coverage-validation and grunt-contrib-clean for jasmine node tests and coverage
 - add `docs` folder with generator documentation
 - rename `coverage` folder to `coverage-angular` for frontend test coverage output
 

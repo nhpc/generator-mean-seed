@@ -21,12 +21,50 @@ module.exports = function(grunt) {
 				'helper-commands/index.js',
 				'helper-log-next-steps/index.js'
 			]
+		},
+		clean: {
+			dev: [
+				'coverage-node'
+			]
+		},
+		jasmine_node: {
+			specNameMatcher: "*.spec.js", // load only specs containing specNameMatcher
+			projectRoot: "./",
+			specFolders: ['common'],
+			requirejs: false,
+			forceExit: false,		//need this to be false otherwise it just exits after this task
+			
+			coverage: {
+				savePath: 'coverage-node',
+				excludes: [
+					// '**/modules/services/**',		//not sure what the relative path is from but using 'app/modules/services' does NOT work - only '**/modules/services/**' and 'modules/services/**' work..
+					// '**.test.js'
+				],
+				// matchall: true,
+				options : {
+					failTask: false,
+					branches : 60,
+					functions: 60,
+					statements: 60,
+					lines: 60
+				}
+			},
+			options: {
+				forceExit: false,		//need this to be false otherwise it just exits after this task
+				match: '.',
+				matchall: false,
+				// matchall: true,
+				extensions: 'js',
+				specNameMatcher: 'spec',
+			}
 		}
 	});
 
 	// Load plugins
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-jasmine-node-coverage-validation');
 
 	// Default task(s).
-	grunt.registerTask('default', ['jshint']);
+	grunt.registerTask('default', ['clean', 'jshint', 'jasmine_node']);
 };

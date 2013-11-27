@@ -2,6 +2,8 @@
 @fileOverview
 
 @toc
+1. subdirs
+2. getFullKeys
 */
 
 'use strict';
@@ -16,7 +18,13 @@ function Buildfiles(opts) {
 }
 
 /**
+Recursive function that takes a path and searches for the first directory/part of it within the subObj.dirs array and adds it in if it doesn't exist
 @toc 1.
+@param {Object} subObj the current (nested) object we'll search the 'dirs' key for 'name' and update if not found
+@param {String} path The path that will be broken into directories to match with the 'name' key value to search for and add in if not found
+@param {Object} finalObj The final object to stuff in to the LAST (most nested) object.
+@param {Object} params
+@return {Object} subObj The NEW nested object, now inside the 'name' key object
 */
 Buildfiles.prototype.subdirs =function(subObj, path, finalObj, params) {
 	var xx;
@@ -85,5 +93,40 @@ Buildfiles.prototype.subdirs =function(subObj, path, finalObj, params) {
 	
 	return subObj;
 };
+
+/**
+Recursive function to iterate through the buildfilesModules.json object searching the 'dirs' arrays for certain (nested) keys
+@toc 2.
+@param {Object} base The full buildfilesModules.json object
+@param {Array} dirKeys The keys inside the 'dirs' arrays to search the 'name' field for
+@param {Object} params
+@return {Array} keys The full set of keys in order, including 'dirs' to get to the object identified by dirKeys
+@usage
+	var path ='app/src/config/buildfilesModules.json';
+	var bfObj = JSON.parse(this.readFileAsString(path));
+	var dirKeys =['modules', 'pages'];
+	var keys =getFullKeys(bfObj, dirKeys, {});
+*/
+Buildfiles.prototype.getFullKeys =function(base, dirKeys, params) {
+	//if first time, initialize params.keys, which is where we'll store the keys for the recursive calls
+	if(params.keys ===undefined) {
+		params.keys =[];
+	}
+	var ii, newBase;
+	for(ii =0; ii<base.dirs.length; ii++) {
+		if(base.dirs[ii].name ==dirKeys[0]) {
+			params.keys =params.keys.concat(['dirs', ii]);
+			newBase =base.dirs[ii];
+			break;
+		}
+	}
+	
+	dirKeys =dirKeys.slice(1, dirKeys.length);
+	if(dirKeys.length && dirKeys.length >0) {		//go again
+		params.keys =this.getFullKeys(newBase, dirKeys, params);
+	}
+	
+	return params.keys;
+}
 
 module.exports = new Buildfiles({});
