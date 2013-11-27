@@ -6,7 +6,6 @@
 1. askFor
 2. files
 3. updateBuildfiles
-	3.1. _buildfilesSubdirs
 4. updateAppJs
 
 
@@ -18,6 +17,8 @@ var fs =require('fs');
 
 var util = require('util');
 var yeoman = require('yeoman-generator');
+
+var BuildfilesMod =require('../common/buildfiles.js');
 
 var NgRouteGenerator = module.exports = function NgRouteGenerator(args, options, config) {
 	// By calling `NamedBase` here, we get the argument to the subgenerator call
@@ -205,7 +206,7 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 					// bfObj.dirs[ii].dirs[jj].dirs.push(finalObj);
 					
 					//use recursive function to go through all subdirs and create nested objects if they don't exist
-					bfObj.dirs[ii].dirs[jj] =this._buildfilesSubdirs(bfObj.dirs[ii].dirs[jj], this.optRoutePath, finalObj, {});
+					bfObj.dirs[ii].dirs[jj] =BuildfilesMod.subdirs(bfObj.dirs[ii].dirs[jj], this.optRoutePath, finalObj, {});
 					
 					found =true;
 					break;
@@ -221,83 +222,6 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 	this.write(path, JSON.stringify(bfObj, null, '\t'));		//make sure to use the 3rd parameter to make the output JSON formatted (a tab character in this case)! - http://stackoverflow.com/questions/5670752/write-pretty-json-to-file-using-node-js
 	
 }
-};
-
-/**
-@toc 3.1.
-Recursive function that takes a path and searches for the first directory/part of it within the subObj.dirs array and adds it in if it doesn't exist
-@param {Object} subObj the current (nested) object we'll search the 'dirs' key for 'name' and update if not found
-@param {String} path The path that will be broken into directories to match with the 'name' key value to search for and add in if not found
-@param {Object} finalObj The final object to stuff in to the LAST (most nested) object.
-@param {Object} params
-@return {Object} subObj The NEW nested object, now inside the 'name' key object
-*/
-NgRouteGenerator.prototype._buildfilesSubdirs =function buildfilesSubdirs(subObj, path, finalObj, params) {
-	var xx;
-	var newObj;
-	var newPath;
-	//regex to remove all leading & trailing slashes
-	path =path.replace(/^\/*/, '').replace(/\/*$/, '');
-	
-	var goTrig =true;
-	//default set the current sub directory to the path (in case no slashes at all and this is the last one)
-	var curSubdir =path;
-	//if slash, remove the first directory and save the rest for the new path to pass to recursive call
-	var indexSlash =path.indexOf('/');
-	if(indexSlash >-1) {
-		curSubdir =path.slice(0, indexSlash);
-		newPath =path.slice((indexSlash+1), path.length);
-	}
-	else if(!curSubdir || curSubdir.length <1) {		//if blank, just add in finalObj now
-		subObj.dirs.push(finalObj);
-		goTrig =false;
-	}
-	
-	// console.log('path: '+path+' curSubdir: '+curSubdir+' newPath: '+newPath);
-	
-	if(goTrig) {
-	
-		var subDirIndex;		//need to save the index that corresponds to the newObj for re-stuffing it after recursive call (since each recursive call gets a SMALLER nested object returned and need to append that to the original object for the final return)
-		
-		//go through subObj and see if the curSubdir already exists as a name in the 'dirs' array
-		var ii, found =false;
-		for(ii =0; ii<subObj.dirs.length; ii++) {
-			if(subObj.dirs[ii].name ==curSubdir) {
-				found =true;
-				//ensure it has a 'dirs' key
-				if(subObj.dirs[ii].dirs ===undefined) {
-					subObj.dirs[ii].dirs =[];
-				}
-				if(indexSlash <0) {		//if on LAST one, add in finalObj INSIDE the dirs array (assume dirs is empty since this should be a NEW page)
-					subObj.dirs[ii].dirs.push(finalObj);
-				}
-				newObj =subObj.dirs[ii];
-				subDirIndex =ii;		//save for re-stuffing later
-				break;
-			}
-		}
-		//if doesn't already exist, add it
-		if(!found) {
-			newObj ={
-				name: curSubdir,
-				dirs: []
-			};
-			if(indexSlash <0) {		//if on LAST one, add in finalObj INSIDE the dirs array (assume dirs is empty since this should be a NEW page)
-				newObj.dirs.push(finalObj);
-			}
-			var len1 =subObj.dirs.length;
-			subObj.dirs[len1] =newObj;
-			subDirIndex =len1;		//save for re-stuffing later
-		}
-		
-		//if still have one or more directories, recursively go again
-		if(indexSlash >-1) {
-			//need to set the dirs array for the correct index to the return value - NOT the entire subObj itself since the return will be the updated newObj, which is a SUBSET of subObj!
-			subObj.dirs[subDirIndex] =this._buildfilesSubdirs(newObj, newPath, finalObj, params);
-		}
-	}
-	
-	return subObj;
 };
 
 /**

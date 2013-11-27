@@ -27,6 +27,8 @@ Version numbers correspond to `package.json` version
 	- add in 'helper' generators:
 		- `helper-commands`
 		- `helper-log-next-steps`
+- add `common` folder for private functions / modules to use in/share across generators to keep things modularized and DRY
+	- add `buildfiles` for updating buildfilesModules.json file and use this in ng-route generator
 - add `docs` folder with generator documentation
 - rename `coverage` folder to `coverage-angular` for frontend test coverage output
 
