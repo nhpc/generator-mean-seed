@@ -246,6 +246,11 @@ setNestedKeyVal(base, ['key1', 0, 'key3'], 'myValue', {});
 
 */
 Array1.prototype.setNestedKeyVal =function(base, keys, value, params) {
+	if(keys.length <1) {		//invalid - this shouldn't happen..
+		console.log('array.setNestedKeyVal error - keys.length <1');
+		return base;
+	}
+	
 	// console.log('keys: '+JSON.stringify(keys)+' base: '+JSON.stringify(base)+' value: '+value);
 	if(keys.length ==1) {		//on last one, set it to value
 		base[keys[0]] =value;
@@ -281,7 +286,7 @@ Returns the value of an array/object given the keys
 var base ={
 	key1: [
 		{
-			key3: ''
+			key3: 'the value!'
 		}
 	]
 };
@@ -289,8 +294,11 @@ evalBase(base, ['key1', 0, 'key3'], {});
 
 */
 Array1.prototype.evalBase =function(base, keys, params) {
+	//first make a copy since we'll be altering keys and do NOT want these changes to leak outside the function!
+	var keysCopy =this.copy(keys, {});
+	
 	//simpler and infinitely nested version from: http://stackoverflow.com/questions/8051975/access-object-child-properties-using-a-dot-notation-string
-	while(keys.length && (base = base[keys.shift()]));
+	while(keysCopy.length && (base = base[keysCopy.shift()]));
 	return base;
 };
 

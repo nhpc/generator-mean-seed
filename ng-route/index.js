@@ -200,19 +200,84 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 	var path ='app/src/config/buildfilesModules.json';
 	var bfObj = JSON.parse(this.readFileAsString(path));
 	
+	bfObj =BuildfilesMod.update(bfObj, ['modules', 'pages'], this.optRoutePath, finalObj, {});
+	
+	/*
 	//get the keys to get to where we want to insert the new finalObj
 	var keys =BuildfilesMod.getFullKeys(bfObj, ['modules', 'pages'], {});
 	console.log('keys: '+JSON.stringify(keys));
 	
 	//get the nested sub object
 	var subObj =ArrayMod.evalBase(bfObj, keys, {});
-	console.log('subObj: '+subObj);
+	// console.log('subObj: '+JSON.stringify(subObj));
 	
 	//use recursive function to go through all subdirs and create nested objects if they don't exist
 	var retObj =BuildfilesMod.subdirs(subObj, this.optRoutePath, finalObj, {});
+	// console.log('retObj: '+JSON.stringify(retObj));
 	
 	//set the new retObj in the appropriate place
-	// bfObj =ArrayMod.setNestedKeyVal(bfObj, keys, retObj, {});		//@todo - not currently working
+	bfObj =ArrayMod.setNestedKeyVal(bfObj, keys, retObj, {});
+	*/
+	
+	/*
+	//TESTING
+	var base, newValue, newBase, keys1;
+	base ={
+			key1: [
+				{
+					key3: [
+						{
+							key41: 'yes',
+							key42: 'no'
+						},
+						{
+							key43: 'yes',
+							key44: 'no'
+						}
+					]
+				},
+				{
+					dummyVal: ''
+				}
+			]
+		};
+		newValue ={
+			newKey1: 'maybe',
+			newKey2: 'so'
+		};
+		// newBase =ArrayMod.setNestedKeyVal(base, ['key1', 0, 'key3', 1], newValue, {});		//works
+		
+		base ={
+			dirs: [
+				{
+					name: 'modules',
+					dirs: [
+						{
+						}
+					]
+				},
+				{
+					name: 'common',
+					files: [
+					]
+				}
+			]
+		};
+		newValue ={
+			name: 'pages',
+			files: []
+		};
+		keys1 =['dirs', 0, 'dirs', 0];
+		
+		console.log('keys: '+JSON.stringify(keys));
+		
+		// newBase =ArrayMod.setNestedKeyVal(base, ['dirs', 0, 'dirs', 0], newValue, {});		//works
+		// newBase =ArrayMod.setNestedKeyVal(base, keys1, retObj, {});		//works
+		// newBase =ArrayMod.setNestedKeyVal(bfObj, keys, retObj, {});
+		
+		// newBase =ArrayMod.setNestedKeyVal(bfObj, keys, retObj, {});
+	//end: TESTING
+	*/
 	
 	
 	/*

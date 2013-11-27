@@ -4,9 +4,12 @@
 @toc
 1. subdirs
 2. getFullKeys
+3. update - the main function to call that will call the others
 */
 
 'use strict';
+
+var ArrayMod =require('../array/array.js');
 
 var self;
 
@@ -20,6 +23,7 @@ function Buildfiles(opts) {
 /**
 Recursive function that takes a path and searches for the first directory/part of it within the subObj.dirs array and adds it in if it doesn't exist
 @toc 1.
+@method subdirs
 @param {Object} subObj the current (nested) object we'll search the 'dirs' key for 'name' and update if not found
 @param {String} path The path that will be broken into directories to match with the 'name' key value to search for and add in if not found
 @param {Object} finalObj The final object to stuff in to the LAST (most nested) object.
@@ -97,6 +101,7 @@ Buildfiles.prototype.subdirs =function(subObj, path, finalObj, params) {
 /**
 Recursive function to iterate through the buildfilesModules.json object searching the 'dirs' arrays for certain (nested) keys
 @toc 2.
+@method getFullKeys
 @param {Object} base The full buildfilesModules.json object
 @param {Array} dirKeys The keys inside the 'dirs' arrays to search the 'name' field for
 @param {Object} params
@@ -128,5 +133,48 @@ Buildfiles.prototype.getFullKeys =function(base, dirKeys, params) {
 	
 	return params.keys;
 }
+
+/**
+Updates a full buildfiles object
+@toc 3.
+@method update
+@param {Object} base The full buildfilesModules.json object
+@param {Array} dirKeys The keys inside the 'dirs' arrays to search the 'name' field for
+@param {String} routePath The path to put the finalVal in (i.e. 'myfolder/sub1/')
+@param {Mixed} finalVal The final object/array (or any value) to add in (to the correct place as specified by dirKeys)
+@param {Object} params
+@return {Object} The now updated base object with the finalVal stuffed in the appropriate place
+@usage
+	var path ='app/src/config/buildfilesModules.json';
+	var bfObj = JSON.parse(this.readFileAsString(path));
+	var dirKeys =['modules', 'pages'];
+	var finalObj ={
+		"name":"my-page",
+		"files": {
+			"html":['my-page.html'],
+			"js":['MyPage.js'],
+			"test":['MyPageCtrl.spec.js']
+		}
+	};
+	bfObj =BuildfilesMod.update(bfObj, dirKeys, 'myfolder/sub1/', finalObj, {});
+*/
+Buildfiles.prototype.update =function(base, dirKeys, routePath, finalVal, params) {
+	//get the keys to get to where we want to insert the new finalVal
+	var keys =this.getFullKeys(base, dirKeys, {});
+	console.log('keys: '+JSON.stringify(keys));
+	
+	//get the nested sub object
+	var subObj =ArrayMod.evalBase(base, keys, {});
+	// console.log('subObj: '+JSON.stringify(subObj));
+	
+	//use recursive function to go through all subdirs and create nested objects if they don't exist
+	var retObj =this.subdirs(subObj, routePath, finalVal, {});
+	// console.log('retObj: '+JSON.stringify(retObj));
+	
+	//set the new retObj in the appropriate place
+	base =ArrayMod.setNestedKeyVal(base, keys, retObj, {});
+	
+	return base;
+};
 
 module.exports = new Buildfiles({});
