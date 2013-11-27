@@ -53,6 +53,13 @@ var MeanSeedGenerator = module.exports = function MeanSeedGenerator(args, option
 		}
 	});
 	
+	this.hookFor('mean-seed:ng-directive', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
 	//NOTE: order matters - call this toward end / LAST!
 	this.hookFor('mean-seed:helper-commands', {
 		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
@@ -94,7 +101,8 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 			choices: [
 				'core-default',
 				'core-scss',
-				'ng-route'
+				'ng-route',
+				'ng-directive'
 			],
 			default: 'core-default'
 		}
@@ -118,6 +126,10 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 		}
 		else if(props.optSubGenerator =='ng-route') {
 			logNextStepsMsg ='Next steps:\n1. IF you want to make a custom nav (header and/or footer) for this page, add it in `modules/services/nav/nav.js`\n2. Edit the files (html, js, less/scss) for your new page!';
+			moreGenerators =['helper-commands', 'helper-log-next-steps'];
+		}
+		else if(props.optSubGenerator =='ng-directive') {
+			logNextStepsMsg ='Next steps:\n1. Edit the files (js, less/scss) for your new directive!';
 			moreGenerators =['helper-commands', 'helper-log-next-steps'];
 		}
 		

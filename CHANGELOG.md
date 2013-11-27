@@ -18,8 +18,10 @@ Version numbers correspond to `package.json` version
 	- this would sometimes cause the grunt task to fail if not cleaned up first
 	
 ## Features
-- add in 'core-scss' (sub)generator for using SASS/SCSS instead of LESS
+- add `ng-directive` (sub)generator
 - add SCSS support to `ng-route` generator
+
+- add in 'core-scss' (sub)generator for using SASS/SCSS instead of LESS
 - change to core generators
 	- rename 'main' generator to 'core-default'
 - modularize core generators to use/call frontend and backend generators to allow for greater code re-use (since LESS and SCSS both use the SAME backend code, we should not duplicate it)
@@ -27,11 +29,15 @@ Version numbers correspond to `package.json` version
 	- add in 'helper' generators:
 		- `helper-commands`
 		- `helper-log-next-steps`
+
 - add `common` folder for private functions / modules to use in/share across generators to keep things modularized and DRY
 	- add `buildfiles` for updating buildfilesModules.json file and use this in ng-route generator
 	- add `array` for array operations
+
 - add grunt-jasmine-node-coverage-validation and grunt-contrib-clean for jasmine node tests and coverage
+
 - add `docs` folder with generator documentation
+
 - rename `coverage` folder to `coverage-angular` for frontend test coverage output
 
 

@@ -6,7 +6,6 @@
 1. askFor
 2. files
 3. updateBuildfiles
-4. updateAppJs
 
 
 NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle Windows/different operating systems and can't use 'exec' since that doesn't show (live) output)
@@ -20,7 +19,7 @@ var yeoman = require('yeoman-generator');
 
 var BuildfilesMod =require('../common/buildfiles/buildfiles.js');
 
-var NgRouteGenerator = module.exports = function NgRouteGenerator(args, options, config) {
+var NgDirectiveGenerator = module.exports = function NgDirectiveGenerator(args, options, config) {
 	// By calling `NamedBase` here, we get the argument to the subgenerator call
 	// as `this.name`.
 	yeoman.generators.NamedBase.apply(this, arguments);
@@ -33,20 +32,20 @@ var NgRouteGenerator = module.exports = function NgRouteGenerator(args, options,
 	}
 };
 
-util.inherits(NgRouteGenerator, yeoman.generators.NamedBase);
+util.inherits(NgDirectiveGenerator, yeoman.generators.NamedBase);
 
 /**
 @toc 1.
 @method askFor
 */
-NgRouteGenerator.prototype.askFor = function askFor() {
-if(this.optSubGenerators.indexOf('ng-route') >-1) {
+NgDirectiveGenerator.prototype.askFor = function askFor() {
+if(this.optSubGenerators.indexOf('ng-directive') >-1) {
 	var cb = this.async();
 	
 	var prompts = [
 		{
-			name: 'optRouteName',
-			message: 'Route name (i.e. my-page)',
+			name: 'optDirectiveName',
+			message: 'Directive name (i.e. my-directive)',
 			//required input
 			validate: function(input) {
 				if(!input || !input.length) {
@@ -58,8 +57,8 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 			}
 		},
 		{
-			name: 'optRoutePath',
-			message: 'Route path - if want to put it one or more sub-folders (i.e. myfolder/ OR myfolder/mysubfolder/ ). Otherwise just leave blank.',
+			name: 'optDirectivePath',
+			message: 'Directive path (relative to the modules/directives folder) - if want to put it one or more sub-folders (i.e. myfolder/ OR myfolder/mysubfolder/ ). Otherwise just leave blank.',
 			default: '',
 		},
 		{
@@ -86,11 +85,10 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 	
 	this.prompt(prompts, function (props) {
 		//format some
-		//ensure optRoutePath has a trailing slash and NO leading slash
+		//ensure optDirectivePath has a trailing slash and NO leading slash
 		//regex to remove all leading & trailing slashes first
-		props.optRoutePath =props.optRoutePath.replace(/^\/*/, '').replace(/\/*$/, '');
-		props.optRoutePath +='/';		//add trailing slash
-		// console.log('props.optRoutePath: '+props.optRoutePath);
+		props.optDirectivePath =props.optDirectivePath.replace(/^\/*/, '').replace(/\/*$/, '');
+		props.optDirectivePath +='/';		//add trailing slash
 		
 		var ii, jj, kk, skip, curName;
 		var skipKeys =[];
@@ -119,7 +117,10 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 		//handle some special ones (the skipKeys from above)
 		
 		//add some
-		this.options.props.optRouteNameCtrl =this.optRouteNameCtrl = this._.capitalize(this._.camelize(this.optRouteName))+'Ctrl';
+		//this will change 'my-page' to 'MyPage'
+		this.options.props.optDirectiveNameCamel =this.optDirectiveNameCamel = this._.capitalize(this._.camelize(this.optDirectiveName));
+		
+		this.options.props.optModulePrefix =this.optModulePrefix = 'app';		//hardcoded
 		
 		cb();
 	}.bind(this));
@@ -130,16 +131,16 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 @toc 2.
 @method files
 */
-NgRouteGenerator.prototype.files = function files() {
-if(this.optSubGenerators.indexOf('ng-route') >-1) {
+NgDirectiveGenerator.prototype.files = function files() {
+if(this.optSubGenerators.indexOf('ng-directive') >-1) {
 
 	var ii;
 	
-	var pathBase ='app/src/modules/pages/';
-	var pagePath =pathBase+this.optRoutePath+this.optRouteName;
+	var pathBase ='app/src/modules/directives/';		//hardcoded
+	var pagePath =pathBase+this.optDirectivePath+this.optDirectiveName;
 	//A. make all directories (do it at top so they're all created since templated files are collected here at the top)
 	//create sub-directories first if they don't exist
-	var subdirs =this.optRoutePath.split('/');
+	var subdirs =this.optDirectivePath.split('/');
 	var curPath;
 	var curPathBase =pathBase;		//will be used to track the current path as we go through the sub-directories
 	for(ii =0; ii<subdirs.length; ii++) {
@@ -157,15 +158,14 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 	
 	
 	//B. template files (all templated files TOGETHER here)
-	this.template('new-page/_new-page.html', pagePath+'/'+this.optRouteName+'.html');
+	this.template('new-directive/_new-page.js', pagePath+'/'+this.optDirectiveName+'.js');
+	this.template('new-directive/_new-page.spec.js', pagePath+'/'+this.optDirectiveName+'.spec.js');
 	if(this.optCssPreprocessor =='less') {
-		this.template('new-page/_new-page.less', pagePath+'/'+this.optRouteName+'.less');
+		this.template('new-directive/_new-page.less', pagePath+'/'+this.optDirectiveName+'.less');
 	}
 	if(this.optCssPreprocessor =='scss') {
-		this.template('new-page/_new-page.scss', pagePath+'/_'+this.optRouteName+'.scss');
+		this.template('new-directive/_new-page.scss', pagePath+'/_'+this.optDirectiveName+'.scss');
 	}
-	this.template('new-page/_NewPageCtrl.js', pagePath+'/'+this.optRouteNameCtrl+'.js');
-	this.template('new-page/_NewPageCtrl.spec.js', pagePath+'/'+this.optRouteNameCtrl+'.spec.js');
 	
 	
 	//C. copy files & directories
@@ -178,61 +178,30 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 @toc 3.
 @method updateBuildfiles
 */
-NgRouteGenerator.prototype.updateBuildfiles = function updateBuildfiles() {
-if(this.optSubGenerators.indexOf('ng-route') >-1) {
+NgDirectiveGenerator.prototype.updateBuildfiles = function updateBuildfiles() {
+if(this.optSubGenerators.indexOf('ng-directive') >-1) {
 
 	var finalObj ={
-		"name":this.optRouteName,
+		"name":this.optDirectiveName,
 		"files": {
-			"html":[this.optRouteName+'.html'],
-			"js":[this.optRouteNameCtrl+'.js'],
-			"test":[this.optRouteNameCtrl+'.spec.js']
+			"js":[this.optDirectiveName+'.js'],
+			"test":[this.optDirectiveName+'.spec.js']
 		}
 	};
 	if(this.optCssPreprocessor =='less') {
-		finalObj.files.less =[this.optRouteName+'.less'];
+		finalObj.files.less =[this.optDirectiveName+'.less'];
 	}
 	else if(this.optCssPreprocessor =='scss') {
-		finalObj.files.scss =['_'+this.optRouteName+'.scss'];
+		finalObj.files.scss =['_'+this.optDirectiveName+'.scss'];
 	}
 	
 	var path ='app/src/config/buildfilesModules.json';
 	var bfObj = JSON.parse(this.readFileAsString(path));
 	
-	bfObj =BuildfilesMod.update(bfObj, ['modules', 'pages'], this.optRoutePath, finalObj, {});
+	bfObj =BuildfilesMod.update(bfObj, ['modules', 'directives'], this.optDirectivePath, finalObj, {});
 	
 	//write new object back to file
 	this.write(path, JSON.stringify(bfObj, null, '\t'));		//make sure to use the 3rd parameter to make the output JSON formatted (a tab character in this case)! - http://stackoverflow.com/questions/5670752/write-pretty-json-to-file-using-node-js
 	
-}
-};
-
-/**
-@toc 4.
-@method updateAppJs
-*/
-NgRouteGenerator.prototype.updateAppJs = function updateAppJs() {
-if(this.optSubGenerators.indexOf('ng-route') >-1) {
-	var path ='app/src/common/js/app.js';
-	// var contents =this.read(path);
-	var contents =this.readFileAsString(path);
-	var indexStart =contents.indexOf('//end: yeoman generated routes here');
-	if(indexStart >-1) {
-		// var indexEnd =contents.indexOf('/n', indexStart);
-		// console.log(indexStart+' '+indexEnd);
-		// if(indexEnd >-1) {
-		if(1) {
-			var newData ="$routeProvider.when(appPathRoute+'"+this.optRouteName+"', {templateUrl: pagesPath+'"+this.optRoutePath+this.optRouteName+"/"+this.optRouteName+".html',\n"+
-			"		resolve: {\n"+
-			"			auth: function(appAuth) {\n"+
-			"				return appAuth.checkSess({noLoginRequired:true});\n"+
-			"			}\n"+
-			"		}\n"+
-			"	});\n";
-			// var newContents =contents.slice(0, (indexEnd+1))+newData+contents.slice((indexEnd+1), contents.length);
-			var newContents =contents.slice(0, (indexStart))+newData+contents.slice((indexStart), contents.length);
-			this.write(path, newContents);
-		}
-	}
 }
 };
