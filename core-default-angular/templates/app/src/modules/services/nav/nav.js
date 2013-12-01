@@ -101,6 +101,7 @@ var inst ={
 	*/
 	initPages: function(params) {
 		this.pages =appNavConfig.pages;
+		this.pagesRouteMap =appNavConfig.pagesRouteMap;
 	},
 	
 	/**
