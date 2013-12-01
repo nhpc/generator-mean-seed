@@ -161,7 +161,7 @@ Updates a full buildfiles object
 Buildfiles.prototype.update =function(base, dirKeys, routePath, finalVal, params) {
 	//get the keys to get to where we want to insert the new finalVal
 	var keys =this.getFullKeys(base, dirKeys, {});
-	console.log('keys: '+JSON.stringify(keys));
+	// console.log('keys: '+JSON.stringify(keys));
 	
 	//get the nested sub object
 	var subObj =ArrayMod.evalBase(base, keys, {});

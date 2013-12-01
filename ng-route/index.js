@@ -46,7 +46,7 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 	var prompts = [
 		{
 			name: 'optRouteName',
-			message: 'Route name (i.e. my-page)',
+			message: 'UNIQUE, full route name (i.e. my-page)',
 			//required input
 			validate: function(input) {
 				if(!input || !input.length) {
