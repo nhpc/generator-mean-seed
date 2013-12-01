@@ -155,7 +155,7 @@ print("- common/scss fold has all the SCSS CSS files.");
 ### Common / Non-modularized / Site-specific files
 You'll likely have to edit these files at some point.
 NOTE: this does NOT include files in the `common` directory, which obviously are also site-specific.
-- `modules/services/nav/nav.js`
+- `modules/services/nav/nav-config.js`
 
 - `common` directory files most likely/often to be updated
 	- js
@@ -176,4 +176,4 @@ NOTE: this does NOT include files in the `common` directory, which obviously are
 		buildfilesModules.json
 	- modules
 		-services
-			nav/nav.js
+			nav/nav-config.js

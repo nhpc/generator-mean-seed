@@ -1,32 +1,7 @@
 /**
-@todo
-- modularize out the site-specific stuff into a separate config file?
-
-NOTE: there is both generic and site specific code in here - search for 'site-specific' to see and update/remove site specific stuff
+Uses nav-config.js to set the objects / nav list (see there for more info / documentation).
 
 Sets up the header and footer navigation buttons / displays.
-Each button generally has the following properties (but check the corresponding HTML template for a full reference)
-	- `html` of the content to display, i.e. "Title Here" or "<span class='fa fa-bell'></span>" or "&nbsp;"
-	- either an `href` or `click`. For the `click`, it's generally a $rootScope.$broadcast that can be listened for in the appropriate controller for that page.
-	- `classes` which is an object that has style classes to apply for different parts of the nav item (i.e. `cont` is usually the class for the outer-most container)
-		- use classes.cont ='hidden' as a special class to HIDE (display:none) the entire header and/or footer
-	
-@example
-buttons: [
-	{
-		html: "<span class='fa fa-bell'></span>",
-		href: this.paths.appPathLink+'notifications',
-		id: 'notifications'
-	},
-	{
-		html: "<span class='icon-calendar-17-dark'></span>",
-		click: function() { $rootScope.$broadcast('NavEventChangePage', {page:'event1'}); },
-	},
-	{
-		html: "<span class='icon-tribe'></span>",
-		href: this.paths.appPathLink+'tribes'
-	}
-]
 
 @module nav
 @class nav
@@ -35,7 +10,7 @@ buttons: [
 1. init
 2. initPaths
 3. initComponents
-4. initPages		//site-specific
+4. initPages
 5. updateNav
 6. getNav
 9. setNav
@@ -47,14 +22,14 @@ buttons: [
 'use strict';
 
 angular.module('app').
-factory('appNav', ['$rootScope', '$location', 'appConfig', 'jrgArray', function($rootScope, $location, appConfig, jrgArray) {
+factory('appNav', ['$rootScope', 'jrgArray', 'appNavConfig', function($rootScope, jrgArray, appNavConfig) {
 var inst ={
 
 	inited: false,		//trigger that will be set after this first time this is run
 	initTrigs: {
 		routeChange: false		//used to skip the first time so don't go back out of the app on history.back
 	},
-	pathRoot: 'modules/services/nav/',		//appConfig.dirPaths.staticPath will be prepended
+	pathRoot: false,		//appConfig.dirPaths.staticPath will be prepended
 	paths: {},		//holds file paths for various things, specifically templates (HTML template files) and appPathLink. See initPaths function for more info.
 	
 	historyCounter: 0,		//will increment on each route change (so can avoid going "back" outside of app)
@@ -74,22 +49,7 @@ var inst ={
 	*/
 	curPageKey: false,
 	
-	/**
-	For all the pages where the url route is not the same as the pages key
-	@property pagesRouteMap Key-pairs where the key corresponds to this.pages array keys and the value corresponds to the url page to match. i.e. {'login': 'login-url'}
-	@type Object
-	@example
-		eventviewinfo:{
-			url: 'eventview',		//the sanitized version of the url (i.e. no hypens)
-			params: {
-				page: 'info'
-			}
-		},
-		//will match things like 'test/898' or 'test/yes/no' in case passing in :id or other sub-page parameters in the URL (but NOT in GET query params)
-		test:{
-			urlRegex: 'test\/'		//the sanitized version of the url (i.e. no hypens)
-		},
-	*/
+	//For all the pages where the url route is not the same as the pages key
 	pagesRouteMap: {
 	},
 	
@@ -113,12 +73,8 @@ var inst ={
 	@method initPaths
 	*/
 	initPaths: function(params) {
-		this.pathRoot =appConfig.dirPaths.staticPath+this.pathRoot;		//prepend static path to account for different environments / configs and ensure this always references the correct path
-		this.paths.templates = {
-			headerCentered: this.pathRoot+'header-centered/header-centered.html',
-			footerFlex: this.pathRoot+'footer-flex/footer-flex.html'
-		};
-		this.paths.appPathLink =appConfig.dirPaths.appPathLink;
+		this.pathRoot =appNavConfig.pathRoot;
+		this.paths =appNavConfig.paths;
 	},
 	
 	/**
@@ -126,66 +82,7 @@ var inst ={
 	@method initComponents
 	*/
 	initComponents: function(params) {
-		var self =this;
-		this.components.backButton ={
-			html: "<span class='fa fa-arrow-left'></span>",
-			click: function() {self.historyBack({}); }
-		};
-		
-		this.components.footerMain ={
-			template: self.paths.templates.footerFlex,
-			classes: {
-				cont: ''
-			},
-			buttons: [
-				{
-					html: "<span class='fa fa-unlock'></span>",
-					href: this.paths.appPathLink+'password-reset'
-				},
-				{
-					html: "Design",
-					href: this.paths.appPathLink+'design'
-				},
-				{
-					html: "Test",
-					href: this.paths.appPathLink+'test'
-				}
-			]
-		};
-		//hardcoded array indices for use to change these buttons later
-		this.components.footerMainIndices ={
-		};
-		
-		this.components.headerCentered ={
-			template: self.paths.templates.headerCentered,
-			title: {
-				html: '[Title]'
-			},
-			buttons: {
-				left: [
-					this.components.backButton,
-					{
-						html: "Test",
-						href: this.paths.appPathLink+'test'
-					}
-				],
-				right: [
-					{
-						html: "<span class='fa fa-sign-in'></span>",
-						href: this.paths.appPathLink+'login'
-					},
-					{
-						html: "<span class='fa fa-sign-out'></span>",
-						href: this.paths.appPathLink+'logout'
-					}
-				]
-			}
-		};
-		
-		this.components.defaultNav ={
-			header: this.components.headerCentered,
-			footer: this.components.footerMain
-		};
+		this.components =appNavConfig.components;
 	},
 	
 	/**
@@ -194,83 +91,7 @@ var inst ={
 	@method initPages
 	*/
 	initPages: function(params) {
-		var self =this;
-		
-		this.pages.defaultPage =jrgArray.copy(this.components.defaultNav);			//in case missed a page, show default nav
-		
-		//site-specific
-		//CUSTOM nav definitions
-		//login
-		this.pages.login ={
-			header: {
-				template: self.paths.templates.headerCentered,
-				title: {
-					html: '&nbsp;'
-				},
-				buttons: {
-					left: [
-						{
-							html: "&nbsp;"
-						}
-					],
-					right: [
-						{
-							html: "&nbsp;"
-						}
-					]
-				}
-			},
-			footer: {
-				template: self.paths.templates.footerFlex,
-				buttons: [
-					{
-						html: "&nbsp;"
-					}
-				]
-			}
-		};
-		
-		//signup
-		this.pages.signup ={
-			header: {
-				template: self.paths.templates.headerCentered,
-				title: {
-					html: '&nbsp;'
-				},
-				buttons: {
-					left: [
-						{
-							html: "&nbsp;"
-						}
-					],
-					right: [
-						{
-							html: "&nbsp;"
-						}
-					]
-				}
-			},
-			footer: {
-				template: self.paths.templates.footerFlex,
-				buttons: [
-					{
-						html: "&nbsp;"
-					}
-				]
-			}
-		};
-		
-		
-		//test
-		this.pages.test =jrgArray.copy(this.components.defaultNav);
-		// this.pages.test.header.classes ={
-			// cont: 'hidden'
-		// };
-		// this.pages.test.footer.classes ={
-			// cont: 'hidden'
-		// };
-		
-		//end: CUSTOM nav definitions
+		this.pages =appNavConfig.pages;
 	},
 	
 	/**

@@ -133,7 +133,7 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 			moreGenerators =['core-default-node', 'core-scss-angular', 'helper-commands', 'helper-log-next-steps'];
 		}
 		else if(props.optSubGenerator =='ng-route') {
-			logNextStepsMsg ='Next steps:\n1. IF you want to make a custom nav (header and/or footer) for this page, add it in `modules/services/nav/nav.js`\n2. Edit the files (html, js, less/scss) for your new page!';
+			logNextStepsMsg ='Next steps:\n1. IF you want to make a custom nav (header and/or footer) for this page, add it in `modules/services/nav/nav-config.js`\n2. Edit the files (html, js, less/scss) for your new page!';
 			moreGenerators =['helper-commands', 'helper-log-next-steps'];
 		}
 		else if(props.optSubGenerator =='ng-directive') {

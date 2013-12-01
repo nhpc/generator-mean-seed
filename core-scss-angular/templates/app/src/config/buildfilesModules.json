@@ -209,6 +209,7 @@
 							"name": "nav",
 							"files": {
 								"js": [
+									"nav-config.js",
 									"nav.js"
 								],
 								"scss": [

@@ -1,5 +1,10 @@
 Version numbers correspond to `package.json` version
 
+# 1.0.7 (WIP)
+## Features
+- modularized / separated `nav.js` to `nav.js` and `nav-config.js` where the config file has the custom / site-specific components and pages objects.
+
+
 # 1.0.6 (2013-11-27)
 ## Breaking Changes
 - rename / merge 'svc' and 'dtv' module namespace to single 'app' namespace
