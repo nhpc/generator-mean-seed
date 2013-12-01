@@ -42,6 +42,9 @@ angular.module('app').
 factory('appNavConfig', ['appConfig', 'jrgArray', function(appConfig, jrgArray) {
 var inst ={
 
+	//self: appNav,		//so can use 'self' instead of 'this' in this file and it will still work to refer to appNav INSTEAD of this file.		//UPDATE: does NOT work - circular dependency..
+	historyBack: false,		//placeholder - will be set in appNav
+	
 	inited: false,		//trigger that will be set after this first time this is run
 
 	pathRoot: 'modules/services/nav/',
@@ -104,13 +107,15 @@ var inst ={
 	*/
 	initComponents: function(params) {
 		var self =this;
+		
+		//NOTE: this references a function in THIS file/service, which is NOT what we want, we want to reference appNav SO we need to overwrite/set the historyBack function here from appNav later so this will work!
 		this.components.backButton ={
 			html: "<span class='fa fa-arrow-left'></span>",
 			click: function() {self.historyBack({}); }
 		};
 		
 		this.components.headerCentered ={
-			template: self.paths.templates.headerCentered,
+			template: this.paths.templates.headerCentered,
 			title: {
 				html: '[Title]'
 			},
@@ -136,7 +141,7 @@ var inst ={
 		};
 		
 		this.components.footerMain ={
-			template: self.paths.templates.footerFlex,
+			template: this.paths.templates.footerFlex,
 			classes: {
 				cont: ''
 			},
@@ -171,7 +176,6 @@ var inst ={
 	@method initPages
 	*/
 	initPages: function(params) {
-		var self =this;
 		
 		this.pages.defaultPage =jrgArray.copy(this.components.defaultNav);			//in case missed a page, show default nav
 		
@@ -180,7 +184,7 @@ var inst ={
 		//login
 		this.pages.login ={
 			header: {
-				template: self.paths.templates.headerCentered,
+				template: this.paths.templates.headerCentered,
 				title: {
 					html: '&nbsp;'
 				},
@@ -198,7 +202,7 @@ var inst ={
 				}
 			},
 			footer: {
-				template: self.paths.templates.footerFlex,
+				template: this.paths.templates.footerFlex,
 				buttons: [
 					{
 						html: "&nbsp;"
@@ -210,7 +214,7 @@ var inst ={
 		//signup
 		this.pages.signup ={
 			header: {
-				template: self.paths.templates.headerCentered,
+				template: this.paths.templates.headerCentered,
 				title: {
 					html: '&nbsp;'
 				},
@@ -228,7 +232,7 @@ var inst ={
 				}
 			},
 			footer: {
-				template: self.paths.templates.footerFlex,
+				template: this.paths.templates.footerFlex,
 				buttons: [
 					{
 						html: "&nbsp;"

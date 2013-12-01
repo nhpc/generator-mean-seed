@@ -12,8 +12,11 @@ Sets up the header and footer navigation buttons / displays.
 3. initComponents
 4. initPages
 5. updateNav
+5.1. broadcastNavUpdates
+5.2. updateRouteChangeCounter
+5.3. extendNav
 6. getNav
-9. setNav
+6.5. setNav
 7. getPageFromRoute
 8. historyBack
 
@@ -23,6 +26,8 @@ Sets up the header and footer navigation buttons / displays.
 
 angular.module('app').
 factory('appNav', ['$rootScope', 'jrgArray', 'appNavConfig', function($rootScope, jrgArray, appNavConfig) {
+var selfGlobal;		//set to be able to reference THIS function/service even if the 'this' keyword is for something else - i.e. for historyBack overwriting from appNavConfig
+
 var inst ={
 
 	inited: false,		//trigger that will be set after this first time this is run
@@ -58,6 +63,7 @@ var inst ={
 	@method init
 	*/
 	init: function(params) {
+		selfGlobal =this;
 		if(!this.inited) {		//only init once
 			var self =this;
 			this.initPaths(params);
@@ -82,7 +88,10 @@ var inst ={
 	@method initComponents
 	*/
 	initComponents: function(params) {
+		appNavConfig.historyBack =this.historyBack;		//overwrite to make it point to THIS function
+		
 		this.components =appNavConfig.components;
+		
 	},
 	
 	/**
@@ -131,6 +140,8 @@ var inst ={
 	},
 	
 	/**
+	@toc 5.1.
+	@method broadcastNavUpdates
 	*/
 	broadcastNavUpdates: function(params) {
 		$rootScope.$broadcast('appNavHeaderUpdate', {nav: this.curPage});		//update header
@@ -140,6 +151,8 @@ var inst ={
 	},
 	
 	/**
+	@toc 5.2.
+	@method updateRouteChangeCounter
 	*/
 	updateRouteChangeCounter: function(params) {
 		if(this.initTrigs.routeChange) {		//if already inited (not the FIRST one)
@@ -151,6 +164,8 @@ var inst ={
 	},
 	
 	/**
+	@toc 5.3.
+	@method extendNav
 	*/
 	extendNav: function(newNavParts, params) {
 		this.curPage =angular.extend(this.curPage, newNavParts);
@@ -236,10 +251,11 @@ var inst ={
 	@method historyBack
 	*/
 	historyBack: function(params) {
-		// console.log('historyCounter: '+this.historyCounter);
-		if(this.historyCounter >0) {
+		var self =selfGlobal;		//can't use 'this' keyword since that refers to appNavConfig where the button components were originally declared
+		// console.log('historyCounter: '+self.historyCounter);
+		if(self.historyCounter >0) {
 			history.back();
-			this.historyCounter =this.historyCounter -2;		//have to subtract 2 since going back will cause a route change that will increment the counter again
+			self.historyCounter =self.historyCounter -2;		//have to subtract 2 since going back will cause a route change that will increment the counter again
 		}
 	}
 };
