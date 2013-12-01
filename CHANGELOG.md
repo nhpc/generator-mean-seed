@@ -5,7 +5,9 @@ Version numbers correspond to `package.json` version
 - run core generators on a SEPARATE branch so changes can be MERGED in (with git) after they're updated - otherwise couldn't really update a seed once it was already generated since re-running the generator would just either overwrite or not change the changed files - neither would work.
 	- add `helper-core-merge` subgenerator
 	- add `optGitBranch` prompt option (defaults to 'master')
+- add `common/commands` to keep running commands DRY
 - add `common/prompts` for keeping prompt extending defaults/setting DRY
+	- support defaults for prompts even with config.json files so they do not all have to be specified
 - modularize / separate `nav.js` to `nav.js` and `nav-config.js` where the config file has the custom / site-specific components and pages objects.
 
 
