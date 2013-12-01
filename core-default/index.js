@@ -5,6 +5,8 @@
 
 @toc
 1. askFor
+2. commandsBranch
+2.1. commandsCheckout
 
 NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle Windows/different operating systems and can't use 'exec' since that doesn't show (live) output)
 */
@@ -15,6 +17,9 @@ var yeoman = require('yeoman-generator');
 
 // var exec = require('child_process').exec;
 // var spawn = require('child_process').spawn;
+
+var PromptsMod =require('../common/prompts/prompts.js');
+var CommandsMod =require('../common/commands/commands.js');
 
 var CoreDefaultGenerator = module.exports = function CoreDefaultGenerator(args, options, config) {
 	// By calling `NamedBase` here, we get the argument to the subgenerator call
@@ -38,9 +43,7 @@ util.inherits(CoreDefaultGenerator, yeoman.generators.NamedBase);
 CoreDefaultGenerator.prototype.askFor = function askFor() {
 if(this.optSubGenerators.indexOf('core-default') >-1) {
 
-if(!this.optConfigFile) {		//only prompt if don't have config file
-	var cb = this.async();
-
+	//need to define prompts either way for extending defaults
 	var prompts = [
 		{
 			name: 'optAppName',
@@ -155,45 +158,85 @@ if(!this.optConfigFile) {		//only prompt if don't have config file
 				'1'
 			],
 			default: '1'
+		},
+		{
+			name: 'optGitBranch',
+			message: 'What git branch to use?',
+			default: 'master'
 		}
 	];
+	
+	var skipKeys =['optAppKeywords'];
+	var toInt =['optNpmInstall', 'optBowerInstall', 'optSeleniumInstall', 'optGruntQ'];
+	
+	if(!this.optConfigFile) {		//only prompt if don't have config file
+		var cb = this.async();
 
-	this.prompt(prompts, function (props) {
-		var ii, jj, kk, skip, curName;
-		var skipKeys =['optAppKeywords'];
-		var toInt =['optNpmInstall', 'optBowerInstall', 'optSeleniumInstall', 'optGruntQ'];
-		for(ii =0; ii<prompts.length; ii++) {
-			curName =prompts[ii].name;
-			skip =false;
-			for(jj =0; jj<skipKeys.length; jj++) {
-				if(curName ==skipKeys[jj]) {
-					skip =true;
-					break;
-				}
+		this.prompt(prompts, function (props) {
+			var newProps =PromptsMod.formProps(prompts, props, skipKeys, toInt, {});
+			var xx;
+			for(xx in newProps) {
+				this.options.props[xx] =this[xx] =newProps[xx];
 			}
-			if(!skip) {		//copy over
-				//convert to integer (from string) if necessary
-				for(kk =0; kk<toInt.length; kk++) {
-					if(curName ==toInt[kk]) {
-						props[curName] =parseInt(props[curName], 10);
-					}
-				}
-				
-				this.options.props[curName] =this[curName] =props[curName];
-			}
+			
+			//handle some special ones (the skipKeys from above)
+			this.options.props.optAppKeywords =this.optAppKeywords = props.optAppKeywords.split(' ');
+			
+			this.options.props.optCssPreprocessor =this.optCssPreprocessor ='less';
+
+			cb();
+		}.bind(this));
+	}
+	else {
+		//still want to extend defaults
+		var newProps =PromptsMod.formProps(prompts, this.options.props, skipKeys, toInt, {});
+		var xx;
+		for(xx in newProps) {
+			this.options.props[xx] =this[xx] =newProps[xx];
 		}
 		
-		//handle some special ones (the skipKeys from above)
-		this.options.props.optAppKeywords =this.optAppKeywords = props.optAppKeywords.split(' ');
-		
+		//have to set this either way
 		this.options.props.optCssPreprocessor =this.optCssPreprocessor ='less';
+	}
 
-		cb();
-	}.bind(this));
 }
+};
 
-//have to set this either way
-this.options.props.optCssPreprocessor =this.optCssPreprocessor ='less';
+/**
+@toc 2.
+@method commandsBranch
+*/
+CoreDefaultGenerator.prototype.commandsBranch = function commandsBranch() {
+if(this.optSubGenerators.indexOf('core-default') >-1) {
+	var cb = this.async();
+	var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
+	CommandsMod.run('git', ['branch', yoBranch], {yoThis: this})		//must first create (if doesn't already exist) the branch - need to do this in a separate command since it will fail if it already exists
+	.then(function(ret1) {
+		// console.log('cb called');
+		cb();
+	}, function(retErr) {
+		// console.log('cb called ERROR');
+		cb();
+	});
+	
+}
+};
 
+/**
+@toc 2.1.
+@method commandsCheckout
+*/
+CoreDefaultGenerator.prototype.commandsCheckout = function commandsCheckout() {
+if(this.optSubGenerators.indexOf('core-default') >-1) {
+	var cb = this.async();
+	var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
+	CommandsMod.run('git', ['checkout', yoBranch], {yoThis: this})
+	.then(function(ret1) {
+		// console.log('cb called');
+		cb();
+	}, function(retErr) {
+		// console.log('cb called ERROR');
+		cb();
+	});
 }
 };

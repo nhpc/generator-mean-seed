@@ -19,6 +19,7 @@ var util = require('util');
 var yeoman = require('yeoman-generator');
 
 var BuildfilesMod =require('../common/buildfiles/buildfiles.js');
+var PromptsMod =require('../common/prompts/prompts.js');
 
 var NgRouteGenerator = module.exports = function NgRouteGenerator(args, options, config) {
 	// By calling `NamedBase` here, we get the argument to the subgenerator call
@@ -92,28 +93,13 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 		props.optRoutePath +='/';		//add trailing slash
 		// console.log('props.optRoutePath: '+props.optRoutePath);
 		
-		var ii, jj, kk, skip, curName;
 		var skipKeys =[];
 		var toInt =['optGruntQ'];
-		for(ii =0; ii<prompts.length; ii++) {
-			curName =prompts[ii].name;
-			skip =false;
-			for(jj =0; jj<skipKeys.length; jj++) {
-				if(curName ==skipKeys[jj]) {
-					skip =true;
-					break;
-				}
-			}
-			if(!skip) {		//copy over
-				//convert to integer (from string) if necessary
-				for(kk =0; kk<toInt.length; kk++) {
-					if(curName ==toInt[kk]) {
-						props[curName] =parseInt(props[curName], 10);
-					}
-				}
-				
-				this.options.props[curName] =this[curName] =props[curName];
-			}
+		
+		var newProps =PromptsMod.formProps(prompts, props, skipKeys, toInt, {});
+		var xx;
+		for(xx in newProps) {
+			this.options.props[xx] =this[xx] =newProps[xx];
 		}
 		
 		//handle some special ones (the skipKeys from above)

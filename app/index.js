@@ -67,6 +67,13 @@ var MeanSeedGenerator = module.exports = function MeanSeedGenerator(args, option
 		}
 	});
 	
+	this.hookFor('mean-seed:helper-core-merge', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
 	//NOTE: order matters - call this toward end / LAST!
 	this.hookFor('mean-seed:helper-commands', {
 		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
@@ -126,11 +133,11 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 		
 		if(props.optSubGenerator =='core-default') {
 			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.';
-			moreGenerators =['core-default-node', 'core-default-angular', 'helper-commands', 'helper-log-next-steps'];
+			moreGenerators =['core-default-node', 'core-default-angular', 'helper-core-merge', 'helper-commands', 'helper-log-next-steps'];
 		}
 		else if(props.optSubGenerator =='core-scss') {
 			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.';
-			moreGenerators =['core-default-node', 'core-scss-angular', 'helper-commands', 'helper-log-next-steps'];
+			moreGenerators =['core-default-node', 'core-scss-angular', 'helper-core-merge', 'helper-commands', 'helper-log-next-steps'];
 		}
 		else if(props.optSubGenerator =='ng-route') {
 			logNextStepsMsg ='Next steps:\n1. IF you want to make a custom nav (header and/or footer) for this page, add it in `modules/services/nav/nav-config.js`\n2. Edit the files (html, js, less/scss) for your new page!';

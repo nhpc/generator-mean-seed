@@ -1,9 +1,9 @@
 {
 	"prompts":{
-		"optAppName":"myproject",
-		"optAppTitle":"My Project",
-		"optAppDescription":"my really cool app!",
-		"optAppKeywords":[
+		"optAppName": "myproject",
+		"optAppTitle": "My Project",
+		"optAppDescription": "my really cool app!",
+		"optAppKeywords": [
 			"mean-seed",
 			"javascript",
 			"angular",
@@ -11,17 +11,18 @@
 			"myproject",
 			"app"
 		],
-		"optGithubName":"mygithubhandlehere",
-		"optAuthorName":"First Last <first.last@email.com>",
-		"optOperatingSystem":"mac",
-		"optServerPort":3000,
-		"optSocketPort":3001,
-		"optTestServerPort":3005,
-		"optTestSocketPort":3006,
-		"optTestDatabase":"test_temp",
-		"optNpmInstall":1,
-		"optBowerInstall":1,
-		"optSeleniumInstall":1,
-		"optGruntQ":1
+		"optGithubName": "mygithubhandlehere",
+		"optAuthorName": "First Last <first.last@email.com>",
+		"optOperatingSystem": "mac",
+		"optServerPort": 3000,
+		"optSocketPort": 3001,
+		"optTestServerPort": 3005,
+		"optTestSocketPort": 3006,
+		"optTestDatabase": "test_temp",
+		"optNpmInstall": 1,
+		"optBowerInstall": 1,
+		"optSeleniumInstall": 1,
+		"optGruntQ": 1,
+		"optGitBranch": "master"
 	}
 }

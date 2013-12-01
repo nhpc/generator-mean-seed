@@ -2,7 +2,11 @@ Version numbers correspond to `package.json` version
 
 # 1.0.7 (WIP)
 ## Features
-- modularized / separated `nav.js` to `nav.js` and `nav-config.js` where the config file has the custom / site-specific components and pages objects.
+- run core generators on a SEPARATE branch so changes can be MERGED in (with git) after they're updated - otherwise couldn't really update a seed once it was already generated since re-running the generator would just either overwrite or not change the changed files - neither would work.
+	- add `helper-core-merge` subgenerator
+	- add `optGitBranch` prompt option (defaults to 'master')
+- add `common/prompts` for keeping prompt extending defaults/setting DRY
+- modularize / separate `nav.js` to `nav.js` and `nav-config.js` where the config file has the custom / site-specific components and pages objects.
 
 
 # 1.0.6 (2013-11-27)
