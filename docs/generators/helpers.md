@@ -4,6 +4,10 @@
 * technically ALL subgenerators are available to be called, but these ones are most likely to be used.
 
 
+## helper-core-commands-init
+Pre-run commands to git init and checkout the yo branch.
+
+
 ### helper-core-merge
 The post-run git merge for core generators - used so we can run the yo generator on a SEPARATE branch to update and then merge in the changes. This prevents the 'all-or-none' problem of running a yo (core) generator again on an active app/branch that has changes that need to be MERGED (not just over-written).
 

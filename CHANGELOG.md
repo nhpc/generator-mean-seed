@@ -3,7 +3,7 @@ Version numbers correspond to `package.json` version
 # 1.0.7 (WIP)
 ## Features
 - attempt to handle core updates (after initial generation) by running core generators on a SEPARATE branch so changes can be MERGED in (with git) after they're updated - otherwise couldn't really update a seed once it was already generated since re-running the generator would just either overwrite or not change the changed files - neither would work. Unfortunately still could have lots of merge conflicts so would have to be manually merged..
-	- add `helper-core-merge` subgenerator
+	- add `helper-core-merge` and `helper-core-commands-init` (sub)generators
 	- add `optGitBranch` prompt option (defaults to 'master')
 	- add `optUseGitSeparateBranch` to toggle this on and off (set to 0 to just use generator as it was before this change - do everything on the SAME/current branch)
 - add `common/commands` to keep running commands DRY
