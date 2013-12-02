@@ -16,6 +16,8 @@ NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle W
 var util = require('util');
 var yeoman = require('yeoman-generator');
 
+var moment =require('moment');
+
 var CommandsMod =require('../common/commands/commands.js');
 
 var HelperCoreMergeGenerator = module.exports = function HelperCoreMergeGenerator(args, options, config) {
@@ -66,7 +68,8 @@ if(1) {		//do NOT want to add/commit automatically
 // if(this.optUseGitSeparateBranch) {
 	var cb = this.async();
 	// var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
-	CommandsMod.run('git', ['commit', '-am', '"yo mean-seed update"'], {yoThis: this})		//must first create (if doesn't already exist) the branch - need to do this in a separate command since it will fail if it already exists
+	var commitMsg ="'"+moment().format('YYYY-MM-DD HH:mm:ss')+" yo mean-seed update'";
+	CommandsMod.run('git', ['commit', '-am', commitMsg], {yoThis: this})		//must first create (if doesn't already exist) the branch - need to do this in a separate command since it will fail if it already exists
 	.then(function(ret1) {
 		// console.log('cb called');
 		cb();

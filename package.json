@@ -42,7 +42,8 @@
 	},
 	"dependencies": {
 		"yeoman-generator": "~0.13.0",
-		"q": "~0.9.7"
+		"q": "~0.9.7",
+		"moment": "~2.0.0"
 	},
 	"devDependencies": {
 		"mocha": "~1.12.0",
