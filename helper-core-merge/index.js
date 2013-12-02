@@ -144,7 +144,6 @@ if(1) {
 		if(ret1.code !==0) {
 			//SKIP grunt q on merge conflict (rest of commands should still work)
 			self.options.props.optGruntQ =self.optGruntQ =0;
-			// logNextStepsMsg ='\n\nMERGE FAILED:\nfix merge conflicts then commit then run `grunt q` and follow the next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\nSee the README.md file for more info.';
 			logNextStepsMsg ='\n\nMERGE FAILED:\nfix merge conflicts then commit then run `grunt q` then follow the next steps as usual.\n'+self.options.props.optLogNextStepsMsg;
 			
 			//just in case, console.log it
