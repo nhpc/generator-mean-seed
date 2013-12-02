@@ -42,7 +42,7 @@ util.inherits(HelperCoreMergeGenerator, yeoman.generators.NamedBase);
 */
 HelperCoreMergeGenerator.prototype.commandsAdd = function commandsAdd() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
-if(1) {		//do NOT want to add/commit automatically
+if(1) {
 // if(this.optUseGitSeparateBranch) {
 	var cb = this.async();
 	// var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
@@ -64,7 +64,7 @@ if(1) {		//do NOT want to add/commit automatically
 */
 HelperCoreMergeGenerator.prototype.commandsCommit = function commandsCommit() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
-if(1) {		//do NOT want to add/commit automatically
+if(1) {
 // if(this.optUseGitSeparateBranch) {
 	var cb = this.async();
 	// var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
@@ -87,8 +87,8 @@ if(1) {		//do NOT want to add/commit automatically
 */
 HelperCoreMergeGenerator.prototype.commandsBranch = function commandsBranch() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
-// if(this.optUseGitSeparateBranch) {
 if(1) {
+// if(this.optUseGitSeparateBranch) {
 	var cb = this.async();
 	var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
 	CommandsMod.run('git', ['branch', this.optGitBranch], {yoThis: this})		//must first create (if doesn't already exist) the branch - need to do this in a separate command since it will fail if it already exists
@@ -109,8 +109,8 @@ if(1) {
 */
 HelperCoreMergeGenerator.prototype.commandsCheckout = function commandsCheckout() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
-// if(this.optUseGitSeparateBranch) {
 if(1) {
+// if(this.optUseGitSeparateBranch) {
 	var cb = this.async();
 	CommandsMod.run('git', ['checkout', this.optGitBranch], {yoThis: this})
 	.then(function(ret1) {
@@ -130,8 +130,8 @@ if(1) {
 */
 HelperCoreMergeGenerator.prototype.commandsMerge = function commandsMerge() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
+if(1) {
 // if(this.optUseGitSeparateBranch) {
-if(1) {		//do NOT want to automatically merge since it could mess things up..
 	var self =this;
 	var logNextStepsMsg;
 	
@@ -144,7 +144,7 @@ if(1) {		//do NOT want to automatically merge since it could mess things up..
 		if(ret1.code !==0) {
 			//SKIP grunt q on merge conflict (rest of commands should still work)
 			self.options.props.optGruntQ =self.optGruntQ =0;
-			// logNextStepsMsg ='\n\nMERGE FAILED:\nfix merge conflicts then commit then run `grunt q` and follow the next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.';
+			// logNextStepsMsg ='\n\nMERGE FAILED:\nfix merge conflicts then commit then run `grunt q` and follow the next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\nSee the README.md file for more info.';
 			logNextStepsMsg ='\n\nMERGE FAILED:\nfix merge conflicts then commit then run `grunt q` then follow the next steps as usual.\n'+self.options.props.optLogNextStepsMsg;
 			
 			//just in case, console.log it

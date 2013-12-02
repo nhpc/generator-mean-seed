@@ -161,7 +161,7 @@ if(this.optSubGenerators.indexOf('core-default') >-1) {
 			name: 'optGitBranch',
 			message: 'What git branch to use?',
 			default: 'master'
-		},
+		}/*,
 		{
 			type: 'list',
 			name: 'optUseGitSeparateBranch',
@@ -172,6 +172,7 @@ if(this.optSubGenerators.indexOf('core-default') >-1) {
 			],
 			default: '0'
 		}
+		*/
 		
 	];
 	

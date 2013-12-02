@@ -23,7 +23,6 @@
 		"optBowerInstall": 1,
 		"optSeleniumInstall": 1,
 		"optGruntQ": 1,
-		"optGitBranch": "master",
-		"optUseGitSeparateBranch": 0
+		"optGitBranch": "master"
 	}
 }

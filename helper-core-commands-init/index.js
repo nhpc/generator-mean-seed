@@ -39,7 +39,7 @@ Just in case - check if git init'ed yet by running (any) git command and if fail
 */
 HelperCoreCommandsInitGenerator.prototype.gitInit = function gitInit() {
 if(this.optSubGenerators.indexOf('helper-core-commands-init') >-1) {
-if(1) {		//do NOT want to add/commit automatically
+if(1) {
 // if(this.optUseGitSeparateBranch) {
 	var self =this;
 	var cb = this.async();
@@ -74,7 +74,7 @@ Must first create (if doesn't already exist) the branch - need to do this in a s
 */
 HelperCoreCommandsInitGenerator.prototype.gitBranch = function gitBranch() {
 if(this.optSubGenerators.indexOf('helper-core-commands-init') >-1) {
-if(1) {		//do NOT want to add/commit automatically
+if(1) {
 // if(this.optUseGitSeparateBranch) {
 	var self =this;
 	var cb = this.async();
@@ -97,7 +97,7 @@ if(1) {		//do NOT want to add/commit automatically
 */
 HelperCoreCommandsInitGenerator.prototype.gitCheckout = function gitCheckout() {
 if(this.optSubGenerators.indexOf('helper-core-commands-init') >-1) {
-if(1) {		//do NOT want to add/commit automatically
+if(1) {
 // if(this.optUseGitSeparateBranch) {
 	var self =this;
 	var cb = this.async();

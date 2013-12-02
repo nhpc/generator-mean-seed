@@ -5,8 +5,6 @@
 
 @toc
 1. askFor
-2. commandsBranch
-2.1. commandsCheckout
 
 NOTE: uses Yeoman this.spawnCommand call to run commands (since need to handle Windows/different operating systems and can't use 'exec' since that doesn't show (live) output)
 */
@@ -163,7 +161,7 @@ if(this.optSubGenerators.indexOf('core-scss') >-1) {
 			name: 'optGitBranch',
 			message: 'What git branch to use?',
 			default: 'master'
-		},
+		}/*,
 		{
 			type: 'list',
 			name: 'optUseGitSeparateBranch',
@@ -174,6 +172,7 @@ if(this.optSubGenerators.indexOf('core-scss') >-1) {
 			],
 			default: '0'
 		}
+		*/
 	];
 	
 	var skipKeys =['optAppKeywords'];
@@ -209,46 +208,5 @@ if(this.optSubGenerators.indexOf('core-scss') >-1) {
 		this.options.props.optCssPreprocessor =this.optCssPreprocessor ='scss';
 	}
 
-}
-};
-
-/**
-@toc 2.
-@method commandsBranch
-*/
-CoreScssGenerator.prototype.commandsBranch = function commandsBranch() {
-if(this.optSubGenerators.indexOf('core-scss') >-1) {
-	var cb = this.async();
-	var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
-	CommandsMod.run('git', ['branch', yoBranch], {yoThis: this})		//must first create (if doesn't already exist) the branch - need to do this in a separate command since it will fail if it already exists
-	.then(function(ret1) {
-		// console.log('cb called');
-		cb();
-	}, function(retErr) {
-		// console.log('cb called ERROR');
-		cb();
-	});
-	
-}
-};
-
-/**
-@toc 2.1.
-@method commandsCheckout
-*/
-CoreScssGenerator.prototype.commandsCheckout = function commandsCheckout() {
-if(this.optSubGenerators.indexOf('core-scss') >-1) {
-	if(this.optUseGitSeparateBranch) {
-		var cb = this.async();
-		var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
-		CommandsMod.run('git', ['checkout', yoBranch], {yoThis: this})
-		.then(function(ret1) {
-			// console.log('cb called');
-			cb();
-		}, function(retErr) {
-			// console.log('cb called ERROR');
-			cb();
-		});
-	}
 }
 };
