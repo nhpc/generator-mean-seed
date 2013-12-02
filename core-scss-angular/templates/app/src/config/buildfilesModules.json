@@ -28,7 +28,6 @@
 							"angular-cookies/angular-cookies.min.js",
 							"momentjs/min/moment.min.js",
 							"hammerjs/dist/hammer.min.js",
-							
 							"angular-array/array.min.js",
 							"angular-string/string.min.js",
 							"angular-facebook-auth/facebook-auth.min.js",
