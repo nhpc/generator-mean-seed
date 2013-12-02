@@ -35,20 +35,7 @@ Generators (used interchangeably with "subgenerators" since they are ALL subgene
 				
 				
 ## Updates / Merging Strategy (for Cores)
-UPDATE: the below HELPS but there still could be conflicts that are improperly auto-merged so this is UNSAFE to use..
-
-The great advantage to Yeoman/Yo is automation and customized readme and other files (that normally would have to either be generic or in the .gitignore file to avoid constant merge conflicts). HOWEVER, this makes updates a bit more difficult since just running the generator again will just give the option to overwrite OR ignore updates to the seed (neither of which is good enough). SO, we do the updates (just overwrite all changes) on a SEPARATE branch (naming convention is 'yo-[name of core]') and THEN merge into the main (default is 'master') branch - this will then merge the ALREADY templated/generated updated seed so avoid the merge conflicts and any other conflicts will be merged (manually if it can't do it automatically). This should allow updating the seed be re-running the generator, WITHOUT just blinding overwriting any changes to the project since the last generation.
-
-So the process is (all automated in Yeoman):
-
-1. `git checkout yo-[core-name]` to switch to (and create first if necessary) a "updates only" 'yo-[core-name]' branch
-2. run the generator for the core here on this SEPARATE branch (user should just overwrite (all) files to the new core/seed version)
-3. `git add -A && git commit -am 'yo mean-seed update'` to commit the new updates on the SEPARATE branch
-4. `git checkout master` to switch to (and create first if necessary) the main working branch (where we could have conflicts)
-	1. *'master' is replaced with optGitBranch prompt, if set
-5. `git merge yo-[core-name]` to merge in the new updates to the existing working branch - just as with any git merge or any update of a non-Yeoman/generator git repo that has updates.
-
-So basically the first 4 steps create a 'custom repo' for THIS config/prompts set and then use THAT for the merge. So in essence the main generator is a template for updates and you first must generated the updated version of YOUR app (using YOUR config / generated files) to merge again, NOT against the raw templated version of the app.
+See [updating.md](../updating.md)
 
 
 ## Adding a new generator

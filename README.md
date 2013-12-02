@@ -40,6 +40,20 @@ $ yo mean-seed
 - See the generated README.md file in your new mean-seed app!
 
 
+## Updating
+You CAN and SHOULD keep your project up to date with the core (seed) generator you used as it goes through version upgrades. Just re-run:
+
+```
+# ensure the generator is up to date
+npm install -g generator-mean-seed
+
+# pull in updates to your project (core/seed - make sure to select the same core you used originally)
+yo mean-seed
+```
+
+See [updating.md](docs/updating.md) for more info.
+
+
 
 ## (Sub)Generators List
 
