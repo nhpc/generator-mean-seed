@@ -9,6 +9,7 @@ Version numbers correspond to `package.json` version
 - add `common/prompts` for keeping prompt extending defaults/setting DRY
 	- support defaults for prompts even with config.json files so they do not all have to be specified
 - buildfiles - allow E2E tests in any directory (not just test) and distinguish unit from e2e tests with new `testUnit` (for Karma Unit tests) and `testE2E` (for Protractor end-to-end tests) keys for what files to include for each test runner
+	- update `ng-route`, `ng-directive` and `ng-service` generators accordingly to switch to "testUnit" key
 - modularize / separate `nav.js` to `nav.js` and `nav-config.js` where the config file has the custom / site-specific components and pages objects.
 
 ## Bug Fixes
