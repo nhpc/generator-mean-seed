@@ -1,6 +1,6 @@
 Version numbers correspond to `package.json` version
 
-# 1.0.7 (WIP)
+# 1.0.7 (2013-12-02)
 ## Features
 - handle core updates (after initial generation) by running core generators on a SEPARATE 'yo-[core-name]' branch so changes can be MERGED in (with git) after they're updated - otherwise couldn't really update a seed once it was already generated since re-running the generator would just either overwrite or not change the changed files - neither would work.
 	- add `helper-core-merge` and `helper-core-commands-init` (sub)generators
