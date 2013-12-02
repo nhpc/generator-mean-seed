@@ -171,7 +171,7 @@ if(this.optSubGenerators.indexOf('ng-directive') >-1) {
 		"name":this.optDirectiveName,
 		"files": {
 			"js":[this.optDirectiveName+'.js'],
-			"test":[this.optDirectiveName+'.spec.js']
+			"testUnit":[this.optDirectiveName+'.spec.js']
 		}
 	};
 	if(this.optCssPreprocessor =='less') {

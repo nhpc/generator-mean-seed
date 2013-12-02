@@ -175,7 +175,7 @@ if(this.optSubGenerators.indexOf('ng-service') >-1) {
 		"name":this.optServiceName,
 		"files": {
 			"js":[this.optServiceName+'.js'],
-			"test":[this.optServiceName+'.spec.js']
+			"testUnit":[this.optServiceName+'.spec.js']
 		}
 	};
 	

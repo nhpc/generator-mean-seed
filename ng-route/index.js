@@ -172,7 +172,7 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 		"files": {
 			"html":[this.optRouteName+'.html'],
 			"js":[this.optRouteNameCtrl+'.js'],
-			"test":[this.optRouteNameCtrl+'.spec.js']
+			"testUnit":[this.optRouteNameCtrl+'.spec.js']
 		}
 	};
 	if(this.optCssPreprocessor =='less') {
