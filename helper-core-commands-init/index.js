@@ -33,7 +33,7 @@ util.inherits(HelperCoreCommandsInitGenerator, yeoman.generators.NamedBase);
 
 //have to break async / promise commands into SEPARATE Yeoman functions since chaining isn't working... wtf?
 /**
-Just in case
+Just in case - check if git init'ed yet by running (any) git command and if fails (non-zero code), run git init and commit so we ensure we have a (master) branch for future commands (otherwise they will fail).
 @toc 1.
 @method gitInit
 */
