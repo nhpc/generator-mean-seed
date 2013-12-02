@@ -39,6 +39,8 @@ util.inherits(HelperCoreMergeGenerator, yeoman.generators.NamedBase);
 */
 HelperCoreMergeGenerator.prototype.commandsAdd = function commandsAdd() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
+if(0) {		//do NOT want to add/commit automatically
+// if(this.optUseGitSeparateBranch) {
 	var cb = this.async();
 	// var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
 	CommandsMod.run('git', ['add', '-A'], {yoThis: this})		//must first create (if doesn't already exist) the branch - need to do this in a separate command since it will fail if it already exists
@@ -50,6 +52,7 @@ if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 		cb();
 	});
 }
+}
 };
 
 /**
@@ -58,6 +61,8 @@ if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 */
 HelperCoreMergeGenerator.prototype.commandsCommit = function commandsCommit() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
+if(0) {		//do NOT want to add/commit automatically
+// if(this.optUseGitSeparateBranch) {
 	var cb = this.async();
 	// var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
 	CommandsMod.run('git', ['commit', '-am', '"yo mean-seed update"'], {yoThis: this})		//must first create (if doesn't already exist) the branch - need to do this in a separate command since it will fail if it already exists
@@ -69,6 +74,7 @@ if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 		cb();
 	});
 }
+}
 };
 
 /**
@@ -77,6 +83,7 @@ if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 */
 HelperCoreMergeGenerator.prototype.commandsBranch = function commandsBranch() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
+if(this.optUseGitSeparateBranch) {
 	var cb = this.async();
 	var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
 	CommandsMod.run('git', ['branch', this.optGitBranch], {yoThis: this})		//must first create (if doesn't already exist) the branch - need to do this in a separate command since it will fail if it already exists
@@ -88,6 +95,7 @@ if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 		cb();
 	});
 }
+}
 };
 
 /**
@@ -96,6 +104,7 @@ if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 */
 HelperCoreMergeGenerator.prototype.commandsCheckout = function commandsCheckout() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
+if(this.optUseGitSeparateBranch) {
 	var cb = this.async();
 	CommandsMod.run('git', ['checkout', this.optGitBranch], {yoThis: this})
 	.then(function(ret1) {
@@ -106,6 +115,7 @@ if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 		cb();
 	});
 }
+}
 };
 
 /**
@@ -114,6 +124,8 @@ if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 */
 HelperCoreMergeGenerator.prototype.commandsMerge = function commandsMerge() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
+// if(this.optUseGitSeparateBranch) {
+if(0) {		//do NOT want to automatically merge since it could mess things up..
 	var self =this;
 	
 	var cb = this.async();
@@ -138,5 +150,6 @@ if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 		cb();
 	});
 	
+}
 }
 };

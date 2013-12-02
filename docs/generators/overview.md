@@ -35,6 +35,8 @@ Generators (used interchangeably with "subgenerators" since they are ALL subgene
 				
 				
 ## Updates / Merging Strategy (for Cores)
+UPDATE: the below HELPS but there still could be conflicts that are improperly auto-merged so this is UNSAFE to use..
+
 The great advantage to Yeoman/Yo is automation and customized readme and other files (that normally would have to either be generic or in the .gitignore file to avoid constant merge conflicts). HOWEVER, this makes updates a bit more difficult since just running the generator again will just give the option to overwrite OR ignore updates to the seed (neither of which is good enough). SO, we do the updates (just overwrite all changes) on a SEPARATE branch (naming convention is 'yo-[name of core]') and THEN merge into the main (default is 'master') branch - this will then merge the ALREADY templated/generated updated seed so avoid the merge conflicts and any other conflicts will be merged (manually if it can't do it automatically). This should allow updating the seed be re-running the generator, WITHOUT just blinding overwriting any changes to the project since the last generation.
 
 So the process is (all automated in Yeoman):

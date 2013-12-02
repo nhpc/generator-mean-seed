@@ -158,11 +158,26 @@ if(this.optSubGenerators.indexOf('core-scss') >-1) {
 				'1'
 			],
 			default: '1'
+		},
+		{
+			name: 'optGitBranch',
+			message: 'What git branch to use?',
+			default: 'master'
+		},
+		{
+			type: 'list',
+			name: 'optUseGitSeparateBranch',
+			message: 'Use a separate yo-[core-name] branch for the generator (i.e. to get updates - you will have to manually diff/merge them to your working/master branch)?',
+			choices: [
+				'0',
+				'1'
+			],
+			default: '0'
 		}
 	];
 	
 	var skipKeys =['optAppKeywords'];
-	var toInt =['optNpmInstall', 'optBowerInstall', 'optSeleniumInstall', 'optGruntQ'];
+	var toInt =['optNpmInstall', 'optBowerInstall', 'optSeleniumInstall', 'optGruntQ', 'optUseGitSeparateBranch'];
 
 	if(!this.optConfigFile) {		//only prompt if don't have config file
 		var cb = this.async();
@@ -223,15 +238,17 @@ if(this.optSubGenerators.indexOf('core-scss') >-1) {
 */
 CoreScssGenerator.prototype.commandsCheckout = function commandsCheckout() {
 if(this.optSubGenerators.indexOf('core-scss') >-1) {
-	var cb = this.async();
-	var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
-	CommandsMod.run('git', ['checkout', yoBranch], {yoThis: this})
-	.then(function(ret1) {
-		// console.log('cb called');
-		cb();
-	}, function(retErr) {
-		// console.log('cb called ERROR');
-		cb();
-	});
+	if(this.optUseGitSeparateBranch) {
+		var cb = this.async();
+		var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
+		CommandsMod.run('git', ['checkout', yoBranch], {yoThis: this})
+		.then(function(ret1) {
+			// console.log('cb called');
+			cb();
+		}, function(retErr) {
+			// console.log('cb called ERROR');
+			cb();
+		});
+	}
 }
 };
