@@ -180,7 +180,7 @@
 								"js": [
 									"http.js"
 								],
-								"test": [
+								"testUnit": [
 									"http.spec.js"
 								]
 							}
@@ -191,7 +191,7 @@
 								"js": [
 									"auth.js"
 								],
-								"test": [
+								"testUnit": [
 									"auth.spec.js"
 								]
 							}
@@ -246,7 +246,7 @@
 								"js": [
 									"socialAuth.js"
 								],
-								"test": [
+								"testUnit": [
 									"socialAuth.spec.js"
 								]
 							}
@@ -265,7 +265,7 @@
 								"scss": [
 									"_appalert.scss"
 								],
-								"test": [
+								"testUnit": [
 									"appalert.spec.js"
 								]
 							}
@@ -328,7 +328,7 @@
 								"scss": [
 									"_header.scss"
 								],
-								"test": [
+								"testUnit": [
 									"HeaderCtrl.spec.js"
 								]
 							}
@@ -398,7 +398,7 @@
 								"scss": [
 									"_password-reset.scss"
 								],
-								"test": [
+								"testUnit": [
 									"PasswordResetCtrl.spec.js"
 								]
 							}
@@ -412,7 +412,7 @@
 								"html": [
 									"logout.html"
 								],
-								"test": [
+								"testUnit": [
 									"LogoutCtrl.spec.js"
 								]
 							}
@@ -481,7 +481,7 @@
 				{
 					"name": "e2e",
 					"files": {
-						"test": [
+						"testE2E": [
 							"**/*.scenarios.js"
 						]
 					}

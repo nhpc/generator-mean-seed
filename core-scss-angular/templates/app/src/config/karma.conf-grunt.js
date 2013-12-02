@@ -26,7 +26,7 @@ module.exports = function (config) {
 			// '**/*.spec.js'
 			// '**/spec.*.js'
 			<%
-			var filePaths = grunt.config('filePathsJsTestNoPrefix');
+			var filePaths = grunt.config('filePathsJsTestUnitNoPrefix');
 			for(var ii=0; ii<filePaths.length; ii++) {
 				if(ii !=0) {
 					print('\t\t\t');

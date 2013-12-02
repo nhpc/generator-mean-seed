@@ -9,7 +9,11 @@ Version numbers correspond to `package.json` version
 - add `common/commands` to keep running commands DRY
 - add `common/prompts` for keeping prompt extending defaults/setting DRY
 	- support defaults for prompts even with config.json files so they do not all have to be specified
+- buildfiles - allow E2E tests in any directory (not just test) and distinguish unit from e2e tests with new `testUnit` (for Karma Unit tests) and `testE2E` (for Protractor end-to-end tests) keys for what files to include for each test runner
 - modularize / separate `nav.js` to `nav.js` and `nav-config.js` where the config file has the custom / site-specific components and pages objects.
+
+## Bug Fixes
+- force karma-coverage npm package to be 0.1.2 (new 0.1.3 doesn't install on Windows)
 
 
 # 1.0.6 (2013-11-27)

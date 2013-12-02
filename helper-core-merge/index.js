@@ -131,25 +131,31 @@ if(1) {
 HelperCoreMergeGenerator.prototype.commandsMerge = function commandsMerge() {
 if(this.optSubGenerators.indexOf('helper-core-merge') >-1) {
 // if(this.optUseGitSeparateBranch) {
-if(0) {		//do NOT want to automatically merge since it could mess things up..
+if(1) {		//do NOT want to automatically merge since it could mess things up..
 	var self =this;
+	var logNextStepsMsg;
 	
 	var cb = this.async();
 	var yoBranch ='yo-'+this.optSubGenerators[0];		//use the name of the first (sub)generator, which is the main one being called
-	CommandsMod.run('git', ['merge', yoBranch], {yoThis: this})
+	CommandsMod.run('git', ['merge', yoBranch, '--stat'], {yoThis: this})
 	.then(function(ret1) {
 		// console.log('cb called');
 		//non-zero code means failure (merge conflicts) so need to NOT run grunt since it's not ready yet. Also update output message accordingly.
 		if(ret1.code !==0) {
 			//SKIP grunt q on merge conflict (rest of commands should still work)
 			self.options.props.optGruntQ =self.optGruntQ =0;
-			var logNextStepsMsg ='\n\nMERGE FAILED:\nfix merge conflicts then commit then run `grunt q` and follow the next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.';
-			self.options.props.optLogNextStepsMsg =self.optLogNextStepsMsg =logNextStepsMsg;
+			// logNextStepsMsg ='\n\nMERGE FAILED:\nfix merge conflicts then commit then run `grunt q` and follow the next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\n5. (optional) Git init and commit - `git init . && git add -A && git commit -m \'init\'`\nSee the README.md file for more info.';
+			logNextStepsMsg ='\n\nMERGE FAILED:\nfix merge conflicts then commit then run `grunt q` then follow the next steps as usual.\n'+self.options.props.optLogNextStepsMsg;
 			
 			//just in case, console.log it
 			// console.log(logNextStepsMsg);
 			
 		}
+		else {
+			logNextStepsMsg ='\n\nmerge succeeded:\nuse `git diff @{1}` to see the changes.\n'+self.options.props.optLogNextStepsMsg;
+		}
+		self.options.props.optLogNextStepsMsg =self.optLogNextStepsMsg =logNextStepsMsg;
+		
 		cb();
 	}, function(retErr) {
 		// console.log('cb called ERROR');
