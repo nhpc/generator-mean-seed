@@ -140,11 +140,11 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 		var logNextStepsMsg =false;
 		
 		if(props.optSubGenerator =='core-default') {
-			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\nSee the README.md file for more info.';
+			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt (or re-run these if got any errors, i.e. `bower update && bower install` and/or `npm cache clean && npm install`)\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\nSee the README.md file for more info.';
 			moreGenerators =['helper-core-commands-init', 'core-default-node', 'core-default-angular', 'helper-core-merge', 'helper-commands', 'helper-log-next-steps'];
 		}
 		else if(props.optSubGenerator =='core-scss') {
-			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\nSee the README.md file for more info.';
+			logNextStepsMsg ='Next steps:\n1. IF on Windows or you skipped the auto install, run `./node_modules/protractor/bin/install_selenium_standalone`\n2. IF skipped any of the auto installs, run the install/build scripts - npm, bower, grunt (or re-run these if got any errors, i.e. `bower update && bower install` and/or `npm cache clean && npm install`)\n3. Run `node run.js`\n4. Open a browser to `http://localhost:3000` to view the app!\nSee the README.md file for more info.';
 			moreGenerators =['helper-core-commands-init', 'core-default-node', 'core-scss-angular', 'helper-core-merge', 'helper-commands', 'helper-log-next-steps'];
 		}
 		else if(props.optSubGenerator =='ng-route') {
