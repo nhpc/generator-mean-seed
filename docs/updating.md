@@ -5,7 +5,7 @@ You CAN (and are encouraged to stay up to date) re-run a core generator AFTER yo
 Remember to update the generator first!
 `npm install -g generator-mean-seed`
 
-Re-run `yo mean-seed` and select the same core you used the first time to Git merge in updates!
+Re-run `yo mean-seed` and select the same core you used the first time to Git merge in updates! Just type 'a' (for overwrite all) if you get prompted about file conflicts - we'll handle those with Git merge later so it's safe to overwrite everything in the generator branch.
 
 
 ## Updates / Merging Strategy (for Cores)

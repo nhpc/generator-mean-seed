@@ -1,3 +1,12 @@
+/**
+
+@toc
+1. hooks to call sub generators
+2. askFor
+3. askForConfig
+
+*/
+
 'use strict';
 var util = require('util');
 var path = require('path');
@@ -5,11 +14,16 @@ var yeoman = require('yeoman-generator');
 
 var fs = require('fs');
 
+var pkgJson =require('../package.json');
+
 
 var MeanSeedGenerator = module.exports = function MeanSeedGenerator(args, options, config) {
 	yeoman.generators.Base.apply(this, arguments);
 
-	//hooks to call sub generators - ORDER MATTERS! They'll be called in the order they are listed
+	/**
+	hooks to call sub generators - ORDER MATTERS! They'll be called in the order they are listed
+	@toc 1.
+	*/
 	
 	this.hookFor('mean-seed:core-default', {
 		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
@@ -109,6 +123,10 @@ var MeanSeedGenerator = module.exports = function MeanSeedGenerator(args, option
 
 util.inherits(MeanSeedGenerator, yeoman.generators.Base);
 
+/**
+@toc 2.
+@method askFor
+*/
 MeanSeedGenerator.prototype.askFor = function askFor() {
 	var cb = this.async();
 
@@ -174,7 +192,10 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 	}.bind(this));
 };
 	
-	
+/**
+@toc 3.
+@method askForConfig
+*/
 MeanSeedGenerator.prototype.askForConfig = function askForConfig() {
 this.options.props.optConfigFile =this.optConfigFile ='';		//default
 if(this.optSubGenerators.indexOf('core-default') >-1 || this.optSubGenerators.indexOf('core-scss') >-1) {		//only use config for certain sub-generators
@@ -215,4 +236,17 @@ if(this.optSubGenerators.indexOf('core-default') >-1 || this.optSubGenerators.in
 		cb();
 	}.bind(this));
 }
+};
+
+/**
+Read and set 'optPkgJson' variable to package.json file (i.e. for setting version number and name elsewhere)
+@toc 4.
+@method getPackageJson
+*/
+MeanSeedGenerator.prototype.getPackageJson = function getPackageJson() {
+	// var pkgJson = JSON.parse(this.readFileAsString('package.json'));
+	//pkgJson require'd at top of file
+	
+	var key ='optPkgJson';
+	this.options.props[key] =this[key] =pkgJson;
 };

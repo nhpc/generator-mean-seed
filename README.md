@@ -48,7 +48,7 @@ Ensure the generator is up to date:
 npm install -g generator-mean-seed
 ```
 
-Pull in updates to your project (core/seed - make sure to select the same core you used originally):
+Pull in updates to your project (core/seed - make sure to select the same core you used originally). Just type 'a' (for overwrite all) if you get prompted about file conflicts - we'll handle those with Git merge later so it's safe to overwrite everything in the generator branch.
 ```
 yo mean-seed
 ```

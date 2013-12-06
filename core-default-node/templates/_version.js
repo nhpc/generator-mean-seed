@@ -1,0 +1,2 @@
+<%= optPkgJson.name %>
+<%= optPkgJson.version %>

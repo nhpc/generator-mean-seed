@@ -73,6 +73,7 @@ if(this.optSubGenerators.indexOf('core-default-node') >-1) {
 	this.template('_yuidoc-backend.json', 'yuidoc-backend.json');
 	this.template('_Gruntfile.js', 'Gruntfile.js');
 	this.template('_.gitignore', '.gitignore');
+	this.template('_version.js', 'version.txt');
 	
 	//config
 	this.template('app/configs/_config.json', 'app/configs/config.json');
