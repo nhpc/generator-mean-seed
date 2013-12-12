@@ -7,6 +7,11 @@ Remember to update the generator first!
 
 Re-run `yo mean-seed` and select the same core you used the first time to Git merge in updates! Just type 'a' (for overwrite all) if you get prompted about file conflicts - we'll handle those with Git merge later so it's safe to overwrite everything in the generator branch.
 
+Then if you push, make SURE to ALSO push the/any `yo` branches (i.e. `git push origin yo-core-default`) so other developers get that branch and stay up to date.
+- NOTE: NEVER touch the yo branch(es) directly and BEFORE / IF you run yo mean-seed with a core generator, make sure you're pulling and pushing to the yo branch accordingly (pull before, push after) - `git pull origin yo-core-default` and `git push origin yo-core-default`
+- Or to push all branches: `git push --all origin`
+- You can also run `git config --global push.default matching` so you can just do `git push origin` after they push the yo branch(es) once / the first time.
+
 
 ## Updates / Merging Strategy (for Cores)
 

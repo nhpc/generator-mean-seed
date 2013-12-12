@@ -75,6 +75,7 @@ if(this.optSubGenerators.indexOf('core-scss-angular') >-1) {
 	this.copy('app/src/config/buildfilesModuleGroups.json', 'app/src/config/buildfilesModuleGroups.json');
 	this.copy('app/src/config/buildfilesModules.json', 'app/src/config/buildfilesModules.json');
 	this.copy('app/src/config/karma.conf-grunt.js', 'app/src/config/karma.conf-grunt.js');
+	this.copy('app/src/config/karma-no-coverage.conf-grunt.js', 'app/src/config/karma-no-coverage.conf-grunt.js');
 	this.copy('app/src/config/protractor.conf-grunt.js', 'app/src/config/protractor.conf-grunt.js');
 	
 	//common

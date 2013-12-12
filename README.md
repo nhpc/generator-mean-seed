@@ -53,6 +53,8 @@ Pull in updates to your project (core/seed - make sure to select the same core y
 yo mean-seed
 ```
 
+Then if you push, make SURE to ALSO push the/any `yo` branches (i.e. `git push origin yo-core-default`) so other developers get that branch and stay up to date.
+
 See [updating.md](docs/updating.md) for more info.
 
 
@@ -101,7 +103,8 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 - while you can fork on Github, we're actually trying a new approach of leveraging Yeoman for different 'core' builds to avoid all the forks. The reason for 'forking' a project is to change it and add functionality that conflicts with or would add too much code bloat to the original repository. However, with Yeoman, we can add EVERYTHING into this ONE project and by using generators, the end user/developer can take ONLY what (s)he wants. So there's no code bloat or worry of this becoming a "kitchen sink" seed with too many features. That's the beauty of Yeoman! So, to contribute, build another subgenerator - either a 'core' generator or a 'module' generator. All the 'core' generators essentially become like the typical 'forks' - a user will decide what core (s)he wants to use and THEN what modules to include with that core.
 	- core: see the `core-default` folder/generator for an example
 	- module: see the `ng-route` folder/generator for an example
-- NOTE: this is still a new idea/approach to contributing and is a work in progress - suggestions welcome!
+- NOTE: You will still have to fork the project to develop / contribute; but the point is that we should be able to pull-request all forks into the main fork (assuming code quality of course) so shouldn't need any forks that aren't just being used for development. With ONE source of truth and ONE 'production' fork, we should be able to keep everything in sync and up to date rather than changes in one fork not being supported in all other forks.
+- NOTE: this is still a new idea/approach to contributing and is a work in progress - suggestions welcome! Or if you just think this is a stupid idea feel free to let us know that too - though constructive criticism is always appreciated ;)
 
 
 
