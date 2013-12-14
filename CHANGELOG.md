@@ -10,7 +10,7 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.8 (Pre-Release 2)
+# 1.0.8 (Pre-Release 1)
 ## Features
 ### Internal
 - CHANGELOG: add 'Internal' and 'Generator' separation sub-headers
