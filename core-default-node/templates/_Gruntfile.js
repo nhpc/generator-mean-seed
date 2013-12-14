@@ -734,7 +734,6 @@ module.exports = function(grunt) {
 							// print("'scss',");
 						// }
 						// %>
-						// 'less',
 						// 'jsHintFrontend', 'jsHintBackend']
 				// },
 				// test: {
@@ -759,7 +758,10 @@ module.exports = function(grunt) {
 				//combined / all call that will just re-run `grunt q` as is typically/manually done on any file change
 				build: {
 					files: [],		//will be filled by grunt-buildfiles
-					tasks: ['q-watch']
+					tasks: ['q-watch'],
+					options: {
+						livereload: true
+					}
 				},
 				karmaUnit: {
 					files: [],		//will be filled by grunt-buildfiles
