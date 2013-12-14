@@ -313,8 +313,8 @@ module.exports = function(grunt) {
 						prefix: publicPathRelativeDot,
 						moduleGroup: 'allNoBuildCss',
 						outputFiles: {
-							js: ['watch.karmaUnitJs.files'],
-							testUnit: ['watch.karmaUnitTest.files']
+							js: ['watch.karmaUnitJs.files', 'watch.karmaUnit.files'],
+							testUnit: ['watch.karmaUnitTest.files', 'watch.karmaUnit.files']
 						}
 					},
 					//index.html file paths (have the static path prefix for use in <link rel="stylesheet" > and <script> tags)
@@ -341,7 +341,7 @@ module.exports = function(grunt) {
 							"\t\t\t\t\t\tprefix: publicPathRelativeDot,\n"+
 							"\t\t\t\t\t\tmoduleGroup: 'allNoBuild',\n"+
 							"\t\t\t\t\t\toutputFiles: {\n"+
-								"\t\t\t\t\t\t\tless: ['watch.less.files']\n"+
+								"\t\t\t\t\t\t\tless: ['watch.less.files', 'watch.build.files']\n"+
 							"\t\t\t\t\t\t}\n"+
 						"\t\t\t\t\t},");
 					}
@@ -359,7 +359,7 @@ module.exports = function(grunt) {
 							"\t\t\t\t\t\tprefix: publicPathRelativeDot,\n"+
 							"\t\t\t\t\t\tmoduleGroup: 'allNoBuild',\n"+
 							"\t\t\t\t\t\toutputFiles: {\n"+
-								"\t\t\t\t\t\t\tscss: ['watch.scss.files']\n"+
+								"\t\t\t\t\t\t\tscss: ['watch.scss.files', 'watch.build.files']\n"+
 							"\t\t\t\t\t\t}\n"+
 						"\t\t\t\t\t},");
 					}
@@ -369,7 +369,7 @@ module.exports = function(grunt) {
 						prefix: publicPathRelativeDot,
 						moduleGroup: 'nonMinifiedLint',
 						outputFiles: {
-							js: ['jshint.beforeconcat.files.src', 'jshint.beforeconcatQ.files.src', 'watch.jsHintFrontend.files']
+							js: ['jshint.beforeconcat.files.src', 'jshint.beforeconcatQ.files.src', 'watch.jsHintFrontend.files', 'watch.build.files']
 						}
 					},
 					jshintNoPrefix:{
@@ -408,7 +408,7 @@ module.exports = function(grunt) {
 						prefix: publicPathRelativeDot,
 						moduleGroup: 'allNoBuild',
 						outputFiles: {
-							html: ['ngtemplates.main.src', 'watch.html.files']
+							html: ['ngtemplates.main.src', 'watch.html.files', 'watch.build.files']
 						}
 					},
 					concatJsNoMin: {
@@ -724,21 +724,30 @@ module.exports = function(grunt) {
 				}
 			},
 			focus: {
+				// build: {
+					// include: ['buildfiles', 'html',
+						// <%
+						// if(optCssPreprocessor =='less') {
+							// print("'less',");
+						// }
+						// else if(optCssPreprocessor =='scss') {
+							// print("'scss',");
+						// }
+						// %>
+						// 'less',
+						// 'jsHintFrontend', 'jsHintBackend']
+				// },
+				// test: {
+					// include: ['karmaUnitJs', 'karmaUnitTest']
+				// }
 				build: {
-					include: ['buildfiles', 'html',
-						<%
-						if(optCssPreprocessor =='less') {
-							print("'less',");
-						}
-						else if(optCssPreprocessor =='scss') {
-							print("'scss',");
-						}
-						%>
-						'less',
-						'jsHintFrontend', 'jsHintBackend']
+					include: ['build']
 				},
 				test: {
-					include: ['karmaUnitJs', 'karmaUnitTest']
+					include: ['karmaUnit']
+				},
+				all: {
+					include: ['build', 'karmaUnit']
 				}
 			},
 			/**
@@ -747,15 +756,15 @@ module.exports = function(grunt) {
 				- originally tried to ONLY update / run the tasks that NEEDED to be run for speed / performance but that doesn't seem to work since buildfiles (at least) needs to be run BEFORE most other tasks anyway
 			*/
 			watch: {
-				/*
 				//combined / all call that will just re-run `grunt q` as is typically/manually done on any file change
-				q: {
-					files: [
-						
-					],
-					tasks: ['q']
+				build: {
+					files: [],		//will be filled by grunt-buildfiles
+					tasks: ['q-watch']
 				},
-				*/
+				karmaUnit: {
+					files: [],		//will be filled by grunt-buildfiles
+					tasks: ['karma:watch:run']
+				},
 				
 				//run buildfiles pretty much any time a file changes (since this generates file lists for other tasks - will this work / update them since grunt is already running??)
 				buildfiles: {
@@ -1132,7 +1141,7 @@ module.exports = function(grunt) {
 		grunt.registerTask('dev-build', ['q-watch', 'focus:build']);
 		
 		//all (build & test)
-		grunt.registerTask('dev', ['test-cleanup', 'test-setup', 'q-watch', 'karma:watch:start', 'watch']);
+		grunt.registerTask('dev', ['test-cleanup', 'test-setup', 'q-watch', 'karma:watch:start', 'focus:all']);
 	
 	}
 	init({});		//initialize here for defaults (init may be called again later within a task)

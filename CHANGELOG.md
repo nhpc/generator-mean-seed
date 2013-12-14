@@ -10,17 +10,18 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.8 (WIP)
+# 1.0.8 (Pre-Release 2)
 ## Features
 ### Internal
 - CHANGELOG: add 'Internal' and 'Generator' separation sub-headers
 
 ### Generators
 - add `version.txt` file with this generator version [core-default, core-scss]
-- faster development (building, testing)- add grunt watch/dev tasks: `grunt dev`, `grunt dev-test`, `grunt dev-build` for faster/auto building and testing during development
+- faster development (building, testing)- add grunt watch/dev tasks: `grunt dev`, `grunt dev-test`, `grunt dev-build` for faster/auto building and testing during development [core-default, core-scss]
 	- have grunt run the test node server (rather than require'ing run.js in `all.spec.js`)
 	- switch to keeping selenium server (and karma server) running with grunt and then just connecting to it rather than completely starting up and shutting down each time
 	- karma unit tests (in dev mode) run without coverage to fix the bug that you can't see test details on the console
+- update Angular to 1.2.4 [core-default, core-scss]
 
 
 # 1.0.7 (2013-12-02)
