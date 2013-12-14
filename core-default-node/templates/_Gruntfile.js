@@ -1006,7 +1006,7 @@ module.exports = function(grunt) {
 
 		grunt.registerTask('lint-backend', ['jshint:backend']);
 		
-		grunt.registerTask('build', ['clean', 'buildfiles', 'ngtemplates:main', 'jshint:backend', 'jshint:beforeconcat', 'uglify:build', 'fontAwesomeVars',
+		grunt.registerTask('build', ['clean', 'buildfiles', 'ngtemplates:main', 'fontAwesomeVars',
 			<%
 			if(optCssPreprocessor =='less') {
 				print("'less:dev',");
@@ -1015,6 +1015,7 @@ module.exports = function(grunt) {
 				print("'compass:dev',");
 			}
 			%>
+			'jshint:backend', 'jshint:beforeconcat', 'uglify:build',
 			'concat:devCss', 'cssmin:dev', 'concat:devJs']);		//don't really need BOTH concat css and cssmin css..
 
 		// Default task(s).
@@ -1052,7 +1053,7 @@ module.exports = function(grunt) {
 		});
 
 		//quick version of default task testing/viewing quick changes
-		grunt.registerTask('q', ['clean', 'buildfiles', 'ngtemplates:main', 'jshint:backendQ', 'jshint:beforeconcatQ', 'uglify:build', 'fontAwesomeVars',
+		grunt.registerTask('q', ['clean', 'buildfiles', 'ngtemplates:main', 'fontAwesomeVars',
 			<%
 			if(optCssPreprocessor =='less') {
 				print("'less:dev',");
@@ -1061,9 +1062,10 @@ module.exports = function(grunt) {
 				print("'compass:dev',");
 			}
 			%>
+			'jshint:backendQ', 'jshint:beforeconcatQ', 'uglify:build',
 			'concat:devCss', 'cssmin:dev', 'concat:devJs']);
 			
-		grunt.registerTask('q-watch', ['buildfiles', 'ngtemplates:main', 'jshint:backendQ', 'jshint:beforeconcatQ',
+		grunt.registerTask('q-watch', ['buildfiles', 'ngtemplates:main',
 			<%
 			if(optCssPreprocessor =='less') {
 				print("'less:dev',");
@@ -1072,6 +1074,7 @@ module.exports = function(grunt) {
 				print("'compass:dev',");
 			}
 			%>
+			'jshint:backendQ', 'jshint:beforeconcatQ'
 		]);
 		
 		//Phonegap build
@@ -1080,7 +1083,7 @@ module.exports = function(grunt) {
 			grunt.option('type', 'prod');
 			init({});		//re-init (since changed grunt options)
 		
-			grunt.task.run(['clean', 'buildfiles', 'ngtemplates:main', 'uglify:build', 'fontAwesomeVars',
+			grunt.task.run(['clean', 'buildfiles', 'ngtemplates:main', 'fontAwesomeVars',
 				<%
 				if(optCssPreprocessor =='less') {
 					print("'less:dev',");
@@ -1089,6 +1092,7 @@ module.exports = function(grunt) {
 					print("'compass:dev',");
 				}
 				%>
+				'uglify:build',
 				'concat:devCss', 'cssmin:dev', 'concat:devJs', 'copy:phonegapAndroid', 'copy:phonegapIOS']);
 		});
 		
