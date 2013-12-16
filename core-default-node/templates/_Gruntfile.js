@@ -18,17 +18,24 @@ The core call(s) to always do before commiting any changes:
 `grunt` - builds, lints, concats, minifies files, runs tests, etc.
 	- NOTE: since this runs the frontend Karma server tests, this will NOT auto-complete; use Ctrl+C to exit the task once it runs and you see the 'SUCCESS' message for all tests passing
 
-Other calls (relatively in order of importantance / most used)
-`grunt dev` for watching and auto-running build and tests
-`grunt dev-test` for watching and auto-running TESTS only
-`grunt dev-build` for watching and auto-running BUILD (i.e. `grunt q`) only
-`grunt q` for quick compiles (doesn't run tests or build yui docs)
-`grunt noMin` a quick compile that also builds main.js and main.css (instead of main-min versions) - good for debugging/development.
-`grunt test-frontend` - runs Karma frontend tests
-`grunt test` - runs ALL tests
-`grunt yui` - generate YUIDoc auto documentation
-`grunt test-backend` to just test backend
-`grunt lint-backend` to just lint backend
+Other calls (relatively in order of importantance / most used). Scroll to the bottom to see a full list of all tasks.
+- dev
+	`grunt dev` for watching and auto-running build and tests
+	`grunt dev-test` for watching and auto-running TESTS only
+	`grunt dev-build` for watching and auto-running BUILD (i.e. `grunt q`) only
+- test
+	`grunt karma-cov` to run/build karma/angular coverage report (since grunt dev watch task does NOT do this due to a bug/issue with karma where running the coverage does NOT show test info on the console, which makes it annoying to debug)
+	`grunt e2e` to run protractor/selenium e2e frontend tests
+	`grunt test-frontend` - run all frontend tests (unit & e2e)
+	`grunt test-backend` to just test backend
+	`grunt test` - runs ALL tests
+- build / lint
+	`grunt q` for quick compiles (doesn't run tests or build yui docs)
+	`grunt q-watch` for even quicker compiles/builds
+	`grunt noMin` a quick compile that also builds main.js and main.css (instead of main-min versions) - good for debugging/development.
+	`grunt lint-backend` to just lint backend
+- docs
+	`grunt yui` - generate YUIDoc auto documentation
 
 Lint, concat, & minify (uglify) process (since ONLY want to lint & minify files that haven't already been minified BUT want concat ALL files (including already minified ones) into ONE final file)
 1. lint all non-minified (i.e. custom built as opposed to 3rd party) files
@@ -1006,7 +1013,9 @@ module.exports = function(grunt) {
 		//shorthand for 'shell:protractor' (this assumes node & selenium servers are already running)
 		grunt.registerTask('e2e', ['shell:protractor']);
 		
-		grunt.registerTask('test-frontend', ['karma:unit', 'coverage', 'e2e']);
+		grunt.registerTask('karma-cov', ['karma:unit', 'coverage']);
+		
+		grunt.registerTask('test-frontend', ['karma-cov', 'e2e']);
 
 		grunt.registerTask('test', 'run all tests', function() {
 			// grunt.task.run(['test-backend', 'test-frontend']);
