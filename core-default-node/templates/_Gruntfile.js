@@ -30,7 +30,8 @@ Other calls (relatively in order of importantance / most used). Scroll to the bo
 	`grunt karma-cov` to run/build karma/angular coverage report (since grunt dev watch task does NOT do this due to a bug/issue with karma where running the coverage does NOT show test info on the console, which makes it annoying to debug)
 	`grunt e2e` to run protractor/selenium e2e frontend tests
 	`grunt test-frontend` - run all frontend tests (unit & e2e)
-	`grunt test-backend` to just test backend
+	`grunt node-cov` to run just backend node tests AND do coverage (show report and fail if below threshold) - only this task will actually show coverage and fail on the CONSOLE but the coverage report will always be written
+	`grunt test-backend` to just test backend - NOTE: there's really no reason to use this; just use `node-cov` instead.
 	`grunt test` - runs ALL tests
 - build / lint
 	`grunt q` for quick compiles (doesn't run tests or build yui docs)
@@ -1016,7 +1017,7 @@ module.exports = function(grunt) {
 		grunt.registerTask('test-backend', ['http:nodeShutdown', 'jasmine_node']);
 		
 		//need to exit otherwise coverage report doesn't display on the console..
-		grunt.registerTask('backend-cov', ['test-backend', 'exit']);
+		grunt.registerTask('node-cov', ['test-backend', 'exit']);
 		
 		//shorthand for 'shell:protractor' (this assumes node & selenium servers are already running)
 		grunt.registerTask('e2e', ['shell:protractor']);
