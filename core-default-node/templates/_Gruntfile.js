@@ -12,6 +12,9 @@
 
 NOTE: use "grunt --type=prod" to run production version
 NOTE: use "grunt --config=test" to run with a 'config-test.json' file instead of the default 'config.json' file. You can change 'test' to whatever suffix you want. This allows creating multiple configurations and then running different ones as needed.
+NOTE: Karma test runner & coverage: right now with `reporters: ['coverage'],` set, get no karma test output (on failure) to the console.. but without that line it can't create the `coverage-angular` folder and coverage errors..
+	- So, we currently need TWO different karma configuration files.. one with coverage and one without..
+NOTE: Node test coverage: the coverage only runs on 'process.exit' so with 'forceExit' set to false (which we need to be able to run other tasks after the node backend tests are run), we need to manually call process.exit (with the grunt-exit task) at the end - otherwise the coverage report won't show on the console AND it won't fail the task if below the required code coverage!!!
 
 Usage:
 The core call(s) to always do before commiting any changes:
@@ -41,9 +44,6 @@ Lint, concat, & minify (uglify) process (since ONLY want to lint & minify files 
 1. lint all non-minified (i.e. custom built as opposed to 3rd party) files
 2. minify these custom built files (this also concats them into one)
 3. concat all the (now minified) files - the custom built one AND all existing (3rd party) minified ones
-
-NOTE: Karma test runner & coverage: right now with `reporters: ['coverage'],` set, get no karma test output (on failure) to the console.. but without that line it can't create the `coverage-angular` folder and coverage errors..
-	- So, we currently need TWO different karma configuration files.. one with coverage and one without..
 
 */
 
@@ -128,6 +128,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-http');
 	grunt.loadNpmTasks('grunt-focus');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-exit');
 	
 
 	/**
@@ -972,6 +973,10 @@ module.exports = function(grunt) {
 					%>
 					fontPath: '../bower_components/font-awesome/fonts'		//NOTE: this must be relative to FINAL, compiled .css file - NOT the variables.less/.scss file! For example, this would be the correct path if the compiled css file is main.css which is in 'src/build' and the font awesome font is in 'src/bower_components/font-awesome/fonts' - since to get from main.css to the fonts directory, you first go back a directory then go into bower_components > font-awesome > fonts.
 				}
+			},
+			exit: {
+				normal: {
+				}
 			}
 		});
 		
@@ -1010,6 +1015,9 @@ module.exports = function(grunt) {
 		
 		grunt.registerTask('test-backend', ['http:nodeShutdown', 'jasmine_node']);
 		
+		//need to exit otherwise coverage report doesn't display on the console..
+		grunt.registerTask('backend-cov', ['test-backend', 'exit']);
+		
 		//shorthand for 'shell:protractor' (this assumes node & selenium servers are already running)
 		grunt.registerTask('e2e', ['shell:protractor']);
 		
@@ -1019,7 +1027,7 @@ module.exports = function(grunt) {
 
 		grunt.registerTask('test', 'run all tests', function() {
 			// grunt.task.run(['test-backend', 'test-frontend']);
-			grunt.task.run(['test-cleanup', 'test-setup', 'test-backend', 'test-frontend', 'test-cleanup']);
+			grunt.task.run(['test-cleanup', 'test-setup', 'test-backend', 'test-frontend', 'test-cleanup', 'exit']);		//need to exit on this task to ensure backend coverage shows up and fails if below (otherwise it won't!!) - NOTE: this means that if this task is called (i.e. with 'default' task), it must be LAST since it will force exit after it's done!
 		});
 
 		grunt.registerTask('yui', ['yuidoc']);

@@ -47,7 +47,7 @@
 	},
 	"devDependencies": {
 		"mocha": "~1.12.0",
-		"grunt": "~0.4.1",
+		"grunt": "~0.4.2",
 		"grunt-contrib-jshint": "~0.7.0",
 		"grunt-contrib-clean": "~0.5.0",
 		"grunt-jasmine-node-coverage-validation": "~0.0.4"
