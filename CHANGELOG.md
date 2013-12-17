@@ -17,7 +17,7 @@ Conventions / labels:
 
 ### Generators
 - add `version.txt` file with this generator version [core-default, core-scss]
-- faster development (building, testing)- add grunt watch/dev tasks (with livereload for build): `grunt dev`, `grunt dev-test`, `grunt dev-build` for faster/auto building and testing during development [core-default, core-scss]
+- faster development (building, testing)- add grunt watch/dev tasks (with livereload for build): `grunt dev`, `grunt dev-test`, `grunt dev-karma-cov`, `grunt dev-build` for faster/auto building and testing during development [core-default, core-scss]
 	- switch to keeping selenium server (and karma server) running with grunt and then just connecting to it rather than completely starting up and shutting down each time
 	- karma unit tests (in dev mode) run without coverage to fix the bug that you can't see test details on the console
 - fix node-coverage by adding grunt-exit task at end to ensure converage outputs and fails if below thresholds

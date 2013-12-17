@@ -278,6 +278,9 @@
 								],
 								"scss": [
 									"_login.scss"
+								],
+								"testUnit": [
+									"login.spec.js"
 								]
 							}
 						},
