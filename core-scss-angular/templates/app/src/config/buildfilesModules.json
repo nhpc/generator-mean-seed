@@ -292,6 +292,9 @@
 								],
 								"scss": [
 									"_signup.scss"
+								],
+								"testUnit": [
+									"signup.spec.js"
 								]
 							}
 						},
