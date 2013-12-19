@@ -16,6 +16,7 @@ Conventions / labels:
 - CHANGELOG: add 'Internal' and 'Generator' separation sub-headers
 
 ### Generators
+- LOTS of frontend karma-unit tests added
 - add `version.txt` file with this generator version [core-default, core-scss]
 - faster development (building, testing)- add grunt watch/dev tasks (with livereload for build): `grunt dev`, `grunt dev-test`, `grunt dev-karma-cov`, `grunt dev-build` for faster/auto building and testing during development [core-default, core-scss]
 	- switch to keeping selenium server (and karma server) running with grunt and then just connecting to it rather than completely starting up and shutting down each time
@@ -23,6 +24,7 @@ Conventions / labels:
 - fix node-coverage by adding grunt-exit task at end to ensure converage outputs and fails if below thresholds
 - update Angular to 1.2.5 [core-default, core-scss]
 - support multiple timeoutTrigs instances in http service so timeouts do not conflict with or clear each other if there are multiple http calls running at once [core-default, core-scss]
+- add layout directive (move resize / DOM stuff from LayoutCtrl to here instead) [core-default, core-scss]
 
 
 # 1.0.7 (2013-12-02)
