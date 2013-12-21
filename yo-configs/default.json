@@ -5,10 +5,12 @@
 		"optAppDescription": "my really cool app!",
 		"optAppKeywords": [
 			"mean-seed",
+			"mean",
+			"mean-stack",
+			"generator-mean-seed",
 			"javascript",
 			"angular",
 			"node",
-			"myproject",
 			"app"
 		],
 		"optGithubName": "mygithubhandlehere",

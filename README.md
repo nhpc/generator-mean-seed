@@ -31,6 +31,9 @@ $ yo mean-seed
 ```
 
 - NOTE: you can also (first) create a `yo-configs` folder with .json files for the prompts so you don't have to type them all out. This is useful for storing multiple different configurations for different projects - just tell the generator which config to use and you're all set! See the [yo_configs folder](yo-configs) for examples.
+
+- NOTE: if you get errors (i.e. npm or bower install failures or timeouts, which aren't uncommon), just re-run the command `yo mean-seed` OR re-run just the problematic parts, i.e. `bower update && bower install` and/or `npm install`. Once everything has installed properly, just make sure to run grunt: `grunt q`
+
 - NOTE: if you get an EACCESS / permission denied error during the npm install, find the folder that had permissions issues (from the log output) and run `sudo chown -R $USER [path to problematic folder]`.
 	- http://foohack.com/2010/08/intro-to-npm/#what_no_sudo
 
