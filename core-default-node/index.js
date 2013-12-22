@@ -56,6 +56,7 @@ if(this.optSubGenerators.indexOf('core-default-node') >-1) {
 	this.mkdir('app/modules/services/datetime');
 	this.mkdir('app/modules/services/lookup');
 	this.mkdir('app/modules/services/mongodb');
+	this.mkdir('app/modules/services/realtime');
 	this.mkdir('app/modules/services/string');
 	this.mkdir('app/modules/services/security');
 	this.mkdir('app/modules/services/emailer');

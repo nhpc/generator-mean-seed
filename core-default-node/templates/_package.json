@@ -14,7 +14,8 @@
 		"async": "~0.2.9",
 		"request": "~2.16.6",
 		"node-mandrill": "~1.0.1",
-		"q": "~0.9.7"
+		"q": "~0.9.7",
+		"socket.io": "~0.9.16"
 	},
 	"devDependencies": {
 		"karma":"~0.10.4",
