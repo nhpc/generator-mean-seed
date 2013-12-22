@@ -25,6 +25,7 @@ Conventions / labels:
 - update Angular to 1.2.5 [core-default, core-scss]
 - support multiple timeoutTrigs instances in http service so timeouts do not conflict with or clear each other if there are multiple http calls running at once [core-default, core-scss]
 - add layout directive (move resize / DOM stuff from LayoutCtrl to here instead) [core-default, core-scss]
+- package.json - move grunt, etc. to devDependencies [core-default, core-scss]
 
 
 # 1.0.7 (2013-12-02)
