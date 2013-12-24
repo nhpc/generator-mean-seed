@@ -8,6 +8,12 @@ var cfgJson = grunt.config('cfgJson');
     print('\t<script type="text/javascript" src="http://'+cfgJson.server.domain+':'+cfgJson.server.socketPort+'/socket.io/socket.io.js"></script>\n');
 %>
 
+NOTE: use `socket.broadcast.emit` to send to everyone BUT the self (the incoming socket) and `socket.emit` to send to just self (the incoming socket). Use both together to send to EVERYONE (self and all others). `io.sockets.emit` will also send to EVERYONE (in just one call instead of two) BUT may not stay within namespace / `io.of` for a particular channel?
+- http://stackoverflow.com/questions/7352164/update-all-clients-using-socket-io
+- http://stackoverflow.com/questions/10342681/whats-the-difference-between-io-sockets-emit-and-broadcast
+- http://www.scottblaine.com/using-socket-io-broadcast-one-some-sockets/
+
+
 @usage (from another file)
 //include realtime module
 var dependency = require('../../../dependency.js');
@@ -78,12 +84,14 @@ Realtime.prototype.init =function(opts) {
 	@toc 1.1.
 	*/
 	io.of('/test').on('connection', function(socket) {
-		socket.emit('connect: test', { });
+		console.log("socket connected on '/test' channel");
+		socket.emit('connect', { });
 		
 		socket.on('doStuff', function (data) {
 			console.log('doStuff..');
-			var ret ={'msg':'', 'valid':1, data: 'You sent: '+JSON.stringify(data)};
-			socket.emit('doStuff', ret);
+			var ret ={'msg':'', 'valid':1, data: data, dataStringify: 'You sent: '+JSON.stringify(data)};
+			socket.broadcast.emit('doStuff', ret);		//emit to everyone else
+			socket.emit('doStuff', ret);		//emit to self
 			
 			self.testTriggerEvent(db, {socket: socket}, {});
 		});
