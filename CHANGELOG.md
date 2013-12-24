@@ -29,6 +29,7 @@ Conventions / labels:
 - add backend realtime service with socket.io for out of the box web socket / realtime [core-default, core-scss]
 	- uncomment socket.io frontend index.html include
 	- add `dev-test/socketio` frontend page with demo chat using socket.io
+	- add `angular-socket-io` frontend bower dependency and corresponding `appSocket` service
 - namespace / re-org frontend development / test pages (design, test) to `dev-test` folder [core-default, core-scss]
 
 
