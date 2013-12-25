@@ -33,6 +33,12 @@ Conventions / labels:
 - namespace / re-org frontend development / test pages (design, test) to `dev-test` folder [core-default, core-scss]
 
 
+## Breaking Changes
+### Generators
+- refactor `appConfig` to not have duplicate fields from `config.json` (so now just use `appConfig.cfgJson` directly instead) [core-default, core-scss]
+
+
+
 # 1.0.7 (2013-12-02)
 ## Features
 ### Generators
