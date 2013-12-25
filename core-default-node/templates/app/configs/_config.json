@@ -70,18 +70,6 @@
 		"emails_failed":[
 		]
 	},
-	"email":{
-		"from": "admin@<%= optAppName %>.com",
-		"from_name": "Admin",
-		"mandrillApiKey": "8X-1bNRWtA4rbneppkqahw",
-		"mandrillApiKeyComment":"Make sure to CHANGE this!"
-	},
-	"sms":{
-	},
-	"facebook":{
-		"appId": "195380783916970",
-		"appIdComment":"Make sure to CHANGE this!"
-	},
 	<%
 	if(optCssPreprocessor =='scss') {
 	print('"scss":{');
@@ -91,6 +79,26 @@
 	}
 	%>
 		"dirPathRootPrefix": ""
+	},
+	"email":{
+		"domain": "localhost",
+		"addresses": {
+			"noReply": "noreply"
+		},
+		"from": "admin@<%= optAppName %>.com",
+		"from_name": "Admin",
+		"mandrillApiKey": "8X-1bNRWtA4rbneppkqahw",
+		"mandrillApiKeyComment":"Make sure to CHANGE this!"
+	},
+	"sms":{
+	},
+	"facebook":{
+		"scope": "email,user_birthday",
+		"appId": "195380783916970",
+		"appIdComment":"Make sure to CHANGE this!"
+	},
+	"twitter": {
+		"handle": ""
 	},
 	"google":{
 		"clientId": "486630891328.apps.googleusercontent.com",
