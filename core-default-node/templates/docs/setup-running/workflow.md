@@ -45,7 +45,9 @@ There are a lot of tools we leverage but they're virtually all assimilated in wi
 ## Grunt Dev/Test tasks
 
 These are to auto build/run tests/reload as you're working to avoid having to type things like `grunt q` all the time.
+
 For each separate (grunt) command, you'll need another command window open to run it. A typical workflow would be as following:
+
 1. `node run.js` in command window 1 (this runs the actual server so you can view the site)
 2. open a browser (i.e. Firefox, Chrome) to `http://localhost:3000` (or whatever domain/port you've set in `config.json`) to see the site
 	1. turn on the LiveReload browser extension [see below]

@@ -7,6 +7,7 @@
 - Test Coverage Reports (currently ~90% frontend coverage, ~60% backend coverage)
 	- [Node API/Integration Test Coverage](http://198.199.118.44:3000/src/coverage-node/lcov-report/)
 	- [Angular Karma Unit Test Coverage](http://198.199.118.44:3000/src/coverage-angular/PhantomJS%201.9.2%20%28Linux%29/)
+- [Backend API Interactive Docs](http://198.199.118.44:3000/api/help)
 - [Github Repo with Generated Code](https://github.com/jackrabbitsgroup/mean-seed-gen)
 
 ## Quick Start
