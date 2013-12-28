@@ -2,16 +2,8 @@
 
 To do list, roughly in prioritized order
 
-- Known 3rd Party Issues (waiting for fixes..)
-	- Bower update/install issues (will error and break the build..)
-		- sometimes running `bower cache clean` will work
-		- rolling back to bower 1.2.6 helps but doesn't seem to work 100% of the time?
-			- https://github.com/angular/angular.js/issues/5502
-			- https://github.com/bower/bower/issues/933
-				- .bowerrc tmp & storage keys may fix?
-	- protractor phantom js hack? - https://github.com/angular/protractor/issues/85#issuecomment-26846255
-
 - buildfiles: add a "skip" prefix (i.e. '_' or 'x_') for "commenting out" lines (since it's JSON so you can't just actually comment out)
+
 - make a "built with mean-seed" readme / demo page (i.e. resembl and other projects)
 
 - Fixes / testing
@@ -50,3 +42,14 @@ To do list, roughly in prioritized order
 - add some modules?
 	- frontend
 		- datetime service? (one function momentjs doesn't have)
+
+		
+### Known 3rd Party Issues (waiting for fixes..)
+	- Bower update/install issues (will error and break the build..)
+		- sometimes running `bower cache clean` will work
+		- rolling back to bower 1.2.6 helps but doesn't seem to work 100% of the time?
+			- https://github.com/angular/angular.js/issues/5502
+			- https://github.com/bower/bower/issues/933
+				- .bowerrc tmp & storage keys may fix?
+	- protractor phantom js hack? - https://github.com/angular/protractor/issues/85#issuecomment-26846255
+	

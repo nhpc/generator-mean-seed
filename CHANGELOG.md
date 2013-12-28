@@ -15,6 +15,7 @@ Conventions / labels:
 ### Internal
 - CHANGELOG: add 'Internal' and 'Generator' separation sub-headers
 - update unit test templates [ng-route, ng-directive, ng-service]
+- add roadmap.md doc with to do items
 
 ### Generators
 - LOTS of frontend karma-unit tests added - minimum coverage threshold set to 85%
