@@ -14,6 +14,7 @@ Conventions / labels:
 ## Features
 ### Internal
 - CHANGELOG: add 'Internal' and 'Generator' separation sub-headers
+- update unit test templates [ng-route, ng-directive, ng-service]
 
 ### Generators
 - LOTS of frontend karma-unit tests added

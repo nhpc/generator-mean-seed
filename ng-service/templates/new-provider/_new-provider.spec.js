@@ -20,8 +20,8 @@ describe('<%= optModulePrefix %><%= optServiceNameCamel %> provider', function()
 		inject(function () {});
 	});
 	
-	afterEach(function() {
-	});
+	// afterEach(function() {
+	// });
 	
 	it('tests the providers internal function', function () {
 		// check sanity

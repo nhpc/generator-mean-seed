@@ -1,19 +1,17 @@
 'use strict';
 
 describe('<%= optModulePrefix %><%= optServiceNameCamel %> factory', function() {
-	var scope ={}, <%= optModulePrefix %><%= optServiceNameCamel %>;
+	var $rootScope ={}, <%= optModulePrefix %><%= optServiceNameCamel %>;
 	
-	// beforeEach(module('myApp'));
-	beforeEach(module('app'));
+	beforeEach(module('myApp'));
 	
 	beforeEach(inject(function(_$rootScope_, _<%= optModulePrefix %><%= optServiceNameCamel %>_) {
+		$rootScope = _$rootScope_;
 		<%= optModulePrefix %><%= optServiceNameCamel %> =_<%= optModulePrefix %><%= optServiceNameCamel %>_;
-		
-		scope = _$rootScope_.$new();
 	}));
 	
-	afterEach(function() {
-	});
+	// afterEach(function() {
+	// });
 	
 	/*
 	it('should do something', function() {
