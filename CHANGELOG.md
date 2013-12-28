@@ -38,7 +38,7 @@ Conventions / labels:
 ## Breaking Changes
 ### Generators
 - refactor `appConfig` service to not have duplicate fields from `config.json` (so now just use `appConfig.cfgJson` directly instead) [core-default, core-scss]
-- refactor `appAuth` service to support more robust authentication checking - no more `noLoginRequired` or `loginPage`; instead use `auth` object with `loggedIn` key
+- refactor `appAuth` service to support more robust authentication checking - no more `noLoginRequired` or `loginPage`; instead use `auth` object with `loggedIn` key [core-default, core-scss]
 
 
 
