@@ -2,6 +2,8 @@
 
 To do list, roughly in prioritized order
 
+- ci doesn't work (just hangs on git pull) if push master & yo branches at once (i.e. with `git push origin`) ??
+
 - buildfiles: add a "skip" prefix (i.e. '_' or 'x_') for "commenting out" lines (since it's JSON so you can't just actually comment out)
 
 - make a "built with mean-seed" readme / demo page (i.e. resembl and other projects)
