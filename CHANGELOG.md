@@ -17,7 +17,7 @@ Conventions / labels:
 - update unit test templates [ng-route, ng-directive, ng-service]
 
 ### Generators
-- LOTS of frontend karma-unit tests added
+- LOTS of frontend karma-unit tests added - minimum coverage threshold set to 85%
 - add `version.txt` file with this generator version [core-default, core-scss]
 - faster development (building, testing)- add grunt watch/dev tasks (with livereload for build): `grunt dev`, `grunt dev-test`, `grunt dev-karma-cov`, `grunt dev-build` for faster/auto building and testing during development [core-default, core-scss]
 	- switch to keeping selenium server (and karma server) running with grunt and then just connecting to it rather than completely starting up and shutting down each time
