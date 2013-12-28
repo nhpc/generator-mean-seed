@@ -107,23 +107,14 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 
 
 
+## Roadmap / To do
+See [roadmap.md](docs/roadmap.md)
+
+
+
 ## Contributing
 - while you can fork on Github, we're actually trying a new approach of leveraging Yeoman for different 'core' builds to avoid all the forks. The reason for 'forking' a project is to change it and add functionality that conflicts with or would add too much code bloat to the original repository. However, with Yeoman, we can add EVERYTHING into this ONE project and by using generators, the end user/developer can take ONLY what (s)he wants. So there's no code bloat or worry of this becoming a "kitchen sink" seed with too many features. That's the beauty of Yeoman! So, to contribute, build another subgenerator - either a 'core' generator or a 'module' generator. All the 'core' generators essentially become like the typical 'forks' - a user will decide what core (s)he wants to use and THEN what modules to include with that core.
 	- core: see the `core-default` folder/generator for an example
 	- module: see the `ng-route` folder/generator for an example
 - NOTE: You will still have to fork the project to develop / contribute; but the point is that we should be able to pull-request all forks into the main fork (assuming code quality of course) so shouldn't need any forks that aren't just being used for development. With ONE source of truth and ONE 'production' fork, we should be able to keep everything in sync and up to date rather than changes in one fork not being supported in all other forks.
 - NOTE: this is still a new idea/approach to contributing and is a work in progress - suggestions welcome! Or if you just think this is a stupid idea feel free to let us know that too - though constructive criticism is always appreciated ;)
-
-
-
-## TODO
-Roughly in order of priority:
-- modularize the non-modularized files so the configurations (all the custom code) can be edited separately from the functions and generic code.
-	- make a 'core' and keep that separate from the 'modules' and custom code so the core can be updated and re-pulled into existing projects with minimal merge conflicts.
-	- Use Yeoman builds (INSTEAD of Github forks) for all the different 'core' builds and then rename this one as just one (of many) core builds.
-		- this leverages the incredible power of Yeoman and removes the need for many Github forks and pull requests - ALL code can be put into the Yeomen generator WITHOUT worrying about code bloat since ONLY the parts the end user wants will be built! That way, we don't have to worry about many different versions / forks and things getting out of date - each 'core' will be similar to a 'fork' but all cores can leverage the SAME modules and common parts - at least in theory!
-		- potential additional Yeoman builds:
-			- 'node-mongoose' for a Mongoose Yeoman build for people who want to use Mongoose instead of mongo-db-native as the node-mongo interface
-		
-
-- Shift all Facebook calls to backend? Is this possible? So we can then remove the HUGE 170kb minified Facebook Javascript SDK that's just used for login..
