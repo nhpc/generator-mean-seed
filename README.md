@@ -7,6 +7,9 @@
 - [MEAN-seed Website/App after Yeoman build](http://198.199.118.44:3000/)
 - [Continuous Integration / Tests](http://198.199.118.44:3010/)
 	- This automatically deploys and tests the yeoman generated mean-seed website on each Github push (from local development)
+- Test Coverage Reports (currently ~90% frontend coverage, ~60% backend coverage)
+	- [Node API/Integration Test Coverage](http://198.199.118.44:3000/src/coverage-node/lcov-report/)
+	- [Angular Karma Unit Test Coverage](http://198.199.118.44:3000/src/coverage-angular/PhantomJS%201.9.2%20(Linux)/)
 - [Github Repo with Generated Code](https://github.com/jackrabbitsgroup/mean-seed-gen)
 	
 	
