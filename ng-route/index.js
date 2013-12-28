@@ -211,7 +211,7 @@ if(this.optSubGenerators.indexOf('ng-route') >-1) {
 			var newData ="$routeProvider.when(appPathRoute+'"+this.optRouteName+"', {templateUrl: pagesPath+'"+this.optRoutePath+this.optRouteName+"/"+this.optRouteName+".html',\n"+
 			"		resolve: {\n"+
 			"			auth: function(appAuth) {\n"+
-			"				return appAuth.checkSess({noLoginRequired:true});\n"+
+			"				return appAuth.checkSess({});\n"+
 			"			}\n"+
 			"		}\n"+
 			"	});\n";
