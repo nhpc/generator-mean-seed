@@ -10,6 +10,13 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
+# 1.0.9 (WIP)
+## Breaking Changes
+### Generators
+- changed class `a-div-color` to `a-block`
+
+
+
 # 1.0.8 (2013-12-28)
 ## Features
 ### Internal
