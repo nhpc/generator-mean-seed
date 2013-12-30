@@ -11,6 +11,11 @@ Conventions / labels:
 
 
 # 1.0.9 (WIP)
+## Features
+### Generators
+- Gruntfile: replace `filePathsJsCustom` with `filePathsJsTest.karmaUnitCoverage` for karma test coverage. Also use new `testCov` variable instead of directly `cfgJson.test_coverage` so can modify coverage thresholds (i.e. per grunt task) if needed.
+
+
 ## Breaking Changes
 ### Generators
 - changed class `a-div-color` to `a-block`
