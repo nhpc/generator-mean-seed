@@ -338,7 +338,7 @@ module.exports = function(grunt) {
 						}
 					},
 					karmaUnitCoverage:{
-						moduleGroup: 'nonMinifiedLint',
+						moduleGroup: 'testsKarmaCov',
 						outputFiles: {
 							js: ['filePathsJsTest.karmaUnitCoverage']
 						}
