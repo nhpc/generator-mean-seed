@@ -1,5 +1,8 @@
 Version numbers correspond to `package.json` version.
 
+Development (WIP - Work In Progress) or small fixes versions (in-between full versions) are typically '*-x' versions. This allows rapid iteration and you can pull in updates (by updating your generator with `npm install -g generator-mean-seed`) as often as you like. Or you can just wait for the final release of the version.
+Convention is that the dashed '*-x' numbers PRECEDE the new version release (i.e. v1.0.8-1 is AFTER v1.0.8 but BEFORE v1.0.9)
+
 Since this is a generator project, these changes refer to BOTH the generator itself AND to generated code so changes are SEPARATED and indicated where possible so people can find the changes that actually affect them (i.e. changes to the generator itself don't affect people just using the GENERATED code - end developers who aren't contributors to the generator just need to know about changes to the generators they're using).
 
 Conventions / labels:
