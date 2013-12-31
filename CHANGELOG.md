@@ -13,7 +13,8 @@ Conventions / labels:
 # 1.0.9 (WIP)
 ## Features
 ### Generators
-- Gruntfile: replace `filePathsJsCustom` with `filePathsJsTest.karmaUnitCoverage` for karma test coverage. Also use new `testCov` variable instead of directly `cfgJson.test_coverage` so can modify coverage thresholds (i.e. per grunt task) if needed.
+- Gruntfile: replace `filePathsJsCustom` with `filePathsJsTest.karmaUnitCoverage` for karma test coverage. Also use new `testCov` variable instead of directly `cfgJson.test_coverage` so can modify coverage thresholds (i.e. per grunt task) if needed. [core-default, core-scss]
+- remove `app.js` from karma coverage (since adding more routes can lower coverage below thresholds) [core-default, core-scss]
 
 
 ## Breaking Changes
