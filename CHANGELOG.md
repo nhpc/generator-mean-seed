@@ -16,6 +16,7 @@ Conventions / labels:
 # 1.0.9 (WIP - 1.0.8-1)
 ## Features
 ### Generators
+- update to `grunt-buildfiles` v0.3.6 to suppport `ifOpts` on `configPaths` as well as `moduleGroupsSkipPrefix` [core-default, core-scss]
 - Gruntfile: replace `filePathsJsCustom` with `filePathsJsTest.karmaUnitCoverage` for karma test coverage. Also use new `testCov` variable instead of directly `cfgJson.test_coverage` so can modify coverage thresholds (i.e. per grunt task) if needed. [core-default, core-scss]
 - remove `app.js` from karma coverage (since adding more routes can lower coverage below thresholds) [core-default, core-scss]
 
