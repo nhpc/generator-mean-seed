@@ -13,7 +13,7 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.8-1)
+# 1.0.9 (WIP - 1.0.8-2)
 ## Features
 ### Generators
 - update to `grunt-buildfiles` v0.3.6 to suppport `ifOpts` on `configPaths` as well as `moduleGroupsSkipPrefix` [core-default, core-scss]
@@ -24,6 +24,11 @@ Conventions / labels:
 ## Breaking Changes
 ### Generators
 - changed class `a-div-color` to `a-block`
+
+
+## Fixes
+### Generators
+- fix IE <=9 `ie.html` redirect to work no matter the (nested) path [core-default, core-scss]
 
 
 
