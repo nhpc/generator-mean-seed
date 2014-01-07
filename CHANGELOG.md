@@ -1,7 +1,8 @@
 Version numbers correspond to `package.json` version.
 
+Versioning: See [http://semver.org/](http://semver.org/)
 Development (WIP - Work In Progress) or small fixes versions (in-between full versions) are typically `*-x` versions. This allows rapid iteration and you can pull in updates (by updating your generator with `npm install -g generator-mean-seed`) as often as you like. Or you can just wait for the final release of the version.
-Convention is that the dashed `*-x` numbers PRECEDE the new version release (i.e. v1.0.8-1 is AFTER v1.0.8 but BEFORE v1.0.9)
+The dashed `*-x` numbers PRECEDE the new version release (i.e. v1.0.9-1 is AFTER v1.0.8 but BEFORE v1.0.9)
 
 Since this is a generator project, these changes refer to BOTH the generator itself AND to generated code so changes are SEPARATED and indicated where possible so people can find the changes that actually affect them (i.e. changes to the generator itself don't affect people just using the GENERATED code - end developers who aren't contributors to the generator just need to know about changes to the generators they're using).
 
@@ -13,12 +14,17 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.8-2)
+# 1.0.9 (WIP - 1.0.9-3)
 ## Features
+### Internal
+- fix versioning to match [semver](http://semver.org/) properly (1.0.9-3 is BEFORE 1.0.9, NOT after!)
+	- updated from 1.0.8-2 to 1.0.9-3 appropriately
+
 ### Generators
 - update to `grunt-buildfiles` v0.3.6 to suppport `ifOpts` on `configPaths` as well as `moduleGroupsSkipPrefix` [core-default, core-scss]
 - Gruntfile: replace `filePathsJsCustom` with `filePathsJsTest.karmaUnitCoverage` for karma test coverage. Also use new `testCov` variable instead of directly `cfgJson.test_coverage` so can modify coverage thresholds (i.e. per grunt task) if needed. [core-default, core-scss]
 - remove `app.js` from karma coverage (since adding more routes can lower coverage below thresholds) [core-default, core-scss]
+- add jQuery to (unit) TESTS only (for easier `.find()` selectors) [core-default, core-scss]
 
 
 ## Breaking Changes
