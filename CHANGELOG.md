@@ -30,7 +30,7 @@ Conventions / labels:
 
 ## Breaking Changes
 ### Generators
-- changed class `a-div-color` to `a-block`
+- changed class `a-div-color` to `a-block` [core-default, core-scss]
 
 
 ## Fixes
