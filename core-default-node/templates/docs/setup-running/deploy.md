@@ -40,6 +40,7 @@ GIT_REPO_URL https://github.com/jackrabbitsgroup/my-app.git
 GIT_REPO_URL_PASS https://lukemadera:somepass@github.com/jackrabbitsgroup/my-app.git
 
 CONCRETE_PATH /var/www/concrete		//this is where on your server you'll install the Concrete CI server to
+
 CONCRETE_PORT 3010					//this MUST match what is set in config.json!
 
 APP_PATH /var/www/my-app			//this is where your app will be put
