@@ -30,14 +30,22 @@ Then do **one** of the following:
 RECOMMENDED approach!
 
 Variables used in the instructions below; replace appropriately
+
 GIT_NAME Joe Bob
+
 GIT_EMAIL youremail@gmail.com
+
 GIT_REPO_URL https://github.com/jackrabbitsgroup/my-app.git
+
 GIT_REPO_URL_PASS https://lukemadera:somepass@github.com/jackrabbitsgroup/my-app.git
+
 CONCRETE_PATH /var/www/concrete		//this is where on your server you'll install the Concrete CI server to
 CONCRETE_PORT 3010					//this MUST match what is set in config.json!
+
 APP_PATH /var/www/my-app			//this is where your app will be put
+
 PERMISSIONS_GROUP developers		//the (optional) linux user group to give access
+
 APP_DOMAIN someurl.com				//this can also be an ip address, i.e. xxx.xxx.xxx.xx
 
 1. create a Github repo on github.com (if you haven't already) and push to it
