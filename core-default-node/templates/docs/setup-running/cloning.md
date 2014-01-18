@@ -68,6 +68,7 @@ Run generators with `yo mean-seed` and then select the sub-generator you want to
 https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/docs/generators/modules.md
 
 
+
 ### Note for (initial) developer(s):
 These cloning steps above are for duplicating the app/website/code to OTHER servers/machines AFTER Yeoman has been run (once).
 

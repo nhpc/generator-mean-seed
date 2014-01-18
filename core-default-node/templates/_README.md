@@ -53,6 +53,7 @@ Run generators with `yo mean-seed` and then select the sub-generator you want to
 https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/docs/generators/modules.md
 
 
+
 ## Updating
 You CAN and SHOULD keep your project up to date with the core (seed) generator you used as it goes through version upgrades. Just re-run:
 
