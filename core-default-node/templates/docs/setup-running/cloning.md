@@ -61,6 +61,11 @@ APP_PORT 3000
 See [setup-detailed.md](setup-detailed.md) and [running.md](running.md) in the `docs` folder.
 
 
+## Generators
+Make sure to leverage the available (sub)generators - i.e. for creating new pages/routes/controllers, directives, and services!
+https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/docs/generators/modules.md
+
+
 ### Note for (initial) developer(s):
 These cloning steps above are for duplicating the app/website/code to OTHER servers/machines AFTER Yeoman has been run (once).
 

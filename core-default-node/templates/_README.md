@@ -46,6 +46,11 @@
 - see [setup-detailed.md](docs/setup-running/setup-detailed.md) and [running.md](docs/setup-running/running.md) in the `docs` folder
 
 
+## Generators
+Make sure to leverage the available (sub)generators - i.e. for creating new pages/routes/controllers, directives, and services!
+https://github.com/jackrabbitsgroup/generator-mean-seed/blob/master/docs/generators/modules.md
+
+
 ## Updating
 You CAN and SHOULD keep your project up to date with the core (seed) generator you used as it goes through version upgrades. Just re-run:
 
