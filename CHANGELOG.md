@@ -14,7 +14,7 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.9-5)
+# 1.0.9 (WIP - 1.0.9-6)
 ## Features
 ### Internal
 - fix versioning to match [semver](http://semver.org/) properly (1.0.9-3 is BEFORE 1.0.9, NOT after!)
@@ -31,6 +31,11 @@ Conventions / labels:
 ## Breaking Changes
 ### Generators
 - changed class `a-div-color` to `a-block` [core-default, core-scss]
+- updated to protractor v0.16.1 (from v0.10.0) [core-default, core-scss]
+	- `selenium` installation directory (which has `chromedriver.exe` and `selenium-server-standalone-2.39.0.jar`) moved into `./node_modules/protractor` (instead of in the root folder)
+	- to update:
+		- delete `selenium` folder (from root folder)
+		- run `./node_modules/protractor/bin/webdriver-manager update`
 
 
 ## Fixes
