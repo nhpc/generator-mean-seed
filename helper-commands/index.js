@@ -114,7 +114,7 @@ if(this.optSubGenerators.indexOf('helper-commands') >-1) {
 	var self =this;
 	
 	if(this.optSeleniumInstall !==undefined && this.optSeleniumInstall) {
-		var command ='./node_modules/protractor/bin/install_selenium_standalone';
+		var command ='./node_modules/protractor/bin/webdriver-manager update';
 		var args =[];
 		var cmd =this.spawnCommand(command, args);
 		cmd.on('exit', function(code) {

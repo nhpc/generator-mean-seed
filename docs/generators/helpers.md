@@ -17,7 +17,7 @@ Uses prompts to run commands. Can run one or more of the below. Set the prompt t
 
 - `optNpmInstall` to run `npm install`
 - `optBowerInstall` to run `bower install`
-- `optSeleniumInstall` to run `./node_modules/protractor/bin/install_selenium_standalone`
+- `optSeleniumInstall` to run `./node_modules/protractor/bin/webdriver-manager update`
 - `optGruntQ` to run `grunt q`
 
 

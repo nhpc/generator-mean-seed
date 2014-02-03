@@ -39,6 +39,9 @@ Conventions / labels:
 	- to update:
 		- delete `selenium` folder (from root folder)
 		- run `./node_modules/protractor/bin/webdriver-manager update`
+- updated Concrete CI to jackrabbitsgroup fork to fix a bug where after 50 runs the recent ones wouldn't show up anymore. NOTE: the most recent runs now show up on the BOTTOM rather than the top - eventually we may re-write the CI on top of mean-seed to allow for more robust frontend displays with Angular, etc. But for now it gets the job done.
+	- to update:
+		- uninstall concrete then reinstall with the new fork - follow updated instructions in [deploy.md](core-default-node/templates/docs/setup-running/deploy.md)
 
 
 ## Fixes

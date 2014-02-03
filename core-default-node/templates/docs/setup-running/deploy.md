@@ -54,8 +54,8 @@ APP_DOMAIN someurl.com				//this can also be an ip address, i.e. xxx.xxx.xxx.xx
 	1. `git config --global user.name "GIT_NAME"`
 	2. `git config --global user.email "GIT_EMAIL"`
 	3. `git config --global --add color.ui true`
-3. [on new server] install Concrete CI. The regular one/main repo is good but doesn't seem to have auto Git web hooks built in so I used this fork instead: https://github.com/edy/concrete
-	1. `git clone https://github.com/edy/concrete.git CONCRETE_PATH`
+3. [on new server] install Concrete CI. The regular one/main repo is good but doesn't seem to have auto Git web hooks built in so I used this fork instead: https://github.com/jackrabbitsgroup/concrete
+	1. `git clone https://github.com/jackrabbitsgroup/concrete.git CONCRETE_PATH`
 	2. set permissions for the new `concrete` folder
 		1. `sudo chown -R root:PERMISSIONS_GROUP CONCRETE_PATH`
 		2. `sudo chmod -R g+w CONCRETE_PATH`
