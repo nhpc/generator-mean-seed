@@ -14,7 +14,7 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.9-7)
+# 1.0.9 (WIP - 1.0.9-8)
 ## Features
 ### Internal
 - fix versioning to match [semver](http://semver.org/) properly (1.0.9-3 is BEFORE 1.0.9, NOT after!)
@@ -28,6 +28,7 @@ Conventions / labels:
 - Gruntfile: replace `filePathsJsCustom` with `filePathsJsTest.karmaUnitCoverage` for karma test coverage. Also use new `testCov` variable instead of directly `cfgJson.test_coverage` so can modify coverage thresholds (i.e. per grunt task) if needed. [core-default, core-scss]
 - remove `app.js` from karma coverage (since adding more routes can lower coverage below thresholds) [core-default, core-scss]
 - add jQuery to (unit) TESTS only (for easier `.find()` selectors) [core-default, core-scss]
+- switch backend API error to return full error object rather than just message (could be a semi-breaking change pending how you're currently using the error message returned) [core-default, core-scss]
 
 
 ## Breaking Changes
