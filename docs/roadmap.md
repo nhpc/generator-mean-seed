@@ -25,6 +25,8 @@ To do list, roughly in prioritized order
 
 - modularize the non-modularized files so the configurations (all the custom code) can be edited separately from the functions and generic code (mostly backend code left to do - see `site specific` comments in files)
 
+- security: remove some stuff from cfgJson on frontend (don't want things like Mandrill API key public)
+
 - Add Tests / Coverage
 	- backend (node) test coverage to 80%
 	- finish / add e2e tests (test login, password-reset, anything else?)
