@@ -2,6 +2,8 @@
 
 To do list, roughly in prioritized order
 
+- add documentation / instructions for deploy to Heroku
+
 - ci doesn't work (just hangs on git pull) if push master & yo branches at once (i.e. with `git push origin`) ??
 
 - buildfiles: add a "skip" prefix (i.e. '_' or 'x_') for "commenting out" lines (since it's JSON so you can't just actually comment out)
