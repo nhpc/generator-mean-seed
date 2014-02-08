@@ -74,6 +74,7 @@ See [updating.md](docs/updating.md) for more info.
 - ng-route
 - ng-directive
 - ng-service
+- node-controller
 
 See the [docs/generators](docs/generators) folder for more info.
 
