@@ -20,6 +20,7 @@ module.exports = function(grunt) {
 				'ng-route/index.js',
 				'ng-directive/index.js',
 				'ng-service/index.js',
+				'node-controller/index.js',
 				'helper-core-commands-init/index.js',
 				'helper-core-merge/index.js',
 				'helper-commands/index.js',

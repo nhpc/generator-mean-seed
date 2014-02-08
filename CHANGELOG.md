@@ -14,13 +14,14 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.9-9)
+# 1.0.9 (WIP - 1.0.9-10)
 ## Features
 ### Internal
 - fix versioning to match [semver](http://semver.org/) properly (1.0.9-3 is BEFORE 1.0.9, NOT after!)
 	- updated from 1.0.8-2 to 1.0.9-3 appropriately
 
 ### Generators
+- add `node-controller` generator for easy creation of a new (CRUD) API backend route/controller  [core-default, core-scss, node-controller]
 - add Twitter social login support (frontend and backend) and simplified button styles for better cross browser compatibility [core-default, core-scss]
 - add backend auth userImport support for social login id matching - email or phone no longer required if have a social (facebook, google, twitter) id [core-default, core-scss]
 - add `grunt test-backend-dev` task for quicker/dev running of backend tests [core-default, core-scss]

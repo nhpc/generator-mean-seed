@@ -21,7 +21,6 @@ To do list, roughly in prioritized order
 	
 - Add Generators
 	- common actions
-		- node api route
 		- node local service
 	- 'node-mongoose' for a Mongoose Yeoman build for people who want to use Mongoose instead of mongo-db-native as the node-mongo interface
 
@@ -34,6 +33,7 @@ To do list, roughly in prioritized order
 	- finish / add e2e tests (test login, password-reset, anything else?)
 	- frontend (angular) test coverage to 95%
 	- backend (node) test coverage to 95%
+		- node-controller generator coverage to 95%
 	- figure out how to karma unit test app.js (get into `resolve` functions) then add `common.js` back into karma coverage
 
 - Shift all Facebook calls to backend? Is this possible? So we can then remove the HUGE 170kb minified Facebook Javascript SDK that's just used for login..

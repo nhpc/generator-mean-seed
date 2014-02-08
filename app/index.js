@@ -89,6 +89,13 @@ var MeanSeedGenerator = module.exports = function MeanSeedGenerator(args, option
 		}
 	});
 	
+	this.hookFor('mean-seed:node-controller', {
+		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
+		options: {
+			options: this.options
+		}
+	});
+	
 	this.hookFor('mean-seed:helper-core-merge', {
 		args: ['name'],		//apparently this is required - get an error if don't have it - even though we don't use or need it..
 		options: {
@@ -143,7 +150,8 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 				'core-scss',
 				'ng-route',
 				'ng-directive',
-				'ng-service'
+				'ng-service',
+				'node-controller'
 			],
 			default: 'core-default'
 		}
@@ -176,6 +184,11 @@ MeanSeedGenerator.prototype.askFor = function askFor() {
 		else if(props.optSubGenerator =='ng-service') {
 			logNextStepsMsg ='Next steps:\n1. Edit the files (js) for your new service!';
 			moreGenerators =['helper-commands', 'helper-log-next-steps'];
+		}
+		
+		else if(props.optSubGenerator =='node-controller') {
+			logNextStepsMsg ='Next steps:\n1. update `app/db_schema.json` to fill in your fields/schema for your new collection\n2. Open your new files in `app/modules/controllers/[yourNewController]` to replace/update all the `TODO` comments appropriately and edit/add anything else to finish your new API controller!';
+			moreGenerators =['helper-log-next-steps'];
 		}
 		
 		if(moreGenerators) {
