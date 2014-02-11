@@ -85,6 +85,7 @@ if(this.optSubGenerators.indexOf('node-controller') >-1) {
 			message: 'What type of controller?',
 			choices: [
 				'crud',
+				'basic'
 			],
 			default: 'crud'
 		}
@@ -140,6 +141,12 @@ if(this.optSubGenerators.indexOf('node-controller') >-1) {
 		this.template('newCrud/_newCrud.js', controllerPath+'/'+this.optControllerNameCamel+'.js');
 		this.template('newCrud/_newCrud.test.js', controllerPath+'/'+this.optControllerNameCamel+'.test.js');
 	}
+	if(this.optControllerType =='basic') {
+		this.template('newBasic/_newBasic.api.js', controllerPath+'/'+this.optControllerNameCamel+'.api.js');
+		this.template('newBasic/_newBasic.js', controllerPath+'/'+this.optControllerNameCamel+'.js');
+		this.template('newBasic/_newBasic.test.js', controllerPath+'/'+this.optControllerNameCamel+'.test.js');
+	}
+	
 	
 	
 	//C. copy files & directories
@@ -261,6 +268,8 @@ if(this.optSubGenerators.indexOf('node-controller') >-1) {
 */
 NodeControllerGenerator.prototype.updateDBSchema = function updateDBSchema() {
 if(this.optSubGenerators.indexOf('node-controller') >-1) {
+
+if(this.optControllerType =='crud') {
 	var path ='app/db_schema.json';
 	// var contents =this.read(path);
 	var contents =this.readFileAsString(path);
@@ -278,5 +287,7 @@ if(this.optSubGenerators.indexOf('node-controller') >-1) {
 	
 	//write it (actually update the file now)
 	this.write(path, contents);
+}
+
 }
 };
