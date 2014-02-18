@@ -14,13 +14,14 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.9-11)
+# 1.0.9 (WIP - 1.0.9-12)
 ## Features
 ### Internal
 - fix versioning to match [semver](http://semver.org/) properly (1.0.9-3 is BEFORE 1.0.9, NOT after!)
 	- updated from 1.0.8-2 to 1.0.9-3 appropriately
 
 ### Generators
+- nav: support icon buttons (3 total types now - text only, icon only, icon and text)
 - add `node-controller` generator for easy creation of a new (CRUD) API backend route/controller  [core-default, core-scss, node-controller]
 	- also have `basic` generator for just a scaffold of a backend route (to avoid copy-paste)
 - add Twitter social login support (frontend and backend) and simplified button styles for better cross browser compatibility [core-default, core-scss]

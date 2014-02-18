@@ -36,6 +36,12 @@ To do list, roughly in prioritized order
 		- node-controller generator coverage to 95%
 	- figure out how to karma unit test app.js (get into `resolve` functions) then add `common.js` back into karma coverage
 
+- refactor nav?
+	- directive instead of service
+	- add menu
+		- both vertical flex box style & scrolling style?
+		- different items based on which nav button is pressed (i.e. allow more than just one "main menu")
+			
 - Shift all Facebook calls to backend? Is this possible? So we can then remove the HUGE 170kb minified Facebook Javascript SDK that's just used for login..
 
 - change directory names to be hyphen instead of camelCase (i.e. src/modules/pages) - keep things consistent? / same as generators?
