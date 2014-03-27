@@ -41,7 +41,13 @@ To do list, roughly in prioritized order
 	- add menu
 		- both vertical flex box style & scrolling style?
 		- different items based on which nav button is pressed (i.e. allow more than just one "main menu")
-			
+		
+- refactor / rebuild (from scratch?) pikaday datepicker (used in datetime input - separate directive) to make several fixes:
+	- multiple instances of the div (should just use the same one over and over and not clutter the DOM)
+	- hidden from view on top of page
+	- better timepicker integration - allow selecting with time, not just date
+	- if refactor, can update it (right now it's on a dead fork so is "frozen" as is with some custom edits that aren't merged in to that fork..)
+	
 - Shift all Facebook calls to backend? Is this possible? So we can then remove the HUGE 170kb minified Facebook Javascript SDK that's just used for login..
 
 - change directory names to be hyphen instead of camelCase (i.e. src/modules/pages) - keep things consistent? / same as generators?
