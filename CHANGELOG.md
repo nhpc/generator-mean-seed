@@ -51,6 +51,7 @@ Conventions / labels:
 
 ## Fixes
 ### Generators
+- fix google login by updating plusone js script  [core-default, core-scss]
 - fix IE <=9 `ie.html` redirect to work no matter the (nested) path [core-default, core-scss]
 
 
