@@ -14,7 +14,7 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.9-16)
+# 1.0.9 (WIP - 1.0.9-17)
 ## Features
 ### Internal
 - fix versioning to match [semver](http://semver.org/) properly (1.0.9-3 is BEFORE 1.0.9, NOT after!)
@@ -51,6 +51,7 @@ Conventions / labels:
 
 ## Fixes
 ### Generators
+- socialLogin now always returns user data and sess_id (even after initial create/login) [core-default, core-scss]
 - nav: header: add `{{button.classes.button}}` to all buttons, including html only buttons [core-default, core-scss]
 - fix google login by updating plusone js script [core-default, core-scss]
 - fix facebook login by updating facebook.all.min.js script [core-default, core-scss]
