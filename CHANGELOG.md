@@ -42,6 +42,7 @@ Conventions / labels:
 	- `config.json` changes
 		- new `server.scheme` key for https
 		- new `server.httpPort` for http port to run BOTH https & http port and redirect http to https
+		- new `server.httpRedirectPort` that defaults to `server.port` but can be `false` for a no port redirect from http to https
 		- socket.io now MUST listen on the same port (socketPort is default set to the same port as serverPort and should not be changed)
 		- new `server.socketIOEnabled` boolean key since io.listen call moved to `server.js` and bundled with express app server / SSL credentials
 	- new `optServerHttpPort` and `optTestServerHttpPort` keys in `yo-configs/default.json`
