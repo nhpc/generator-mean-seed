@@ -13,6 +13,16 @@ HTTPS / SSL:
 	- https://devcenter.heroku.com/articles/ssl-certificate-self
 	- https://devcenter.heroku.com/articles/ssl-endpoint#acquire-ssl-certificate
 	- NOTE: can use 'localhost' for Common Name / domain
+	- full steps copied / combined from above:
+		- `which openssl`
+		- `openssl genrsa -des3 -out ssl.pass.key 2048` to generate pass key
+			- when prompted, enter EASY password value as it's just for generating CSR, not the actual password the app will use
+		- `openssl rsa -in ssl.pass.key -out ssl.key` to strip password and generate key
+		- `openssl req -nodes -new -key ssl.key -out ssl.csr`
+			- most can be blank / are self-explanatory but make sure to use proper country code
+			- use your domain name for the 'Common Name' prompt, e.g. `example.com` or `www.example.com` or `*.example.com` or `localhost`
+			- leave the 'Challenge Password' blank (just press 'Enter' to skip)
+		- `openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt`
 	
 - using with node.js / express (already handled for you in MEAN-seed - just update `config.json` `ssl` field to point to your certs and be enabled)
 	- http://stackoverflow.com/questions/21397809/create-a-self-signed-ssl-cert-for-localhost-for-use-with-express-node
