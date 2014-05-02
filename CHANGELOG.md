@@ -14,7 +14,7 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.9-17)
+# 1.0.9 (WIP - 1.0.9-18)
 ## Features
 ### Internal
 - fix versioning to match [semver](http://semver.org/) properly (1.0.9-3 is BEFORE 1.0.9, NOT after!)
@@ -38,6 +38,11 @@ Conventions / labels:
 
 ## Breaking Changes
 ### Generators
+- added https support
+	- `config.json` changes
+		- new `server.scheme` key for https
+		- socket.io now MUST listen on the same port (socketPort is default set to the same port as serverPort and should not be changed)
+		- new `server.socketIOEnabled` boolean key since io.listen call moved to `server.js` and bundled with express app server / SSL credentials
 - changed class `a-div-color` to `a-block` [core-default, core-scss]
 - updated to protractor v0.16.1 (from v0.10.0) [core-default, core-scss]
 	- `selenium` installation directory (which has `chromedriver.exe` and `selenium-server-standalone-2.39.0.jar`) moved into `./node_modules/protractor` (instead of in the root folder)

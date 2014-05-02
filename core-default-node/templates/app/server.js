@@ -37,6 +37,7 @@ var dependency =require('./dependency.js');
 var pathParts =dependency.buildPaths(__dirname, {});
 
 //site-specific
+var io;
 var RealtimeMod =require(pathParts.services+'realtime/realtime.js');
 
 // CORS support middleware factory
@@ -116,7 +117,13 @@ function Server(cfg){
 		
 		//site-specific
 		//set up realtime
-		RealtimeMod =RealtimeMod.init({db:db});
+		var paramsRealtime ={
+			db: db
+		};
+		if(cfg.server.socketIOEnabled) {
+			paramsRealtime.io =io;
+		}
+		RealtimeMod =RealtimeMod.init(paramsRealtime);
 		
 		deferred.resolve(thisObj);
 	}, function(err) {
@@ -142,12 +149,16 @@ Server.prototype.configure = function(cfg, db){
 
     if( cfg.ssl.enabled ){
         server = https.createServer({
-            key:    fs.readFileSync(cfg.ssl.key),
-            cert:   fs.readFileSync(cfg.ssl.cert)
-        });
+            key:    fs.readFileSync(__dirname+cfg.ssl.key),
+            cert:   fs.readFileSync(__dirname+cfg.ssl.cert)
+        }, app);
     } else {
         server = http.createServer(app);
     }
+	if(cfg.server.socketIOEnabled) {
+		io =require('socket.io');
+		io =io.listen(server);		//it's important to update / re-set io to io.listen!! otherwise all future function calls on io will be referencing the wrong object and will not work!
+	}
 
     var staticFilePath = __dirname + cfg.server.staticFilePath;
     // remove trailing slash if present
