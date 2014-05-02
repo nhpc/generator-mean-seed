@@ -14,7 +14,7 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.9-18)
+# 1.0.9 (WIP - 1.0.9-19)
 ## Features
 ### Internal
 - fix versioning to match [semver](http://semver.org/) properly (1.0.9-3 is BEFORE 1.0.9, NOT after!)
