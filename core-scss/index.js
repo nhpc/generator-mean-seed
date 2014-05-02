@@ -98,6 +98,11 @@ if(this.optSubGenerators.indexOf('core-scss') >-1) {
 			default: 3000
 		},
 		{
+			name: 'optServerHttpPort',
+			message: 'What port to run the http application on (only applies if using https)?',
+			default: 3002
+		},
+		{
 			name: 'optSocketPort',
 			message: 'What port to run any socket connections on?',
 			default: 3001
@@ -106,6 +111,11 @@ if(this.optSubGenerators.indexOf('core-scss') >-1) {
 			name: 'optTestServerPort',
 			message: 'What port to run the TESTS on?',
 			default: 3005
+		},
+		{
+			name: 'optTestServerHttpPort',
+			message: 'What port to run the http app TESTS on?',
+			default: 3007
 		},
 		{
 			name: 'optTestSocketPort',

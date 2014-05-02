@@ -41,8 +41,10 @@ Conventions / labels:
 - added https support
 	- `config.json` changes
 		- new `server.scheme` key for https
+		- new `server.httpPort` for http port to run BOTH https & http port and redirect http to https
 		- socket.io now MUST listen on the same port (socketPort is default set to the same port as serverPort and should not be changed)
 		- new `server.socketIOEnabled` boolean key since io.listen call moved to `server.js` and bundled with express app server / SSL credentials
+	- new `optServerHttpPort` and `optTestServerHttpPort` keys in `yo-configs/default.json`
 - changed class `a-div-color` to `a-block` [core-default, core-scss]
 - updated to protractor v0.16.1 (from v0.10.0) [core-default, core-scss]
 	- `selenium` installation directory (which has `chromedriver.exe` and `selenium-server-standalone-2.39.0.jar`) moved into `./node_modules/protractor` (instead of in the root folder)
