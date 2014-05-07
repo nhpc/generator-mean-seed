@@ -3,7 +3,7 @@
 
 'use strict';
 
-angular.module('myApp').controller('TwitterAuthCallbackCtrl', ['$scope', 'appHttp', 'UserModel', '$rootScope', '$routeParams', 
+angular.module('myApp').controller('CallbackTwitterAuthCtrl', ['$scope', 'appHttp', 'UserModel', '$rootScope', '$routeParams', 
 function($scope, appHttp, UserModel, $rootScope, $routeParams) {
 
 	function init(params) {

@@ -10,18 +10,11 @@
 
 var Q = require('q');
 var lodash = require('lodash');
-var async = require('async');
-// var moment = require('moment');
 
 var dependency =require('../../../dependency.js');
 var pathParts =dependency.buildPaths(__dirname, {});
 
-var StringMod =require(pathParts.services+'string/string.js');
-var MongoDBMod =require(pathParts.services+'mongodb/mongodb.js');
-var CrudMod =require(pathParts.services+'crud/crud.js');
-var LookupMod =require(pathParts.services+'lookup/lookup.js');
-var DatetimeMod =require(pathParts.services+'datetime/datetime.js');
-var ArrayMod =require(pathParts.services+'array/array.js');
+// var StringMod =require(pathParts.services+'string/string.js');
 
 var self;
 

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('TwitterAuthCallbackCtrl', function(){
+describe('CallbackTwitterAuthCtrl', function(){
 	var $ctrl, $scope ={}, $httpBackend, $routeParams, $controller;
 	
 	beforeEach(module('myApp'));
@@ -10,12 +10,12 @@ describe('TwitterAuthCallbackCtrl', function(){
 		$routeParams =_$routeParams_;
 		$scope = _$rootScope_.$new();
 		
-		// $ctrl = _$controller_('TwitterAuthCallbackCtrl', {$scope: $scope});		//can't call here since need to set $routeParams FIRST in some tests
+		// $ctrl = _$controller_('CallbackTwitterAuthCtrl', {$scope: $scope});		//can't call here since need to set $routeParams FIRST in some tests
 		$controller =_$controller_;
 	}));
 	
 	it('should not make backend api twitter accessToken request without proper $routeParams', function() {
-		$ctrl = $controller('TwitterAuthCallbackCtrl', {$scope: $scope});
+		$ctrl = $controller('CallbackTwitterAuthCtrl', {$scope: $scope});
 	});
 	
 	it('should make backend api twitter accessToken request if $routeParams are set properly', function() {
@@ -28,7 +28,7 @@ describe('TwitterAuthCallbackCtrl', function(){
 		};
 		$httpBackend.expectPOST('/api/twitter/accessToken').respond({result: {user: user } });
 		
-		$ctrl = $controller('TwitterAuthCallbackCtrl', {$scope: $scope});
+		$ctrl = $controller('CallbackTwitterAuthCtrl', {$scope: $scope});
 		
 		$httpBackend.flush();
 		

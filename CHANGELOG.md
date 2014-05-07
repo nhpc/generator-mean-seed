@@ -14,7 +14,7 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.9 (WIP - 1.0.9-19)
+# 1.0.9
 ## Features
 ### Internal
 - fix versioning to match [semver](http://semver.org/) properly (1.0.9-3 is BEFORE 1.0.9, NOT after!)
@@ -38,7 +38,11 @@ Conventions / labels:
 
 ## Breaking Changes
 ### Generators
-- added https support
+- moved facebook auth to all server side [core-default, core-scss]
+	- works with Chrome iOS (the FB JS SDK has a bug and does not)
+	- removed angular-facebook-auth service and Facebook JS SDK - saved 160k in frontend loading size!
+- rename `twitter-auth-callback` to `callback-twitter-auth` for consistency (make sure to update `config.json` and dev.twitter.com application settings accordingly) [core-default, core-scss]
+- added https support [core-default, core-scss]
 	- `config.json` changes
 		- new `server.scheme` key for https
 		- new `server.httpPort` for http port to run BOTH https & http port and redirect http to https
@@ -59,6 +63,7 @@ Conventions / labels:
 
 ## Fixes
 ### Generators
+- fix auth social login to add/update other user fields (i.e. first_name, last_name, email) [core-default, core-scss]
 - socialLogin now always returns user data and sess_id (even after initial create/login) [core-default, core-scss]
 - nav: header: add `{{button.classes.button}}` to all buttons, including html only buttons [core-default, core-scss]
 - fix google login by updating plusone js script [core-default, core-scss]
