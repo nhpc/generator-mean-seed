@@ -14,9 +14,11 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.10 (WIP - 1.0.10-1)
+# 1.0.10 (WIP - 1.0.10-2)
 ## Features
 ### Generators
+- add Facebook and Twitter social sharing [core-default, core-scss]
+	- update `config.json` to include `facebook.appSecret` and 'publish_actions' in `facebook.scope`
 - support SSL CA certs in `config.json` [core-default, core-scss]
 
 
