@@ -14,9 +14,13 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.10 (WIP - 1.0.10-2)
+# 1.0.10 (WIP - 1.0.10-3)
 ## Features
 ### Generators
+- set the generated email (for social logins) to '@_fakeemail_.com' to easily differentiate it from real emails [core-default, core-scss]
+- add Facebook and Twitter image profile pulling [core-default, core-scss]
+	- set new `pull_pic` parameter to 0 to skip pulling images as the default is now to pull them and save images locally / on the server
+- pull name from Twitter [core-default, core-scss]
 - add Facebook and Twitter social sharing [core-default, core-scss]
 	- update `config.json` to include `facebook.appSecret` and 'publish_actions' in `facebook.scope`
 - support SSL CA certs in `config.json` [core-default, core-scss]
