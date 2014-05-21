@@ -17,6 +17,7 @@ Conventions / labels:
 # 1.0.10 (WIP - 1.0.10-3)
 ## Features
 ### Generators
+- add `vanityPortString` `config.json` optional key for forming publicPath if do not want to show/use a port (or want to use a different one) [core-default, core-scss]
 - set the generated email (for social logins) to '@_fakeemail_.com' to easily differentiate it from real emails [core-default, core-scss]
 - add Facebook and Twitter image profile pulling [core-default, core-scss]
 	- set new `pull_pic` parameter to 0 to skip pulling images as the default is now to pull them and save images locally / on the server
