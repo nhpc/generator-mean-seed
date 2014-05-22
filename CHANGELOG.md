@@ -17,6 +17,7 @@ Conventions / labels:
 # 1.0.10 (WIP - 1.0.10-3)
 ## Features
 ### Generators
+- add twitter authenticate url option so can auto login user (comment out the link part accordingly) [core-default, core-scss]
 - add `vanityPortString` `config.json` optional key for forming publicPath if do not want to show/use a port (or want to use a different one) [core-default, core-scss]
 - set the generated email (for social logins) to '@_fakeemail_.com' to easily differentiate it from real emails [core-default, core-scss]
 - add Facebook and Twitter image profile pulling [core-default, core-scss]
