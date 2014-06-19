@@ -31,6 +31,12 @@ HTTPS / SSL:
 	- http://stackoverflow.com/questions/16224064/running-ssl-node-js-server-with-godaddy-gd-bundle-crt
 	- to copy the ssl certs to the server use the `scp` command:
 		- http://www.mkyong.com/linux/copy-file-to-from-server-via-scp-command/
+- steps for 3rd party ("official") certificates, i.e. with GoDaddy:
+1. generate a .csr (locally) [see above]
+	1. this will also generate the .key (and .pass.key) files
+2. upload CSR to GoDaddy to get .crt and the .ca file(s)
+	1. break the .ca bundle file into individual .ca files [see above]
+	
 	
 - using with node.js / express (already handled for you in MEAN-seed - just update `config.json` `ssl` field to point to your certs and be enabled)
 	- http://stackoverflow.com/questions/21397809/create-a-self-signed-ssl-cert-for-localhost-for-use-with-express-node

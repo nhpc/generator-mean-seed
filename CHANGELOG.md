@@ -14,9 +14,11 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.10 (WIP - 1.0.10-3)
+# 1.0.10 (WIP - 1.0.10-4)
 ## Features
 ### Generators
+- update node package.json dependencies
+	- mongodb to 1.4.7
 - add twitter authenticate url option so can auto login user (comment out the link part accordingly) [core-default, core-scss]
 - add `vanityPortString` `config.json` optional key for forming publicPath if do not want to show/use a port (or want to use a different one) [core-default, core-scss]
 - set the generated email (for social logins) to '@_fakeemail_.com' to easily differentiate it from real emails [core-default, core-scss]
