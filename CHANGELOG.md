@@ -17,6 +17,7 @@ Conventions / labels:
 # 1.0.10 (WIP - 1.0.10-4)
 ## Features
 ### Generators
+- remove hammer.js as a dependency (switch to included ngTouch) to remove the "not found" error and reduce dependencies [core-default, core-scss]
 - update node package.json dependencies
 	- mongodb to 1.4.7
 - add twitter authenticate url option so can auto login user (comment out the link part accordingly) [core-default, core-scss]
@@ -28,6 +29,10 @@ Conventions / labels:
 - add Facebook and Twitter social sharing [core-default, core-scss]
 	- update `config.json` to include `facebook.appSecret` and 'publish_actions' in `facebook.scope`
 - support SSL CA certs in `config.json` [core-default, core-scss]
+
+## Fixes
+### Generators
+- update google plus one javascript library dependency to fix error
 
 
 # 1.0.9 (2014-05-07)
