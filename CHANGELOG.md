@@ -14,7 +14,14 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 
-# 1.0.10 (WIP - 1.0.10-4)
+# 1.1.0 (2014-07-xx)
+## Breaking Changes
+### Generators
+- update backend (node) dependencies [core-default, core-scss]
+	- express to 4.x
+
+
+# 1.0.10 (2014-06-24)
 ## Features
 ### Generators
 - remove hammer.js as a dependency (switch to included ngTouch) to remove the "not found" error and reduce dependencies [core-default, core-scss]
