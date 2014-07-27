@@ -42,6 +42,17 @@ Conventions / labels:
 		- istanbul 0.1.x to 0.3.x
 		- karma 0.10.x to 0.12.x
 		- karma-coverage 0.1.x to 0.2.x
+		- protractor 0.16.x to 1.0.x
+			- update (Gruntfile) to use selenium server 2.42.2
+			- protractor spec tests language update: update `ptor` to `browser` and `protractor.By` to `by`
+			
+## Bug Fixes
+### Generators
+- get `grunt e2e` and `grunt test-frontend` to actually run/work standalone to match documentation [core-default, core-scss]
+
+## Features
+### Generators
+- add in `devUpdate` grunt task to default task to output out of date node/npm packages/dependencies [core-default, core-scss]
 
 
 # 1.0.10 (2014-06-24)
@@ -60,7 +71,7 @@ Conventions / labels:
 	- update `config.json` to include `facebook.appSecret` and 'publish_actions' in `facebook.scope`
 - support SSL CA certs in `config.json` [core-default, core-scss]
 
-## Fixes
+## Bug Fixes
 ### Generators
 - update google plus one javascript library dependency to fix error
 
@@ -112,7 +123,7 @@ Conventions / labels:
 		- uninstall concrete then reinstall with the new fork - follow updated instructions in [deploy.md](core-default-node/templates/docs/setup-running/deploy.md)
 
 
-## Fixes
+## Bug Fixes
 ### Generators
 - fix auth social login to add/update other user fields (i.e. first_name, last_name, email) [core-default, core-scss]
 - socialLogin now always returns user data and sess_id (even after initial create/login) [core-default, core-scss]
