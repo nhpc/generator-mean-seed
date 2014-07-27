@@ -17,8 +17,31 @@ Conventions / labels:
 # 1.1.0 (2014-07-xx)
 ## Breaking Changes
 ### Generators
-- update backend (node) dependencies [core-default, core-scss]
-	- express to 4.x
+- update backend (node) dependencies. These SHOULD be backwards compatible in most (all) cases unless your app utilizes any of these dependencies directly. [core-default, core-scss]
+	- express 3.x to 4.x
+		- added express connect packages accordingly: body-parser, compression, cookie-parser, errorhandler, method-override, morgan
+	- socket.io 0.9.x to 1.0.x
+	- async 0.2.x to 0.9.x
+	- lodash 1.0.x to 2.4.x
+	- moment 2.0.x to 2.7.x
+	- q 0.9.x to 1.0.x
+	- request 2.16.x to 2.39.x
+	- dev dependencies
+		- grunt-angular-templates 0.3.x to 0.5.x
+		- grunt-contrib-concat 0.3.x to 0.5.x
+		- grunt-contrib-copy 0.4.x to 0.5.x
+		- grunt-contrib-cssmin 0.7.x to 0.10.x
+		- grunt-contrib-jshint 0.7.x to 0.10.x
+		- grunt-contrib-less 0.8.x to 0.11.x
+		- grunt-contrib-uglify 0.2.x to 0.5.x
+		- grunt-contrib-watch 0.5.x to 0.6.x
+		- grunt-contrib-yuidoc 0.4.x to 0.5.x
+		- grunt-forever-multi 0.4.x to 0.5.x
+		- grunt-http 1.0.x to 1.4.x
+		- grunt-karma 0.6.x to 0.8.x
+		- istanbul 0.1.x to 0.3.x
+		- karma 0.10.x to 0.12.x
+		- karma-coverage 0.1.x to 0.2.x
 
 
 # 1.0.10 (2014-06-24)
