@@ -17,8 +17,13 @@ Conventions / labels:
 ## Breaking Changes
 ### Generators
 - update frontend (bower) dependencies [core-default, core-scss]
-	- angular 1.2.5 to 1.3.0-beta.17
+	- angular 1.2.5 to 1.3.0-beta.17 - this SHOULD be largely backwards compatible but check the angular changelogs to make sure
 		- update `index.html` layout/content animate accordingly
+		
+## Features
+### Generators
+- npm/node dependency updates [core-default, core-scss]
+	- grunt-contrib-clean 0.5.x to 0.6.x
 
 
 # 1.1.0 (2014-07-26)
