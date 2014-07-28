@@ -13,7 +13,7 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
-# 1.1.1 (2014-07-xx)
+# 1.1.1 (2014-07-28)
 ## Breaking Changes
 ### Generators
 - update frontend (bower) dependencies [core-default, core-scss]
