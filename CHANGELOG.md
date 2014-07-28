@@ -13,6 +13,13 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
+# 1.1.1 (2014-07-xx)
+## Breaking Changes
+### Generators
+- update frontend (bower) dependencies [core-default, core-scss]
+	- angular 1.2.5 to 1.3.0-beta.17
+		- update `index.html` layout/content animate accordingly
+
 
 # 1.1.0 (2014-07-26)
 ## Breaking Changes
