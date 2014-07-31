@@ -13,6 +13,22 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
+# 1.1.2 (2014-xx-xx)
+## Breaking Changes
+### Generators
+- support multiple sessions (i.e. same login/user on multiple devices and/or browsers) - this SHOULD be backwards compatible [core-default, core-scss]
+	- backend still passes back just `sess_id` as a string for the CURRENT session even though the database now stores `user.sess_id` as an array. This keeps the frontend the same; just need to pass back an additional `sess_id` parameter on all logout calls to only kill THAT session.
+	- IMPORTANT: for EACH server (i.e. production, dev/staging, local), run 'dbUpdate/sessId' by going to `http://[domain]:[port]/api/dbUpdate/help` and clicking "run interactive test" in the DbUpdate.sessId section to update your existing database to the new array format
+	
+## Features
+### Generators
+- chore: update dependencies - moment, grunt-contrib-less, karma-coverage, grunt-dev-update [core-default, core-scss]
+
+## Bug Fixes
+### Generators
+- rename `coverage-angular` to `coverage` for folder in `Gruntfile.js` since karma-coverage@0.2.5 doesn't seem to actually use/obey the defined `dir` and/or `subdir` names in `karma.conf`.. [core-default, core-scss]
+
+
 # 1.1.1 (2014-07-28)
 ## Breaking Changes
 ### Generators
