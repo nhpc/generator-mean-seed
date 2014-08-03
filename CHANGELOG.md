@@ -17,6 +17,11 @@ Conventions / labels:
 ## Bug Fixes
 ### Generators
 - call `appNav.setNav` from `HeaderCtrl` on every nav update so other controllers/modules can get the updated nav [core-default, core-scss]
+- enforce uniqueness on email and phone number for `User.update` call (prevent updates if trying to update with an email and/or phone that's already in use) [core-default, core-scss]
+
+## Breaking Changes
+### Generators
+- refactor `User.update` (`user/update`) backend call to take a `user` object as a parameter rather than passing all the data directly back without being nested. This fixes a bug where `authority_keys` would get inserted into the user collection. [core-default, core-scss]
 
 
 # 1.1.2 (2014-08-02)

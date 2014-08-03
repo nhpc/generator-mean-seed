@@ -252,9 +252,7 @@ Twitter.prototype.accessToken = function(db, data, params)
 							var picStream =fs.createWriteStream(imgWritePath);
 							picStream.on('close', function() {
 								//update user with this image
-								var userUpdate ={
-									user_id: retLogin.user._id
-								};
+								var userUpdate ={};
 								if(retLogin.user.image !==undefined) {		//image key already exists
 									userUpdate['image.profile'] =dbSavePath;		//have to do it this way for mongo db syntax and to avoid over-writing any other keys (other than 'profile') that may exist
 									//update for return as well
@@ -269,7 +267,7 @@ Twitter.prototype.accessToken = function(db, data, params)
 										profile: dbSavePath
 									};
 								}
-								UserMod.update(db, userUpdate, {})
+								UserMod.update(db, {user_id: retLogin.user._id, user:userUpdate}, {})
 								.then(function(retUserUpdate) {
 									deferred.resolve(retLogin);
 								}, function(retErr) {
