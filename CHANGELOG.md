@@ -13,6 +13,12 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
+# 1.1.3 (WIP)
+## Bug Fixes
+### Generators
+- call `appNav.setNav` from `HeaderCtrl` on every nav update so other controllers/modules can get the updated nav [core-default, core-scss]
+
+
 # 1.1.2 (2014-08-02)
 ## Breaking Changes
 ### Generators
