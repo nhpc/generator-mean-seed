@@ -14,14 +14,19 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
 # 1.1.3 (WIP)
+## Breaking Changes
+### Generators
+- refactor `User.update` (`user/update`) backend call to take a `user` object as a parameter rather than passing all the data directly back without being nested. This fixes a bug where `authority_keys` would get inserted into the user collection. [core-default, core-scss]
+
 ## Bug Fixes
 ### Generators
 - call `appNav.setNav` from `HeaderCtrl` on every nav update so other controllers/modules can get the updated nav [core-default, core-scss]
 - enforce uniqueness on email and phone number for `User.update` call (prevent updates if trying to update with an email and/or phone that's already in use) [core-default, core-scss]
+- delete/remove `sess_id` in backend `User.update` call to prevent over-writting session id (back to a string)
 
-## Breaking Changes
+## Features
 ### Generators
-- refactor `User.update` (`user/update`) backend call to take a `user` object as a parameter rather than passing all the data directly back without being nested. This fixes a bug where `authority_keys` would get inserted into the user collection. [core-default, core-scss]
+- chore: update `package.json` dependencies - body-parser, compression, express, qs, request, karma [core-default, core-scss]
 
 
 # 1.1.2 (2014-08-02)

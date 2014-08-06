@@ -311,6 +311,10 @@ User.prototype.update = function(db, data, params)
 	if(data.user._id !==undefined) {
 		delete data.user._id;			//can't $set _id
 	}
+	//do NOT want to allow overwriting some fields - sess_id, password?, password_salt?, others?
+	if(data.user.sess_id !==undefined) {
+		delete data.user.sess_id;
+	}
 	
 	data.user =self.fixPhoneFormat(db, data.user, params);
 	

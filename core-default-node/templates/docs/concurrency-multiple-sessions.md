@@ -18,3 +18,31 @@ The current recommendation is thus to persist sessions across tabs (what seems t
 - ensure that 100% of users have a login, even if it's auto-generated for them on invites or for "guest access."
 - always show the current logged in user (profile picture, name) so it's easy for the user to tell what happened and which account they're currently viewing the site as - that way if they are "auto swapped" to a more recent log in, they'll see that on old tabs and know what happened and that they need to log out / re log in if they still want to view the site/app as the old/other account.
 A combination of the above should make everything workable and fairly straightforward, even if not "perfect". But it seems something must be sacrificed either way so this is the best case.
+	
+- levels of storing data (from longest / most persistent to least):
+	- localStorage
+		- expires / lost: if user clears localStorage
+	- cookies
+		- expires / lost: if user clears cookies
+	- sessionStorage (generally not used since it doesn't persist but in this case may be exactly what we need!)
+		- expires / lost: if close browser tab
+	- javascript
+		- expires / lost: any browser page refresh / reload (closing / re-opening browser, etc.)
+	- url
+		- expires / lost: any new url (that doesn't have the same URL params)
+		
+- sessions
+	- cookies/localStorage: browsers don't seem to support tab specific cookies (or localStorage?) so data will be shared across all tabs by default
+	- custom: can use anything (cookies/localStorage) IF store as an array of multiple session information per tab; would need to create a unique session id on first log in and then check that and load data accordingly
+	- sessionStorage: may be PERFECT for this use case!?
+	- save in javascript (won't work if user refreshes the page though? so not a good solution)
+	- keep / pass through URL params to ALL pages to persist it
+	
+Eventually we'll need to get from URL params / whatever we use to the way the rest of the app/code works (i.e. sending back session information for backend calls) so the question is how and where/when to "bridge the gap". URL params and custom/array cookies/localStorage could work but sessionStorage seems perfectly suited and cleaner for this and sessionStorage seems to have as wide of support as localStorage since they're part of the same "HTML5 Storage" API.
+http://www.w3schools.com/html/html5_webstorage.asp
+http://www.gwtproject.org/doc/latest/DevGuideHtml5Storage.html
+
+So while in general tabbed sessions seems to have more cons than pros (better to just do default brower sessions and just check/logout old tabs), to achieve tabbed sessions, we basically mimic on the frontend what we do to achieve multiple sessions on the backend: have an array of SEPARATE session data rather than just one. In practice this applies to two main places (since javascript and URL params are ALREADY unique to each tab) - localStorage and cookies.
+For localStorage, we just abstract storage to a service and then have that service use sessionStorage instead of localStorage - that way it's tab specific and there's no cross-polluting of storage across tabs. Basically sessionStorage handles converting our storage to an array of multiple sessions for us.
+For cookies there's not a baked in alternative BUT there's also a lot less data to store (we're basically just storing user_id, sess_id and a few other one off things like redirect_url) - so we just mimic the backend array of sess_id and convert our cookies to be an array, one per unique key (which we'll get from the URL/sessionStorage). So we dependency inject sessionStorage into the cookie service and inside there, if sessionStorage is set, we set/get cookies for that particular session (from an array rather than the shared/default cookies that are the same across all tabs). This abstracts everything away and our cookie calls in our code can remain unchanged.
+To get the sessionStorage unique key for this tab/session (for use with the cookie array), we use a URL parameter (or just create a random id) to set it at the start (i.e. if sessionStorage is empty, which it will always be on first opening of the browser tab and will never be once the tab has already been used).
