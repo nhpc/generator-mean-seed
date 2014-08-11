@@ -26,7 +26,9 @@ Conventions / labels:
 
 ## Features
 ### Generators
-- chore: update `package.json` dependencies - body-parser, compression, express, qs, request, karma [core-default, core-scss]
+- add in frontend `error-msg` Angular service for abstracting out and customizing backend API call error messages. Add in unique error codes in backend `auth` api controller accordingly. [core-default, core-scss]
+- chore: update `package.json` dependencies - body-parser, compression, express, method-override, qs, request, karma, karma-coverage [core-default, core-scss]
+	- rename `coverage` back to `coverage-angular` for folder in `Gruntfile.js` since karma-coverage@0.2.6 seems to have fixed the 0.2.5 bug
 
 
 # 1.1.2 (2014-08-02)
