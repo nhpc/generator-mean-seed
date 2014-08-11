@@ -13,7 +13,7 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
-# 1.1.3 (WIP)
+# 1.1.3 (2014-08-11)
 ## Breaking Changes
 ### Generators
 - refactor `User.update` (`user/update`) backend call to take a `user` object as a parameter rather than passing all the data directly back without being nested. This fixes a bug where `authority_keys` would get inserted into the user collection. [core-default, core-scss]
