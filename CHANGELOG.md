@@ -13,6 +13,17 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
+# 1.1.4 (2014-08-19)
+## Bug Fixes
+### Generators
+- update google plusone/gapi script so it works again [core-default, core-scss]
+
+## Features
+### Generators
+- return full `rawData` from frontend Google plus person/profile call (so can access name, gender, image, etc.). Also pull and save name and image by default (backend `Auth.socialLogin` now supports passing back a `user._imageUrl` key for saving images) [core-default, core-scss]
+- chore: update `package.json` dependencies: body-parser, express, morgan, qs
+
+
 # 1.1.3 (2014-08-11)
 ## Breaking Changes
 ### Generators
