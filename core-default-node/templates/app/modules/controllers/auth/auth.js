@@ -972,58 +972,26 @@ Auth.prototype.socialLogin = function(db, data, params)
 				ret.user.social = {};
 			}
 			
-			var finishUpdateLocal =function(paramsUpdate) {
-				var set_obj = {};
-				set_obj["social." + data.type] = data.socialData;
-				
-				//update other fields (i.e. name, email) too IF not already set. //@todo - extend existing fields and/or add to emails array with new ones?
-				var xx;
-				for(xx in data.user) {
-					if(ret.user[xx] ===undefined || !ret.user[xx]) {
-						set_obj[xx] =data.user[xx];
-					}
-				}
-				
-				db.user.update({_id:MongoDBMod.makeIds({'id':ret1.user._id}) }, {$set: set_obj}, function(err, valid)
-				{
-					if(err)
-					{
-						ret.code = 1;
-						ret.msg +='Error: '+err;
-						deferred.reject(ret);
-					}
-					else if (!valid)
-					{
-						ret.code = 2;
-						ret.msg +='Not valid ';
-						deferred.reject(ret);
-					}
-					else
-					{
-						ret.code = 0;
-						ret.msg +='User updated';
-						//in case of update, need to re-read user to get all info (esp. sess_id)
-						// ret.user.social[data.type] = data.socialData;
-						UserMod.read(db, {_id: ret.user._id}, {})
-						.then(function(retUser) {
-							ret.user =retUser.result;
-							//also need to update session
-							var promiseSession =updateSession(db, ret.user, {});
-							promiseSession.then(function(ret1) {
-								ret.user =ret1.user;
-								deferred.resolve(ret);
-							}, function(err) {
-								deferred.reject(err);
-							});
-						}, function(retErr) {
-							deferred.reject(retErr);
-						});
-					}
+			var finishLocal =function(paramsFinish) {
+				//in case of update, need to re-read user to get all info (esp. sess_id)
+				// ret.user.social[data.type] = data.socialData;
+				UserMod.read(db, {_id: ret.user._id}, {})
+				.then(function(retUser) {
+					ret.user =retUser.result;
+					//also need to update session
+					var promiseSession =updateSession(db, ret.user, {});
+					promiseSession.then(function(ret1) {
+						ret.user =ret1.user;
+						deferred.resolve(ret);
+					}, function(err) {
+						deferred.reject(err);
+					});
+				}, function(retErr) {
+					deferred.reject(retErr);
 				});
 			};
 			
-			//get image if it exists AND do not already have an image (don't overwrite if already do)
-			if(_imageUrl && (ret.user.image ===undefined || ret.user.image.profile ===undefined)) {
+			var saveImageLocal =function(paramsImage) {
 				if(data.pic_directory ===undefined) {
 					data.pic_directory ='user';
 				}
@@ -1057,13 +1025,57 @@ Auth.prototype.socialLogin = function(db, data, params)
 							profile: dbSavePath
 						};
 					}
-					finishUpdateLocal({});
+					//have to call the UserMod.update function to ensure the crop version of the image gets saved properly
+					UserMod.update(db, {user_id: ret1.user._id, user:data.user}, {})
+					.then(function(retUserUpdate) {
+						finishLocal({});
+					}, function(retErr) {
+						deferred.reject(retErr);
+					});
 				});
 				request(imgUrlStripped).pipe(picStream);
+			};
+			
+			var set_obj = {};
+			set_obj["social." + data.type] = data.socialData;
+			
+			//update other fields (i.e. name, email) too IF not already set. //@todo - extend existing fields and/or add to emails array with new ones?
+			var xx;
+			for(xx in data.user) {
+				if(ret.user[xx] ===undefined || !ret.user[xx]) {
+					set_obj[xx] =data.user[xx];
+				}
 			}
-			else {
-				finishUpdateLocal({});
-			}
+			
+			db.user.update({_id:MongoDBMod.makeIds({'id':ret1.user._id}) }, {$set: set_obj}, function(err, valid)
+			{
+				if(err)
+				{
+					ret.code = 1;
+					ret.msg +='Error: '+err;
+					deferred.reject(ret);
+				}
+				else if (!valid)
+				{
+					ret.code = 2;
+					ret.msg +='Not valid ';
+					deferred.reject(ret);
+				}
+				else
+				{
+					ret.code = 0;
+					ret.msg +='User updated';
+					
+					//get image if it exists AND do not already have an image (don't overwrite if already do)
+					if(_imageUrl && (ret.user.image ===undefined || ret.user.image.profile ===undefined)) {
+						saveImageLocal({});
+					}
+					else {
+						finishLocal({});
+					}
+				}
+			});
+			
 		},
 		function(err)
 		{
