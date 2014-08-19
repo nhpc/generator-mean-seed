@@ -21,7 +21,7 @@ Conventions / labels:
 ## Features
 ### Generators
 - return full `rawData` from frontend Google plus person/profile call (so can access name, gender, image, etc.). Also pull and save name and image by default (backend `Auth.socialLogin` now supports passing back a `user._imageUrl` key for saving images) [core-default, core-scss]
-- chore: update `package.json` dependencies: body-parser, express, morgan, qs
+- chore: update `package.json` dependencies: body-parser, express, morgan, qs [core-default, core-scss]
 
 
 # 1.1.3 (2014-08-11)
