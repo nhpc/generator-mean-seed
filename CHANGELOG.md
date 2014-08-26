@@ -13,6 +13,13 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 
+# 1.1.5 (2014-08-26)
+## Features
+### Generators
+- chore: update `package.json` dependencies: moment, mongodb, qs, grunt-dev-update, karma, protractor [core-default, core-scss]
+- chore: update `bower.json` to Angular 1.3.0-beta.19 [core-default, core-scss]
+
+
 # 1.1.4 (2014-08-19)
 ## Bug Fixes
 ### Generators
