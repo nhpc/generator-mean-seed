@@ -18,6 +18,11 @@ Conventions / labels:
 ### Generators
 - chore: update `package.json` dependencies: moment, mongodb, qs, grunt-dev-update, karma, protractor [core-default, core-scss]
 - chore: update `bower.json` to Angular 1.3.0-beta.19 [core-default, core-scss]
+- switch `bower.json` formatting/indent to spaces instead of tabs since running bower seems to update `bower.json` and lead to merge conflicts otherwise.. [core-default, core-scss]
+
+## Bug Fixes
+### Generators
+- dont have `:/` for empty port in `config.js` frontend file (dirPaths sometimes were messed up if an empty port) [core-default, core-scss]
 
 
 # 1.1.4 (2014-08-19)
