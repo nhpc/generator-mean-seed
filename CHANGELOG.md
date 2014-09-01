@@ -12,6 +12,18 @@ Conventions / labels:
 	- within the 'Generators' sub-sections, use brackets at the end to list the generators that were affected, i.e. [core-default, ng-route].
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
+		
+# 1.1.6 (2014-09-01)
+## Features
+### Generators
+- chore: update `package.json` dependencies: body-parser, express, qs, karma [core-default, core-scss]
+- chore: update AngularJS to 1.3.0-rc.0 [core-default, core-scss]
+	- add in `<base />` tag to `index.html` files
+	- fix / update karma tests accordingly
+		- update `jQuery` to `2.1.1` for karma tests
+		- update `angular-mocks.js` to current for karma tests
+		- add karma check (via user-agent `PhantomJS`) to NOT use HTML5 location in `app.js` to avoid `$location:nobase` error
+		
 
 # 1.1.5 (2014-08-26)
 ## Features
