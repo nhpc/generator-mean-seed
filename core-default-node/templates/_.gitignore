@@ -50,9 +50,11 @@ print('app/src/common/scss/_base.scss\n'+
 }
 %>
 app/src/modules/services/config/config.js
+app/src/modules/services/config/config-test.js
 app/src/config/karma.conf.js
 app/src/config/karma-no-coverage.conf.js
 app/src/index.html
+app/src/index-test.html
 app/src/config/protractor/*
 
 # ignore deploys (i.e. PhoneGap, TriggerIO build folder/files)

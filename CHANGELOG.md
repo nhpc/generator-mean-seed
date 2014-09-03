@@ -13,6 +13,13 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
+# 1.1.7 (WIP)
+## Features
+### Generators
+- support test environment on frontend, so running test server will ALSO use test confing on FRONTEND (previously this was not possible) [core-default, core-scss]
+	- add new `index-test-grunt.html` and `modules/services/config-test-grunt.js` files and update Gruntfile, buildfilesModules, buildfilesModulesGroups to use these files. Update backend to serve `index-test.html` if on test environment.
+
+
 # 1.1.6 (2014-09-01)
 ## Features
 ### Generators

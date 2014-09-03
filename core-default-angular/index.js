@@ -69,6 +69,7 @@ if(this.optSubGenerators.indexOf('core-default-angular') >-1) {
 	this.copy('app/src/ie.css', 'app/src/ie.css');
 	this.copy('app/src/ie.html', 'app/src/ie.html');
 	this.copy('app/src/index-grunt.html', 'app/src/index-grunt.html');
+	this.copy('app/src/index-test-grunt.html', 'app/src/index-test-grunt.html');
 	this.copy('app/src/index-phonegap-grunt.html', 'app/src/index-phonegap-grunt.html');
 	this.copy('app/src/index-prod-grunt.html', 'app/src/index-prod-grunt.html');
 	this.copy('app/src/index-triggerio-grunt.html', 'app/src/index-triggerio-grunt.html');

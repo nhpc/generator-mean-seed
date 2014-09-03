@@ -279,6 +279,7 @@ module.exports = function(grunt) {
 			cfgTestJson:            cfgTestJson,
 			//will be filled/created in buildfiles task
 			filePathsJs:        '',
+			filePathsJsTestEnv: '',
 			//will be filled/created in buildfiles task
 			filePathsCss:       '',
 			<%
@@ -355,6 +356,14 @@ module.exports = function(grunt) {
 						outputFiles: {
 							js: ['filePathsJs'],
 							css: ['filePathsCss']
+						}
+					},
+					//index.html file paths (have the static path prefix for use in <link rel="stylesheet" > and <script> tags)
+					indexTestEnvFilePaths:{
+						prefix: cfgJson.server.staticPath,
+						moduleGroup: 'allNoBuildCssTestEnv',
+						outputFiles: {
+							js: ['filePathsJsTestEnv']
 						}
 					},
 					<%
@@ -455,6 +464,10 @@ module.exports = function(grunt) {
 						src:        publicPathRelative+"index-grunt.html",
 						dest:       publicPathRelative+"index.html"
 					},
+					indexHtmlTestEnv: {
+						src:        publicPathRelative+"index-test-grunt.html",
+						dest:       publicPathRelative+"index-test.html"
+					},
 					indexHtmlProd: {
 						ifOpts: [{key:'type', val:'prod'}],		//pass in options via command line with `--type=prod`
 						src:        publicPathRelative+"index-prod-grunt.html",
@@ -497,6 +510,10 @@ module.exports = function(grunt) {
 					appConfig: {
 						src:        publicPathRelative+"modules/services/config/config-grunt.js",
 						dest:       publicPathRelative+"modules/services/config/config.js"
+					},
+					appConfigTestEnv: {
+						src:        publicPathRelative+"modules/services/config/config-test-grunt.js",
+						dest:       publicPathRelative+"modules/services/config/config-test.js"
 					},
 					karmaUnit: {
 						src:        publicPathRelativeRoot+"config/karma.conf-grunt.js",
