@@ -18,6 +18,10 @@ Conventions / labels:
 ### Generators
 - support test environment on frontend, so running test server will ALSO use test confing on FRONTEND (previously this was not possible) [core-default, core-scss]
 	- add new `index-test-grunt.html` and `modules/services/config-test-grunt.js` files and update Gruntfile, buildfilesModules, buildfilesModulesGroups to use these files. Update backend to serve `index-test.html` if on test environment.
+	
+## Bug Fixes
+### Generators
+- fix `config-grunt.js` and `config-test-grunt.js` cfgJson generation "+=" that should just be "=" on recursive call so now arrays of objects can be used in configs [core-default, core-scss]
 
 
 # 1.1.6 (2014-09-01)
