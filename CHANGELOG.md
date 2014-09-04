@@ -18,6 +18,7 @@ Conventions / labels:
 ### Generators
 - support test environment on frontend, so running test server will ALSO use test confing on FRONTEND (previously this was not possible) [core-default, core-scss]
 	- add new `index-test-grunt.html` and `modules/services/config-test-grunt.js` files and update Gruntfile, buildfilesModules, buildfilesModulesGroups to use these files. Update backend to serve `index-test.html` if on test environment.
+- twitter testing configs update: add `127.0.0.1` as `server.domain` option as well as update callback url to have `3005` testing port [core-default, core-scss]
 	
 ## Bug Fixes
 ### Generators
