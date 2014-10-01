@@ -13,9 +13,12 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
-# 1.1.7 (WIP)
+# 1.1.7 (2014-10-01)
 ## Features
 ### Generators
+- update to support browserstack with Protractor [core-default, core-scss]
+- chore: update `package.json` dependencies [core-default, core-scss]
+	- NOTE: protactor was only updated to `1.2.0` since `1.3.0` does not currently seem to work with browserstack..
 - support test environment on frontend, so running test server will ALSO use test confing on FRONTEND (previously this was not possible) [core-default, core-scss]
 	- add new `index-test-grunt.html` and `modules/services/config-test-grunt.js` files and update Gruntfile, buildfilesModules, buildfilesModulesGroups to use these files. Update backend to serve `index-test.html` if on test environment.
 - twitter testing configs update: add `127.0.0.1` as `server.domain` option as well as update callback url to have `3005` testing port [core-default, core-scss]

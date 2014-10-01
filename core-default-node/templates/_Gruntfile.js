@@ -539,7 +539,16 @@ module.exports = function(grunt) {
 					%>
 					protractorDefault: {
 						src: publicPathRelative+"config/protractor.conf-grunt.js",
-						dest: publicPathRelative+"config/protractor/protractor.conf.js"
+						dest: publicPathRelative+"config/protractor/protractor.conf.js",
+						templateData: {
+							protractorCaps: {
+								'browser': 'Chrome',
+								'resolution': '1024x768',
+								'browser_version': '36.0',
+								'os': 'Windows',
+								'os_version': '7',
+							}
+						}
 					}
 				}
 			},
@@ -1074,13 +1083,21 @@ module.exports = function(grunt) {
 		});
 		
 		
+		var seleniumType ='local';
+		if(cfgTestJson.sauceLabs.user && cfgTestJson.sauceLabs.key) {
+			seleniumType ='sauce';
+		}
+		else if(cfgTestJson.browserstack && cfgTestJson.browserstack.user && cfgTestJson.browserstack.access_key) {
+			seleniumType ='browserstack';
+		}
+		
 		var tasks =[];
 		var tasksSelenium =[];
 		
 		tasks =[];
 		// tasks =['http:nodeShutdown'];		//need to run node server from jasmine test to get coverage.. BUT do this just in case (won't hurt / just in case node test server was running from dev/watch task) - UPDATE: this will be shut down by test-backend task
 		//only do selenium if NOT using sauce labs
-		if(!cfgJson.sauceLabs.user || !cfgJson.sauceLabs.key) {
+		if(seleniumType =='local') {
 			tasks.push('http:seleniumShutdown');
 			tasksSelenium.push('http:seleniumShutdown');
 		}
@@ -1091,7 +1108,7 @@ module.exports = function(grunt) {
 		tasks =[];
 		// tasks =['shell:nodeServer'];		//need to run node server from jasmine test to get coverage..
 		//only do selenium if NOT using sauce labs
-		if(!cfgJson.sauceLabs.user || !cfgJson.sauceLabs.key) {
+		if(seleniumType =='local') {
 			tasks.push('shell:seleniumStartup');
 			tasksSelenium.push('shell:seleniumStartup');
 		}

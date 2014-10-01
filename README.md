@@ -13,6 +13,9 @@
 - [Backend API Interactive Docs](http://198.199.118.44:3000/api/help)
 	- i.e. [Auth API](http://198.199.118.44:3000/api/auth/help)
 - [Github Repo with Generated Code](https://github.com/jackrabbitsgroup/mean-seed-gen)
+
+Thanks to Browserstack for the automated e2e tests!
+https://www.browserstack.com/images/layout/logo-footer.png
 	
 	
 	

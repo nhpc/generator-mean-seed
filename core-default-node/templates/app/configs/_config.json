@@ -119,8 +119,12 @@
 		"clientIdComment":"Make sure to CHANGE this!",
 		"clientSecret": ""
 	},
-	"sauceLabs":{
+	"sauceLabs": {
 		"user": "",
 		"key": ""
+	},
+	"browserstack": {
+		"user": "",
+		"access_key": ""
 	}
 }

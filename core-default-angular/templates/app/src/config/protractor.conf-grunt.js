@@ -46,9 +46,9 @@ exports.config = {
 	// If sauceUser and sauceKey are specified, seleniumServerJar will be ignored.
 	// The tests will be run remotely using SauceLabs.
 	<%
-	if(cfgJson.sauceLabs.user && cfgJson.sauceLabs.key) {
-	print("sauceUser: '"+cfgJson.sauceLabs.user+"',\n");
-	print("\tsauceKey: '"+cfgJson.sauceLabs.key+"',\n");
+	if(cfgTestJson.sauceLabs.user && cfgTestJson.sauceLabs.key) {
+	print("sauceUser: '"+cfgTestJson.sauceLabs.user+"',\n");
+	print("\tsauceKey: '"+cfgTestJson.sauceLabs.key+"',\n");
 	}
 	else {
 	print('sauceUser: null,\n');
@@ -60,8 +60,11 @@ exports.config = {
 	// connect to an already running instance of selenium. This usually looks like
 	// seleniumAddress: 'http://192.168.1.6:4444/wd/hub',
 	<%
-	if(cfgJson.sauceLabs.user && cfgJson.sauceLabs.key) {
+	if(cfgTestJson.sauceLabs.user && cfgTestJson.sauceLabs.key) {
 	print("seleniumAddress: null,\n");
+	}
+	else if(cfgTestJson.browserstack && cfgTestJson.browserstack.user && cfgTestJson.browserstack.access_key) {
+	print("\tseleniumAddress: 'http://hub.browserstack.com/wd/hub',\n");
 	}
 	else {
 	print("\tseleniumAddress: 'http://localhost:4444/wd/hub',\n");		//do NOT need server scheme / https here?
@@ -70,7 +73,7 @@ exports.config = {
 	
 	// The timeout for each script run on the browser. This should be longer
 	// than the maximum time your application needs to stabilize between tasks.
-	allScriptsTimeout: 11000,
+	allScriptsTimeout: 20000,
 
 	// ----- What tests to run -----
 	//
@@ -97,9 +100,20 @@ exports.config = {
 	// and
 	// https://code.google.com/p/selenium/source/browse/javascript/webdriver/capabilities.js
 	capabilities: {
-		'browserName': 'chrome'
-		// 'browserName': 'phantomjs'
-		// 'browserName': 'firefox'
+		<%
+		if((cfgTestJson.browserstack && cfgTestJson.browserstack.user && cfgTestJson.browserstack.access_key) && (typeof(protractorCaps) !=="undefined" && protractorCaps)) {
+			print("\t'browserstack.user' : '"+cfgTestJson.browserstack.user+"',\n");
+			print("\t'browserstack.key' : '"+cfgTestJson.browserstack.access_key+"',\n");
+			print("\t'browserstack.debug' : 'true',\n");
+			var xx;
+			for(xx in protractorCaps) {
+				print("\t'"+xx+"': '"+protractorCaps[xx]+"',\n");
+			}
+		}
+		else {
+			print("'browserName': 'chrome',\n");
+		}
+		%>
 	},
 
 	// A base URL for your application under test. Calls to protractor.get()
