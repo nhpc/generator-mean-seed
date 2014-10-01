@@ -15,7 +15,7 @@
 - [Github Repo with Generated Code](https://github.com/jackrabbitsgroup/mean-seed-gen)
 
 Thanks to Browserstack for the automated e2e tests!
-https://www.browserstack.com/images/layout/logo-footer.png
+<a href='https://www.browserstack.com'><img src='http://www.browserstack.com/images/layout/browserstack-logo-600x315.png' height='100' width='190' /></a>
 	
 	
 	
