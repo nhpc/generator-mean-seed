@@ -13,6 +13,17 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
+# 1.1.8 (2014-10-08)
+## Bug Fixes
+### Generators
+- properly prefix `$templateCache` variables with grunt `ngtemplates` task (as of a few versions ago, the templates had a bad prefix path name so were not doing anything so this re-fixes it!) [core-default, core-scss]
+
+## Features
+### Generators
+- chore: update `package.json` dependencies [core-default, core-scss]
+- chore: update AngularJS to `1.3.0-rc.4` [core-default, core-scss]
+
+
 # 1.1.7 (2014-10-01)
 ## Features
 ### Generators
