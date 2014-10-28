@@ -13,6 +13,12 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
+# 1.1.9 (WIP)
+## Bug Fixes
+### Generators
+- fix improper (backend) `lodash.merge` and `lodash.extend` usage [core-default, core-scss]
+
+
 # 1.1.8 (2014-10-08)
 ## Bug Fixes
 ### Generators
