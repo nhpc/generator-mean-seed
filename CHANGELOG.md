@@ -13,10 +13,16 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
-# 1.1.9 (WIP)
+# 1.1.9 (2014-10-29)
 ## Bug Fixes
 ### Generators
 - fix improper (backend) `lodash.merge` and `lodash.extend` usage [core-default, core-scss]
+
+## Features
+### Generators
+- chore: update `package.json` dependencies [core-default, core-scss]
+- chore: update AngularJS to `1.3.0` [core-default, core-scss]
+- move `angular-mocks` to bower to ensure it is always up to date; remove the old `lib/angular` folder accordingly [core-default, core-scss]
 
 
 # 1.1.8 (2014-10-08)
