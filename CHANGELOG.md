@@ -13,6 +13,14 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
+# 1.1.10 (2014-11-10)
+## Features
+### Generators
+- chore: update `package.json` dependencies [core-default, core-scss]
+	- fix karma units tests for new Jasmine 2.0 syntax (since updated `karma-jasmine` to `0.2.3`)
+- chore: update AngularJS to `1.3.2` [core-default, core-scss]
+
+
 # 1.1.9 (2014-10-29)
 ## Bug Fixes
 ### Generators
