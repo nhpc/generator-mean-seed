@@ -13,6 +13,12 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
+# 1.1.11-1 (WIP)
+## Features
+### Generators
+- auth.js frontend fix to skip redirect url for non login pages (e.g. user-delete) [core-default, core-scss]
+
+
 # 1.1.10 (2014-11-10)
 ## Features
 ### Generators
