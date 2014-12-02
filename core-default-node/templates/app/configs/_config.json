@@ -7,6 +7,9 @@
 	"operatingSystem":"<%= optOperatingSystem %>",
 	"operatingSystemComment":"One of: 'windows', 'mac', 'linux'",
 	"forever": 0,
+	"foreverOptions": {
+		"logfile": "forever.log"
+	},
 	"app": {
 		"name": "<%= optAppName %>",
 		"title": "<%= optAppTitle %>"
