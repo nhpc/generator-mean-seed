@@ -13,6 +13,14 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
+		
+# 1.1.13 (2014-12-24)
+## Features
+### Generators
+- chore: update `package.json` dependencies [core-default, core-scss]
+- chore: update AngularJS to `1.3.8` [core-default, core-scss]
+
+
 # 1.1.12 (2014-12-16)
 ## Features
 ### Generators
