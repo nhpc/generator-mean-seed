@@ -14,6 +14,14 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 		
+# 1.1.14 (2015-01-01)
+- refactor: switch Google+ login to use server side flow to save over half a second on (page) load time [core-default, core-scss]
+	- remove google library frontend javascript file and `socialAuth` service all together, as well as `angular-google-auth` bower dependency
+	- add backend google node controller and googleapis npm dependency
+	- configs: google clientSecret and callback_url now required in (all) `config.json` files
+		- MAKE SURE to add this callback_url ( http(s)://[your_domain]/callback-google-auth ) AND a test version (port 3005 typically) also to the "redirect URIs" section in the Google Developers Console: https://console.developers.google.com
+
+
 # 1.1.13 (2014-12-24)
 ## Features
 ### Generators
