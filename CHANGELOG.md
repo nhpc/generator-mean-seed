@@ -14,6 +14,17 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 		
+# 1.1.15 (2015-01-02)
+## Features
+### Generators
+- test: refactor protractor e2e tests to be modularized, use pageObjects, and add in social login (facebook, google, twitter) tests [core-default, core-scss]
+	- add in `e2e` object in `config.json` with testing credentials
+		- NOTE: make sure to add your credentials here and add this key/object to all config files. You will likely need to create some new social logins for testing purposes and may have to "accept permissions" for first time runs during the test
+	- remove old `route.scenarios.js`
+	- add backend `e2eMocks` api route
+	- add frontend `e2e` page
+
+
 # 1.1.14 (2015-01-02)
 ## Features
 ### Generators

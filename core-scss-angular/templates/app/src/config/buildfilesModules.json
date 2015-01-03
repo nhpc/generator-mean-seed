@@ -616,6 +616,23 @@
 											"_social.scss"
 										]
 									}
+								},
+								{
+									"name": "e2e",
+									"files": {
+										"html": [
+											"e2e.html"
+										],
+										"js": [
+											"E2eCtrl.js"
+										],
+										"testUnit": [
+											"E2eCtrl.spec.js"
+										],
+										"scss": [
+											"_e2e.scss"
+										]
+									}
 								}
 							]
 						}
@@ -648,7 +665,7 @@
 					"name": "e2e",
 					"files": {
 						"testE2E": [
-							"**/*.scenarios.js"
+							"*.scenarios.js"
 						]
 					}
 				}
