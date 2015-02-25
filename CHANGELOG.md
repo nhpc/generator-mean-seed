@@ -14,6 +14,14 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 		
+# 1.1.16 (2015-02-25)
+## Features
+### Generators
+- chore: update `package.json` dependencies [core-default, core-scss]
+	- did NOT update `grunt-shell-spawn` from `0.3.0` to `0.3.1` since it breaks on Windows..?
+- chore: update AngularJS to `1.4.0-beta.5` [core-default, core-scss]
+
+
 # 1.1.15 (2015-01-02)
 ## Features
 ### Generators
