@@ -13,7 +13,13 @@ Conventions / labels:
 		- use '**[_all]**' for changes that affect ALL generators.
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
-		
+
+# 1.1.17 (2015-03-02)
+## Features
+### Generators
+- chore: update Facebook login link to use v2.0 [core-default, core-scss]
+
+
 # 1.1.16 (2015-02-25)
 ## Features
 ### Generators
