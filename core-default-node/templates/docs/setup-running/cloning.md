@@ -26,11 +26,11 @@ APP_PORT 3000
 	<%
 	if(optCssPreprocessor =='less') {
 	print("1. install git, nodejs, mongodb, phantomjs, java - see [here for Mac](server-mac.md) or [here for Windows](server-windows.md) or [here for Linux](server-linux.md)\n"+
-	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`");
+	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed yuidocjs forever less`");
 	}
 	else if(optCssPreprocessor =='scss') {
 	print("1. install git, nodejs, mongodb, phantomjs, java, ruby, sass - see [here for Mac](server-mac.md) or [here for Windows](server-windows.md) or [here for Linux](server-linux.md)\n"+
-	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever`");
+	"\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed yuidocjs forever`");
 	}
 	%>
 	3. IF using Github (to clone/push/pull from), set it up:

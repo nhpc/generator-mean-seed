@@ -13,14 +13,13 @@
 	2. Install global NPM packages.
 		<%
 		if(optCssPreprocessor =='less') {
-		print("1. `sudo npm install -g grunt-cli bower yo karma yuidocjs forever generator-mean-seed less`");
+		print("1. `sudo npm install -g grunt-cli bower yo yuidocjs forever generator-mean-seed less`");
 		}
 		else if(optCssPreprocessor =='scss') {
-		print("1. `sudo npm install -g grunt-cli bower yo karma yuidocjs forever generator-mean-seed`");
+		print("1. `sudo npm install -g grunt-cli bower yo yuidocjs forever generator-mean-seed`");
 		}
 		%>
-			1. NOTE: karma doesn't seem to always work if install globally?? so it's in package.json now so will be installed locally (as well)
-		2. NOTE: IF new global npm packages are installed, you'll need to run this again.
+		1. NOTE: IF new global npm packages are installed, you'll need to run this again.
 	3. Install Selenium server (for local Protractor tests, if using SauceLabs or another remote server, this can be skipped. Also NOTE this must be done AFTER `npm install` below since it requires Protractor first)
 		1. `./node_modules/protractor/bin/webdriver-manager update`
 

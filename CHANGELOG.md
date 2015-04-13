@@ -14,6 +14,16 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 
+# 1.1.18 (2015-04-12)
+## Features
+### Generators
+- chore: update `package.json` dependencies [core-default, core-scss]
+	- update `protractor` to `2.0.0`
+	- revert `grunt-shell-spawn` from `0.3.2` to `0.3.0` since higher versions breaks on Windows..?
+- docs: update `deploy.md` Continuous Integration Concrete set up `forever start` step directory from `.` to `APP_PATH` to avoid errors.
+- docs / karma config: update for karma / phantomjs memory issues for failing automated tests
+
+
 # 1.1.17 (2015-03-02)
 ## Features
 ### Generators

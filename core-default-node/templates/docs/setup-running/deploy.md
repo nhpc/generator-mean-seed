@@ -3,14 +3,19 @@ Steps to deploy your app to a live (linux) staging and/or production server
 
 If you haven't done so already, purchase a (new) Linux server (i.e. from Digital Ocean, Rackspace, Amazon) and follow [server-linux.md](server-linux.md) to install/setup your Linux server.
 
+NOTE: May need at least 1GB RAM as PhantomJS (for (karma) automated tests) can be a memory hog and will often fail with 512MB RAM.
+	- http://stackoverflow.com/questions/24119506/karma-jasmine-times-out-without-running-tests
+	- https://github.com/karma-runner/karma/issues/598
+
+
 ## Getting (& updating) files to (another) server
 
 <%
 if(optCssPreprocessor =='less') {
-print("1. [on new server] Install global npm packages: `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`");
+print("1. [on new server] Install global npm packages: `sudo npm install -g grunt-cli yo bower generator-mean-seed yuidocjs forever less`");
 }
 else if(optCssPreprocessor =='scss') {
-print("1. [on new server] Install global npm packages: `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever`");
+print("1. [on new server] Install global npm packages: `sudo npm install -g grunt-cli yo bower generator-mean-seed yuidocjs forever`");
 }
 %>
 2. [locally on your computer / original server] create a new set of configs (regular and test) in `app/configs` for the new server environment by copying the existing `config.json` and renaming it `config-[new-server-environment].json` and updating it accordingly, i.e. for a production or staging linux server change/set at least the following:
@@ -83,7 +88,7 @@ GIT_BRANCH master					//this is what branch concrete will use to pull in updates
 		1. create (if not already present) `.git/hooks/build-failed` and add `node ci.js build=failed` to it, i.e. using `echo 'node ci.js build=failed' > APP_PATH/.git/hooks/build-failed`
 		2. create (if not already present) `.git/hooks/build-worked` and add `node ci.js build=worked` to it, i.e. using `echo 'node ci.js build=worked' > APP_PATH/.git/hooks/build-worked`
 		3. set permissions so the hooks can be run - `sudo chmod -R +x APP_PATH/.git/hooks`
-5. [on new server] run concrete server with forever: `cd APP_PATH && forever start CONCRETE_PATH/bin/concrete -p CONCRETE_PORT .`
+5. [on new server] run concrete server with forever: `cd APP_PATH && forever start CONCRETE_PATH/bin/concrete -p CONCRETE_PORT APP_PATH`
 	1. Open a browser to `http://APP_DOMAIN:CONCRETE_PORT` to see your continuous integration server!
 6. On github.com add a webhook to the concrete server so it will run on each git push!
 	1. In your repo on github.com, click on `Settings` then `Service Hooks` then `WebHook URLs` and add a URL: `http://APP_DOMAIN:CONCRETE_PORT/webhook`

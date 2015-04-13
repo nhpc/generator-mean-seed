@@ -20,11 +20,11 @@ NOTE: replace all 'http' with 'https' if using 'https' (set in `config.json`)
 	<%
 	if(optCssPreprocessor =='less') {
 	print("1. install git, nodejs, mongodb, phantomjs\n");
-	print("\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`");
+	print("\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed yuidocjs forever less`");
 	}
 	else if(optCssPreprocessor =='scss') {
 	print("1. install git, nodejs, mongodb, phantomjs, ruby, sass\n");
-	print("\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever`");
+	print("\t2. `sudo npm install -g grunt-cli yo bower generator-mean-seed yuidocjs forever`");
 	}
 	%>
 2. `yo mean-seed` (from the NEW directory you want to create the app in)
