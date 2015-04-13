@@ -14,6 +14,12 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 
+# 1.1.19 (2015-04-13)
+## Features
+### Internal
+- package.json update for new repo location
+
+
 # 1.1.18 (2015-04-12)
 ## Features
 ### Generators
