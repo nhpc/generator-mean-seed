@@ -14,6 +14,12 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 
+# 1.1.20 (2015-04-13)
+## Bug Fixes
+### Generators
+- karma config add missing comma [core-default, core-scss]
+
+
 # 1.1.19 (2015-04-13)
 ## Features
 ### Internal
