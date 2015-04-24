@@ -14,9 +14,9 @@
 	- i.e. [Auth API](http://162.243.148.119:3000/api/auth/help)
 - [Github Repo with Generated Code](https://github.com/jackrabbitsgroup/mean-seed-gen)
 
-Thanks to Browserstack for the automated e2e tests!
-<br />
-<a href='https://www.browserstack.com'><img src='http://www.browserstack.com/images/layout/browserstack-logo-600x315.png' height='100' width='190' /></a>
+
+## Learn to Code with MEAN Stack
+[Walkthrough course to use this Generator and MEAN stack in general](https://www.packtpub.com/web-development/mastering-mean-web-development-video)
 	
 	
 	
