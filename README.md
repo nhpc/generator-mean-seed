@@ -16,7 +16,7 @@
 
 
 ## Learn to Code with MEAN Stack
-[Walkthrough course to use this Generator and MEAN stack in general](https://www.packtpub.com/web-development/mastering-mean-web-development-video)
+[Walkthrough course to use this Generator and MEAN stack in general](http://fullstackmean.com/)
 	
 	
 	
