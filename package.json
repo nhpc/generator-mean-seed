@@ -41,19 +41,19 @@
 		"test": "mocha"
 	},
 	"dependencies": {
-		"yeoman-generator": ">=0.13.0",
-		"q": ">=0.9.7",
-		"moment": ">=2.0.0"
+		"yeoman-generator": "^0.13.0",
+		"q": "^0.9.7",
+		"moment": "^2.0.0"
 	},
 	"devDependencies": {
-		"mocha": ">=1.12.0",
-		"grunt": ">=0.4.2",
-		"grunt-contrib-jshint": ">=0.7.0",
-		"grunt-contrib-clean": ">=0.5.0",
-		"grunt-jasmine-node-coverage-validation": ">=0.0.4"
+		"mocha": "^1.12.0",
+		"grunt": "^0.4.2",
+		"grunt-contrib-jshint": "^0.7.0",
+		"grunt-contrib-clean": "^0.5.0",
+		"grunt-jasmine-node-coverage-validation": "^0.0.4"
 	},
 	"peerDependencies": {
-		"yo": ">=1.0.0-rc.1"
+		"yo": ">=1.0.0"
 	},
 	"engines": {
 		"node": ">=0.8.0",
