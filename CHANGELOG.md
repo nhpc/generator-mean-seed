@@ -14,9 +14,29 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 
+# 1.1.23 (2015-05-30)
+## Bug Fixes
+### Internal
+- add `underscore` as a dependency
+
+### Generators
+- update grunt forever run script to use `--uid` option instead of `-m` option for naming and add `minUptime` and `spinSleepTime` options [core-default, core-scss]
+
+
+## Features
+### Generators
+- chore: update `package.json` dependencies [core-default, core-scss]
+	- NOTE: updated `protractor` to `2.1.0` so you will need to re-run `./node_modules/protractor/bin/webdriver-manager update`
+	- NOT updated on purpose:
+		 - `mongodb`, `karma-phantomjs-launcher`
+		 - `grunt-shell-spawn` (breaks things on Windows)
+- chore: update AngularJS to `1.4.0` [core-default, core-scss]
+
+
 # 1.1.22 (2015-05-30)
 ## Bug Fixes
-- add `underscore` as a dependency
+### Internal
+- pull request for proper versions of dependencies
 
 
 # 1.1.21 (2015-04-24)
