@@ -48,9 +48,20 @@ if(1) {
 	// CommandsMod.run('git', ['init', '.'], {yoThis: self})
 	.then(function(ret1) {
 		if(ret1.code !==0) {		//if non-zero code, git init to start the new repo / branches
-			CommandsMod.run('git', ['init', '.', '&&', 'git', 'add', '-A', '&&', 'git', 'commit', '-am', '"init"'], {yoThis: self})
+			// CommandsMod.run('git', ['init', '.', '&&', 'git', 'add', '.', '&&', 'git', 'commit -am', '"init"'], {yoThis: self})
+			CommandsMod.run('git', ['init', '.'], {yoThis: self})
 			.then(function(ret2) {
-				cb();
+				CommandsMod.run('git', ['add', '.'], {yoThis: self})
+				.then(function(ret3) {
+					CommandsMod.run('git', ['commit', '-am', '"init"'], {yoThis: self})
+					.then(function(ret4) {
+						cb();
+					}, function(retErr4) {
+						cb();
+					});
+				}, function(retErr3) {
+					cb();
+				});
 			}, function(retErr2) {
 				cb();
 			});

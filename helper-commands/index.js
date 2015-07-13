@@ -65,7 +65,8 @@ if(this.optSubGenerators.indexOf('helper-commands') >-1) {
 	
 	if(this.optBowerInstall !==undefined && this.optBowerInstall) {
 		var command ='bower';
-		var args =['update', '&&', 'bower', 'install'];
+		// var args =['update', '&&', 'bower', 'install'];
+		var args =['install'];
 		var cmd =this.spawnCommand(command, args);
 		cmd.on('exit', function(code) {
 			self.log.writeln('child process exited with code: '+code);
