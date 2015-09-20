@@ -41,6 +41,14 @@
 							}
 						},
 						{
+							"name": "neat",
+							"files": {
+								"scss": [
+									"app/assets/stylesheets/_neat.scss"
+								]
+							}
+						},
+						{
 							"name": "less-flexbox",
 							"files": {
 								"css": [
