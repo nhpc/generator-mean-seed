@@ -36,7 +36,7 @@
 							"name": "bourbon",
 							"files": {
 								"scss": [
-									"dist/_bourbon.scss"
+									"app/assets/stylesheets/_bourbon.scss"
 								]
 							}
 						},
