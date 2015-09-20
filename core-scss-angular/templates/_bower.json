@@ -27,6 +27,7 @@
 		"angular-cookies": "1.4.0",
 		"angular-mocks": "1.4.0",
 		"bourbon": "latest",
+		"neat": "latest",
 		"font-awesome": "latest",
 		"less-flexbox": "latest",
 		"momentjs": "latest",
