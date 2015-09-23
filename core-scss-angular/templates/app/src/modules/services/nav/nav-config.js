@@ -7,7 +7,7 @@ Each button generally has the following properties (but check the corresponding 
 	- either an `href` or `click`. For the `click`, it's generally a $rootScope.$broadcast that can be listened for in the appropriate controller for that page.
 	- `classes` which is an object that has style classes to apply for different parts of the nav item (i.e. `cont` is usually the class for the outer-most container)
 		- use classes.cont ='hidden' as a special class to HIDE (display:none) the entire header and/or footer
-	
+
 @example
 buttons: [
 	//icon and text/html
@@ -53,13 +53,13 @@ var inst ={
 
 	//self: appNav,		//so can use 'self' instead of 'this' in this file and it will still work to refer to appNav INSTEAD of this file.		//UPDATE: does NOT work - circular dependency..
 	historyBack: false,		//placeholder - will be set in appNav
-	
+
 	inited: false,		//trigger that will be set after this first time this is run
 
 	pathRoot: 'modules/services/nav/',
-	
+
 	paths: {},		//holds file paths for various things, specifically templates (HTML template files) and appPathLink. See initPaths function for more info.
-	
+
 	components :{},		//will hold parts of pages for use later
 
 	pages :{},		//will hold all the navigation page objects for defining the nav (header and footer)
@@ -82,7 +82,7 @@ var inst ={
 	*/
 	pagesRouteMap: {
 	},
-	
+
 	/**
 	@toc 1.
 	@method init
@@ -92,11 +92,11 @@ var inst ={
 			this.initPaths(params);
 			this.initComponents({});
 			this.initPages(params);
-			
+
 			this.inited =true;		//set for next time
 		}
 	},
-	
+
 	/**
 	@toc 2.
 	@method initPaths
@@ -109,21 +109,21 @@ var inst ={
 		};
 		this.paths.appPathLink =appConfig.dirPaths.appPathLink;
 	},
-	
+
 	/**
 	@toc 3.
 	@method initComponents
 	*/
 	initComponents: function(params) {
 		var self =this;
-		
+
 		//NOTE: this references a function in THIS file/service, which is NOT what we want, we want to reference appNav SO we need to overwrite/set the historyBack function here from appNav later so this will work!
 		this.components.backButton ={
 			icon: 'fa fa-arrow-left',
 			// html: "<span class='fa fa-arrow-left'></span>",
 			click: function() {self.historyBack({}); }
 		};
-		
+
 		this.components.headerCentered ={
 			template: this.paths.templates.headerCentered,
 			title: {
@@ -143,7 +143,6 @@ var inst ={
 						iconHtml: 'Login',
 						href: this.paths.appPathLink+'login'
 					}
-					}
 					//now toggling this in HeaderCtrl based on logged in status
 					// {
 						// icon: 'fa fa-sign-out',
@@ -153,7 +152,7 @@ var inst ={
 				]
 			}
 		};
-		
+
 		this.components.footerMain ={
 			template: this.paths.templates.footerFlex,
 			classes: {
@@ -186,22 +185,22 @@ var inst ={
 		//hardcoded array indices for use to change these buttons later
 		this.components.footerMainIndices ={
 		};
-		
+
 		this.components.defaultNav ={
 			header: this.components.headerCentered,
 			footer: this.components.footerMain
 		};
 	},
-	
+
 	/**
 	NOTE: need to COPY / deep clone the components otherwise they'll overwrite backwards (copying arrays/objects by reference instead of by value)
 	@toc 4.
 	@method initPages
 	*/
 	initPages: function(params) {
-		
+
 		this.pages.defaultPage =jrgArray.copy(this.components.defaultNav);			//in case missed a page, show default nav
-		
+
 		//site-specific
 		//CUSTOM nav definitions
 		//login
@@ -233,7 +232,7 @@ var inst ={
 				]
 			}
 		};
-		
+
 		//signup
 		this.pages.signup ={
 			header: {
@@ -263,8 +262,8 @@ var inst ={
 				]
 			}
 		};
-		
-		
+
+
 		//test
 		this.pages.test =jrgArray.copy(this.components.defaultNav);
 		// this.pages.test.header.classes ={
@@ -273,7 +272,7 @@ var inst ={
 		// this.pages.test.footer.classes ={
 			// cont: 'hidden'
 		// };
-		
+
 		//end: CUSTOM nav definitions
 	}
 };

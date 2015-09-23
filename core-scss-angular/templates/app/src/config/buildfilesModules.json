@@ -36,7 +36,15 @@
 							"name": "bourbon",
 							"files": {
 								"scss": [
-									"dist/_bourbon.scss"
+									"app/assets/stylesheets/_bourbon.scss"
+								]
+							}
+						},
+						{
+							"name": "neat",
+							"files": {
+								"scss": [
+									"app/assets/stylesheets/_neat.scss"
 								]
 							}
 						},
