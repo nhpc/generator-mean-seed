@@ -33,16 +33,24 @@ var LoginGoogle =function() {
 			//switch to pop-up
 			// browser.switchTo().window(handles[1]);
 			
-			//fill in login form
+			//fill in login form (username)
 			browser.driver.findElement(by.id('Email')).sendKeys(user1.email);
+
+			//click 'next' button to show password field
+			browser.driver.findElement(by.id('next')).click();
+
+			//wait for google page to load
+			browser.sleep(1000);
+
+			//fill in login form (password)
 			browser.driver.findElement(by.id('Passwd')).sendKeys(user1.password);
 			
 			//click login button / submit form
 			browser.driver.findElement(by.id('signIn')).click();
 			
 			//click approve / allow button
-			if(1) {		//only need to do this the first time; will create error all other times; so just do this manually before running the test the first time		//UPDATE 2015.01.02 - with new google login flow it always needs to be approved??
-			browser.sleep(1000);		//need to wait for button to become clickable
+			if(1) {   //only need to do this the first time; will create error all other times; so just do this manually before running the test the first time   //UPDATE 2015.01.02 - with new google login flow it always needs to be approved??
+			browser.sleep(3000);    //need to wait for button to become clickable (sometimes takes a long time)
 			browser.driver.findElement(by.id('submit_approve_access')).click();
 			}
 			
