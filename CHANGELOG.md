@@ -14,7 +14,7 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 
-# 1.1.25-1 (2015-10-02)
+# 1.1.25 (2015-10-02)
 ## Bug Fixes
 ### Generators
 - fix: updated e2e tests to match new google login scheme
@@ -22,6 +22,12 @@ Conventions / labels:
 ## Features
 ### Generators
 - chore: update `package.json` dependencies [core-default, core-scss]
+	- NOTE: updated `protractor` to `2.4.0` so you will need to re-run `./node_modules/protractor/bin/webdriver-manager update`
+	- NOT updated on purpose:
+		 - `mongodb`
+		 - `grunt-shell-spawn`
+		 - `grunt-karma`, `karma` (causes unit tests to hang)
+		 - `protractor@2.5.0` (does not currently support node<0.12)
 
 # 1.1.24 (2015-07-12)
 ## Bug Fixes
