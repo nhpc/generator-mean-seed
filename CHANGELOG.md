@@ -14,6 +14,13 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 
+# 1.1.26-1 (2015-11-22)
+## Bug Fixes
+### Generators
+- test: moved google e2e test to 1noRun folder to stop it from running by default. When a dev needs to test google login scenarios, change the account credentials in `/app/configs/config.test.json` and `/app/configs/config.json` to a google account you want to use.
+
+
+
 # 1.1.25 (2015-10-02)
 ## Bug Fixes
 ### Generators
