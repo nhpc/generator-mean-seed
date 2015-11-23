@@ -19,13 +19,13 @@
 		%>
 	],
 	"dependencies": {
-		"angular": "1.4.7",
-		"angular-animate": "1.4.7",
-		"angular-sanitize": "1.4.7",
-		"angular-touch": "1.4.7",
-		"angular-route": "1.4.7",
-		"angular-cookies": "1.4.7",
-		"angular-mocks": "1.4.7",
+		"angular": "1.4.8",
+		"angular-animate": "1.4.8",
+		"angular-sanitize": "1.4.8",
+		"angular-touch": "1.4.8",
+		"angular-route": "1.4.8",
+		"angular-cookies": "1.4.8",
+		"angular-mocks": "1.4.8",
 		"bourbon": "latest",
 		"neat": "latest",
 		"font-awesome": "latest",
@@ -38,9 +38,9 @@
 	},
 	"license": "MIT",
 	"resolutions": {
-		"angular": "1.4.7",
-		"angular-animate": "1.4.7",
-		"angular-sanitize": "1.4.7",
-		"angular-touch": "1.4.7"
+		"angular": "1.4.8",
+		"angular-animate": "1.4.8",
+		"angular-sanitize": "1.4.8",
+		"angular-touch": "1.4.8"
 	}
 }

@@ -14,12 +14,19 @@ Conventions / labels:
 		- in general, try to order changes from most to least in terms of the number and size of how many generators were affected (i.e. put '_all' and 'core-*' changes at the top).
 		
 
-# 1.1.26-1 (2015-11-22)
+# 1.1.26 (2015-11-22)
 ## Bug Fixes
 ### Generators
 - test: moved google e2e test to 1noRun folder to stop it from running by default. When a dev needs to test google login scenarios, change the account credentials in `/app/configs/config.test.json` and `/app/configs/config.json` to a google account you want to use.
 
-
+## Features
+### Generators
+- chore: update `package.json` dependencies [core-default, core-scss]
+	- NOTE: updated `protractor` to `2.4.0` so you will need to re-run `./node_modules/protractor/bin/webdriver-manager update`
+	- NOT updated on purpose:
+		 - `mongodb`
+		 - `grunt-shell-spawn`
+		 - `protractor>2.4.0` (does not currently support node<0.12)
 
 # 1.1.25 (2015-10-02)
 ## Bug Fixes
@@ -29,9 +36,9 @@ Conventions / labels:
 ## Features
 ### Generators
 - chore: update `package.json` dependencies [core-default, core-scss]
-	- NOTE: updated `protractor` to `2.4.0` so you will need to re-run `./node_modules/protractor/bin/webdriver-manager update`
 	- NOT updated on purpose:
 		 - `mongodb`
+		 - `qs`
 		 - `grunt-shell-spawn`
 		 - `grunt-karma`, `karma` (causes unit tests to hang)
 		 - `protractor@2.5.0` (does not currently support node<0.12)
