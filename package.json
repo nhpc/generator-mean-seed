@@ -25,17 +25,17 @@
 		"app",
 		"website"
 	],
-	"homepage": "https://github.com/notorii/generator-mean-seed",
-	"bugs": "https://github.com/notorii/generator-mean-seed/issues",
+	"homepage": "https://github.com/nhpc/generator-mean-seed",
+	"bugs": "https://github.com/nhpc/generator-mean-seed/issues",
 	"author": {
 		"name": "Luke Madera",
 		"email": "",
-		"url": "https://github.com/lukemadera"
+		"url": "https://github.com/nhpc"
 	},
 	"main": "app/index.js",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/notorii/generator-mean-seed.git"
+		"url": "git://github.com/nhpc/generator-mean-seed.git"
 	},
 	"scripts": {
 		"test": "mocha"
