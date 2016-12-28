@@ -26,7 +26,7 @@
     "angular-route": "1.4.8",
     "angular-cookies": "1.4.8",
 	"angular-mocks": "1.4.8",
-    "lesshat": "latest",
+    "lesshat": "3.0.2",
     "font-awesome": "latest",
     "less-flexbox": "latest",
     "momentjs": "latest",
